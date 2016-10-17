@@ -7,11 +7,15 @@
     :rights_statement: http://rightsstatements.org/vocab/NKC/1.0/
     :visibility: open
   :local:
-    :source_metadata_identifier: Irish People &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/IP
-    :viewing_direction: left-to-right
+    source_metadata_identifier: Irish People &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/IP
   :remote: {}
 :source_metadata: 
 :thumbnail_path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5044
+:sources:
+- :title:
+  - Contentdm XML
+  :file: spec/fixtures/contentdm_xml/Irish_People.xml
+:collection_slugs: []
 :volumes:
 - :title:
   - 1974-11-16 Irish People
@@ -788,7 +792,3 @@
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=14
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=14
     :file_opts: {}
-:sources:
-- :title:
-  - Contentdm XML
-  :file: spec/fixtures/contentdm_xml/Irish_People.xml

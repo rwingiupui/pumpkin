@@ -20,7 +20,7 @@ namespace :pmp do
     logger.info "preingesting #{document_class::FILE_PATTERN} files from: #{ARGV[1]}"
     logger.info "preingesting as: #{user.user_key} (override with USER=foo)"
     abort "usage: rake preingest /path/to/preingest/files" unless ARGV[1] && Dir.exist?(ARGV[1])
-    Dir["#{ARGV[1]}/**/#{document_class::FILE_PATTERN}"].each do |file|
+    Dir["#{ARGV[1].chomp("/")}/**/#{document_class::FILE_PATTERN}"].each do |file|
       begin
         PreingestJob.perform_now(document_class, file, user, collections)
       rescue => e

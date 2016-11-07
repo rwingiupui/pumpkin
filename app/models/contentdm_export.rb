@@ -53,8 +53,8 @@ class ContentdmExport
     def parse
       @files = []
       @cdm.xpath('//record').each do |record|
-        title = record.xpath('/title').first&.content.to_s
-        record.xpath('/structure/page').each do |file|
+        title = record.xpath('title').first&.content.to_s
+        record.xpath('structure/page').each do |file|
           file_hash = {}
           tid = file.xpath('pagetitle').first&.content.to_s
           file_hash[:id] = tid
@@ -76,7 +76,7 @@ class ContentdmExport
               next
             end
           end
-          full_text = content_fulltext(file, title)
+          full_text = content_fulltext(file, title, tid)
           file_hash[:file_opts] = {}
           @files << file_hash
         end
@@ -121,20 +121,20 @@ class ContentdmExport
     # @param [XML_Object]  page_xml
     # @param [String] content_dir directory for full text
     # @return [Type] description of returned object
-    def content_fulltext(page_xml, title)
-
+    def content_fulltext(page_xml, paper_title, page_title)
       page_path = Pathname.new(@source_file)
       basename = page_path.basename.to_s.gsub('.xml', '')
-      fulltext_path = File.join(page_path, 'fulltext', tile, basename)
+      fulltext_path = File.join(page_path.parent, basename, paper_title, page_title)
       full_text_file = "#{fulltext_path}/fulltext.txt"
+      #puts "Path : #{fulltext_path} || File : #{full_text_file}"
       FileUtils.mkdir_p fulltext_path
       page_text = page_xml.xpath('pagetext').map(&:content).first.to_s
       File.open(full_text_file,"w"){|f| f.write(page_text)}
-      file = {}
-      file['file'] = {}
-      file['file']['type'] = "extracted"
-      file['file']['path'] = full_text_file
-      return file
+      #file = {}
+      #file['file'] = {}
+      #file['file']['type'] = "extracted"
+      #file['file']['path'] = full_text_file
+      #return file
     end
 
     # Fix file paths for IUPUI exports
@@ -145,7 +145,6 @@ class ContentdmExport
       # IUPUI CDM no longer provides API on port 445
       # The API is now available on port 2012
       # Also needs to replace &amp; with just &
-      path = CGI.unescapeHTML(path.sub(/445\/cgi-bin/, '2012/cgi-bin'))
-      #path.sub('&amp;', '&')
+      CGI.unescapeHTML(path.sub(/445\/cgi-bin/, '2012/cgi-bin'))
     end
 end

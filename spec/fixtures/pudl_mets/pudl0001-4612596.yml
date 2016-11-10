@@ -7,17 +7,29 @@
     :rights_statement: http://rightsstatements.org/vocab/NKC/1.0/
     :visibility: open
   :local:
-    :identifier: ark:/88435/5m60qr98h
-    :replaces: pudl0001/4612596
-    :source_metadata_identifier: bhr9405
-    :viewing_direction: left-to-right
+    identifier: ark:/88435/5m60qr98h
+    replaces: pudl0001/4612596
+    source_metadata_identifier: bhr9405
+    viewing_direction: left-to-right
   :remote:
     title:
     - Fontane di Roma ; poema sinfonico per orchestra
     creator:
     - Respighi, Ottorino, 1879-1936.
     publisher:
-    - G. Ricordi,
+    - G. Ricordi
+    date_created:
+    - '1947'
+    sort_title: Fontane di Roma ; poema sinfonico per orchestra
+    issued:
+    - 1947, c1918.
+    lccn_call_number:
+    - M1002.R434 F6, R5, 1947
+    publication_place:
+    - Milano
+    - New York
+    responsibility_note:
+    - di Ottorino Respighi.
 :source_metadata: |-
   <record xmlns="http://www.loc.gov/MARC21/slim">
     <!-- Length implementation at offset 22 should hold a digit. Assuming 0 -->
@@ -111,6 +123,11 @@
     </datafield>
   </record>
 :thumbnail_path: "/tmp/pudl0001/4612596/00000001.tif"
+:sources:
+- :title:
+  - METS XML
+  :file: spec/fixtures/pudl_mets/pudl0001-4612596.mets
+:collection_slugs: []
 :structure:
   :nodes:
   - :label: leaf 1
@@ -127,7 +144,4 @@
     :title:
     - leaf 1. recto
     :replaces: pudl0001/4612596/00000001
-:sources:
-- :title:
-  - METS XML
-  :file: spec/fixtures/pudl_mets/pudl0001-4612596.mets
+    :source_metadata_identifier: '00000001'

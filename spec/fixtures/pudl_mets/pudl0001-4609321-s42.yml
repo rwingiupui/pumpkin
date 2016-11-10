@@ -7,17 +7,29 @@
     :rights_statement: http://rightsstatements.org/vocab/NKC/1.0/
     :visibility: open
   :local:
-    :identifier: ark:/88435/7d278t10z
-    :replaces: pudl0001/4609321/s42
-    :source_metadata_identifier: bhr9405
-    :viewing_direction: left-to-right
+    identifier: ark:/88435/7d278t10z
+    replaces: pudl0001/4609321/s42
+    source_metadata_identifier: bhr9405
+    viewing_direction: left-to-right
   :remote:
     title:
     - Fontane di Roma ; poema sinfonico per orchestra
     creator:
     - Respighi, Ottorino, 1879-1936.
     publisher:
-    - G. Ricordi,
+    - G. Ricordi
+    date_created:
+    - '1947'
+    sort_title: Fontane di Roma ; poema sinfonico per orchestra
+    issued:
+    - 1947, c1918.
+    lccn_call_number:
+    - M1002.R434 F6, R5, 1947
+    publication_place:
+    - Milano
+    - New York
+    responsibility_note:
+    - di Ottorino Respighi.
 :source_metadata: |-
   <record xmlns="http://www.loc.gov/MARC21/slim">
     <!-- Length implementation at offset 22 should hold a digit. Assuming 0 -->
@@ -111,6 +123,11 @@
     </datafield>
   </record>
 :thumbnail_path: "/users/escowles/downloads/tmp/00000001.tif"
+:sources:
+- :title:
+  - METS XML
+  :file: spec/fixtures/pudl_mets/pudl0001-4609321-s42.mets
+:collection_slugs: []
 :volumes:
 - :title:
   - first volume
@@ -138,6 +155,7 @@
       :title:
       - upper cover. cover
       :replaces: pudl0001/4609321/s42/00000001
+      :source_metadata_identifier: '00000001'
   - :id: l898s
     :checksum: 94b8bb21d88a05519be035077ca8e2fcf24b62ce
     :mime_type: image/tiff
@@ -147,6 +165,7 @@
       :title:
       - upper cover. pastedown
       :replaces: pudl0001/4609321/s42/00000002
+      :source_metadata_identifier: '00000002'
   - :id: itc6o
     :checksum: 5ff6c95e931d3b71cbaff41c3d1b994390ba44c1
     :mime_type: image/tiff
@@ -156,6 +175,7 @@
       :title:
       - gathering 1. leaf 1, gathering 1/1. recto
       :replaces: pudl0001/4609321/s42/00000003
+      :source_metadata_identifier: '00000003'
 - :title:
   - second volume
   :structure:
@@ -182,6 +202,7 @@
       :title:
       - upper cover. pastedown
       :replaces: pudl0001/4609321/s42/00000657
+      :source_metadata_identifier: '00000657'
   - :id: l4e90
     :checksum: ce773c29f10ad4c08dabe85c69ac0f385b65f0a8
     :mime_type: image/tiff
@@ -191,6 +212,7 @@
       :title:
       - gathering 1. leaf 1, gathering 1/1. recto
       :replaces: pudl0001/4609321/s42/00000658
+      :source_metadata_identifier: 00000658
   - :id: ivg04
     :checksum: 4e3003e04f6ddba5f1a31064085e6a1a0b18a559
     :mime_type: image/tiff
@@ -200,7 +222,4 @@
       :title:
       - gathering 1. leaf 1, gathering 1/1. verso
       :replaces: pudl0001/4609321/s42/00000659
-:sources:
-- :title:
-  - METS XML
-  :file: spec/fixtures/pudl_mets/pudl0001-4609321-s42.mets
+      :source_metadata_identifier: 00000659

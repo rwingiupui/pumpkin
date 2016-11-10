@@ -15,6 +15,7 @@
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
+  iiif: http://iiif.io/api/presentation/2#
   contributor:
     "@id": dc:contributor
   coverage:
@@ -53,6 +54,8 @@
     "@id": dcterms:modified
   title:
     "@id": dcterms:title
+  replaces:
+    "@id": dcterms:replaces
   edition:
     "@id": bf:editionStatement
   holding_location:
@@ -603,3 +606,5 @@
     "@id": mrel:wpr
   responsibility_note:
     "@id": skos:note
+  viewing_direction:
+    "@id": iiif:viewingDirection

@@ -7,15 +7,30 @@
     :visibility: open
     :rights_statement: http://rightsstatements.org/vocab/InC/1.0/
   :local:
-    :source_metadata_identifier: BHR9405
-    :holding_location: https://libraries.indiana.edu/music
+    identifier: http://purl.dlib.indiana.edu/iudl/variations/score/BHR9405
+    source_metadata_identifier: BHR9405
+    holding_location: https://libraries.indiana.edu/music
+    media: 1 score (64 p.) ; 32 cm
+    copyright_holder: G. Ricordi & Co.
   :remote:
     title:
     - Fontane di Roma ; poema sinfonico per orchestra
     creator:
     - Respighi, Ottorino, 1879-1936.
     publisher:
-    - G. Ricordi,
+    - G. Ricordi
+    date_created:
+    - '1947'
+    sort_title: Fontane di Roma ; poema sinfonico per orchestra
+    issued:
+    - 1947, c1918.
+    lccn_call_number:
+    - M1002.R434 F6, R5, 1947
+    publication_place:
+    - New York
+    - Milano
+    responsibility_note:
+    - di Ottorino Respighi.
 :source_metadata: |-
   <record xmlns="http://www.loc.gov/MARC21/slim">
     <!-- Length implementation at offset 22 should hold a digit. Assuming 0 -->
@@ -109,6 +124,11 @@
     </datafield>
   </record>
 :thumbnail_path: "/tmp/ingest/bhr9405-1-1.tif"
+:sources:
+- :title:
+  - Variations XML
+  :file: spec/fixtures/variations_xml/bhr9405.xml
+:collection_slugs: []
 :structure:
   :nodes:
   - :label: "[Title Page and Copyright Page]"
@@ -149,7 +169,6 @@
   :attributes:
     :title:
     - "[i]"
-    :source_metadata_identifier: BHR9405-1-1
 - :id: bhr9405-1-2.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-2.tif"
@@ -157,7 +176,6 @@
   :attributes:
     :title:
     - "[ii]"
-    :source_metadata_identifier: BHR9405-1-2
 - :id: bhr9405-1-3.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-3.tif"
@@ -165,7 +183,6 @@
   :attributes:
     :title:
     - "[iii]"
-    :source_metadata_identifier: BHR9405-1-3
 - :id: bhr9405-1-4.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-4.tif"
@@ -173,7 +190,6 @@
   :attributes:
     :title:
     - "[iv]"
-    :source_metadata_identifier: BHR9405-1-4
 - :id: bhr9405-1-5.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-5.tif"
@@ -181,7 +197,6 @@
   :attributes:
     :title:
     - "[v]"
-    :source_metadata_identifier: BHR9405-1-5
 - :id: bhr9405-1-6.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-6.tif"
@@ -189,7 +204,6 @@
   :attributes:
     :title:
     - "[vi]"
-    :source_metadata_identifier: BHR9405-1-6
 - :id: bhr9405-1-7.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-7.tif"
@@ -197,7 +211,6 @@
   :attributes:
     :title:
     - '1'
-    :source_metadata_identifier: BHR9405-1-7
 - :id: bhr9405-1-8.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-8.tif"
@@ -205,7 +218,6 @@
   :attributes:
     :title:
     - '2'
-    :source_metadata_identifier: BHR9405-1-8
 - :id: bhr9405-1-9.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-9.tif"
@@ -213,7 +225,6 @@
   :attributes:
     :title:
     - '3'
-    :source_metadata_identifier: BHR9405-1-9
 - :id: bhr9405-1-10.tif
   :mime_type: image/tiff
   :path: "/tmp/ingest/bhr9405-1-10.tif"
@@ -221,8 +232,3 @@
   :attributes:
     :title:
     - '4'
-    :source_metadata_identifier: BHR9405-1-10
-:sources:
-- :title:
-  - Variations XML
-  :file: spec/fixtures/variations_xml/bhr9405.xml

@@ -32,7 +32,6 @@ class PreingestJob < ActiveJob::Base
         yaml_hash[:files] = @document.files
       end
 
-
       File.write(@document.yaml_file, yaml_hash.to_yaml)
       logger.info "Created YAML file #{File.basename(@document.yaml_file)}"
     end

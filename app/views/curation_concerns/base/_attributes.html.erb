@@ -4,12 +4,14 @@
     <tr><th>Attribute Name</th><th>Values</th></tr>
   </thead>
   <tbody>
+  <% if @presenter.respond_to?(:full_title) %>
   <tr>
     <th>Title</th>
     <td>
       <%= @presenter.full_title %>
     </td>
   </tr>
+  <% end %>
   <%= @presenter.attribute_to_html(:series_title) %>
   <%= @presenter.attribute_to_html(:creator, render_as: 'rtl_linked' ) %>
   <%= @presenter.attribute_to_html(:published) %>

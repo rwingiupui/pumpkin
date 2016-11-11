@@ -12,7 +12,7 @@ module IuMetadata
       {
         title: title,
         sort_title: sort_title,
-        responsibility_note: responsibility_note, 
+        responsibility_note: responsibility_note,
         series_title: series_title,
         creator: creator,
         date_created: date_created,
@@ -138,11 +138,11 @@ module IuMetadata
     end
 
     def publisher
-      formatted_subfields_as_array(['260', '264'], codes: ['b']).map { |s| s.sub /\s*[:;,]\s*$/, '' }
+      formatted_subfields_as_array(['260', '264'], codes: ['b']).map { |s| s.sub(/\s*[:;,]\s*$/, '') }
     end
 
     def publication_place
-      formatted_subfields_as_array(['260', '264'], codes: ['a']).map { |s| s.sub /\s*[:;,]\s*$/, '' }
+      formatted_subfields_as_array(['260', '264'], codes: ['a']).map { |s| s.sub(/\s*[:;,]\s*$/, '') }
     end
 
     def issued

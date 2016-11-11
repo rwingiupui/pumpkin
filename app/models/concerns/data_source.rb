@@ -38,7 +38,7 @@ class DataSource
 
   def single_valued?(attribute)
     proxy_record.class.properties[attribute.to_s].respond_to?(:multiple?) &&
-    !proxy_record.class.properties[attribute.to_s].multiple?
+      !proxy_record.class.properties[attribute.to_s].multiple?
   end
 
   def appropriate_fields

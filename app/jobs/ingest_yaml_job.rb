@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class IngestYAMLJob < ActiveJob::Base
   queue_as :ingest
 
@@ -14,6 +15,8 @@ class IngestYAMLJob < ActiveJob::Base
 
   private
 
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def ingest
       resource = (@yaml[:volumes].present? ? MultiVolumeWork : ScannedResource).new
       if @yaml[:attributes].present?
@@ -37,6 +40,8 @@ class IngestYAMLJob < ActiveJob::Base
         resource.save!
       end
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def attach_sources(resource)
       return unless @yaml[:sources].present?
@@ -128,3 +133,4 @@ class IngestYAMLJob < ActiveJob::Base
       @collection_metadata ||= JSON.parse(File.read(File.join(Rails.root, 'config', 'pudl_collections.json')))
     end
 end
+# rubocop:enable Metrics/ClassLength

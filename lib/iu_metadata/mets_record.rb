@@ -19,7 +19,7 @@ module IuMetadata
     def default_attributes
       { viewing_direction: viewing_direction }
     end
-  
+
     def volumes
       volumes = []
       volume_ids.each do |volume_id|
@@ -31,25 +31,25 @@ module IuMetadata
       end
       volumes
     end
-  
+
     def identifier
       ark_id
     end
-  
+
     def replaces
       pudl_id
     end
-  
+
     def source_metadata_identifier
       bib_id
     end
-  
+
     def files
       add_file_attributes super
     end
-  
+
     private
-  
+
       def add_file_attributes(file_hash_array)
         file_hash_array.each do |f|
           f[:file_opts] = file_opts(f)
@@ -60,7 +60,7 @@ module IuMetadata
         end
         file_hash_array
       end
-  
+
       def files_for_volume(volume_id)
         add_file_attributes super
       end

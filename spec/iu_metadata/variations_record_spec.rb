@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe VariationsDocument do
-  let(:variations_file) { Rails.root.join("spec", "fixtures", "bhr9405.xml") }
+RSpec.describe IuMetadata::VariationsRecord do
+  let(:variations_file) { Rails.root.join("spec", "fixtures", "variations_xml", "bhr9405.xml") }
   metadata_fields = {
     visibility: 'open',
     rights_statement: 'http://rightsstatements.org/vocab/InC/1.0/',
     media: '1 score (64 p.) ; 32 cm',
     holding_location: 'https://libraries.indiana.edu/music'
   }
-  subject { described_class.new variations_file }
+  subject { described_class.new("file:///#{variations_file}", File.read(variations_file)) }
 
   describe "metadata fields" do
     metadata_fields.each do |field, value|
@@ -22,7 +22,7 @@ RSpec.describe VariationsDocument do
       location: 'IU Music Library',
       html_page_status: 'None',
       holding_status: 'Publicly available',
-      copyright_owner: 'G. Ricordi & Co.'
+      copyright_holder: 'G. Ricordi & Co.'
     }
     additional_methods.each do |method, value|
       specify "#{method} returns expected value" do

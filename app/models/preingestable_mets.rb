@@ -5,6 +5,6 @@ class PreingestableMETS
   SOURCE_TITLE = ['METS XML']
 
   def default_attributes
-     super.merge(local_record.default_attributes)
+    super.merge(local_record.default_attributes)
   end
 end

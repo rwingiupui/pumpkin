@@ -1,6 +1,6 @@
 module PreingestableDocument
   def initialize(source_file)
-    @source_file = source_file
+    @source_file = source_file.to_s
     @source_content = File.read(@source_file)
     @local_record = self.class.const_get(:LOCAL_RECORD_CLASS).new('file:///' + @source_file, @source_content)
     @source_title = self.class.const_get(:SOURCE_TITLE)
@@ -11,7 +11,6 @@ module PreingestableDocument
 
   delegate :source_metadata_identifier, to: :local_record
   delegate :multi_volume?, to: :local_record
-  delegate :collection_slugs, to: :local_record
   delegate :files, :structure, :volumes, :thumbnail_path, to: :local_record
 
   DEFAULT_ATTRIBUTES = {
@@ -51,6 +50,7 @@ module PreingestableDocument
   end
 
   def collection_slugs(collections = [])
+    collections += Array.wrap(local_record.collection_slugs) if local_record.respond_to?(:collection_slugs)
     collections
   end
 

@@ -28,15 +28,15 @@ module IuMetadata
     end
 
     # att methods
-  
+
     def state
       'final_review'
     end
-  
+
     def viewing_direction
       'left-to-right'
     end
-  
+
     def visibility
       if holding_status == 'Publicly available'
         Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
@@ -46,19 +46,19 @@ module IuMetadata
         Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
       end
     end
-  
+
     def rights_statement
       'http://rightsstatements.org/vocab/InC/1.0/'
     end
-  
+
     def source_metadata_identifier
       @variations.xpath('//MediaObject/Label').first&.content.to_s
     end
-  
+
     def media
       @variations.xpath("//Container/DocumentInfos/DocumentInfo[Type='Score']/Description").first&.content.to_s
     end
-  
+
     def holding_location
       case location
       when 'IU Music Library'
@@ -71,43 +71,43 @@ module IuMetadata
         ''
       end
     end
-  
+
     def collection_slugs(collections = [])
       collections << 'libmus_personal' if location == 'Personal Collection'
       collections
     end
-  
+
     # OTHER METHODS
     def identifier
       purl
     end
-  
+
     def purl
       'http://purl.dlib.indiana.edu/iudl/variations/score/' + source_metadata_identifier
     end
-  
+
     def location
       @variations.xpath('//Container/PhysicalID/Location').first&.content.to_s
     end
-  
+
     # FIXME: pull into related url?
     # FIXME: email librarians about location
     def html_page_status
       @variations.xpath('/ScoreAccessPage/HtmlPageStatus').first&.content.to_s
     end
-  
+
     # FIXME: [Domain='Item'] check does not work; also, do we want to allow Container? see abe
     def copyright_holder
       # @variations.xpath("//Container/CopyrightDecls/CopyrightDecl[Domain='Item']/Owner").first&.content.to_s
       @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner").first&.content.to_s
     end
-  
+
     def holding_status
       @variations.xpath('//Container/HoldingStatus').first&.content.to_s
     end
-  
+
     private
-  
+
       def items
         @items ||= @variations.xpath('/ScoreAccessPage/RecordSet/Container/Structure/Item')
       end
@@ -126,7 +126,7 @@ module IuMetadata
           @files << file_hash
         end
         @thumbnail_path = @files.first[:path]
-  
+
         # assign structure hash and update files array with titles
         @file_index = 0
         if multi_volume?
@@ -144,7 +144,7 @@ module IuMetadata
           @structure = { nodes: structure_to_array(items.first) }
         end
       end
-  
+
       # builds structure hash AND update file list with titles
       def structure_to_array(xml_node)
         array = []
@@ -156,7 +156,7 @@ module IuMetadata
           elsif child.name == 'Chunk'
             c[:label] = child['label']
             c[:proxy] = @files[@file_index][:id]
-  
+
             @files[@file_index][:attributes][:title] = [child['label']]
             @file_index += 1
           end

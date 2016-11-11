@@ -95,7 +95,7 @@ class PlumSchema < ActiveTriples::Schema
   property :contestee_appellee, predicate: RDF::Vocab::MARCRelators.cte
   property :contractor, predicate: RDF::Vocab::MARCRelators.ctr
   property :copyright_claimant, predicate: RDF::Vocab::MARCRelators.cpc
-  property :copyright_holder, predicate: RDF::Vocab::MARCRelators.cph, multiple: false
+  property :copyright_holder, predicate: RDF::Vocab::MARCRelators.cph
   property :corrector, predicate: RDF::Vocab::MARCRelators.crr
   property :correspondent, predicate: RDF::Vocab::MARCRelators.crp
   property :costume_designer, predicate: RDF::Vocab::MARCRelators.cst

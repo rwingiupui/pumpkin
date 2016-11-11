@@ -63,7 +63,7 @@ class VariationsDocument
   end
 
   def copyright_holder
-    @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner").first&.content.to_s
+    @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner").map(&:content)
   end
 
   def holding_status

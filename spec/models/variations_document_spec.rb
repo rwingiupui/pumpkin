@@ -13,7 +13,7 @@ RSpec.describe VariationsDocument do
       location: 'IU Music Library',
       holding_location: 'https://libraries.indiana.edu/music',
       media: '1 score (64 p.) ; 32 cm',
-      copyright_holder: 'G. Ricordi & Co.',
+      copyright_holder: ['G. Ricordi & Co.'],
       visibility: 'open',
       rights_statement: 'http://rightsstatements.org/vocab/InC/1.0/',
       collections: []

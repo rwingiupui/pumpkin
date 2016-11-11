@@ -25,9 +25,15 @@ module PreingestableDocument
   def remote_attributes
     remotes = {}
     remote_data.attributes.each do |k, v|
-      remotes[k] = v.map(&:to_s)
+      if v.class.in? [Array, ActiveTriples::Relation]
+        remotes[k] = v.map(&:value)
+      else
+        remotes[k] = v.value
+      end
     end
-    remotes
+    # remotes
+    # FIXME: choose whether to use attributes above, or raw_attributes below
+    remote_data.raw_attributes
   end
 
   def source_metadata

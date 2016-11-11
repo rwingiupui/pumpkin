@@ -19,8 +19,8 @@
     creator:
     - Chopin, Frédéric, 1810-1849.
     publisher:
-    - Green Peace Publishers
     - Fryderyk Chopin Society
+    - Green Peace Publishers
     date_created:
     - '1990'
     sort_title: 'facsimil[e] edition of the autograph of Fryderyk Chopin''s works
@@ -30,8 +30,8 @@
     lccn_call_number:
     - ML96.4 .C5
     publication_place:
-    - Tokyo
     - Warsaw
+    - Tokyo
 :source_metadata: |-
   <record xmlns="http://www.loc.gov/MARC21/slim">
     <!-- Length implementation at offset 22 should hold a digit. Assuming 0 -->

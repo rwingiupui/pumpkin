@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class VariationsDocument
   include PreingestableDocument
   FILE_PATTERN = '*.xml'
@@ -40,10 +41,47 @@ class VariationsDocument
     end
   end
 
+  def default_attributes
+    super.merge(visibility: visibility, rights_statement: rights_statement)
+  end
+
   def local_attributes
     { source_metadata_identifier: source_metadata_identifier,
-      viewing_direction: viewing_direction
+      identifier: identifier,
+      holding_location: holding_location,
+      media: media,
+      copyright_holder: copyright_holder
     }
+  end
+
+  def identifier
+    'http://purl.dlib.indiana.edu/iudl/variations/score/' + source_metadata_identifier
+  end
+
+  def media
+    @variations.xpath("//Container/DocumentInfos/DocumentInfo[Type='Score']/Description").first&.content.to_s
+  end
+
+  def copyright_holder
+    @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner").first&.content.to_s
+  end
+
+  def holding_status
+    @variations.xpath('//Container/HoldingStatus').first&.content.to_s
+  end
+
+  def visibility
+    if holding_status == 'Publicly available'
+      Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+    elsif holding_location == 'Personal Collection'
+      Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+    else
+      Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
+    end
+  end
+
+  def rights_statement
+    'http://rightsstatements.org/vocab/InC/1.0/'
   end
 
   def multi_volume?
@@ -120,3 +158,4 @@ class VariationsDocument
       att_hash
     end
 end
+# rubocop:enable RSpec/DescribeClass

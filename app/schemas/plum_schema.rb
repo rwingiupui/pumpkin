@@ -11,7 +11,7 @@ class PlumSchema < ActiveTriples::Schema
   property :source_metadata, predicate: ::PULTerms.source_metadata, multiple: false
   property :state, predicate: ::F3Access.objState, multiple: false
   property :workflow_note, predicate: ::RDF::Vocab::MODS.note
-  property :holding_location, predicate: ::RDF::Vocab::Bibframe.heldBy, multiple: false
+  property :holding_location, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/heldBy"), multiple: false
   property :ocr_language, predicate: ::PULTerms.ocr_language
   property :nav_date, predicate: ::RDF::URI("http://iiif.io/api/presentation/2#navDate"), multiple: false
   property :pdf_type, predicate: ::PULTerms.pdf_type
@@ -23,7 +23,9 @@ class PlumSchema < ActiveTriples::Schema
   property :source, predicate: RDF::Vocab::DC11.source
   property :extent, predicate: RDF::Vocab::DC.extent
   property :edition, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/editionStatement")
+  property :series, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/seriesStatement")
   property :call_number, predicate: PULTerms.call_number
+  property :media, predicate: RDF::Vocab::MODS.physicalExtent, multiple: false
   property :abridger, predicate: RDF::Vocab::MARCRelators.abr
   property :actor, predicate: RDF::Vocab::MARCRelators.act
   property :adapter, predicate: RDF::Vocab::MARCRelators.adp
@@ -93,7 +95,7 @@ class PlumSchema < ActiveTriples::Schema
   property :contestee_appellee, predicate: RDF::Vocab::MARCRelators.cte
   property :contractor, predicate: RDF::Vocab::MARCRelators.ctr
   property :copyright_claimant, predicate: RDF::Vocab::MARCRelators.cpc
-  property :copyright_holder, predicate: RDF::Vocab::MARCRelators.cph
+  property :copyright_holder, predicate: RDF::Vocab::MARCRelators.cph, multiple: false
   property :corrector, predicate: RDF::Vocab::MARCRelators.crr
   property :correspondent, predicate: RDF::Vocab::MARCRelators.crp
   property :costume_designer, predicate: RDF::Vocab::MARCRelators.cst

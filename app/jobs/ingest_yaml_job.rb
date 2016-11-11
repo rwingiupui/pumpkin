@@ -22,7 +22,7 @@ class IngestYAMLJob < ActiveJob::Base
       resource.source_metadata = @yaml[:source_metadata] if @yaml[:source_metadata].present?
 
       resource.apply_depositor_metadata @user
-      resource.member_of_collections = find_or_create_collections(@yaml[:collections])
+      resource.member_of_collections = find_or_create_collections(@yaml[:collections] || [])
 
       resource.save!
       logger.info "Created #{resource.class}: #{resource.id}"

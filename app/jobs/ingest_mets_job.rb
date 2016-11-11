@@ -16,11 +16,11 @@ class IngestMETSJob < ActiveJob::Base
 
     def ingest
       resource = minimal_record(@mets.multi_volume? ? MultiVolumeWork : ScannedResource)
-      resource.identifier = @mets.ark_id
       resource.replaces = @mets.pudl_id
       resource.source_metadata_identifier = @mets.bib_id
       resource.member_of_collections = Array(@mets.collection_slugs).map { |slug| find_or_create_collection(slug) }
       resource.apply_remote_metadata
+      resource.identifier = @mets.ark_id # local identifier overrides remote
       resource.save!
       logger.info "Created #{resource.class}: #{resource.id}"
 

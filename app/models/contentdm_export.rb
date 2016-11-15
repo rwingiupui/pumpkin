@@ -77,6 +77,7 @@ class ContentdmExport
             end
           end
           full_text = content_fulltext(file, title, tid)
+          file_hash[:text] = full_text
           file_hash[:file_opts] = {}
           @files << file_hash
         end
@@ -130,11 +131,7 @@ class ContentdmExport
       FileUtils.mkdir_p fulltext_path
       page_text = page_xml.xpath('pagetext').map(&:content).first.to_s
       File.open(full_text_file,"w"){|f| f.write(page_text)}
-      #file = {}
-      #file['file'] = {}
-      #file['file']['type'] = "extracted"
-      #file['file']['path'] = full_text_file
-      #return file
+      return full_text_file
     end
 
     # Fix file paths for IUPUI exports

@@ -30,3 +30,8 @@ noid-minter-state
 
 # Ignore Redis dump file
 dump.rdb
+
+# Ignore pre-ingest generated files for CDM
+/spec/fixtures/contentdm_xml/*
+!/spec/fixtures/contentdm_xml/*.xml
+!/spec/fixtures/contentdm_xml/*.yml

@@ -25,6 +25,10 @@ class VariationsDocument
     'left-to-right'
   end
 
+  def viewing_hint
+    'paged'
+  end
+
   def location
     @variations.xpath('//Container/PhysicalID/Location').first&.content.to_s
   end
@@ -41,7 +45,7 @@ class VariationsDocument
   end
 
   def default_attributes
-    super.merge(visibility: visibility, rights_statement: rights_statement)
+    super.merge(visibility: visibility, rights_statement: rights_statement, viewing_hint: viewing_hint)
   end
 
   def local_attributes

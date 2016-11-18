@@ -15,7 +15,8 @@ describe IuMetadata::MarcRecord do
     described_class.new(pth, File.open(pth).read)
   }
   record1_atts =
-     {  title: ['The weeping angels'],
+     {  identifier: nil,
+        title: ['The weeping angels'],
         sort_title: 'weeping angels',
         responsibility_note: [],
         series: [],

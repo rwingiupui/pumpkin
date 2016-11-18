@@ -45,14 +45,10 @@ class VariationsDocument
     super.merge(visibility: visibility, rights_statement: rights_statement)
   end
 
-  ATTRIBUTES = [:source_metadata_identifier, :identifier, :holding_location, :media, :copyright_holder]
+  ATTRIBUTES = [:source_metadata_identifier, :holding_location, :media, :copyright_holder]
 
   def local_attributes
     Hash[ATTRIBUTES.map { |att| [att, send(att)] }]
-  end
-
-  def identifier
-    'http://purl.dlib.indiana.edu/iudl/variations/score/' + source_metadata_identifier
   end
 
   def media

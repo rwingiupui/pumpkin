@@ -8,7 +8,7 @@ module IuMetadata
 
     attr_reader :id, :source
 
-    ATTRIBUTES = [:title, :sort_title, :responsibility_note, :series, :creator, :date_created, :publisher, :publication_place, :issued, :published, :lccn_call_number, :local_call_number]
+    ATTRIBUTES = [:identifier, :title, :sort_title, :responsibility_note, :series, :creator, :date_created, :publisher, :publication_place, :issued, :published, :lccn_call_number, :local_call_number]
 
     def attributes
       Hash[ATTRIBUTES.map { |att| [att, send(att)] }]
@@ -105,6 +105,10 @@ module IuMetadata
 
     def issued
       formatted_subfields_as_array(['260'], codes: ['c']).map { |s| s.sub(/\s*[:;,]\s*$/, '') }
+    end
+
+    def identifier
+      formatted_subfields_as_array(['856'], codes: ['u']).first
     end
 
     def language_codes

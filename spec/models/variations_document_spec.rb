@@ -6,9 +6,8 @@ RSpec.describe VariationsDocument do
     pth = File.join(fixture_path, 'variations_xml/bhr9405.xml')
     described_class.new(pth)
   }
-  describe "parses attributes" do
+  record1_attributes =
     { source_metadata_identifier: 'BHR9405',
-      identifier: 'http://purl.dlib.indiana.edu/iudl/variations/score/BHR9405',
       viewing_direction: 'left-to-right',
       location: 'IU Music Library',
       holding_location: 'https://libraries.indiana.edu/music',
@@ -17,7 +16,10 @@ RSpec.describe VariationsDocument do
       visibility: 'open',
       rights_statement: 'http://rightsstatements.org/vocab/InC/1.0/',
       collections: []
-    }.each do |att, val|
+    }
+
+  describe "parses attributes" do
+    record1_attributes.each do |att, val|
       describe "##{att}" do
         it "retrieves the correct value" do
           expect(record1.send(att)).to eq val

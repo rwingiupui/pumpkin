@@ -111,7 +111,7 @@ module IuMetadata
       # visibility is not a standard model property, so it is spoofed into the mapping
       def outbound_predicates_to_properties
         @outbound_predicates_to_properties ||=
-          outbound_statements.predicates.map { |p| [p, factory.properties.detect { |_key, value| value.predicate == p }&.first] }.to_h.merge(PULTerms::visibility => 'visibility')
+          outbound_statements.predicates.map { |p| [p, factory.properties.detect { |_key, value| value.predicate == p }&.first] }.to_h.merge(PULTerms.visibility => 'visibility')
       end
   end
 end

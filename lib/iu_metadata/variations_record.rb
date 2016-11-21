@@ -143,7 +143,7 @@ module IuMetadata
         values_hash[:attributes] = file_attributes(file_node, values_hash.dup)
         values_hash
       end
-  
+
       def filename(file_node)
         normalized = file_node.xpath('FileName').first&.content.to_s.downcase.sub(/\.\w{3,4}/, '')
         root, volume, page = normalized.split('-')

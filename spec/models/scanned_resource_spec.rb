@@ -175,7 +175,7 @@ describe ScannedResource do
       allow(subject).to receive("state_changed?").and_return true
       subject.state = 'complete'
       expect { subject.check_state }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      expect(subject.identifier).to eq 'ark:/99999/fk4445wg45'
+      expect(subject.identifier).to eq 'ark:/99999/fk4445wg45' if Plum.config['ezid']['mint']
     end
     it "does not complete record when state doesn't change" do
       allow(subject).to receive("state_changed?").and_return false

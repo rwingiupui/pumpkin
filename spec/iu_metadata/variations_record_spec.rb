@@ -43,11 +43,11 @@ RSpec.describe IuMetadata::VariationsRecord do
       expect(normalized_filename).to match(/\.tif$/)
     end
     it "normalizes a pagenum-only filename" do
-      expect(raw_pagenum).to match /^\d\.djvu$/
+      expect(raw_pagenum).to match(/^\d\.djvu$/)
       expect(normalized_pagenum).to match(/[a-z]{3}\d{4}-\d{1}-\d{4}/)
     end
     it "normalizes a display-suffixed filename" do
-      expect(raw_display).to match /display/
+      expect(raw_display).to match(/display/)
       expect(normalized_display).to match(/^[a-z]{3}\d{4}-\d{1}-\d{4}.tif$/)
     end
   end

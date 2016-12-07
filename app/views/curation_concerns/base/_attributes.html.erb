@@ -1,8 +1,5 @@
 <table class="table table-striped <%= dom_class(@presenter) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
-  <thead>
-    <tr><th>Attribute Name</th><th>Values</th></tr>
-  </thead>
   <tbody>
   <% if @presenter.respond_to?(:full_title) %>
   <tr>
@@ -16,8 +13,15 @@
   <%= @presenter.attribute_to_html(:creator, render_as: 'rtl_linked' ) %>
   <%= @presenter.attribute_to_html(:published) %>
   <%= @presenter.attribute_to_html(:media) %>
-  <%= @presenter.attribute_to_html(:call_number) %>
-  <% (PlumSchema.display_fields - [:creator, :series_title, :published, :publisher, :publication_place, :issued, :media, :call_number, :identifier]).each do |display_field| %>
+  <% if @presenter.try(:display_call_number).present? %>
+  <tr>
+    <th>Call number</th>
+    <td>
+      <%= @presenter.display_call_number %>
+    </td>
+  </tr>
+  <% end %>
+  <% (PlumSchema.display_fields - [:creator, :series_title, :published, :publisher, :publication_place, :issued, :media, :call_number, :identifier, :responsibility_note, :sort_title, :call_number, :lccn_call_number, :local_call_number]).each do |display_field| %>
     <%= @presenter.attribute_to_html(display_field) %>
   <% end %>
   <tr>
@@ -26,7 +30,7 @@
       <%= @presenter.permission_badge %>
     </td>
   </tr>
-  <% if @presenter.respond_to? :state_badge %>
+  <% if @presenter.respond_to?(:state_badge) && can?(:edit, @presenter.id) %>
     <tr>
       <th>State</th>
       <td>
@@ -43,7 +47,6 @@
     <%= @presenter.holding_location %>
   <% end %>
   <%= @presenter.attribute_to_html(:identifier) %>
-  <%= @presenter.attribute_to_html(:source_metadata_identifier) %>
   <%= render 'curation_concerns/base/member_of_collections', presenter: @presenter %>
   <% if can? :edit, @presenter.id %>
     <%= @presenter.attribute_to_html(:workflow_note) %>

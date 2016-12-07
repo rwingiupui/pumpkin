@@ -9,6 +9,11 @@ class CurationConcerns::CurationConcernsController < ApplicationController
     curation_concern.class.name.underscore
   end
 
+  def edit
+    presenter
+    super
+  end
+
   def update
     authorize!(:complete, curation_concern, message: 'Unable to mark resource complete') if curation_concern.state != 'complete' && params[curation_concern_name][:state] == 'complete'
     super

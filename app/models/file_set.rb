@@ -7,6 +7,7 @@ class FileSet < ActiveFedora::Base
   apply_schema IIIFPageSchema, ActiveFedora::SchemaIndexingStrategy.new(
     ActiveFedora::Indexers::GlobalIndexer.new([:stored_searchable, :symbol])
   )
+
   after_save :touch_parent_works
 
   validates_with ViewingHintValidator

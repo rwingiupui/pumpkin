@@ -77,7 +77,7 @@ class ContentdmExport
             end
           end
           full_text = content_fulltext(file, title, tid)
-          file_hash[:text] = full_text
+          file_hash[:ocr_path] = full_text
           file_hash[:file_opts] = {}
           @files << file_hash
         end
@@ -121,7 +121,7 @@ class ContentdmExport
     #
     # @param [XML_Object]  page_xml
     # @param [String] content_dir directory for full text
-    # @return [Type] description of returned object
+    # @return [String] path to ocr text
     def content_fulltext(page_xml, paper_title, page_title)
       page_path = Pathname.new(@source_file)
       basename = page_path.basename.to_s.gsub('.xml', '')

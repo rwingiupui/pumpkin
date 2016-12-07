@@ -86,6 +86,8 @@ class IngestYAMLJob < ActiveJob::Base
         actor.create_metadata(resource, f[:file_opts])
         actor.create_content(decorated_file(f))
 
+        actor.create_content(ocr_file(f), "extracted_text")
+
         mets_to_repo_map[f[:id]] = file_set.id
 
         next unless f[:path] == thumbnail_path
@@ -97,6 +99,10 @@ class IngestYAMLJob < ActiveJob::Base
 
     def decorated_file(f)
       IoDecorator.new(open(f[:path]), f[:mime_type], File.basename(f[:path]))
+    end
+
+    def ocr_file(f)
+      File.open(f[:ocr_path])
     end
 
     def map_fileids(hsh)

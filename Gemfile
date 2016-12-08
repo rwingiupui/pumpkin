@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Complain if developer not using the common Ruby version
+ruby '>= 2.3.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use SCSS for stylesheets
@@ -32,12 +35,14 @@ gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'curation_concerns', git: 'https://github.com/projecthydra-labs/curation_concerns', branch: :member_of_replace
+# gem 'curation_concerns', git: 'https://github.com/projecthydra-labs/curation_concerns', branch: :member_of_replace
+gem 'curation_concerns', git: 'https://github.com/IU-Libraries-Joint-Development/curation_concerns.git'
 gem 'pul_metadata_services', git: 'https://github.com/pulibrary/pul_metadata_services', branch: :master
 gem 'hydra-role-management', '~> 0.2.0'
 gem 'rsolr', '~> 1.1.0'
 gem 'devise', '~> 3.0'
 gem 'devise-guests', '~> 0.3'
+gem 'ldap_groups_lookup', '~> 0.4.0', git: 'https://github.com/IUBLibTech/ldap_groups_lookup'
 gem 'iiif-presentation', git: 'https://github.com/iiif/osullivan', branch: 'development'
 
 # PDF generation
@@ -50,7 +55,7 @@ gem 'hydra-pcdm'#, github: 'projecthydra-labs/hydra-pcdm', branch: 'master'
 gem 'hydra-derivatives'#, github: 'projecthydra/hydra-derivatives', branch: 'master'
 gem 'active-fedora', '11.0.0.rc7'
 gem 'active-triples', '~> 0.10.0'
-
+gem 'active_fedora-noid', '2.0.0.beta3'
 
 
 group :development, :test do
@@ -68,6 +73,8 @@ group :development, :test do
   gem 'pry-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
 end
 
 gem 'solr_wrapper', '~> 0.18.0'
@@ -105,7 +112,7 @@ gem 'sprockets-rails', '~> 2.3.3'
 gem 'sprockets', '~> 3.5.0'
 gem 'browse-everything', git: 'https://github.com/projecthydra-labs/browse-everything'
 gem 'aasm'
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 gem 'iso-639'
 gem 'bunny'
 gem 'string_rtl'

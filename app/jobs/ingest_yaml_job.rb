@@ -1,16 +1,14 @@
 class IngestYAMLJob < ActiveJob::Base
+  include CollectionHelper
   queue_as :ingest
 
   # @param [String] yaml_file Filename of a YAML file to ingest
   # @param [String] user User to ingest as
-  # @param [Array<String>] collections Collection IDs the resources should be members of
-  def perform(yaml_file, user, collections = [])
+  def perform(yaml_file, user)
     logger.info "Ingesting YAML #{yaml_file}"
     @yaml_file = yaml_file
     @yaml = File.open(yaml_file) { |f| Psych.load(f) }
     @user = user
-    @collections = collections.map { |col_id| Collection.find(col_id) }
-
     ingest
   end
 
@@ -24,7 +22,7 @@ class IngestYAMLJob < ActiveJob::Base
       resource.source_metadata = @yaml[:source_metadata] if @yaml[:source_metadata].present?
 
       resource.apply_depositor_metadata @user
-      resource.member_of_collections = @collections
+      resource.member_of_collections = find_or_create_collections(@yaml[:collections])
 
       resource.save!
       logger.info "Created #{resource.class}: #{resource.id}"
@@ -80,13 +78,13 @@ class IngestYAMLJob < ActiveJob::Base
       files.each do |f|
         logger.info "Ingesting file #{f[:path]}"
         file_set = FileSet.new
-        file_set.title = f[:title]
-        file_set.replaces = f[:replaces]
+        file_set.attributes = f[:attributes]
         actor = FileSetActor.new(file_set, @user)
         actor.create_metadata(resource, f[:file_opts])
         actor.create_content(decorated_file(f))
         actor.create_content(ocr_file(f), "extracted_text") if ocr_file(f)
-        mets_to_repo_map[f[:id]] = file_set.id
+
+        yaml_to_repo_map[f[:id]] = file_set.id
 
         next unless f[:path] == thumbnail_path
         resource.thumbnail_id = file_set.id
@@ -110,12 +108,12 @@ class IngestYAMLJob < ActiveJob::Base
     def map_fileids(hsh)
       hsh.each do |k, v|
         hsh[k] = v.each { |node| map_fileids(node) } if k == :nodes
-        hsh[k] = mets_to_repo_map[v] if k == :proxy
+        hsh[k] = yaml_to_repo_map[v] if k == :proxy
       end
     end
 
-    def mets_to_repo_map
-      @mets_to_repo_map ||= {}
+    def yaml_to_repo_map
+      @yaml_to_repo_map ||= {}
     end
 
     def thumbnail_path

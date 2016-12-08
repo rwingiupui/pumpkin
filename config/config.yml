@@ -1,7 +1,12 @@
 defaults: &defaults
-  locations_url: https://bibdata.princeton.edu/locations/digital_locations.json # FIXME: find IU equivalent link; currently replaced with config/digital_locations.yml
+  locations_url: '' # currently replaced with config/digital_locations.yml
   notifier_email_address: pumpkin@iu.edu
   iiif_url: <%= ENV["PLUM_IIIF_URL"] || "http://192.168.99.100:5004" %>
+
+  store_original_files: true
+  master_file_service_url: <%= ENV["MASTER_FILE_SERVICE_URL"] || "http://purl.dlib.indiana.edu/iudl/variations/master" %>
+  access_file_service_url: <%= ENV["ACCESS_FILE_SERVICE_URL"] || "http://purl.dlib.indiana.edu/iudl/variations/access" %>
+
   jp2_recipes:
     default_color: >
       -rate 2.4,1.48331273,.91673033,.56657224,.35016049,.21641118,.13374944,.08266171 
@@ -36,12 +41,26 @@ defaults: &defaults
   events:
     server: 'amqp://localhost:5672'
     exchange: 'plum_events'
+  authorized_ldap_groups:
+  - BL-LDLP-VariationsMCOUsers
+  ezid:
+    mint: false
+    update: false
+  manifest_builder:
+    see_also_hash:
+      id: 'http://dlib.indiana.edu:9000/iucatextract?maximumRecords=1&operation=searchRetrieve&query=cql.serverChoice=%s&recordSchema=marcxml&version=1.1'
+      format: 'application/xml'
 
 development:
   <<: *defaults
 
 test:
   <<: *defaults
+  events:
+    server:
+    exchange: 'plum_events'
+  iiif_url: "http://192.168.99.100:5004"
+  authorized_ldap_groups: null
 
 production:
   <<: *defaults

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe IngestYAMLJob do
   describe "ingesting a yaml file" do
-    let(:yaml_file_single) { Rails.root.join("spec", "fixtures", "pudl0001-4612596.yml") }
-    let(:yaml_file_rtl) { Rails.root.join("spec", "fixtures", "pudl0032-ns73.yml") }
-    let(:yaml_file_multi) { Rails.root.join("spec", "fixtures", "pudl0001-4609321-s42.yml") }
+    let(:yaml_file_single) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4612596.yml") }
+    let(:yaml_file_rtl) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0032-ns73.yml") }
+    let(:yaml_file_multi) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4609321-s42.yml") }
     let(:tiff_file) { Rails.root.join("spec", "fixtures", "files", "color.tif") }
     let(:user) { FactoryGirl.build(:admin) }
     let(:actor1) { double('actor1') }
@@ -15,7 +15,8 @@ RSpec.describe IngestYAMLJob do
     let(:resource2) { ScannedResource.new id: 'resource2' }
     let(:file_path) { '/tmp/pudl0001/4612596/00000001.tif' }
     let(:mime_type) { 'image/tiff' }
-    let(:file) { IoDecorator.new(tiff_file, mime_type, File.basename(file_path)) }
+    let(:file_hash) { { path: tiff_file, mime_type: mime_type } }
+    let(:file) { described_class.new.send(:decorated_file, file_hash) }
     let(:logical_order) { double('logical_order') }
     let(:order_object) { double('order_object') }
 
@@ -72,7 +73,7 @@ RSpec.describe IngestYAMLJob do
 
   describe "integration test" do
     let(:user) { FactoryGirl.build(:admin) }
-    let(:mets_file) { Rails.root.join("spec", "fixtures", "pudl0001-4612596.yml") }
+    let(:mets_file) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4612596.yml") }
     let(:tiff_file) { Rails.root.join("spec", "fixtures", "files", "color.tif") }
     let(:mime_type) { 'image/tiff' }
     let(:file) { IoDecorator.new(File.new(tiff_file), mime_type, File.basename(tiff_file)) }
@@ -98,12 +99,12 @@ RSpec.describe IngestYAMLJob do
     end
 
     it "ingests a yaml file" do
-      described_class.perform_now(mets_file, user, [collection.id])
+      described_class.perform_now(mets_file, user)
       expect(resource.persisted?).to be true
       expect(resource.file_sets.length).to eq 1
       expect(resource.reload.logical_order.order).to eq(order.deep_stringify_keys)
       expect(fileset2.reload.title).to eq(['leaf 1. recto'])
-      expect(resource.member_of_collections).to eq([collection])
+      expect(resource.member_of_collections.first.title).to eq ['Personal Collection']
       expect(resource.replaces).to eq('pudl0001/4612596')
       expect(fileset2.replaces).to eq('pudl0001/4612596/00000001')
 

@@ -85,9 +85,7 @@ class IngestYAMLJob < ActiveJob::Base
         actor = FileSetActor.new(file_set, @user)
         actor.create_metadata(resource, f[:file_opts])
         actor.create_content(decorated_file(f))
-
-        actor.create_content(ocr_file(f), "extracted_text")
-
+        actor.create_content(ocr_file(f), "extracted_text") if ocr_file(f)
         mets_to_repo_map[f[:id]] = file_set.id
 
         next unless f[:path] == thumbnail_path
@@ -102,7 +100,11 @@ class IngestYAMLJob < ActiveJob::Base
     end
 
     def ocr_file(f)
-      File.open(f[:ocr_path])
+      if f.key?(:ocr_path) && File.exist?(f[:ocr_path])
+        File.open(f[:ocr_path])
+      else
+        false
+      end
     end
 
     def map_fileids(hsh)

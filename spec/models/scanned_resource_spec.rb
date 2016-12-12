@@ -255,4 +255,29 @@ describe ScannedResource do
       expect(solr_doc['title_literals_ssim']).to eq [JSON.dump("@value" => "Test", "@language" => "fr")]
     end
   end
+
+  describe "number of pages indexing" do
+    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_file) }
+    let(:solr_doc) { scanned_resource.to_solr }
+    it "indexes the number of pages" do
+      expect(solr_doc['number_of_pages_isi']).to eq 1
+      expect(solr_doc['number_of_pages_ssi']).to eq "0-99 pages"
+    end
+  end
+
+  describe "date_created indexing" do
+    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, date_created: ['2016']) }
+    let(:solr_doc) { scanned_resource.to_solr }
+    it "indexes date_created as an integer" do
+      expect(solr_doc['date_created_isi']).to eq 2016
+    end
+  end
+
+  describe "sortable title" do
+    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, title: ['ABC']) }
+    let(:solr_doc) { scanned_resource.to_solr }
+    it "indexes title as a sortable solr field" do
+      expect(solr_doc['sort_title_ssi']).to eq 'ABC'
+    end
+  end
 end

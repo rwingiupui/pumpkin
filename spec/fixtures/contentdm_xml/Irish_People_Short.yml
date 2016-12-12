@@ -26,24 +26,27 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :title:
-    - page1
+    :attributes:
+      :title:
+      - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5044
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5044
     :ocr_path: spec/fixtures/contentdm_xml/Irish_People_Short/1974-11-16 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :title:
-    - page2
+    :attributes:
+      :title:
+      - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5045
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5045
     :ocr_path: spec/fixtures/contentdm_xml/Irish_People_Short/1974-11-16 Irish People/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :title:
-    - page3
+    :attributes:
+      :title:
+      - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5046
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5046
     :ocr_path: spec/fixtures/contentdm_xml/Irish_People_Short/1974-11-16 Irish People/page3/fulltext.txt
@@ -59,16 +62,18 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :title:
-    - page1
+    :attributes:
+      :title:
+      - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8153
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8153
     :ocr_path: spec/fixtures/contentdm_xml/Irish_People_Short/1982-03-27 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :title:
-    - page2
+    :attributes:
+      :title:
+      - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8154
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8154
     :ocr_path: spec/fixtures/contentdm_xml/Irish_People_Short/1982-03-27 Irish People/page2/fulltext.txt

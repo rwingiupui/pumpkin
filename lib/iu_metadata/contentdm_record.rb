@@ -51,7 +51,7 @@ module IuMetadata
             tid = file.xpath('pagetitle').first&.content.to_s
             file_hash[:id] = tid
             file_hash[:mime_type] = 'image/jp2'
-            file_hash[:title] = [tid.to_s]
+            file_hash[:attributes] =  {title: [tid.to_s]}
             file.xpath('pagefile').each do |pagefile_xml|
               pagefile_type = pagefile_xml.xpath('pagefiletype').map(&:content).first.to_s
               # File type should be one of: original, thumbnail, extracted

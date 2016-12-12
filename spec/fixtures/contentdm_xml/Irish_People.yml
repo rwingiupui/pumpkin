@@ -10,7 +10,7 @@
     source_metadata_identifier: Irish People &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/IP
     viewing_direction: left-to-right
 :source_metadata: 
-:thumbnail_path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5044
+:thumbnail_path: 
 :collections: []
 :volumes:
 - :title:
@@ -58,155 +58,155 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page1
+    :title:
+    - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5044
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5044
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page2
+    :title:
+    - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5045
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5045
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page3
+    :title:
+    - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5046
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5046
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page3/fulltext.txt
     :file_opts: {}
   - :id: page4
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page4
+    :title:
+    - page4
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5047
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5047
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page4/fulltext.txt
     :file_opts: {}
   - :id: page5
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page5
+    :title:
+    - page5
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5048
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5048
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page5/fulltext.txt
     :file_opts: {}
   - :id: page6
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page6
+    :title:
+    - page6
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5049
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5049
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page6/fulltext.txt
     :file_opts: {}
   - :id: page7
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page7
+    :title:
+    - page7
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5050
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5050
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page7/fulltext.txt
     :file_opts: {}
   - :id: page8
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page8
+    :title:
+    - page8
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5051
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5051
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page8/fulltext.txt
     :file_opts: {}
   - :id: page9
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page9
+    :title:
+    - page9
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5052
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5052
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page9/fulltext.txt
     :file_opts: {}
   - :id: page10-11
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page10-11
+    :title:
+    - page10-11
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5053
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5053
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page10-11/fulltext.txt
     :file_opts: {}
   - :id: page12
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page12
+    :title:
+    - page12
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5054
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5054
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page12/fulltext.txt
     :file_opts: {}
   - :id: page13
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page13
+    :title:
+    - page13
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5055
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5055
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page13/fulltext.txt
     :file_opts: {}
   - :id: page14
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page14
+    :title:
+    - page14
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5056
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5056
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page14/fulltext.txt
     :file_opts: {}
   - :id: page15
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page15
+    :title:
+    - page15
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5057
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5057
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page15/fulltext.txt
     :file_opts: {}
   - :id: page16
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page16
+    :title:
+    - page16
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5058
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5058
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page16/fulltext.txt
     :file_opts: {}
   - :id: page17
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page17
+    :title:
+    - page17
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5059
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5059
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page17/fulltext.txt
     :file_opts: {}
   - :id: page18
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page18
+    :title:
+    - page18
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5060
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5060
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page18/fulltext.txt
     :file_opts: {}
   - :id: page19
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page19
+    :title:
+    - page19
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5061
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5061
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page19/fulltext.txt
     :file_opts: {}
   - :id: page20
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page20
+    :title:
+    - page20
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5062
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5062
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1974-11-16 Irish People/page20/fulltext.txt
     :file_opts: {}
 - :title:
   - 1982-03-27 Irish People
@@ -245,123 +245,123 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page1
+    :title:
+    - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8153
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8153
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page2
+    :title:
+    - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8154
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8154
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page3
+    :title:
+    - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8155
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8155
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page3/fulltext.txt
     :file_opts: {}
   - :id: page4
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page4
+    :title:
+    - page4
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8156
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8156
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page4/fulltext.txt
     :file_opts: {}
   - :id: page5
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page5
+    :title:
+    - page5
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8157
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8157
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page5/fulltext.txt
     :file_opts: {}
   - :id: page6
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page6
+    :title:
+    - page6
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8158
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8158
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page6/fulltext.txt
     :file_opts: {}
   - :id: page7
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page7
+    :title:
+    - page7
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8159
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8159
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page7/fulltext.txt
     :file_opts: {}
   - :id: page8-9
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page8-9
+    :title:
+    - page8-9
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8160
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8160
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page8-9/fulltext.txt
     :file_opts: {}
   - :id: page10
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page10
+    :title:
+    - page10
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8161
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8161
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page10/fulltext.txt
     :file_opts: {}
   - :id: page11
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page11
+    :title:
+    - page11
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8162
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8162
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page11/fulltext.txt
     :file_opts: {}
   - :id: page12
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page12
+    :title:
+    - page12
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8163
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8163
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page12/fulltext.txt
     :file_opts: {}
   - :id: page13
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page13
+    :title:
+    - page13
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8164
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8164
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page13/fulltext.txt
     :file_opts: {}
   - :id: page14
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page14
+    :title:
+    - page14
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8165
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8165
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page14/fulltext.txt
     :file_opts: {}
   - :id: page15
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page15
+    :title:
+    - page15
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8166
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8166
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page15/fulltext.txt
     :file_opts: {}
   - :id: page16
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page16
+    :title:
+    - page16
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8167
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8167
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1982-03-27 Irish People/page16/fulltext.txt
     :file_opts: {}
 - :title:
   - 1988-04-02 Irish People, Easter Rising
@@ -392,91 +392,102 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page1
+    :title:
+    - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23671
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23671
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page2
+    :title:
+    - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23672
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23672
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page3
+    :title:
+    - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23673
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23673
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page3/fulltext.txt
     :file_opts: {}
   - :id: page4
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page4
+    :title:
+    - page4
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23674
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23674
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page4/fulltext.txt
     :file_opts: {}
   - :id: page5
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page5
+    :title:
+    - page5
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23675
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23675
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page5/fulltext.txt
     :file_opts: {}
   - :id: page6-7
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page6-7
+    :title:
+    - page6-7
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23676
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23676
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page6-7/fulltext.txt
     :file_opts: {}
   - :id: page8
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page8
+    :title:
+    - page8
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23677
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23677
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page8/fulltext.txt
     :file_opts: {}
   - :id: page9
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page9
+    :title:
+    - page9
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23678
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23678
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page9/fulltext.txt
     :file_opts: {}
   - :id: page10
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page10
+    :title:
+    - page10
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23679
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23679
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page10/fulltext.txt
     :file_opts: {}
   - :id: page11
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page11
+    :title:
+    - page11
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23680
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23680
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page11/fulltext.txt
     :file_opts: {}
   - :id: page12
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page12
+    :title:
+    - page12
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=23681
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=23681
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1988-04-02 Irish People, Easter
+      Rising/page12/fulltext.txt
     :file_opts: {}
 - :title:
   - 1992-10-31 Irish People
@@ -515,123 +526,123 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page1
+    :title:
+    - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19977
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19977
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page2
+    :title:
+    - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19978
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19978
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page3
+    :title:
+    - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19979
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19979
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page3/fulltext.txt
     :file_opts: {}
   - :id: page4
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page4
+    :title:
+    - page4
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19980
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19980
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page4/fulltext.txt
     :file_opts: {}
   - :id: page5
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page5
+    :title:
+    - page5
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19981
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19981
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page5/fulltext.txt
     :file_opts: {}
   - :id: page6
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page6
+    :title:
+    - page6
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19982
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19982
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page6/fulltext.txt
     :file_opts: {}
   - :id: page7
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page7
+    :title:
+    - page7
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19983
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19983
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page7/fulltext.txt
     :file_opts: {}
   - :id: page8-9
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page8-9
+    :title:
+    - page8-9
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19984
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19984
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page8-9/fulltext.txt
     :file_opts: {}
   - :id: page10
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page10
+    :title:
+    - page10
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19985
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19985
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page10/fulltext.txt
     :file_opts: {}
   - :id: page11
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page11
+    :title:
+    - page11
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19986
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19986
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page11/fulltext.txt
     :file_opts: {}
   - :id: page12
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page12
+    :title:
+    - page12
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19987
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19987
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page12/fulltext.txt
     :file_opts: {}
   - :id: page13
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page13
+    :title:
+    - page13
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19988
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19988
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page13/fulltext.txt
     :file_opts: {}
   - :id: page14
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page14
+    :title:
+    - page14
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19989
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19989
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page14/fulltext.txt
     :file_opts: {}
   - :id: page15
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page15
+    :title:
+    - page15
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19990
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19990
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page15/fulltext.txt
     :file_opts: {}
   - :id: page16
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page16
+    :title:
+    - page16
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=19991
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=19991
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/1992-10-31 Irish People/page16/fulltext.txt
     :file_opts: {}
 - :title:
   - 2003-08-09 Irish People
@@ -670,123 +681,123 @@
   :files:
   - :id: page1
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page1
+    :title:
+    - page1
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=0
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=0
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page1/fulltext.txt
     :file_opts: {}
   - :id: page2
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page2
+    :title:
+    - page2
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=1
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=1
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page2/fulltext.txt
     :file_opts: {}
   - :id: page3
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page3
+    :title:
+    - page3
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=2
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=2
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page3/fulltext.txt
     :file_opts: {}
   - :id: page4
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page4
+    :title:
+    - page4
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=3
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=3
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page4/fulltext.txt
     :file_opts: {}
   - :id: page5
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page5
+    :title:
+    - page5
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=4
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=4
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page5/fulltext.txt
     :file_opts: {}
   - :id: page6
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page6
+    :title:
+    - page6
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=5
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=5
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page6/fulltext.txt
     :file_opts: {}
   - :id: page7
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page7
+    :title:
+    - page7
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=6
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=6
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page7/fulltext.txt
     :file_opts: {}
   - :id: page8-9
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page8-9
+    :title:
+    - page8-9
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=7
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=7
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page8-9/fulltext.txt
     :file_opts: {}
   - :id: page10
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page10
+    :title:
+    - page10
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=8
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=8
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page10/fulltext.txt
     :file_opts: {}
   - :id: page11
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page11
+    :title:
+    - page11
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=9
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=9
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page11/fulltext.txt
     :file_opts: {}
   - :id: page12
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page12
+    :title:
+    - page12
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=10
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=10
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page12/fulltext.txt
     :file_opts: {}
   - :id: page13
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page13
+    :title:
+    - page13
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=11
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=11
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page13/fulltext.txt
     :file_opts: {}
   - :id: page14
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page14
+    :title:
+    - page14
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=12
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=12
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page14/fulltext.txt
     :file_opts: {}
   - :id: page15
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page15
+    :title:
+    - page15
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=13
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=13
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page15/fulltext.txt
     :file_opts: {}
   - :id: page16
     :mime_type: image/jp2
-    :attributes:
-      :title:
-      - page16
+    :title:
+    - page16
     :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/IP&CISOPTR=14
     :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/IP&CISOPTR=14
+    :ocr_path: spec/fixtures/contentdm_xml/Irish_People/2003-08-09 Irish People/page16/fulltext.txt
     :file_opts: {}
 :sources:
 - :title:

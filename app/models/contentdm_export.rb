@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class ContentdmExport
   include PreingestableDocument
   require 'fileutils'
@@ -83,7 +84,7 @@ class ContentdmExport
         end
       end
 
-      #assign thumbnail to newspaper
+      # assign thumbnail to newspaper
       @thumbnail_path = @files.first[:thumbnail]
 
       # assign structure hash and update files array with titles
@@ -127,11 +128,10 @@ class ContentdmExport
       basename = page_path.basename.to_s.gsub('.xml', '')
       fulltext_path = File.join(page_path.parent, basename, paper_title, page_title)
       full_text_file = "#{fulltext_path}/fulltext.txt"
-      #puts "Path : #{fulltext_path} || File : #{full_text_file}"
       FileUtils.mkdir_p fulltext_path
       page_text = page_xml.xpath('pagetext').map(&:content).first.to_s
-      File.open(full_text_file,"w"){|f| f.write(page_text)}
-      return full_text_file
+      File.open(full_text_file, "w") { |f| f.write(page_text) }
+      full_text_file
     end
 
     # Fix file paths for IUPUI exports
@@ -145,3 +145,4 @@ class ContentdmExport
       CGI.unescapeHTML(path.sub(/445\/cgi-bin/, '2012/cgi-bin'))
     end
 end
+# rubocop:enable Metrics/ClassLength

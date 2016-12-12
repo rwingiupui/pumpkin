@@ -48,7 +48,7 @@ class FileSet < ActiveFedora::Base
       dst = derivative_path('intermediate_file')
       FileUtils.mkdir_p(File.dirname(dst))
       FileUtils.cp(filename, dst)
-    when 'text/plain'
+    when mime_type.include?('text/plain')
       if filename.end_with?("fulltext.txt")
         dst = derivative_path('ocr')
         FileUtils.mkdir_p(File.dirname(dst))

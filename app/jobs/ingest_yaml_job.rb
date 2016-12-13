@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class IngestYAMLJob < ActiveJob::Base
   include CollectionHelper
   queue_as :ingest
@@ -25,6 +26,9 @@ class IngestYAMLJob < ActiveJob::Base
       resource.apply_depositor_metadata @user
       resource.member_of_collections = find_or_create_collections(@yaml[:collections])
 
+      final_state = resource.state
+      resource.state = 'pending'
+
       resource.save!
       logger.info "Created #{resource.class}: #{resource.id}"
 
@@ -40,8 +44,7 @@ class IngestYAMLJob < ActiveJob::Base
         resource.save!
       end
 
-      resource.state = 'complete'
-      resource.save!
+      advance_state(resource, final_state)
     end
 
     def attach_sources(resource)
@@ -115,4 +118,19 @@ class IngestYAMLJob < ActiveJob::Base
     def thumbnail_path
       @thumbnail_path ||= @yaml[:thumbnail_path]
     end
+
+    def advance_state(resource, final_state)
+      until resource.state == final_state
+        permitted = StateWorkflow.new(resource.state).valid_transitions.map(&:to_s)
+        if permitted.include? final_state
+          resource.state = final_state
+        elsif permitted.size == 1
+          resource.state = permitted.first
+        else
+          raise "Unknown state transition path from #{resource.state} to #{final_state} through #{permitted.join(',')}"
+        end
+        resource.save!
+      end
+    end
 end
+# rubocop:enable Metrics/ClassLength

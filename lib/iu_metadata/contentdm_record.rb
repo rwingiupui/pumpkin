@@ -114,12 +114,12 @@ module IuMetadata
       def content_fulltext(page_xml, paper_title, page_title)
         page_path = Pathname.new(@source)
         basename = page_path.basename.to_s.gsub('.xml', '')
-        fulltext_path = File.join(page_path.parent, basename, paper_title, page_title)
-        full_text_file = "#{fulltext_path}/fulltext.txt"
-        FileUtils.mkdir_p fulltext_path
+        full_text_path = File.join(page_path.parent, basename, paper_title, page_title)
+        full_text_file = "#{full_text_path}/fulltext.txt"
+        FileUtils.mkdir_p full_text_path
         page_text = page_xml.xpath('pagetext').map(&:content).first.to_s
         File.open(full_text_file, "w") { |f| f.write(page_text) }
-        full_text_file
+        full_text_file.gsub Pathname.pwd.to_s + "/", ""
       end
 
       # Fix file paths for IUPUI exports

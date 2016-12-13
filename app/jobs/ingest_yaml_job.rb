@@ -98,11 +98,7 @@ class IngestYAMLJob < ActiveJob::Base
     end
 
     def ocr_file(f)
-      if f.key?(:ocr_path) && File.exist?(f[:ocr_path])
-        File.open(f[:ocr_path])
-      else
-        false
-      end
+      f.key?(:ocr_path) && File.exist?(f[:ocr_path]) ? (File.open(f[:ocr_path])) : false
     end
 
     def map_fileids(hsh)

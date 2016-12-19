@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class IngestYAMLJob < ActiveJob::Base
   include CollectionHelper
   queue_as :ingest
@@ -52,11 +53,22 @@ class IngestYAMLJob < ActiveJob::Base
     end
 
     def attach_source(resource, title, file)
-      file_set = FileSet.new
-      file_set.title = title
-      actor = FileSetActor.new(file_set, @user)
-      actor.attach_related_object(resource)
-      actor.attach_content(File.open(file, 'r:UTF-8'))
+      http_tries = 0
+
+      begin
+        http_tries += 1
+        file_set = FileSet.new
+        file_set.title = title
+        actor = FileSetActor.new(file_set, @user)
+        actor.attach_related_object(resource)
+        actor.attach_content(File.open(file, 'r:UTF-8'))
+      rescue Ldp::HttpError => e
+        logger.info "Retrying attach_source due to #{e}\n"
+        raise if http_tries >= 3
+        # actor.destroy if parent.ordered_members.last.id == file_set.id
+        actor.destroy if file_set.persisted?
+        retry
+      end
     end
 
     def ingest_volumes(parent)
@@ -80,20 +92,29 @@ class IngestYAMLJob < ActiveJob::Base
 
     def ingest_files(parent: nil, resource: nil, files: [])
       files.each do |f|
-        logger.info "Ingesting file #{f[:path]}"
-        @counter.increment
-        file_set = FileSet.new
-        file_set.attributes = f[:attributes]
-        actor = FileSetActor.new(file_set, @user)
-        actor.create_metadata(resource, f[:file_opts])
-        actor.create_content(decorated_file(f))
+        http_tries = 0
+        begin
+          logger.info "Ingesting file #{f[:path]}"
+          http_tries += 1
+          @counter.increment
+          file_set = FileSet.new
+          file_set.attributes = f[:attributes]
+          actor = FileSetActor.new(file_set, @user)
+          actor.create_metadata(resource, f[:file_opts])
+          actor.create_content(decorated_file(f))
 
-        yaml_to_repo_map[f[:id]] = file_set.id
+          yaml_to_repo_map[f[:id]] = file_set.id
 
-        next unless f[:path] == thumbnail_path
-        resource.thumbnail_id = file_set.id
-        resource.save!
-        parent.thumbnail_id = file_set.id if parent
+          next unless f[:path] == thumbnail_path
+          resource.thumbnail_id = file_set.id
+          resource.save!
+          parent.thumbnail_id = file_set.id if parent
+        rescue Ldp::HttpError => e
+          logger.info "Retrying file ingest due to #{e}\n"
+          raise if http_tries >= 3
+          actor.destroy
+          retry
+        end
       end
     end
 

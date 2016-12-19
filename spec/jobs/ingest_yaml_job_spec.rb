@@ -116,5 +116,17 @@ RSpec.describe IngestYAMLJob do
       expect(fileset1.title).to eq(['METS XML'])
       expect(fileset1.files.first.content).to start_with("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<mets:mets")
     end
+
+    context "with intermittent save failures" do
+      it "retries the save" do
+        try_count = 0
+        expect(fileset1).to receive(:save).and_before_calling_original { |*args|
+          raise Ldp::HttpError, '401 Testing' if (try_count += 1).odd?
+        }
+        described_class.perform_now(mets_file, user)
+        expect(resource.persisted?).to be true
+        expect(resource.reload.file_sets.length).to eq 1
+      end
+    end
   end
 end

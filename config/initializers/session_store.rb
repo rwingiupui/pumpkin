@@ -5,4 +5,3 @@ if Rails.env == 'production'
 else
   Rails.application.config.session_store :cookie, key: '_music_pages_session'
 end
-

@@ -64,8 +64,9 @@ test:
 
 production:
   <<: *defaults
+  store_original_files: false
   events:
-    server: <%= ENV['PLUM_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
+    server: # <%= ENV['PLUM_RABBIT_SERVER'] || 'amqp://localhost:5672' %>
     exchange: "plum_events"
 
 staging:

@@ -25,6 +25,7 @@ noid-minter-state
 /public/assets
 
 /config/ldap_groups_lookup.yml
+.secrets.sh
 
 # Ignore Ruby Version Management stuff
 # /.rvmrc

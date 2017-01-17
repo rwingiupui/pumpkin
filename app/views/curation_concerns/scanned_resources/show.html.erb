@@ -4,10 +4,7 @@
   <% if @parent_presenter %>
     <ul class="breadcrumb">
       <li><%= link_to @parent_presenter, polymorphic_path([main_app, @parent_presenter]) %></li>
-      <li class="active"><%= @presenter.human_readable_type %></li>
     </ul>
-  <% else %>
-    <span class="human_readable_type">(<%= @presenter.human_readable_type %>)</span>
   <% end %>
 <% end %>
 
@@ -15,6 +12,7 @@
 <% editor    = can?(:edit,    @presenter.id) %>
 
 <%= render 'representative_media', presenter: @presenter %>
+<%= render "misc_links", presenter: @presenter %>
 <%= render "attributes", presenter: @presenter %>
 <%= render 'related_files', presenter: @presenter %>
 <%= render "show_actions", collector: collector, editor: editor%>

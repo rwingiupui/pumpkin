@@ -1,4 +1,3 @@
-<h2><%= link_to("View record in #{t('services.metadata')}", Plum.config['metadata']['url'] % @presenter.source_metadata_identifier, class: "fa fa-external-link") if @presenter.try(:source_metadata_identifier).present? %></h2>
 <table class="table table-striped <%= dom_class(@presenter) %> attributes">
   <caption class="table-heading"><h2>Attributes</h2></caption>
   <tbody>
@@ -48,8 +47,8 @@
     <%= @presenter.holding_location %>
   <% end %>
   <%= render 'curation_concerns/base/member_of_collections', presenter: @presenter %>
+  <%= @presenter.attribute_to_html(:identifier) %>
   <% if can? :edit, @presenter.id %>
-    <%= @presenter.attribute_to_html(:identifier) %>
     <%= @presenter.attribute_to_html(:source_metadata_identifier) %>
     <%= @presenter.attribute_to_html(:workflow_note) %>
   <% end %>

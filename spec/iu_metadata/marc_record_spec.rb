@@ -15,19 +15,20 @@ describe IuMetadata::MarcRecord do
     described_class.new(pth, File.open(pth).read)
   }
   record1_atts =
-     {  title: ['The weeping angels'],
-        sort_title: 'weeping angels',
-        responsibility_note: [],
-        series: [],
-        creator: ['Moffat, Steven'],
-        subject: ['Cuba'],
-        publisher: ['A. Martínez'],
-        publication_place: ['Barceloa'],
-        date_published: ['1899'],
-        published: 'Barceloa, A. Martínez, 1899',
-        lccn_call_number: [],
-        local_call_number: []
-     }
+    {
+      title: ['The weeping angels'],
+      sort_title: 'weeping angels',
+      responsibility_note: [],
+      series: [],
+      creator: ['Moffat, Steven'],
+      subject: ['Cuba'],
+      publisher: ['A. Martínez'],
+      publication_place: ['Barceloa'],
+      date_published: ['1899'],
+      published: 'Barceloa, A. Martínez, 1899',
+      lccn_call_number: [],
+      local_call_number: []
+    }
 
   describe 'id' do
     it 'stores its id' do

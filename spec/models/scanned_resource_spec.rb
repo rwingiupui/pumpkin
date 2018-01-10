@@ -93,7 +93,7 @@ describe ScannedResource do
       end
     end
     # FIXME: relable this section
-    context 'With a Voyager ID', vcr: { cassette_name: "bibdata", record: :new_episodes }do
+    context 'With a Voyager ID', vcr: { cassette_name: "bibdata", record: :new_episodes } do
       before do
         subject.source_metadata_identifier = '2028405'
       end

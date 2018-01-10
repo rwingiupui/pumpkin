@@ -5,25 +5,34 @@ RSpec.describe METSDocument do
   let(:mets_file_rtl) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0032-ns73.mets") }
   let(:mets_file_multi) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4609321-s42.mets") }
   let(:tiff_file) { Rails.root.join("spec", "fixtures", "files", "color.tif") }
-  let(:structure) { {
-    nodes: [{
-      label: "Title page", nodes: [{
-        label: "Title page",
-        proxy: "goszd"
-      }] },
+  let(:structure) {
+    {
+      nodes: [
+        {
+          label: "Title page",
+          nodes: [
             {
-              label: "Preamble", nodes: [
-                {
-                  label: "image 4",
-                  proxy: "v6huf"
-                },
-                {
-                  label: "image 5",
-                  proxy: "x3mmf"
-                }
-              ]
-            }]
-  }}
+              label: "Title page",
+              proxy: "goszd"
+            }
+          ]
+        },
+        {
+          label: "Preamble",
+          nodes: [
+            {
+              label: "image 4",
+              proxy: "v6huf"
+            },
+            {
+              label: "image 5",
+              proxy: "x3mmf"
+            }
+          ]
+        }
+      ]
+    }
+  }
 
   describe "identifiers" do
     subject { described_class.new mets_file }

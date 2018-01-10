@@ -84,7 +84,8 @@ module IuMetadata
     end
 
     def description
-      formatted_fields_as_array([
+      formatted_fields_as_array
+      ([
         '500', '501', '502', '504', '507', '508', '511', '510', '513', '514',
         '515', '516', '518', '522', '525', '526', '530', '533', '534', '535',
         '536', '538', '542', '544', '545', '546', '547', '550', '552', '555',
@@ -209,10 +210,12 @@ module IuMetadata
 
     def subject
       # Broken: name puctuation won't come out correctly
-      formatted_fields_as_array([
+      formatted_fields_as_array
+      ([
         '600', '610', '611', '630', '648', '650', '651', '653', '654', '655',
         '656', '657', '658', '662', '690'
-      ], codes: ['a'])
+       ],
+       codes: ['a'])
     end
 
     # We squash together 505s with ' ; '

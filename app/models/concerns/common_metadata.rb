@@ -51,45 +51,45 @@ module CommonMetadata
 
     private
 
-    def remote_data
-      @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
-    end
-
-    def remote_metadata_factory
-      if RemoteRecord.bibdata?(source_metadata_identifier)
-        JSONLDRecord::Factory.new(self.class)
-      else
-        RemoteRecord
+      def remote_data
+        @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
       end
-    end
 
-    # Validate that either the source_metadata_identifier or the title is set.
-    def source_metadata_identifier_or_title
-      return if source_metadata_identifier.present? || title.present?
-      errors.add(:title, "You must provide a source metadata id or a title")
-      errors.add(:source_metadata_identifier, "You must provide a source metadata id or a title")
-    end
-
-    def complete_record
-      if identifier
-        update_ezid
-      elsif Plum.config['ezid']['mint']
-        self.identifier = Ezid::Identifier.mint(ezid_metadata).id
+      def remote_metadata_factory
+        if RemoteRecord.bibdata?(source_metadata_identifier)
+          JSONLDRecord::Factory.new(self.class)
+        else
+          RemoteRecord
+        end
       end
-    end
 
-    def ezid_metadata
-      {
-        dc_publisher: I18n.t('ezid.dc_publisher'),
-        dc_title: title.join('; '),
-        dc_type: I18n.t('ezid.dc_type'),
-        target: ManifestBuilder::ManifestHelper.new.polymorphic_url(self)
-      }
-    end
+      # Validate that either the source_metadata_identifier or the title is set.
+      def source_metadata_identifier_or_title
+        return if source_metadata_identifier.present? || title.present?
+        errors.add(:title, "You must provide a source metadata id or a title")
+        errors.add(:source_metadata_identifier, "You must provide a source metadata id or a title")
+      end
 
-    def update_ezid
-      return unless Plum.config['ezid']['update']
-      Ezid::Identifier.modify(identifier, ezid_metadata)
-    end
+      def complete_record
+        if identifier
+          update_ezid
+        elsif Plum.config['ezid']['mint']
+          self.identifier = Ezid::Identifier.mint(ezid_metadata).id
+        end
+      end
+
+      def ezid_metadata
+        {
+          dc_publisher: I18n.t('ezid.dc_publisher'),
+          dc_title: title.join('; '),
+          dc_type: I18n.t('ezid.dc_type'),
+          target: ManifestBuilder::ManifestHelper.new.polymorphic_url(self)
+        }
+      end
+
+      def update_ezid
+        return unless Plum.config['ezid']['update']
+        Ezid::Identifier.modify(identifier, ezid_metadata)
+      end
   end
 end

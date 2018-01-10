@@ -140,48 +140,6 @@ Capybara/CurrentPathExpectation:
 Capybara/FeatureMethods:
   Enabled: true
 
-#Layout/CommentIndentation:
-#  Enabled: false
-
-#Layout/EmptyLineAfterMagicComment:
-#  Enabled: false
-
-#Layout/IndentArray:
-#  Enabled: false
-
-#Layout/IndentAssignment:
-#  Enabled: false
-
-#Layout/IndentationConsistency:
-#  Enabled: false
-
-#Layout/IndentationWidth:
-#  Enabled: false
-
-#Layout/LeadingCommentSpace:
-#  Enabled: false
-
-#Layout/MultilineHashBraceLayout:
-#  Enabled: false
-
-#Layout/MultilineMethodCallBraceLayout:
-#  Enabled: false
-
-#Layout/MultilineMethodCallIndentation:
-#  Enabled: false
-
-#Layout/SpaceAroundKeyword:
-#  Enabled: false
-
-#Layout/SpaceBeforeComment:
-#  Enabled: false
-
-#Layout/SpaceInsideBlockBraces:
-#  Enabled: false
-
-#Layout/TrailingWhitespace:
-#  Enabled: false
-
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 

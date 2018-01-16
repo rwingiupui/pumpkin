@@ -9,7 +9,7 @@ module CurationConcerns
     def after_update_response(msg = nil)
       respond_to do |wants|
         wants.html do
-          msg = "The file #{view_context.link_to(@file_set, [main_app, @file_set])} has been updated." unless msg
+          msg ||= "The file #{view_context.link_to(@file_set, [main_app, @file_set])} has been updated."
           dest = parent.nil? ? [main_app, @file_set] : [main_app, :file_manager, parent]
           redirect_to dest, notice: msg
         end

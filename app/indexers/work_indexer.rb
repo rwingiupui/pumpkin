@@ -13,7 +13,7 @@ class WorkIndexer < CurationConcerns::WorkIndexer
           ::RDF::Statement.from([object.rdf_subject, ::RDF::URI(""), obj])
         end
         output = JSON::LD::API.fromRdf(statements)
-        next unless output.length > 0
+        next if output.empty?
         output = output[0][""]
         output.map! do |object|
           if object.is_a?(Hash) && object["@value"] && object.keys.length == 1

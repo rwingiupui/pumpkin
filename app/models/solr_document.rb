@@ -1,5 +1,3 @@
-# -*- encoding : utf-8 -*-
-
 class SolrDocument
   include Blacklight::Solr::Document
   # Adds CurationConcerns behaviors to the SolrDocument.
@@ -107,6 +105,16 @@ class SolrDocument
 
   def collection
     self[Solrizer.solr_name('member_of_collections', :symbol)]
+  end
+
+  def respond_to_missing?(meth_name, _include_private)
+    if ScannedResource.properties.values.map(&:term).include?(meth_name)
+      true
+    elsif ScannedResource.properties.values.map { |x| "#{x.term}_literals".to_sym }.include?(meth_name)
+      true
+    else
+      false
+    end
   end
 
   def method_missing(meth_name, *args, &block)

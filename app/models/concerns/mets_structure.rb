@@ -23,7 +23,7 @@ module MetsStructure
     def structure_type(type)
       return nil unless structure_map(type)
       top = structure_map(type).xpath("mets:div/mets:div")
-      return nil unless top.length > 0
+      return nil unless top.present?
       { nodes: structure_for_nodeset(top) }
     end
 

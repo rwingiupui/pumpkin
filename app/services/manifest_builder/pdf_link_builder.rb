@@ -7,7 +7,7 @@ class ManifestBuilder
     end
 
     def apply(manifest)
-      return if record.member_presenters.length == 0
+      return if record.member_presenters.empty?
       return if manifest['sequences'].blank?
       return unless path
       manifest['sequences'].first['rendering'] = {

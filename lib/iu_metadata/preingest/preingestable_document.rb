@@ -13,7 +13,7 @@ module IuMetadata
         viewing_direction: 'left-to-right',
         rights_statement: 'http://rightsstatements.org/vocab/NKC/1.0/',
         visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
-      }
+      }.freeze
 
       def yaml_file
         source_file.sub(/\..{3,4}$/, '.yml')

@@ -14,7 +14,7 @@ class FileSet < ActiveFedora::Base
   end
 
   apply_schema IIIFPageSchema, ActiveFedora::SchemaIndexingStrategy.new(
-    ActiveFedora::Indexers::GlobalIndexer.new([:stored_searchable, :symbol])
+    ActiveFedora::Indexers::GlobalIndexer.new(%i[stored_searchable symbol])
   )
   before_save :normalize_identifiers
   after_save :touch_parent_works
@@ -30,8 +30,8 @@ class FileSet < ActiveFedora::Base
   end
 
   def create_derivatives(filename)
-    case
-    when mime_type.include?('image/tiff'), mime_type.include?('external')
+    case mime_type
+    when /(image\/tiff|external)/
       Hydra::Derivatives::Jpeg2kImageDerivatives.create(
         filename, outputs: [
           label: 'intermediate_file',
@@ -41,13 +41,13 @@ class FileSet < ActiveFedora::Base
       )
       create_ocr(id, filename)
       create_word_boundaries(id)
-    when mime_type.include?('image/jp2')
+    when /image\/jp2/
       dst = derivative_path('intermediate_file')
       FileUtils.mkdir_p(File.dirname(dst))
       FileUtils.cp(filename, dst)
       create_ocr(id, filename)
       create_word_boundaries(id)
-    when mime_type.include?('text/plain')
+    when /text\/plain/
       if filename.end_with?("fulltext.txt")
         dst = derivative_path('ocr', 'txt')
         FileUtils.mkdir_p(File.dirname(dst))

@@ -28,7 +28,7 @@
       <% end %>
     </div>
   </div>
-  <% if node.nodes.length > 0 %>
+  <% if node.nodes.any? %>
     <ul>
       <% node.nodes.each do |order| %>
         <%= render "structure_node", node: order %>

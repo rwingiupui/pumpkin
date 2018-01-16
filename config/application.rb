@@ -31,8 +31,6 @@ module Pumpkin
 
     config.action_mailer.default_url_options = { host: "plum.com" }
     config.autoload_paths << Rails.root.join('lib')
-    config.autoload_paths += %W(
-      #{config.root}/app/jobs/concerns
-    )
+    config.autoload_paths += %W[#{config.root}/app/jobs/concerns]
   end
 end

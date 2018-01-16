@@ -16,9 +16,7 @@ class ManifestBuilder
     end
 
     def manifest_presenters
-      record.member_presenters.select do |x|
-        x.model_name.name != "FileSet"
-      end
+      record.member_presenters.reject { |x| x.model_name.name == 'FileSet' }
     end
   end
 end

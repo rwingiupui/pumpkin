@@ -22,7 +22,7 @@ task :eslint do
   %(eslint "app/assets/javascripts/*.es6")
 end
 
-task spec: [:rubocop, :eslint]
+task spec: %i[rubocop eslint]
 
 task :ci do
   with_server 'test' do

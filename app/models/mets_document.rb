@@ -73,7 +73,7 @@ class METSDocument
   end
 
   def file_opts(file)
-    return {} if @mets.xpath("count(//mets:div/mets:fptr[@FILEID='#{file[:id]}'])").to_i > 0
+    return {} if @mets.xpath("count(//mets:div/mets:fptr[@FILEID='#{file[:id]}'])").to_i.positive?
     { viewing_hint: 'non-paged' }
   end
 

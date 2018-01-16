@@ -10,7 +10,7 @@ module IuMetadata
     attr_reader :id, :source
 
     # standard metadata
-    ATTRIBUTES = [:source_metadata_identifier, :holding_location, :physical_description, :copyright_holder]
+    ATTRIBUTES = %i[source_metadata_identifier holding_location physical_description copyright_holder].freeze
     def attributes
       Hash[ATTRIBUTES.map { |att| [att, send(att)] }]
     end
@@ -40,7 +40,7 @@ module IuMetadata
     end
 
     # default metadata
-    DEFAULT_ATTRIBUTES = [:visibility, :rights_statement, :viewing_hint]
+    DEFAULT_ATTRIBUTES = %i[visibility rights_statement viewing_hint].freeze
     def default_attributes
       Hash[DEFAULT_ATTRIBUTES.map { |att| [att, send(att)] }]
     end

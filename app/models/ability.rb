@@ -14,34 +14,34 @@ class Ability
 
   # Abilities that should only be granted to admin users
   def admin_permissions
-    can [:manage], :all
+    can %i[manage], :all
   end
 
   # Abilities that should be granted to technicians
   def image_editor_permissions
-    can [:read, :create, :modify, :update, :publish], curation_concerns
-    can [:file_manager, :save_structure], ScannedResource
-    can [:file_manager, :save_structure], MultiVolumeWork
-    can [:create, :read, :edit, :update, :publish, :download], FileSet
-    can [:create, :read, :edit, :update, :publish], Collection
+    can %i[read create modify update publish], curation_concerns
+    can %i[file_manager save_structure], ScannedResource
+    can %i[file_manager save_structure], MultiVolumeWork
+    can %i[create read edit update publish download], FileSet
+    can %i[create read edit update publish], Collection
 
     # do not allow completing resources
-    cannot [:complete], curation_concerns
+    cannot %i[complete], curation_concerns
 
     # only allow deleting for own objects, without ARKs
-    can [:destroy], FileSet, depositor: current_user.uid
-    can [:destroy], curation_concerns, depositor: current_user.uid
-    cannot [:destroy], curation_concerns do |obj|
+    can %i[destroy], FileSet, depositor: current_user.uid
+    can %i[destroy], curation_concerns, depositor: current_user.uid
+    cannot %i[destroy], curation_concerns do |obj|
       !obj.identifier.nil?
     end
   end
 
   def editor_permissions
-    can [:read, :modify, :update], curation_concerns
-    can [:file_manager, :save_structure], ScannedResource
-    can [:file_manager, :save_structure], MultiVolumeWork
-    can [:read, :edit, :update], FileSet
-    can [:read, :edit, :update], Collection
+    can %i[read modify update], curation_concerns
+    can %i[file_manager save_structure], ScannedResource
+    can %i[file_manager save_structure], MultiVolumeWork
+    can %i[read edit update], FileSet
+    can %i[read edit update], Collection
 
     # do not allow completing resources
     cannot [:complete], curation_concerns
@@ -50,16 +50,16 @@ class Ability
   end
 
   def fulfiller_permissions
-    can [:read], curation_concerns
-    can [:read, :download], FileSet
-    can [:read], Collection
+    can %i[read], curation_concerns
+    can %i[read download], FileSet
+    can %i[read], Collection
     curation_concern_read_permissions
   end
 
   def curator_permissions
-    can [:read], curation_concerns
-    can [:read], FileSet
-    can [:read], Collection
+    can %i[read], curation_concerns
+    can %i[read], FileSet
+    can %i[read], Collection
 
     # do not allow viewing pending resources
     curation_concern_read_permissions
@@ -100,11 +100,11 @@ class Ability
 
   def unreadable_states
     if current_user.curator?
-      %w(pending)
+      %w[pending]
     elsif universal_reader?
       []
     else
-      %w(pending metadata_review final_review takedown)
+      %w[pending metadata_review final_review takedown]
     end
   end
 
@@ -115,8 +115,8 @@ class Ability
     @user_groups |= current_user.groups if current_user.respond_to? :groups
     if Plum.config[:authorized_ldap_groups].blank?
       @user_groups |= ['registered'] unless current_user.new_record?
-    else
-      @user_groups |= ['registered'] if current_user.music_patron?
+    elsif current_user.music_patron?
+      @user_groups |= ['registered']
     end
     @user_groups
   end

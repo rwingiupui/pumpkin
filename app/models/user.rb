@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
     g = roles.map(&:name)
     if Plum.config[:authorized_ldap_groups].blank?
       g += ['registered'] unless new_record? || guest?
-    else
-      g += ['registered'] if music_patron?
+    elsif music_patron?
+      g += ['registered']
     end
     g
   end

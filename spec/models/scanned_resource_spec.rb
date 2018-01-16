@@ -8,7 +8,7 @@ describe ScannedResource do
   subject { scanned_resource }
 
   describe 'has note fields' do
-    [:portion_note, :description].each do |note_type|
+    %i[portion_note description].each do |note_type|
       it "should let me set a #{note_type}" do
         note = 'This is note text'
         subject.send("#{note_type}=", note)
@@ -119,7 +119,7 @@ describe ScannedResource do
     it 'that conforms to a valid pattern' do
       expect { subject.save }.to_not raise_error
       noid_service = ActiveFedora::Noid::Service.new
-      expect(noid_service.valid? subject.id).to be_truthy
+      expect(noid_service.valid?(subject.id)).to be_truthy
     end
     it "generates an ID which starts with the environment's first letter" do
       expect { subject.save }.to_not raise_error

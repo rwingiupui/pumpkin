@@ -11,7 +11,7 @@ describe MultiVolumeWork do
   subject { multi_volume_work }
 
   describe 'has note fields' do
-    [:portion_note, :description].each do |note_type|
+    %i[portion_note description].each do |note_type|
       it "should let me set a #{note_type}" do
         note = 'This is note text'
         subject.send("#{note_type}=", note)

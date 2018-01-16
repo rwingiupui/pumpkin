@@ -120,8 +120,8 @@ class IngestYAMLJob < ActiveJob::Base
       resource.thumbnail_id = file_set.id
       resource.representative_id = file_set.id
       resource.save!
-      parent.thumbnail_id = file_set.id if parent
-      parent.representative_id = file_set.id if parent
+      parent&.thumbnail_id = file_set.id
+      parent&.representative_id = file_set.id
     end
 
     def decorated_file(f)
@@ -129,7 +129,7 @@ class IngestYAMLJob < ActiveJob::Base
     end
 
     def ocr_file?(f)
-      (f.key?(:ocr_path) && File.exist?(f[:ocr_path])) ? true : false
+      f.key?(:ocr_path) && File.exist?(f[:ocr_path]) ? true : false
     end
 
     def map_fileids(hsh)
@@ -153,7 +153,7 @@ class IngestYAMLJob < ActiveJob::Base
 
     # Purloined from FileSetActor, unmodified
     def assign_visibility?(file_set_params = {})
-      !((file_set_params || {}).keys & %w(visibility embargo_release_date lease_expiration_date)).empty?
+      !((file_set_params || {}).keys & %w[visibility embargo_release_date lease_expiration_date]).empty?
     end
 end
 # rubocop:enable Metrics/ClassLength

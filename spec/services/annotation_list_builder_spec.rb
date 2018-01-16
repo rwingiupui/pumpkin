@@ -18,7 +18,7 @@ RSpec.describe AnnotationListBuilder do
       it "is empty" do
         expect(subject.as_json).to eq(
           "@context" => "http://iiif.io/api/presentation/2/context.json",
-          "@id" => "#{parent_path}",
+          "@id" => parent_path.to_s,
           "@type" => "sc:AnnotationList"
         )
       end
@@ -36,7 +36,7 @@ RSpec.describe AnnotationListBuilder do
       it "builds a resource for every line" do
         expect(subject.as_json).to eq(
           "@context" => "http://iiif.io/api/presentation/2/context.json",
-          "@id" => "#{parent_path}",
+          "@id" => parent_path.to_s,
           "@type" => "sc:AnnotationList",
           "resources" => [
             {

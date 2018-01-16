@@ -4,13 +4,12 @@ class SearchBuilder < Blacklight::SearchBuilder
   include CurationConcerns::SearchFilters
   delegate :unreadable_states, to: :current_ability
 
-  self.default_processor_chain += [
-    :hide_parented_resources, :join_from_parent,
-    :hide_incomplete
+  self.default_processor_chain += %i[
+    hide_parented_resources join_from_parent hide_incomplete
   ]
 
   def self.show_actions
-    [:show, :manifest, :structure, :pdf]
+    %i[show manifest structure pdf]
   end
 
   def hide_parented_resources(solr_params)

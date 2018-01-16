@@ -13,7 +13,7 @@ module IuDevOps
     end
 
     def running?
-      Sidekiq::ProcessSet.new.size > 0
+      Sidekiq::ProcessSet.new.any?
     end
   end
 end

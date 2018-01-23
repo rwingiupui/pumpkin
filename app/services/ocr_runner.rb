@@ -17,6 +17,12 @@ class OCRRunner
     resource.save
   end
 
+  def from_original_file(filename)
+    ocr_output = from_file(filename)
+    attach_ocr(ocr_filename(ocr_output))
+    resource.save
+  end
+
   private
 
     def attach_ocr(filename)

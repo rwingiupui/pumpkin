@@ -33,23 +33,19 @@ class FileSet < ActiveFedora::Base
     case
     when mime_type.include?('image/tiff'), mime_type.include?('external')
       Hydra::Derivatives::Jpeg2kImageDerivatives.create(
-        filename,
-        outputs: [
+        filename, outputs: [
           label: 'intermediate_file',
-          service: {
-            datastream: 'intermediate_file',
-            recipe: :default
-          },
+          service: { datastream: 'intermediate_file', recipe: :default },
           url: derivative_url('intermediate_file')
         ]
       )
-      create_ocr(id)
+      create_ocr(id, filename)
       create_word_boundaries(id)
     when mime_type.include?('image/jp2')
       dst = derivative_path('intermediate_file')
       FileUtils.mkdir_p(File.dirname(dst))
       FileUtils.cp(filename, dst)
-      create_ocr(id)
+      create_ocr(id, filename)
       create_word_boundaries(id)
     when mime_type.include?('text/plain')
       if filename.end_with?("fulltext.txt")
@@ -86,8 +82,12 @@ class FileSet < ActiveFedora::Base
     # OCR file if configuration allows
     #
     # @param id [String] Fileset id
-    def create_ocr(id)
-      RunOCRJob.perform_later(id) if Plum.config[:create_hocr_files] && Plum.config[:store_original_files]
+    def create_ocr(id, filename)
+      return unless Plum.config[:create_hocr_files]
+      # If store_original_files is false, explicitly call the OCRRunner since RunOCRJob only
+      # uses the stored content object as the source and doesn't know about the original file
+      RunOCRJob.perform_later(id) if Plum.config[:store_original_files]
+      OCRRunner.new(self).from_original_file(filename) unless Plum.config[:store_original_files]
     end
 
     def create_word_boundaries(id)

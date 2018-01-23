@@ -119,6 +119,26 @@ RSpec.describe FileSet do
       expect(ocr_path.sub(".hocr", ".txt")).to exist
       expect(subject.to_solr["full_text_tesim"]).to include "OCR text file."
     end
+    context "store_original_files is false" do
+      it "still creates, stores, and indexes OCR derivatives" do
+        allow_any_instance_of(described_class).to receive(:warn) # suppress virus check warnings
+        allow(Hydra::Derivatives::Jpeg2kImageDerivatives).to receive(:create).and_return(true)
+        file = File.open(Rails.root.join("spec", "fixtures", "files", "page18.tif"))
+        Hydra::Works::UploadFileToFileSet.call(subject, file)
+
+        # Don't store an original to Fedora, make sure derivatives still come from original local file
+        allow(Plum.config).to receive(:[]).with(:store_original_files).and_return(false)
+        allow(Plum.config).to receive(:[]).with(:create_hocr_files).and_return(true)
+        allow(Plum.config).to receive(:[]).with(:index_hocr_files).and_return(true)
+        allow(Plum.config).to receive(:[]).with(:create_word_boundaries).and_return(true)
+        subject.create_derivatives(file.path)
+
+        # verify that ocr has been added to the FileSet
+        expect(ocr_path).to exist
+        subject.reload
+        expect(subject.files.size).to eq(2)
+      end
+    end
     after do
       FileUtils.rm_rf(path.parent) if path.exist?
       FileUtils.rm_rf(ocr_path.parent) if ocr_path.exist?

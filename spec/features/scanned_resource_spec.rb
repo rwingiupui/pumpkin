@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ScannedResourcesController", type: :feature do
+RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
 
   context "an authorized user" do
@@ -10,7 +10,7 @@ RSpec.feature "ScannedResourcesController", type: :feature do
       scanned_resource
     end
 
-    scenario "Viewing a scanned resource it should display both titles" do
+    it "Viewing a scanned resource it should display both titles" do
       visit polymorphic_path [scanned_resource]
       expect(page).to have_selector "h1", text: "first title"
       expect(page).to have_selector "h1", text: "second title"

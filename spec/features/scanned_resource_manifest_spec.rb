@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.feature "ScannedResourcesController", type: :feature do
+RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
   let(:open_resource) { FactoryGirl.create(:open_scanned_resource, user: user) }
   let(:private_resource) { FactoryGirl.create(:private_scanned_resource, user: user) }
 
   context "an anonymous user" do
-    scenario "views a public manifest" do
+    it "views a public manifest" do
       visit manifest_curation_concerns_scanned_resource_path open_resource
       expect(page.status_code).to eq 200
     end
 
-    scenario "views a private manifest" do
+    it "views a private manifest" do
       visit manifest_curation_concerns_scanned_resource_path private_resource
       expect(page.status_code).to eq 401
     end
@@ -22,12 +22,12 @@ RSpec.feature "ScannedResourcesController", type: :feature do
       sign_in user
     end
 
-    scenario "views a public manifest" do
+    it "views a public manifest" do
       visit manifest_curation_concerns_scanned_resource_path open_resource
       expect(page.status_code).to eq 200
     end
 
-    scenario "views a private manifest" do
+    it "views a private manifest" do
       visit manifest_curation_concerns_scanned_resource_path private_resource
       expect(page.status_code).to eq 200
     end

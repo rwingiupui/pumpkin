@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "CatalogController", type: :feature do
+RSpec.describe "CatalogController", type: :feature do
   describe "admin user" do
     let(:user) { FactoryGirl.create(:admin) }
     let(:scanned_resource) { FactoryGirl.create(:scanned_resource_in_collection, user: user, language: ['English']) }
@@ -10,7 +10,7 @@ RSpec.feature "CatalogController", type: :feature do
       scanned_resource.update_index
     end
 
-    scenario "Admin users see collection, language, and state facets" do
+    it "Admin users see collection, language, and state facets" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
       expect(page).to have_selector "div.blacklight-member_of_collections_ssim", text: "Collection"
@@ -28,13 +28,13 @@ RSpec.feature "CatalogController", type: :feature do
       scanned_resource.update_index
     end
 
-    scenario "CurationConcerns creators see a state facet" do
+    it "CurationConcerns creators see a state facet" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
       expect(page).to have_selector "div.blacklight-state_sim", text: "State"
     end
 
-    scenario "CurationConcerns creators see editing links" do
+    it "CurationConcerns creators see editing links" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
       expect(page).to have_selector "a.itemedit", text: "Edit Scanned Resource"
@@ -49,13 +49,13 @@ RSpec.feature "CatalogController", type: :feature do
       scanned_resource.update_index
     end
 
-    scenario "Anonymous users do not see a state facet" do
+    it "Anonymous users do not see a state facet" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
       expect(page).not_to have_selector "div.blacklight-state_sim", text: "State"
     end
 
-    scenario "Anonymous users see a viewer link" do
+    it "Anonymous users see a viewer link" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
       expect(page).to have_selector "a.itemshow", text: "Open in Viewer"

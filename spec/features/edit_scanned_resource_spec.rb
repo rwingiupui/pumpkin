@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ScannedResourcesController", type: :feature do
+RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
   let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_multi_volume_work, user: user, state: 'metadata_review') }
   let(:parent_presenter) do
@@ -16,13 +16,13 @@ RSpec.feature "ScannedResourcesController", type: :feature do
       sign_in user
     end
 
-    scenario "Logged in user can follow link to edit scanned resource" do
+    it "Logged in user can follow link to edit scanned resource" do
       visit polymorphic_path [scanned_resource]
       click_link 'Edit This Scanned Resource'
       expect(page).to have_text('Manage Your Work')
     end
 
-    scenario "User can edit a scanned resource" do
+    it "User can edit a scanned resource" do
       visit edit_polymorphic_path [scanned_resource]
       fill_in 'scanned_resource_source_metadata_identifier', with: '1234568'
       fill_in 'scanned_resource_portion_note', with: 'new portion note'
@@ -36,7 +36,7 @@ RSpec.feature "ScannedResourcesController", type: :feature do
       expect(page).to have_selector("span.label-primary", text: "Final Review")
     end
 
-    scenario "User gets an error for bad metadata identifier change" do
+    it "User gets an error for bad metadata identifier change" do
       visit edit_polymorphic_path [scanned_resource]
       fill_in 'scanned_resource_source_metadata_identifier', with: '359850'
       check "refresh_remote_metadata"
@@ -45,7 +45,7 @@ RSpec.feature "ScannedResourcesController", type: :feature do
       expect(page).to have_text("Error retrieving metadata")
     end
 
-    scenario "User can follow link to bulk edit scanned resource and add a new file" do
+    it "User can follow link to bulk edit scanned resource and add a new file" do
       allow(CharacterizeJob).to receive(:perform_later).once
       allow_any_instance_of(FileSet).to receive(:warn) # suppress virus warning messages
 
@@ -68,12 +68,12 @@ RSpec.feature "ScannedResourcesController", type: :feature do
 
   context "an anonymous user" do
     let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_multi_volume_work, user: user, state: 'complete') }
-    scenario "User can't edit a scanned resource" do
+    it "User can't edit a scanned resource" do
       visit edit_polymorphic_path [scanned_resource]
       expect(page).to have_selector("div.alert-info", text: "You are not authorized to access this page")
     end
 
-    scenario "User can follow link to parent multi volume work" do
+    it "User can follow link to parent multi volume work" do
       parent_id = scanned_resource.ordered_by.first.id
       visit curation_concerns_parent_scanned_resource_path(parent_id, scanned_resource.id)
       click_link 'Test title'

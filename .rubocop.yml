@@ -138,10 +138,10 @@ Bundler/OrderedGems:
   Enabled: false
 
 Capybara/CurrentPathExpectation:
-  Enabled: false
+  Enabled: true
 
 Capybara/FeatureMethods:
-  Enabled: false
+  Enabled: true
 
 Layout/CommentIndentation:
   Enabled: false

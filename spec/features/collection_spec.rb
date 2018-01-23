@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature 'Collections', type: :feature do
+RSpec.describe 'Collections', type: :feature do
   describe 'an anonymous user is not allowed to create a collection' do
-    scenario 'link to create a collection is not shown' do
+    it 'link to create a collection is not shown' do
       visit root_path
       expect(page).not_to have_link 'Add a Collection'
     end
 
-    scenario 'attempting to create a collection fails' do
+    it 'attempting to create a collection fails' do
       visit new_collection_path
       expect(page).to have_selector 'div.alert', text: 'You are not authorized to access this page'
     end
@@ -20,7 +20,7 @@ RSpec.feature 'Collections', type: :feature do
       sign_in user
     end
 
-    scenario 'is allowed to create collections' do
+    it 'is allowed to create collections' do
       visit root_path
       expect(page).to have_link 'Add a Collection'
 
@@ -33,7 +33,7 @@ RSpec.feature 'Collections', type: :feature do
       expect(page).to have_selector 'h1', text: 'Test Collection'
       expect(page).to have_selector 'li.exhibit_id', text: 'slug1'
     end
-    scenario 'is edited' do
+    it 'is edited' do
       c = FactoryGirl.create(:collection, user: user)
       visit collection_path(c)
       click_link 'Edit'
@@ -43,7 +43,7 @@ RSpec.feature 'Collections', type: :feature do
       click_button "Update Collection"
       expect(page).to have_selector "h1", text: "Alfafa"
     end
-    scenario 'fails to input exhibit ID' do
+    it 'fails to input exhibit ID' do
       visit root_path
       expect(page).to have_link 'Add a Collection'
 

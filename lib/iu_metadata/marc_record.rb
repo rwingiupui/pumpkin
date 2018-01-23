@@ -210,12 +210,13 @@ module IuMetadata
 
     def subject
       # Broken: name puctuation won't come out correctly
-      formatted_fields_as_array
-      ([
-        '600', '610', '611', '630', '648', '650', '651', '653', '654', '655',
-        '656', '657', '658', '662', '690'
-       ],
-       codes: ['a'])
+      formatted_fields_as_array(
+        [
+          '600', '610', '611', '630', '648', '650', '651', '653',
+          '654', '655', '656', '657', '658', '662', '690'
+        ],
+        codes: ['a']
+      )
     end
 
     # We squash together 505s with ' ; '

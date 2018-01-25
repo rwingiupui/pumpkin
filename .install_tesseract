@@ -1,33 +1,79 @@
-wget "https://github.com/uclouvain/openjpeg/archive/version.2.1.zip"
-unzip version.2.1.zip
-cd openjpeg-version.2.1
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
-sudo make clean
-cd ..
-cd ..
-wget "http://www.leptonica.com/source/leptonica-1.73.tar.gz"
-tar xzf leptonica-1.73.tar.gz
-cd leptonica-1.73
-sed -i 's/#define  HAVE_LIBJP2K     0/#define  HAVE_LIBJP2K     1/g' ./src/environ.h
-sed -i 's/-ltiff -ljpeg -lpng -lz -lm/-ltiff -ljpeg -lpng -lz -lm -lopenjp2/g' ./prog/makefile.static
-./configure
-make
-sudo make install
-cd ..
-wget "https://github.com/tesseract-ocr/tesseract/archive/3.04.00.zip"
-unzip 3.04.00.zip
-cd tesseract-3.04.00
-./autogen.sh
-./configure
-make
-sudo make install
-sudo ldconfig
-cd ..
-git clone https://github.com/tesseract-ocr/tessdata.git
-sudo cp tessdata/eng.* /usr/local/share/tessdata/
-sudo cp tessdata/ita* /usr/local/share/tessdata
+#! /bin/bash
+
+[ ! -d "$HOME/dependencies" ] && mkdir $HOME/dependencies ; cd $HOME/dependencies
+
+# The $HOME/dependencies directory is configured to be cached and persisted among builds
+#  so our logic can determine whether to fully build based on existence.
+if [ ! -d "./tesseract" ]
+then
+  # Presumably the lack of directory means we need to download and build everything
+  mkdir ./tesseract ; cd ./tesseract
+
+  echo "Compiling and installing Tesseract and its library dependencies"
+
+  wget "https://github.com/uclouvain/openjpeg/archive/version.2.1.zip"
+  unzip -q version.2.1.zip
+  cd openjpeg-version.2.1
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+  sudo make clean
+
+  cd $HOME/dependencies/tesseract
+
+  wget "http://www.leptonica.com/source/leptonica-1.73.tar.gz"
+  tar xzf leptonica-1.73.tar.gz
+  cd leptonica-1.73
+  sed -i 's/#define  HAVE_LIBJP2K     0/#define  HAVE_LIBJP2K     1/g' ./src/environ.h
+  sed -i 's/-ltiff -ljpeg -lpng -lz -lm/-ltiff -ljpeg -lpng -lz -lm -lopenjp2/g' ./prog/makefile.static
+  ./configure
+  make
+  sudo make install
+
+  cd $HOME/dependencies/tesseract
+
+  wget "https://github.com/tesseract-ocr/tesseract/archive/3.04.00.zip"
+  unzip -q 3.04.00.zip
+  cd tesseract-3.04.00
+  ./autogen.sh
+  ./configure
+  make
+  sudo make install
+  sudo ldconfig
+  cd $HOME/dependencies/tesseract
+
+  echo "Obtaining Tesseract trained language data"
+  mkdir ./tessdata
+  curl -L --output ./tessdata/eng.traineddata https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
+  curl -L --output ./tessdata/ita.traineddata https://github.com/tesseract-ocr/tessdata/raw/master/ita.traineddata
+  # git clone https://github.com/tesseract-ocr/tessdata.git
+  sudo cp tessdata/eng.* /usr/local/share/tessdata/
+  sudo cp tessdata/ita* /usr/local/share/tessdata
+else
+  # We've already done the build before so just install libraries
+
+  echo "Installing Tesseract library dependencies"
+  cd ./tesseract
+
+  cd openjpeg-version.2.1/build
+  sudo make install
+  cd $HOME/dependencies/tesseract
+
+  cd leptonica-1.73
+  sudo make install
+  cd $HOME/dependencies/tesseract
+
+  cd tesseract-3.04.00
+  sudo make install
+  sudo ldconfig
+  cd $HOME/dependencies/tesseract
+
+  echo "Obtaining Tesseract trained language data"
+  sudo cp tessdata/eng.* /usr/local/share/tessdata/
+  sudo cp tessdata/ita* /usr/local/share/tessdata
+fi
+
+# With any luck we get Tesseract in our running infrastructure one way or another
 tesseract -v

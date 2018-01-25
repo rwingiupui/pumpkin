@@ -327,7 +327,7 @@ RSpec/VoidExpect:
   Enabled: false
 
 Security/YAMLLoad:
-  Enabled: false
+  Enabled: true
 
 Style/CommentedKeyword:
   Enabled: false

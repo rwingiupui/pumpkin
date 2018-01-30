@@ -37,7 +37,7 @@ gem 'puma'
 
 # gem 'curation_concerns', git: 'https://github.com/projecthydra-labs/curation_concerns', branch: :member_of_replace
 gem 'curation_concerns', git: 'https://github.com/IU-Libraries-Joint-Development/curation_concerns.git'
-gem 'pul_metadata_services', git: 'https://github.com/pulibrary/pul_metadata_services', branch: :master
+gem 'pul_metadata_services', git: 'https://github.com/IU-Libraries-Joint-Development/pul_metadata_services.git', branch: :master
 gem 'hydra-role-management', '~> 0.2.0'
 gem 'rsolr', '~> 1.1.0'
 gem 'devise', '~> 3.0'

@@ -9,7 +9,8 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
         id: "test",
         title_tesim: ["Test"],
         thumbnail_path_ss: "/test/image/path.jpg",
-        label_tesim: ["file_name.tif"]
+        label_tesim: ["file_name.tif"],
+        full_text_tesim: ["This is some text"]
       )
     )
   end
@@ -113,6 +114,10 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
 
   it "renders an input for titles" do
     expect(rendered).to have_selector("input[name='file_set[title][]']")
+  end
+
+  it "renders an OCR checkmark" do
+    expect(rendered).to have_content("OCR: ✓")
   end
 
   it "has radio inputs for viewing hints" do

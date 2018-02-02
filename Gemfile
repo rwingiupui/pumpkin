@@ -37,98 +37,101 @@ gem 'puma'
 
 # gem 'curation_concerns', git: 'https://github.com/projecthydra-labs/curation_concerns', branch: :member_of_replace
 gem 'curation_concerns', git: 'https://github.com/IU-Libraries-Joint-Development/curation_concerns.git'
-gem 'pul_metadata_services', git: 'https://github.com/IU-Libraries-Joint-Development/pul_metadata_services.git', branch: :master
-gem 'hydra-role-management', '~> 0.2.0'
-gem 'rsolr', '~> 1.1.0'
 gem 'devise', '~> 3.0'
 gem 'devise-guests', '~> 0.3'
-gem 'ldap_groups_lookup', '~> 0.4.0', git: 'https://github.com/IUBLibTech/ldap_groups_lookup'
+gem 'hydra-role-management', '~> 0.2.0'
 gem 'iiif-presentation', git: 'https://github.com/iiif/osullivan', branch: 'development'
+gem 'ldap_groups_lookup', '~> 0.4.0', git: 'https://github.com/IUBLibTech/ldap_groups_lookup'
+gem 'pul_metadata_services', git: 'https://github.com/IU-Libraries-Joint-Development/pul_metadata_services.git', branch: :master
+gem 'rsolr', '~> 1.1.0'
 
 # PDF generation
 gem 'prawn'
 # gem 'pdf-inspector', '~> 1.2.0', group: [:test]
 
 # Copied from curation_concerns Gemfile.extra
-gem 'hydra-works'#, github: 'projecthydra-labs/hydra-works', branch: 'master'
-gem 'hydra-pcdm'#, github: 'projecthydra-labs/hydra-pcdm', branch: 'master'
-gem 'hydra-derivatives'#, github: 'projecthydra/hydra-derivatives', branch: 'master'
 gem 'active-fedora', '11.0.0.rc7'
 gem 'active-triples', '~> 0.10.0'
 gem 'active_fedora-noid', '~> 2.0.0'
-gem 'rake', '~> 11.3.0'
+gem 'hydra-derivatives' # , github: 'projecthydra/hydra-derivatives', branch: 'master'
+gem 'hydra-pcdm' # , github: 'projecthydra-labs/hydra-pcdm', branch: 'master'
+gem 'hydra-works' # , github: 'projecthydra-labs/hydra-works', branch: 'master'
 gem 'net-http-persistent', '~> 2.9.4'
+gem 'rake', '~> 11.3.0'
 
 group :development, :test do
   gem 'rubocop', '~> 0.51.0', require: false
   gem 'rubocop-rspec', '~> 1.20.0', require: false
   gem 'simplecov', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry-byebug'
-  gem 'rspec-rails'
-  gem 'rspec_junit_formatter'
   gem "factory_girl_rails"
-  gem 'jasmine-rails'
-  gem 'jasmine-jquery-rails'
-  gem 'pdf-reader', git: 'https://github.com/yob/pdf-reader'
-  gem 'pry-rails'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
+  gem 'jasmine-jquery-rails'
+  gem 'jasmine-rails'
+  gem 'pdf-reader', git: 'https://github.com/yob/pdf-reader'
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
-gem 'solr_wrapper', '~> 0.19.0'
-gem 'fcrepo_wrapper', '~> 0.7.0'
 gem 'coveralls', require: false
+gem 'fcrepo_wrapper', '~> 0.7.0'
+gem 'solr_wrapper', '~> 0.19.0'
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'capistrano', '3.4.0'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails'
+  gem 'capistrano-rails-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger'
-  gem 'capistrano-rails-console'
-  gem 'capistrano', '3.4.0'
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do
   gem "capybara"
   gem "launchy"
+  gem 'rspecproxies'
   gem "vcr", '~> 2.9'
   gem "webmock", '~> 1.0', require: false
-  gem 'rspecproxies'
 end
 
 group :production do
-#   gem 'pg'
-  gem 'mysql2'
   gem 'dalli'
   gem 'kgio'
+  gem 'mysql2'
+  #  gem 'pg'
 end
-gem 'okcomputer'
-gem 'posix-spawn'
-gem 'openseadragon'
-gem 'sidekiq'
-gem "omniauth-cas"
-gem 'piwik_analytics', '~> 1.1.0', git: 'https://github.com/IUBLibTech/piwik_analytics'
+
+gem 'aasm'
+gem 'arabic-letter-connector'
+gem 'browse-everything', git: 'https://github.com/projecthydra-labs/browse-everything'
+gem 'bunny'
 gem 'ezid-client'
+gem 'iso-639'
+# gem 'newrelic_rpm'
+gem 'okcomputer'
+gem "omniauth-cas"
+gem 'openseadragon'
+gem 'piwik_analytics', '~> 1.1.0', git: 'https://github.com/IUBLibTech/piwik_analytics'
+gem 'posix-spawn'
+gem 'redis-namespace'
+gem 'sidekiq'
+gem 'sinatra'
+gem 'sprockets', '~> 3.5.0'
 gem 'sprockets-es6'
 gem 'sprockets-rails', '~> 2.3.3'
-gem 'sprockets', '~> 3.5.0'
-gem 'browse-everything', git: 'https://github.com/projecthydra-labs/browse-everything'
-gem 'aasm'
-# gem 'newrelic_rpm'
-gem 'iso-639'
-gem 'bunny'
 gem 'string_rtl'
-gem 'sinatra'
-gem 'redis-namespace'
-gem 'arabic-letter-connector'
+
 group :staging, :development do
   gem 'ruby-prof'
 end
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-babel-polyfill'
   gem 'rails-assets-bootstrap-select', '1.9.4'

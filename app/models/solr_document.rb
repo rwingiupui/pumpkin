@@ -1,4 +1,5 @@
 # -*- encoding : utf-8 -*-
+
 class SolrDocument
   include Blacklight::Solr::Document
   # Adds CurationConcerns behaviors to the SolrDocument.

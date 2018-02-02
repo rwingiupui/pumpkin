@@ -5,7 +5,8 @@ RSpec.describe FileSet do
 
   describe "metadata" do
     context "singular" do
-      { 'viewing_hint' => ::RDF::Vocab::IIIF.viewingHint,
+      {
+        'viewing_hint' => ::RDF::Vocab::IIIF.viewingHint,
         'identifier' => ::RDF::Vocab::DC.identifier,
         'source_metadata_identifier' => ::PULTerms.metadata_id,
         'replaces' => ::RDF::Vocab::DC.replaces

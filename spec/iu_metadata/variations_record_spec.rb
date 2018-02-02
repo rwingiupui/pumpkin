@@ -7,7 +7,8 @@ RSpec.describe IuMetadata::VariationsRecord do
   let(:file1) { record1_xml.xpath('//FileInfos/FileInfo').first }
 
   describe "parses attributes" do
-    { source_metadata_identifier: 'BHR9405',
+    {
+      source_metadata_identifier: 'BHR9405',
       viewing_hint: 'paged',
       location: 'IU Music Library',
       holding_location: 'https://libraries.indiana.edu/music',

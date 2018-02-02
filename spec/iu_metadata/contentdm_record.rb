@@ -7,7 +7,8 @@ RSpec.describe IuMetadata::ContentdmRecord do
     described_class.new('file://' + pth, open(pth))
   }
   record1_attributes =
-    { source_metadata_identifier: 'Irish People &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/IP',
+    {
+      source_metadata_identifier: 'Irish People &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/IP',
       viewing_direction: 'left-to-right'
     }
 

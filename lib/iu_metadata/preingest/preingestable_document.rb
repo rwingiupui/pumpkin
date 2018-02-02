@@ -30,8 +30,7 @@ module IuMetadata
       def attribute_sources
         { default: default_data,
           local: local_data,
-          remote: remote_data
-        }
+          remote: remote_data }
       end
 
       def default_attributes

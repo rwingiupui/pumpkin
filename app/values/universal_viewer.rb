@@ -22,8 +22,8 @@ class UniversalViewer
     Dir.glob(absolute_root.join("*")).map do |x|
       Pathname.new(x)
     end.select(&:directory?)
-      .map(&:basename)
-      .map(&:to_s).first.split("-").last
+       .map(&:basename)
+       .map(&:to_s).first.split("-").last
   end
 
   private

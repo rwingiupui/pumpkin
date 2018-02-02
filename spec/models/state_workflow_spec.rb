@@ -99,11 +99,11 @@ describe StateWorkflow do
   end
 
   describe 'persistence' do
-    states = [:pending, :metadata_review, :final_review, :complete, :flagged, :takedown]
+    states = %i[pending metadata_review final_review complete flagged takedown]
     it 'loads from state property' do
       states.each do |state|
         state_machine = described_class.new state
-        expect(state_machine.send "#{state}?").to be true
+        expect(state_machine.send("#{state}?")).to be true
       end
     end
   end

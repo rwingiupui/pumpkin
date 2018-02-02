@@ -20,7 +20,7 @@ class PurlController < ApplicationController
       FileSet => /^\w{3}\d{4}-\d{1}-\d{4}$/,
       MultiVolumeWork => /^\w{3}\d{4}$/,
       ScannedResource => /^\w{3}\d{4}$/
-    }
+    }.freeze
     def set_object
       OBJECT_LOOKUPS.each do |klass, match_pattern|
         if params[:id].match match_pattern

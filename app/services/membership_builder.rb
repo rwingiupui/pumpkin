@@ -10,7 +10,7 @@ class MembershipBuilder
 
   # Modified from FileSetActor#attach_file_to_work
   def attach_files_to_work
-    return unless @members.length > 0
+    return if @members.empty?
     acquire_lock_for(work.id) do
       # Ensure we have an up-to-date copy of the members association, so
       # that we append to the end of the list.

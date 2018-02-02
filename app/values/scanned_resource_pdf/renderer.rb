@@ -10,7 +10,7 @@ class ScannedResourcePDF
     def render
       CoverPageGenerator.new(scanned_resource_pdf).apply(prawn_document)
       canvas_downloaders.each_with_index do |downloader, index|
-        prawn_document.start_new_page layout: downloader.layout if index > 0
+        prawn_document.start_new_page layout: downloader.layout if index.positive?
         page_size = [Canvas::LETTER_WIDTH, Canvas::LETTER_HEIGHT]
         page_size.reverse! unless downloader.portrait?
         prawn_document.image downloader.download, width: downloader.width, height: downloader.height, fit: page_size

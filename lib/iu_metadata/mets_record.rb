@@ -9,7 +9,7 @@ module IuMetadata
     attr_reader :id, :source
 
     # local metadata
-    ATTRIBUTES = [:identifier, :replaces, :source_metadata_identifier, :viewing_direction]
+    ATTRIBUTES = %i[identifier replaces source_metadata_identifier viewing_direction].freeze
 
     def attributes
       ATTRIBUTES.map { |att| [att, send(att)] }.to_h.compact

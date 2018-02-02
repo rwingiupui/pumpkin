@@ -57,7 +57,7 @@ class OCRRunner
     end
 
     def try_language(field)
-      (parent.try(field) || []).select { |lang| !Tesseract.languages[lang.to_sym].nil? }
+      (parent.try(field) || []).reject { |lang| Tesseract.languages[lang.to_sym].nil? }
     end
 
     def parent

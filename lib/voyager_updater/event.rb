@@ -9,7 +9,7 @@ module VoyagerUpdater
     end
 
     def processed?
-      ProcessedEvent.where(event_id: id).count > 0
+      ProcessedEvent.where(event_id: id).any?
     end
 
     def dump

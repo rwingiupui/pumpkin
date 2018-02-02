@@ -309,7 +309,7 @@ class PlumSchema < ActiveTriples::Schema
   # Ignore things like admin data (workflow note), title, description, etc, as
   # those have custom display logic.
   def self.display_fields
-    ScannedResource.properties.values.map(&:term) - [:description, :state, :rights_statement, :rights_note, :holding_location, :title, :depositor, :source_metadata_identifier, :source_metadata, :date_modified, :date_uploaded, :workflow_note, :nav_date, :pdf_type, :ocr_language, :keyword, :create_date, :modified_date, :head, :tail, :start_canvas] - IIIFBookSchema.properties.map(&:name)
+    ScannedResource.properties.values.map(&:term) - %i[description state rights_statement rights_note holding_location title depositor source_metadata_identifier source_metadata date_modified date_uploaded workflow_note nav_date pdf_type ocr_language keyword create_date modified_date head tail start_canvas] - IIIFBookSchema.properties.map(&:name)
   end
 
   def self.edit_fields

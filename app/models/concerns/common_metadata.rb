@@ -10,17 +10,17 @@ module CommonMetadata
 
     # Plum
     apply_schema PlumSchema, ActiveFedora::SchemaIndexingStrategy.new(
-      ActiveFedora::Indexers::GlobalIndexer.new([:stored_searchable, :facetable, :symbol])
+      ActiveFedora::Indexers::GlobalIndexer.new(%i[stored_searchable facetable symbol])
     )
 
     # Displayable fields (stored in solr but not indexed)
     apply_schema DisplayableSchema, ActiveFedora::SchemaIndexingStrategy.new(
-      ActiveFedora::Indexers::GlobalIndexer.new([:displayable])
+      ActiveFedora::Indexers::GlobalIndexer.new(%i[displayable])
     )
 
     # IIIF
     apply_schema IIIFBookSchema, ActiveFedora::SchemaIndexingStrategy.new(
-      ActiveFedora::Indexers::GlobalIndexer.new([:stored_searchable, :symbol])
+      ActiveFedora::Indexers::GlobalIndexer.new(%i[stored_searchable symbol])
     )
 
     validate :source_metadata_identifier_or_title

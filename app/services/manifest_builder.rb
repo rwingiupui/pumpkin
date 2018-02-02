@@ -76,7 +76,7 @@ class ManifestBuilder
     end
 
     def manifest_builder_class
-      if manifest_builders.length > 0
+      if manifest_builders.length.positive?
         IIIF::Presentation::Collection.new
       else
         IIIF::Presentation::Manifest.new

@@ -72,7 +72,7 @@ RSpec.describe CurationConcerns::FileSetsController do
 
       expect(JSON.parse(response.body)).to eq(
         "@context" => "http://iiif.io/api/presentation/2/context.json",
-        "@id" => "#{parent_path}",
+        "@id" => parent_path.to_s,
         "@type" => "sc:AnnotationList",
         "resources" => [
           {

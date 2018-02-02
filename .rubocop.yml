@@ -284,68 +284,6 @@ RSpec/VoidExpect:
 Security/YAMLLoad:
   Enabled: true
 
-Style/CommentedKeyword:
-  Enabled: false
-
-Style/ConditionalAssignment:
-  Enabled: false
-
-Style/EmptyCaseCondition:
-  Enabled: false
-
-Style/EmptyLiteral:
-  Enabled: false
-
-Style/EmptyMethod:
-  Enabled: false
-
-Style/Encoding:
-  Enabled: false
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/GuardClause:
-  Enabled: false
-
-Style/IfInsideElse:
-  Enabled: false
-
-Style/InverseMethods:
-  Enabled: false
-
-Style/MethodMissing:
-  Enabled: false
-
-Style/MutableConstant:
-  Enabled: false
-
-Style/NestedParenthesizedCalls:
-  Enabled: false
-
-Style/NumericPredicate:
-  Enabled: false
-
-Style/OrAssignment:
-  Enabled: false
-
-Style/PercentLiteralDelimiters:
-  Enabled: false
-
-Style/RedundantParentheses:
-  Enabled: false
-
-Style/SafeNavigation:
-  Enabled: false
-
-Style/SymbolArray:
-  Enabled: false
-
-Style/TernaryParentheses:
-  Enabled: false
-
-Style/UnneededInterpolation:
-  Enabled: false
-
-Style/ZeroLengthPredicate:
-  Enabled: false

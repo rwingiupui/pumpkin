@@ -38,7 +38,7 @@ class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   end
 
   def full_title
-    [title, responsibility_note].map { |t| Array.wrap(t).first }.select { |t| !t.blank? }.join(' / ')
+    [title, responsibility_note].map { |t| Array.wrap(t).first }.reject(&:blank?).join(' / ')
   end
 
   def display_call_number

@@ -20,7 +20,7 @@ module IuMetadata
 
     # Used for validating metadata identifiers in URLs
     def self.bibdata?(source_metadata_id)
-      (source_metadata_id =~ /\A\w+\z/) == 0
+      (source_metadata_id =~ /\A\w+\z/)&.zero? || false
     end
 
     # Extracts the data payload from a YAZ Proxy response

@@ -43,7 +43,7 @@ class LogicalOrder
     nodes.each do |node|
       self_graph << node.to_graph
     end
-    if nodes.length > 0
+    if nodes.any?
       self_graph << [rdf_subject, RDF::Vocab::IANA.first, nodes.first.rdf_subject]
       self_graph << [rdf_subject, RDF::Vocab::IANA.last, nodes.last.rdf_subject]
     end

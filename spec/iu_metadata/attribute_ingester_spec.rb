@@ -15,7 +15,7 @@ RSpec.describe IuMetadata::AttributeIngester do
     context "with a context mapping" do
       context "without a destination" do
         let(:attributes) { { title: 'foobar' } }
-        let(:context) { Hash.new }
+        let(:context) { {} }
         let(:att_ingester) { described_class.new(id, attributes, context: context) }
         it "drops the attribute" do
           expect(att_ingester.raw_attributes['title']).to be_nil

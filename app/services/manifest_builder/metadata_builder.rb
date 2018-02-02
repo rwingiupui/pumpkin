@@ -23,7 +23,7 @@ class ManifestBuilder
       end
 
       def metadata_fields
-        PlumSchema.display_fields + [:exhibit_id, :collection] - [:has_model]
+        PlumSchema.display_fields + %i[exhibit_id collection] - %i[has_model]
       end
 
       class MetadataObject
@@ -60,11 +60,8 @@ class ManifestBuilder
 
           def wrap_href(str)
             uri = URI(str.strip)
-            if uri.is_a? URI::HTTP
-              return "<a href=\"#{uri}\">#{uri}</a>"
-            else
-              return str
-            end
+            return "<a href=\"#{uri}\">#{uri}</a>" if uri.is_a? URI::HTTP
+            return str
           rescue URI::InvalidURIError
             return str
           end

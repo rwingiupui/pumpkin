@@ -25,7 +25,7 @@ class StateBadge
   end
 
   def render_hidden
-    tag :input, id: "#{field_id}", name: field_name, type: :hidden, value: current_state
+    tag :input, id: field_id.to_s, name: field_name, type: :hidden, value: current_state
   end
 
   private

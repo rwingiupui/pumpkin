@@ -5,8 +5,7 @@ class Collection < ActiveFedora::Base
   include ::CurationConcerns::CollectionBehavior
   include CurationConcerns::BasicMetadata
 
-  def self.human_readable_short_description
-  end
+  def self.human_readable_short_description() end
 
   property :exhibit_id, predicate: ::PULTerms.exhibit_id, multiple: false do |index|
     index.as :stored_searchable, :symbol

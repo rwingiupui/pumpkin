@@ -146,7 +146,7 @@ module IuMetadata
 
       def filename(file_node)
         normalized = file_node.xpath('FileName').first&.content.to_s.downcase.sub(/\.\w{3,4}/, '')
-        if normalized.match(/^\d+$/)
+        if normalized =~ /^\d+$/
           root = source_metadata_identifier.downcase
           volume = 1
           page = normalized

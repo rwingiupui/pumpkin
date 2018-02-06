@@ -54,13 +54,13 @@ class WordBoundariesRunner
       parts.each do |part|
         sections = part.split(' ')
         sections.shift
-        if /^bbox/.match(part)
+        if /^bbox/ =~ part
           x0, y0, x1, y1 = sections
           info['x0'] = x0.to_i
           info['y0'] = y0.to_i
           info['x1'] = x1.to_i
           info['y1'] = y1.to_i
-        elsif /^x_wconf/.match(part)
+        elsif /^x_wconf/ =~ part
           c = sections.first
           info['c'] = c.to_i
         end

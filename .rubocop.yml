@@ -170,15 +170,6 @@ Naming/FileName:
 Naming/VariableNumber:
   Enabled: true
 
-Performance/HashEachMethods:
-  Enabled: false
-
-Performance/RedundantBlockCall:
-  Enabled: false
-
-Performance/RedundantMatch:
-  Enabled: false
-
 Rails/ApplicationJob:
   Enabled: false
 

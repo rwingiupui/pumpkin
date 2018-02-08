@@ -1,6 +1,6 @@
 class CompositePendingUpload
   def self.create(params, curation_concern_id, upload_set_id)
-    params.each do |_index, file_options|
+    params.each_value do |file_options|
       new(file_options, curation_concern_id, upload_set_id).save
     end
   end

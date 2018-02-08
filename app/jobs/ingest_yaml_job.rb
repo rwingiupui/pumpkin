@@ -22,7 +22,7 @@ class IngestYAMLJob < ActiveJob::Base
       @counter = IngestCounter.new
       resource = (@yaml[:volumes].present? ? MultiVolumeWork : ScannedResource).new
       if @yaml[:attributes].present?
-        @yaml[:attributes].each { |_set_name, attributes| resource.attributes = attributes }
+        @yaml[:attributes].each_value { |attributes| resource.attributes = attributes }
       end
       resource.source_metadata = @yaml[:source_metadata] if @yaml[:source_metadata].present?
 

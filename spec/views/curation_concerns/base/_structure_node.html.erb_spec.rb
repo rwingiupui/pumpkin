@@ -15,9 +15,12 @@ RSpec.describe "curation_concerns/base/_structure_node.html.erb" do
   end
   before do
     stub_blacklight_views
-    render partial: "curation_concerns/base/structure_node", locals: { node: node }
+    render partial: "curation_concerns/base/structure_node",
+           locals: { node: node }
   end
   it "displays an openseadragon tag for proxies" do
-    expect(rendered).to have_selector("*[data-modal-manifest='#{IIIFPath.new(member.id)}/info.json']")
+    expect(rendered).to have_selector(
+      "*[data-modal-manifest='#{IIIFPath.new(member.id)}/info.json']"
+    )
   end
 end

@@ -14,7 +14,10 @@ RSpec.describe HoldingLocationAuthority do
       "pickup_location" => true,
       "digital_location" => true,
       "url" => "https://libraries.indiana.edu/music",
-      "library" => { "label" => "William & Gayle Gook Music Library", "code" => "libmus" },
+      "library" => {
+        "label" => "William & Gayle Gook Music Library",
+        "code" => "libmus"
+      },
       "id" => "https://libraries.indiana.edu/music"
     }
   }

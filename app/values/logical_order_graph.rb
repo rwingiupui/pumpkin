@@ -12,7 +12,7 @@ class LogicalOrderGraph
   end
 
   # @return [Hash] The params representation of an order.
-  def to_h
+  def to_h # rubocop:disable Metrics/AbcSize
     hsh = {}
     hsh["label"] = label if label.present? && label.to_s != head_subject.to_s
     hsh["nodes"] = nodes.map(&:to_h) unless nodes.empty?
@@ -44,7 +44,10 @@ class LogicalOrderGraph
     end
 
     def ordered_list
-      @ordered_list ||= ActiveFedora::Orders::OrderedList.new(graph, node.first_ordered.first, node.last_ordered.first)
+      @ordered_list ||=
+        ActiveFedora::Orders::OrderedList.new(graph,
+                                              node.first_ordered.first,
+                                              node.last_ordered.first)
     end
 
     class Node < ActiveTriples::Resource

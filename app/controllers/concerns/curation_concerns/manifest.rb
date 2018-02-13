@@ -29,13 +29,15 @@ module CurationConcerns::Manifest
         begin
           _, document_list = search_results(params)
           curation_concern = document_list.first
-          raise CanCan::AccessDenied.new(nil, params[:action].to_sym) unless curation_concern
+          raise CanCan::AccessDenied.new(nil, params[:action].to_sym) unless
+            curation_concern
           @presenter = show_presenter.new(curation_concern, current_ability)
         end
     end
 
     def manifest_builder
-      Rails.cache.fetch("manifest/#{presenter.id}/#{ResourceIdentifier.new(presenter.id)}") do
+      Rails.cache.fetch("manifest/#{presenter.id}/" \
+                        "#{ResourceIdentifier.new(presenter.id)}") do
         PolymorphicManifestBuilder.new(presenter, ssl: request.ssl?).to_json
       end
     end

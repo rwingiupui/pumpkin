@@ -7,20 +7,23 @@ class SammelbandLogicalOrder
     @source_structure["nodes"] ||= []
   end
 
-  def to_h
-    @to_h ||= child_presenters.each_with_object(source_structure) do |presenter, hsh|
-      found_node = find_node(presenter, hsh)
-      if found_node
-        found_node.delete("proxy")
-        found_node["label"] = presenter.to_s
-        found_node["nodes"] = (presenter.logical_order["nodes"] || canvas_ids(presenter))
-      else
-        hsh["nodes"] << {
-          "label" => presenter.to_s,
-          "nodes" => (presenter.logical_order["nodes"] || canvas_ids(presenter))
-        }
+  def to_h # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    @to_h ||=
+      child_presenters.each_with_object(source_structure) do |presenter, hsh|
+        found_node = find_node(presenter, hsh)
+        if found_node
+          found_node.delete("proxy")
+          found_node["label"] = presenter.to_s
+          found_node["nodes"] = (presenter.logical_order["nodes"] ||
+            canvas_ids(presenter))
+        else
+          hsh["nodes"] << {
+            "label" => presenter.to_s,
+            "nodes" => (presenter.logical_order["nodes"] ||
+              canvas_ids(presenter))
+          }
+        end
       end
-    end
   end
 
   private

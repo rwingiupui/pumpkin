@@ -1,4 +1,5 @@
-RSpec.shared_examples "structure persister" do |resource_symbol, presenter_factory|
+RSpec.shared_examples "structure persister" \
+do |resource_symbol, presenter_factory|
   describe "#structure" do
     let(:user) { FactoryGirl.create(:user) }
     before do
@@ -30,7 +31,8 @@ RSpec.shared_examples "structure persister" do |resource_symbol, presenter_facto
     end
     it "sets @logical_order" do
       obj = double("logical order object")
-      allow_any_instance_of(presenter_factory).to receive(:logical_order_object).and_return(obj)
+      allow_any_instance_of(presenter_factory) \
+        .to receive(:logical_order_object).and_return(obj)
       get :structure, id: "1"
 
       expect(assigns(:logical_order)).to eq obj
@@ -62,7 +64,8 @@ RSpec.shared_examples "structure persister" do |resource_symbol, presenter_facto
       post :save_structure, nodes: nodes, id: resource.id, label: "TOP!"
 
       expect(response.status).to eq 200
-      expect(resource.reload.logical_order.order).to eq({ "label": "TOP!", "nodes": nodes }.with_indifferent_access)
+      expect(resource.reload.logical_order.order) \
+        .to eq({ "label": "TOP!", "nodes": nodes }.with_indifferent_access)
     end
   end
 end

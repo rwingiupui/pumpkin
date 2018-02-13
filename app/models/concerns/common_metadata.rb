@@ -9,9 +9,11 @@ module CommonMetadata
     before_update :check_state
 
     # Plum
-    apply_schema PlumSchema, ActiveFedora::SchemaIndexingStrategy.new(
-      ActiveFedora::Indexers::GlobalIndexer.new(%i[stored_searchable facetable symbol])
-    )
+    apply_schema PlumSchema,
+                 ActiveFedora::SchemaIndexingStrategy \
+      .new(ActiveFedora::Indexers::GlobalIndexer.new(%i[stored_searchable
+                                                        facetable
+                                                        symbol]))
 
     # Displayable fields (stored in solr but not indexed)
     apply_schema DisplayableSchema, ActiveFedora::SchemaIndexingStrategy.new(
@@ -31,7 +33,8 @@ module CommonMetadata
 
     def apply_remote_metadata
       if remote_data.source
-        self.source_metadata = remote_data.source.dup.try(:force_encoding, 'utf-8')
+        self.source_metadata = remote_data.source.dup.try(:force_encoding,
+                                                          'utf-8')
       end
       self.attributes = remote_data.attributes
       update_ezid if state == 'complete' && identifier
@@ -43,8 +46,8 @@ module CommonMetadata
       ReviewerMailer.notify(id, state).deliver_later
     end
 
-    # override to address issue with @delegated_attributes being in disagreement
-    # with attributes overriden by Schema inclusion
+    # override to address issue with @delegated_attributes being in
+    # disagreement with attributes overriden by Schema inclusion.
     def self.multiple?(field)
       properties[field.to_s].try(:multiple?)
     end
@@ -52,7 +55,8 @@ module CommonMetadata
     private
 
       def remote_data
-        @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
+        @remote_data ||=
+          remote_metadata_factory.retrieve(source_metadata_identifier)
       end
 
       def remote_metadata_factory
@@ -67,7 +71,8 @@ module CommonMetadata
       def source_metadata_identifier_or_title
         return if source_metadata_identifier.present? || title.present?
         errors.add(:title, "You must provide a source metadata id or a title")
-        errors.add(:source_metadata_identifier, "You must provide a source metadata id or a title")
+        errors.add(:source_metadata_identifier,
+                   "You must provide a source metadata id or a title")
       end
 
       def complete_record

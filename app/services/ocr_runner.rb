@@ -27,7 +27,8 @@ class OCRRunner
 
     def attach_ocr(filename)
       basename = File.basename(filename) if filename
-      iodec = Hydra::Derivatives::IoDecorator.new(File.open(filename, 'rb'), 'text/html', basename)
+      iodec = Hydra::Derivatives::IoDecorator.new(File.open(filename, 'rb'),
+                                                  'text/html', basename)
       Hydra::Works::AddFileToFileSet.call(resource, iodec, :extracted_text)
     end
 
@@ -51,13 +52,17 @@ class OCRRunner
     end
 
     def language
-      return try_language(:ocr_language).join("+") unless try_language(:ocr_language).blank?
-      return try_language(:language).join("+") unless try_language(:language).blank?
+      return try_language(:ocr_language).join("+") unless
+        try_language(:ocr_language).blank?
+      return try_language(:language).join("+") unless
+        try_language(:language).blank?
       "eng"
     end
 
     def try_language(field)
-      (parent.try(field) || []).reject { |lang| Tesseract.languages[lang.to_sym].nil? }
+      (parent.try(field) || []).reject do |lang|
+        Tesseract.languages[lang.to_sym].nil?
+      end
     end
 
     def parent
@@ -65,7 +70,8 @@ class OCRRunner
     end
 
     def ocr_file
-      path = PairtreeDerivativePath.derivative_path_for_reference(resource, "ocr")
+      path = PairtreeDerivativePath.derivative_path_for_reference(resource,
+                                                                  "ocr")
       URI("file://#{path}").to_s
     end
 end

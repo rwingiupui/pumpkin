@@ -1,19 +1,22 @@
-class SolrDocument
+class SolrDocument # rubocop:disable Metrics/ClassLength
   include Blacklight::Solr::Document
   # Adds CurationConcerns behaviors to the SolrDocument.
   include CurationConcerns::SolrDocumentBehavior
 
   # self.unique_key = 'id'
-  # Email uses the semantic field mappings below to generate the body of an email.
+  # Email uses the semantic field mappings below to generate the body of an
+  # email.
   SolrDocument.use_extension(Blacklight::Document::Email)
-  # SMS uses the semantic field mappings below to generate the body of an SMS email.
+  # SMS uses the semantic field mappings below to generate the body of an
+  # SMS email.
   SolrDocument.use_extension(Blacklight::Document::Sms)
 
-  # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
+  # DublinCore uses the semantic field mappings below to assemble an
+  # OAI-compliant Dublin Core document.
   # Semantic mappings of solr stored fields. Fields may be multi or
   # single valued. See Blacklight::Document::SemanticFields#field_semantics
-  # and Blacklight::Document::SemanticFields#to_semantic_values
-  # Recommendation: Use field names from Dublin Core
+  # and Blacklight::Document::SemanticFields#to_semantic_values.
+  # Recommendation: Use field names from Dublin Core.
   use_extension(Blacklight::Document::DublinCore)
 
   # Do content negotiation for AF models.
@@ -51,7 +54,8 @@ class SolrDocument
   def logical_order
     @logical_order ||=
       begin
-        JSON.parse(self[Solrizer.solr_name("logical_order", :stored_searchable)].first)
+        JSON.parse(self[Solrizer.solr_name("logical_order",
+                                           :stored_searchable)].first)
       rescue
         {}
       end
@@ -88,7 +92,8 @@ class SolrDocument
   def ocr_language
     ocr_lang = self[Solrizer.solr_name('ocr_language')]
     return ocr_lang unless ocr_lang.nil?
-    return language if language && Tesseract.languages.keys.include?(language.first.to_sym)
+    return language if
+      language && Tesseract.languages.keys.include?(language.first.to_sym)
   end
 
   def thumbnail_id
@@ -96,11 +101,13 @@ class SolrDocument
   end
 
   def height
-    self[Solrizer.solr_name('height', Solrizer::Descriptor.new(:integer, :stored))]
+    self[Solrizer.solr_name('height',
+                            Solrizer::Descriptor.new(:integer, :stored))]
   end
 
   def width
-    self[Solrizer.solr_name('width', Solrizer::Descriptor.new(:integer, :stored))]
+    self[Solrizer.solr_name('width',
+                            Solrizer::Descriptor.new(:integer, :stored))]
   end
 
   def collection
@@ -110,17 +117,22 @@ class SolrDocument
   def respond_to_missing?(meth_name, _include_private)
     if ScannedResource.properties.values.map(&:term).include?(meth_name)
       true
-    elsif ScannedResource.properties.values.map { |x| "#{x.term}_literals".to_sym }.include?(meth_name)
+    elsif ScannedResource \
+          .properties.values \
+          .map { |x| "#{x.term}_literals".to_sym }.include?(meth_name)
       true
     else
       false
     end
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def method_missing(meth_name, *args, &block)
     if ScannedResource.properties.values.map(&:term).include?(meth_name)
       self[Solrizer.solr_name(meth_name.to_s)]
-    elsif ScannedResource.properties.values.map { |x| "#{x.term}_literals".to_sym }.include?(meth_name)
+    elsif ScannedResource \
+          .properties.values \
+          .map { |x| "#{x.term}_literals".to_sym }.include?(meth_name)
       Array(self[Solrizer.solr_name(meth_name.to_s, :symbol)]).map do |x|
         if x.start_with?("{")
           JSON.parse(x)
@@ -132,6 +144,7 @@ class SolrDocument
       super
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def to_model
     @to_model ||= DummyModel.new(self['has_model_ssim'].first, id)

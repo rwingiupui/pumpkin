@@ -29,10 +29,14 @@ RSpec.describe SaveStructureJob do
   end
 
   it "logs an error" do
-    allow(work).to receive(:save).and_return(false) # Trigger some error in logical order stack.
+    allow(work).to receive(:save)
+      .and_return(false) # Trigger some error in logical order stack.
     # FIXME: The call to logger is not being detected
-    # expect(Rails.logger).to receive(:error) #.with(/^SaveStructureJob failed.*{.*}$/)
-    expect { described_class.perform_now(work, structure) }.to raise_error(ActiveFedora::RecordNotSaved)
+    # expect(Rails.logger).to receive(:error)
+    #   .with(/^SaveStructureJob failed.*{.*}$/)
+    expect { described_class.perform_now(work, structure) }.to raise_error(
+      ActiveFedora::RecordNotSaved
+    )
   end
 
   it 'locks and unlocks the work' do

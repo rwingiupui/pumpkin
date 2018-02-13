@@ -2,6 +2,7 @@ require 'faraday'
 require 'nokogiri'
 module IuMetadata
   class Client
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def self.retrieve(id, format)
       raise ArgumentError, 'Invalid id argument' unless bibdata? id
       if format == :mods
@@ -17,6 +18,7 @@ module IuMetadata
       end
       record
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     # Used for validating metadata identifiers in URLs
     def self.bibdata?(source_metadata_id)
@@ -28,7 +30,8 @@ module IuMetadata
       noko = Nokogiri::XML(src) do |config|
         config.strict.nonet.noblanks
       end
-      data = noko.xpath('/zs:searchRetrieveResponse/zs:records/zs:record/zs:recordData/child::node()').to_s
+      data = noko.xpath('/zs:searchRetrieveResponse/zs:records/zs:record' \
+      '/zs:recordData/child::node()').to_s
       data
     end
 

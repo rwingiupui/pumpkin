@@ -54,12 +54,16 @@ describe IuMetadata::MarcRecord do
     it 'respects the separator option' do
       fields = ['650']
       expected = ['International relations', 'World politics--1985-1995']
-      expect(record3.formatted_fields_as_array(fields, separator: '--')).to eq expected
+      expect(
+        record3.formatted_fields_as_array(fields, separator: '--')
+      ).to eq expected
     end
     it 'respects the codes option' do
       fields = ['650']
       expected = ['International relations', 'World politics']
-      expect(record3.formatted_fields_as_array(fields, codes: ['a'])).to eq expected
+      expect(
+        record3.formatted_fields_as_array(fields, codes: ['a'])
+      ).to eq expected
     end
   end
 
@@ -94,7 +98,9 @@ describe IuMetadata::MarcRecord do
       expect(record1.creator).to eq ['Moffat, Steven']
     end
     it 'includes the 880 version if there is one' do
-      expect(record2.creator).to eq ['Pesin, Aharon Yehoshuʻa', 'פסין, אהרן יהושע']
+      expect(record2.creator).to eq [
+        'Pesin, Aharon Yehoshuʻa', 'פסין, אהרן יהושע'
+      ]
     end
   end
 

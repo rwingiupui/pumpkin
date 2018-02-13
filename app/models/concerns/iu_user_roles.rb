@@ -22,7 +22,8 @@ module IuUserRoles
   end
 
   def music_patron?
-    campus_patron? && (Plum.config[:authorized_ldap_groups].blank? || authorized_ldap_member?)
+    campus_patron? && (Plum.config[:authorized_ldap_groups].blank? ||
+                       authorized_ldap_member?)
   end
 
   def anonymous?

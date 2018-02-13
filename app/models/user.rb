@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
   end
 
   def authorized_ldap_member?(force_update = nil)
-    if force_update == :force || authorized_membership_updated_at.nil? || authorized_membership_updated_at < Time.now - 1.day
+    if force_update == :force ||
+       authorized_membership_updated_at.nil? ||
+       authorized_membership_updated_at < Time.now - 1.day
       groups = Plum.config[:authorized_ldap_groups] || []
       self.authorized_membership = member_of_ldap_group?(groups)
       self.authorized_membership_updated_at = Time.now
@@ -56,7 +58,8 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(access_token)
-    User.where(provider: access_token.provider, uid: access_token.uid).first_or_create do |user|
+    User.where(provider: access_token.provider,
+               uid: access_token.uid).first_or_create do |user|
       user.uid = access_token.uid
       user.provider = access_token.provider
       user.username = access_token.uid

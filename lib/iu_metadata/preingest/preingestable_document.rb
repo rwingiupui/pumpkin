@@ -12,7 +12,8 @@ module IuMetadata
         state: 'final_review',
         viewing_direction: 'left-to-right',
         rights_statement: 'http://rightsstatements.org/vocab/NKC/1.0/',
-        visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+        visibility:
+          Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
       }.freeze
 
       def yaml_file
@@ -67,7 +68,8 @@ module IuMetadata
       private
 
         def remote_data
-          @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
+          @remote_data ||=
+            remote_metadata_factory.retrieve(source_metadata_identifier)
         end
 
         def remote_metadata_factory
@@ -79,11 +81,17 @@ module IuMetadata
         end
 
         def local_data
-          @local_data ||= IuMetadata::AttributeIngester.new(local_id, local_attributes, factory: resource_class)
+          @local_data ||=
+            IuMetadata::AttributeIngester.new(local_id,
+                                              local_attributes,
+                                              factory: resource_class)
         end
 
         def default_data
-          @default_data ||= IuMetadata::AttributeIngester.new(default_id, default_attributes, factory: resource_class)
+          @default_data ||=
+            IuMetadata::AttributeIngester.new(default_id,
+                                              default_attributes,
+                                              factory: resource_class)
         end
     end
   end

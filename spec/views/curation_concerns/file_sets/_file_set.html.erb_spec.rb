@@ -15,7 +15,8 @@ RSpec.describe "curation_concerns/base/_related_files.html.erb" do
     allow_any_instance_of(NilClass).to receive(:can?).and_return(true)
 
     assign(:file_set, page_presenter)
-    render partial: "curation_concerns/file_sets/file_set", locals: { file_set: page_presenter }
+    render partial: "curation_concerns/file_sets/file_set",
+           locals: { file_set: page_presenter }
   end
 
   it 'shows filename and title' do

@@ -12,7 +12,8 @@ RSpec.describe RunWordBoundariesJob do
       end
       it "logs a message" do
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")
-        expect(Rails.logger).to receive(:info).with("WordBoundaries already exists for 123")
+        expect(Rails.logger).to receive(:info) \
+          .with("WordBoundaries already exists for 123")
         job.perform('123')
       end
     end
@@ -42,7 +43,8 @@ RSpec.describe RunWordBoundariesJob do
       end
       it "logs a message and set up to run later" do
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")
-        expect(Rails.logger).to receive(:info).with("WordBoundariesJob: Preconditions not met 123")
+        expect(Rails.logger).to receive(:info) \
+          .with("WordBoundariesJob: Preconditions not met 123")
         expect(described_class).to receive(:set)
         job.perform('123')
       end

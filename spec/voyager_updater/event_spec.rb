@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe VoyagerUpdater::Event, vcr: { cassette_name: 'voyager_dump' } do
+RSpec.describe VoyagerUpdater::Event,
+               vcr: { cassette_name: 'voyager_dump' } do
   subject { described_class.new(json) }
   let(:json) do
     {
@@ -43,7 +44,8 @@ RSpec.describe VoyagerUpdater::Event, vcr: { cassette_name: 'voyager_dump' } do
 
   describe "#process!" do
     skip "updates all changed records" do
-      s = FactoryGirl.create(:scanned_resource, source_metadata_identifier: "359850")
+      s = FactoryGirl.create(:scanned_resource,
+                             source_metadata_identifier: "359850")
       subject.process!
 
       expect(s.reload.title).to eq ["Coda"]

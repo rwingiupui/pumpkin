@@ -17,7 +17,8 @@ class ManifestBuilder
     private
 
       def thumbnail_service
-        @thumbnail_service ||= thumbnail_canvas.images.first["resource"]["service"]
+        @thumbnail_service ||=
+          thumbnail_canvas.images.first["resource"]["service"]
       end
 
       def thumbnail_canvas
@@ -26,7 +27,9 @@ class ManifestBuilder
 
       def selected_thumbnail_canvas
         return nil unless record.try(:thumbnail_id)
-        canvas_builders.canvas.find { |c| c['@id'].ends_with?(record.thumbnail_id) }
+        canvas_builders.canvas.find do |c|
+          c['@id'].ends_with?(record.thumbnail_id)
+        end
       end
 
       def thumbnail_id

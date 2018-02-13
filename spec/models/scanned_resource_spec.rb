@@ -3,8 +3,14 @@
 require 'rails_helper'
 
 describe ScannedResource do
-  let(:scanned_resource) { FactoryGirl.build(:scanned_resource, source_metadata_identifier: '12345', rights_statement: 'http://rightsstatements.org/vocab/NKC/1.0/', workflow_note: ['Note 1']) }
-  let(:reloaded)         { described_class.find(scanned_resource.id) }
+  let(:scanned_resource) {
+    FactoryGirl.build(:scanned_resource,
+                      source_metadata_identifier: '12345',
+                      rights_statement:
+                      'http://rightsstatements.org/vocab/NKC/1.0/',
+                      workflow_note: ['Note 1'])
+  }
+  let(:reloaded) { described_class.find(scanned_resource.id) }
   subject { scanned_resource }
 
   describe 'has note fields' do
@@ -92,8 +98,10 @@ describe ScannedResource do
         expect(subject.attributes).to eq(original_attributes)
       end
     end
-    # FIXME: relable this section
-    context 'With a Voyager ID', vcr: { cassette_name: "bibdata", record: :new_episodes } do
+
+    # FIXME: relabel this section
+    context 'With a Voyager ID',
+            vcr: { cassette_name: "bibdata", record: :new_episodes } do
       before do
         subject.source_metadata_identifier = '2028405'
       end
@@ -101,9 +109,12 @@ describe ScannedResource do
       it 'Extracts Voyager Metadata' do
         subject.apply_remote_metadata
         expect(subject.title).to eq(['The last resort : a novel'])
-        expect(subject.resource.get_values(:title, literal: true)).to eq([RDF::Literal.new('The last resort : a novel')])
-        expect(subject.creator).to eq(['Johnson, Pamela Hansford, 1912-1981'])
-        expect(subject.publisher.sort).to eq(["St. Martin's Press", "Macmillan & co., ltd.,"].sort)
+        expect(subject.resource.get_values(:title, literal: true)) \
+          .to eq([RDF::Literal.new('The last resort : a novel')])
+        expect(subject.creator) \
+          .to eq(['Johnson, Pamela Hansford, 1912-1981'])
+        expect(subject.publisher.sort) \
+          .to eq(["St. Martin's Press", "Macmillan & co., ltd.,"].sort)
       end
 
       it 'Saves a record with extacted Voyager metadata' do
@@ -129,22 +140,26 @@ describe ScannedResource do
 
   describe "#viewing_direction" do
     it "maps to the IIIF predicate" do
-      expect(described_class.properties["viewing_direction"].predicate).to eq RDF::Vocab::IIIF.viewingDirection
+      expect(described_class.properties["viewing_direction"].predicate) \
+        .to eq RDF::Vocab::IIIF.viewingDirection
     end
   end
 
   describe "#viewing_hint" do
     it "maps to the IIIF predicate" do
-      expect(described_class.properties["viewing_hint"].predicate).to eq RDF::Vocab::IIIF.viewingHint
+      expect(described_class.properties["viewing_hint"].predicate) \
+        .to eq RDF::Vocab::IIIF.viewingHint
     end
   end
 
   describe "validations" do
     it "validates with the viewing direction validator" do
-      expect(subject._validators[nil].map(&:class)).to include ViewingDirectionValidator
+      expect(subject._validators[nil].map(&:class)) \
+        .to include ViewingDirectionValidator
     end
     it "validates with the viewing hint validator" do
-      expect(subject._validators[nil].map(&:class)).to include ViewingHintValidator
+      expect(subject._validators[nil].map(&:class)) \
+        .to include ViewingHintValidator
     end
   end
 
@@ -163,43 +178,57 @@ describe ScannedResource do
   end
 
   describe "#check_state" do
-    subject { FactoryGirl.build(:scanned_resource, source_metadata_identifier: '12345', rights_statement: 'http://rightsstatements.org/vocab/NKC/1.0/', state: 'final_review') }
+    subject {
+      FactoryGirl.build(:scanned_resource,
+                        source_metadata_identifier: '12345',
+                        rights_statement:
+                        'http://rightsstatements.org/vocab/NKC/1.0/',
+                        state: 'final_review')
+    }
     let(:complete_reviewer) { FactoryGirl.create(:complete_reviewer) }
     before do
       complete_reviewer.save
       subject.save
       allow(Ezid::Identifier).to receive(:modify).and_return(true)
     end
-    it "completes record when state changes to 'complete'", vcr: { cassette_name: "ezid" } do
+    it "completes record when state changes to 'complete'",
+       vcr: { cassette_name: "ezid" } do
       allow(subject).to receive("state_changed?").and_return true
       subject.state = 'complete'
-      expect { subject.check_state }.to change { ActionMailer::Base.deliveries.count }.by(1)
-      expect(subject.identifier).to eq 'ark:/99999/fk4445wg45' if Plum.config['ezid']['mint']
+      expect { subject.check_state } \
+        .to change { ActionMailer::Base.deliveries.count }.by(1)
+      if Plum.config['ezid']['mint']
+        expect(subject.identifier).to eq 'ark:/99999/fk4445wg45'
+      end
     end
     it "does not complete record when state doesn't change" do
       allow(subject).to receive("state_changed?").and_return false
       subject.state = 'complete'
       expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state }.not_to change { ActionMailer::Base.deliveries.count }
+      expect { subject.check_state } \
+        .not_to change { ActionMailer::Base.deliveries.count }
     end
     it "does not complete record when state isn't 'complete'" do
       subject.state = 'final_review'
       expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state }.not_to change { ActionMailer::Base.deliveries.count }
+      expect { subject.check_state } \
+        .not_to change { ActionMailer::Base.deliveries.count }
     end
     it "does not overwrite existing identifier" do
       allow(subject).to receive("state_changed?").and_return true
       subject.state = 'complete'
       subject.identifier = '1234'
       expect(subject).not_to receive("identifier=")
-      expect { subject.check_state }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      expect { subject.check_state } \
+        .to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(subject.identifier).to eq('1234')
     end
     it "does not complete the record when the state transition is invalid" do
       allow(subject).to receive("state_changed?").and_return true
       subject.state = 'pending'
       expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state }.not_to change { ActionMailer::Base.deliveries.count }
+      expect { subject.check_state } \
+        .not_to change { ActionMailer::Base.deliveries.count }
       expect(subject.identifier).to eq(nil)
     end
   end
@@ -207,7 +236,8 @@ describe ScannedResource do
   describe "#pending_uploads" do
     it "returns all pending uploads" do
       subject.save
-      pending_upload = FactoryGirl.create(:pending_upload, curation_concern_id: subject.id)
+      pending_upload = FactoryGirl.create(:pending_upload,
+                                          curation_concern_id: subject.id)
 
       expect(subject.pending_uploads).to eq [pending_upload]
     end
@@ -228,11 +258,15 @@ describe ScannedResource do
   include_examples "common metadata"
 
   describe "collection indexing" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_in_collection) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource_in_collection)
+    }
     let(:solr_doc) { scanned_resource.to_solr }
     it "indexes collection" do
-      expect(solr_doc['member_of_collections_ssim']).to eq(['Test Collection'])
-      expect(solr_doc['member_of_collection_slugs_ssim']).to eq(scanned_resource.member_of_collections.first.exhibit_id)
+      expect(solr_doc['member_of_collections_ssim']) \
+        .to eq(['Test Collection'])
+      expect(solr_doc['member_of_collection_slugs_ssim']) \
+        .to eq(scanned_resource.member_of_collections.first.exhibit_id)
     end
   end
 
@@ -248,16 +282,22 @@ describe ScannedResource do
   end
 
   describe "literal indexing" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_in_collection, title: [::RDF::Literal.new("Test", language: :fr)]) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource_in_collection,
+                         title: [::RDF::Literal.new("Test", language: :fr)])
+    }
     let(:solr_doc) { scanned_resource.to_solr }
     it "indexes literals with tags in a new field" do
       expect(solr_doc['title_tesim']).to eq ['Test']
-      expect(solr_doc['title_literals_ssim']).to eq [JSON.dump("@value" => "Test", "@language" => "fr")]
+      expect(solr_doc['title_literals_ssim']) \
+        .to eq [JSON.dump("@value" => "Test", "@language" => "fr")]
     end
   end
 
   describe "number of pages indexing" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_file) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource_with_file)
+    }
     let(:solr_doc) { scanned_resource.to_solr }
     it "indexes the number of pages" do
       expect(solr_doc['number_of_pages_isi']).to eq 1
@@ -266,7 +306,9 @@ describe ScannedResource do
   end
 
   describe "date_created indexing" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, date_created: ['2016']) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource, date_created: ['2016'])
+    }
     let(:solr_doc) { scanned_resource.to_solr }
     it "indexes date_created as an integer" do
       expect(solr_doc['date_created_isi']).to eq 2016
@@ -274,7 +316,9 @@ describe ScannedResource do
   end
 
   describe "sortable title" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, title: ['ABC']) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource, title: ['ABC'])
+    }
     let(:solr_doc) { scanned_resource.to_solr }
     it "indexes title as a sortable solr field" do
       expect(solr_doc['sort_title_ssi']).to eq 'ABC'

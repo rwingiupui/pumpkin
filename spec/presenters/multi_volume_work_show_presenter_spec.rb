@@ -12,7 +12,8 @@ RSpec.describe MultiVolumeWorkShowPresenter do
         resource.save
       end
       it "returns appropriate presenters for both" do
-        expect(subject.member_presenters.map(&:class)).to contain_exactly(ScannedResourceShowPresenter, FileSetPresenter)
+        expect(subject.member_presenters.map(&:class)) \
+          .to contain_exactly(ScannedResourceShowPresenter, FileSetPresenter)
       end
     end
   end

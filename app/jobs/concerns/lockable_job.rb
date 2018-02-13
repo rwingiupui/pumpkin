@@ -1,14 +1,16 @@
 module LockableJob
   extend ActiveSupport::Concern
 
-  def self.prepended(mod)
+  def self.prepended(mod) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     mod.class_eval do
       before_enqueue do |job|
         job.arguments << { lock_info: job_subject(job).lock }
       end
 
       before_perform do |job|
-        job.arguments << { lock_info: job_subject(job).lock } unless lock_info?(job.arguments)
+        unless lock_info?(job.arguments)
+          job.arguments << { lock_info: job_subject(job).lock }
+        end
       end
 
       after_perform do |job|
@@ -22,7 +24,8 @@ module LockableJob
     super(*args)
   end
 
-  # Default behavior assumes the first argument of the extended job is an actual object that includes ExtraLockable
+  # Default behavior assumes the first argument of the extended job is an
+  # actual object that includes ExtraLockable.
   def job_subject(job)
     if defined?(super)
       super

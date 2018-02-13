@@ -35,6 +35,8 @@ class CollectionsController < ApplicationController
     end
 
     def all_manifests_builder
-      AllCollectionsManifestBuilder.new(nil, ability: current_ability, ssl: request.ssl?)
+      AllCollectionsManifestBuilder.new(nil,
+                                        ability: current_ability,
+                                        ssl: request.ssl?)
     end
 end

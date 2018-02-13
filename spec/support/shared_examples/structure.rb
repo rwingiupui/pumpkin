@@ -69,7 +69,8 @@ RSpec.shared_examples "structural metadata" do
     it "marshals logical order into solr" do
       subject.logical_order.order = params
       subject.save
-      expect(subject.to_solr["logical_order_tesim"]).to eq [subject.logical_order.order.to_json]
+      expect(subject.to_solr["logical_order_tesim"]) \
+        .to eq [subject.logical_order.order.to_json]
     end
     it "indexes the headings into the solr record" do
       subject.logical_order.order = params2
@@ -88,13 +89,16 @@ RSpec.shared_examples "structural metadata" do
       subject.logical_order.order = params
       subject.save
 
-      expect(subject.reload.logical_order.order).to eq params.with_indifferent_access
+      expect(subject.reload.logical_order.order) \
+        .to eq params.with_indifferent_access
     end
     it "can have order pulled out of solr" do
       subject.logical_order.order = params
       subject.save
 
-      doc = SolrDocument.new(ActiveFedora::SolrService.query("id:#{subject.id}").first)
+      doc =
+        SolrDocument.new(ActiveFedora::SolrService.query("id:#{subject.id}") \
+                           .first)
       expect(doc.logical_order).to eq subject.logical_order.order
     end
     it "has no order by default" do
@@ -107,7 +111,8 @@ RSpec.shared_examples "structural metadata" do
       subject.logical_order.order = params2
       subject.save
 
-      expect(subject.reload.logical_order.order).to eq params2.with_indifferent_access
+      expect(subject.reload.logical_order.order) \
+        .to eq params2.with_indifferent_access
     end
   end
 end

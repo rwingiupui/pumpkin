@@ -10,7 +10,10 @@ class LogicalOrder
   # @example
   #   LogicalOrder.new({"nodes": [ { "proxy": "a" } ]},
   #     RDF::URI("http://test.com"), LogicalOrder)
-  def initialize(order_hash = {}, rdf_subject = nil, node_class = LogicalOrder, top = true)
+  def initialize(order_hash = {},
+                 rdf_subject = nil,
+                 node_class = LogicalOrder,
+                 top = true)
     @order_hash = order_hash.with_indifferent_access
     @rdf_subject = RDF::URI(rdf_subject.to_s) if rdf_subject
     @node_class = node_class
@@ -36,7 +39,7 @@ class LogicalOrder
 
   # @return [::RDF::Graph] Ordered graph representation of the given ordered
   #   hash.
-  def to_graph
+  def to_graph # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     self_graph = ordered_list.to_graph
     self_graph = ActiveTriples::Resource.new(rdf_subject, data: self_graph)
     self_graph << [rdf_subject, RDF::Vocab::RDFS.label, label] if label
@@ -44,8 +47,12 @@ class LogicalOrder
       self_graph << node.to_graph
     end
     if nodes.any?
-      self_graph << [rdf_subject, RDF::Vocab::IANA.first, nodes.first.rdf_subject]
-      self_graph << [rdf_subject, RDF::Vocab::IANA.last, nodes.last.rdf_subject]
+      self_graph << [rdf_subject,
+                     RDF::Vocab::IANA.first,
+                     nodes.first.rdf_subject]
+      self_graph << [rdf_subject,
+                     RDF::Vocab::IANA.last,
+                     nodes.last.rdf_subject]
     end
     self_graph
   end
@@ -83,7 +90,8 @@ class LogicalOrder
     def ordered_list
       @ordered_list ||=
         begin
-          o = ActiveFedora::Orders::OrderedList.new(::ActiveTriples::Resource.new, nil, nil)
+          o = ActiveFedora::Orders::OrderedList \
+              .new(::ActiveTriples::Resource.new, nil, nil)
           nodes.each do |node|
             o.insert_proxy_for_at(o.length, node.proxy_for)
             node.rdf_subject = o.last.rdf_subject

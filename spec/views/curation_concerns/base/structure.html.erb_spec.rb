@@ -26,11 +26,21 @@ RSpec.describe "curation_concerns/base/structure" do
   end
 
   def build_file_set(id:, to_s:)
-    i = instance_double(FileSetPresenter, id: id, thumbnail_id: id, to_s: to_s, collection?: false)
-    allow(IIIFPath).to receive(:new).with(id).and_return(double(thumbnail: nil))
+    i = instance_double(FileSetPresenter,
+                        id: id,
+                        thumbnail_id: id,
+                        to_s: to_s,
+                        collection?: false)
+    allow(IIIFPath).to receive(:new).with(id) \
+                                    .and_return(double(thumbnail: nil))
     i
   end
-  let(:scanned_resource) { ScannedResourceShowPresenter.new(SolrDocument.new(ScannedResource.new(id: "test").to_solr), nil) }
+
+  let(:scanned_resource) {
+    ScannedResourceShowPresenter.new(
+      SolrDocument.new(ScannedResource.new(id: "test").to_solr), nil
+    )
+  }
   before do
     stub_blacklight_views
     assign(:logical_order, logical_order)
@@ -53,10 +63,16 @@ RSpec.describe "curation_concerns/base/structure" do
     expect(rendered).to have_selector("li[data-proxy='b']")
   end
   context "when given a multi volume work" do
-    let(:scanned_resource) { MultiVolumeWorkShowPresenter.new(SolrDocument.new(MultiVolumeWork.new(id: "test").to_solr), nil) }
+    let(:scanned_resource) {
+      MultiVolumeWorkShowPresenter.new(
+        SolrDocument.new(MultiVolumeWork.new(id: "test").to_solr), nil
+      )
+    }
     it "renders" do
       expect(rendered).to have_selector("li", count: 5)
-      expect(rendered).to have_selector("*[data-class-name='multi_volume_works']")
+      expect(rendered).to have_selector(
+        "*[data-class-name='multi_volume_works']"
+      )
     end
   end
 end

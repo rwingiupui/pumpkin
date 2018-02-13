@@ -17,7 +17,8 @@ RSpec.describe User, type: :model do
   describe "#campus_patron?" do
     context "when logged in from CAS" do
       subject do
-        described_class.from_omniauth(OpenStruct.new(provider: "cas", uid: "testuser"))
+        described_class.from_omniauth(OpenStruct.new(provider: "cas",
+                                                     uid: "testuser"))
       end
       it "is true" do
         expect(subject).to be_campus_patron

@@ -7,7 +7,11 @@ RSpec.describe ScannedResourceShowPresenter do
   let(:state) { "pending" }
   let(:title) { "test title" }
   let(:solr_document) do
-    instance_double(SolrDocument, date_created: date_created, state: state, id: "test", title: title)
+    instance_double(SolrDocument,
+                    date_created: date_created,
+                    state: state,
+                    id: "test",
+                    title: title)
   end
   let(:ability) { nil }
 
@@ -24,20 +28,24 @@ RSpec.describe ScannedResourceShowPresenter do
 
   describe "#pending_uploads" do
     it "finds all pending uploads" do
-      pending_upload = FactoryGirl.create(:pending_upload, curation_concern_id: solr_document.id)
+      pending_upload =
+        FactoryGirl.create(:pending_upload,
+                           curation_concern_id: solr_document.id)
       expect(subject.pending_uploads).to eq [pending_upload]
     end
   end
 
   describe "#logical_order_object" do
     before do
-      allow(solr_document).to receive(:logical_order).and_return("nodes": [{ label: "Chapter 1", proxy: "test" }])
+      allow(solr_document).to receive(:logical_order) \
+        .and_return("nodes": [{ label: "Chapter 1", proxy: "test" }])
     end
     it "returns a logical order object" do
       expect(subject.logical_order_object.nodes.length).to eq 1
     end
     it "returns decorated nodes" do
-      expect(subject.logical_order_object.nodes.first).to respond_to :proxy_for_object
+      expect(subject.logical_order_object.nodes.first) \
+        .to respond_to :proxy_for_object
     end
   end
 

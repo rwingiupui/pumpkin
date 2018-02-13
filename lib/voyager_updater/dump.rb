@@ -30,7 +30,10 @@ module VoyagerUpdater
 
       def run_query(query, args)
         args = args.merge(qt: 'standard')
-        result = ActiveFedora::SolrService.instance.conn.post(ActiveFedora::SolrService.select_path, params: args, data: { q: query })
+        result = ActiveFedora::SolrService \
+                 .instance.conn.post(ActiveFedora::SolrService.select_path,
+                                     params: args,
+                                     data: { q: query })
         result['response']['docs']
       end
 

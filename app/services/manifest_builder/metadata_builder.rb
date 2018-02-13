@@ -12,9 +12,10 @@ class ManifestBuilder
 
     private
 
-      def metadata_objects
+      def metadata_objects # rubocop:disable Metrics/AbcSize
         metadata_fields.map do |field|
-          if record.respond_to?("#{field}_literals") && record.try("#{field}_literals").present?
+          if record.respond_to?("#{field}_literals") &&
+             record.try("#{field}_literals").present?
             MetadataObject.new(field, record.try("#{field}_literals")).to_h
           elsif record.respond_to?(field)
             MetadataObject.new(field, record.try(field)).to_h
@@ -67,7 +68,9 @@ class ManifestBuilder
           end
 
           def renderer
-            @renderer ||= CurationConcerns::Renderers::AttributeRenderer.new(field_name, values)
+            @renderer ||=
+              CurationConcerns::Renderers::AttributeRenderer.new(field_name,
+                                                                 values)
           end
       end
   end

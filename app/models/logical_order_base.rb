@@ -4,7 +4,7 @@ class LogicalOrderBase < ActiveFedora::Base
   property :head, predicate: ::RDF::Vocab::IANA['first'], multiple: false
   property :tail, predicate: ::RDF::Vocab::IANA.last, multiple: false
 
-  def order=(order)
+  def order=(order) # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     nodes_will_change!
     head_will_change!
     tail_will_change!
@@ -12,7 +12,9 @@ class LogicalOrderBase < ActiveFedora::Base
     order = LogicalOrder.new(order, ::RDF::URI(rdf_subject))
     graph = order.to_graph
     # Delete old statements
-    subj = resource.subjects.to_a.select { |x| x.to_s.split("/").last.to_s.include?("#g") }
+    subj = resource.subjects.to_a.select do |x|
+      x.to_s.split("/").last.to_s.include?("#g")
+    end
     subj.each do |s|
       resource.delete [s, nil, nil]
     end

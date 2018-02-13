@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe ScannedResourcePDF::CanvasDownloader, vcr: { cassette_name: "iiif_manifest" } do
+RSpec.describe ScannedResourcePDF::CanvasDownloader,
+               vcr: { cassette_name: "iiif_manifest" } do
   subject { described_class.new(canvas) }
   let(:canvas) do
     c = instance_double ScannedResourcePDF::Canvas
@@ -9,7 +10,9 @@ RSpec.describe ScannedResourcePDF::CanvasDownloader, vcr: { cassette_name: "iiif
     allow(c).to receive(:height).and_return(height)
     c
   end
-  let(:path) { "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2" }
+  let(:path) {
+    "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2"
+  }
   let(:width) { 700 }
   let(:height) { 800 }
   describe "#layout" do

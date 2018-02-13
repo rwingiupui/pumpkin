@@ -1,10 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe METSDocument do
-  let(:mets_file) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4612596.mets") }
-  let(:mets_file_rtl) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0032-ns73.mets") }
-  let(:mets_file_multi) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4609321-s42.mets") }
-  let(:tiff_file) { Rails.root.join("spec", "fixtures", "files", "color.tif") }
+  let(:mets_file) {
+    Rails.root.join("spec", "fixtures", "pudl_mets",
+                    "pudl0001-4612596.mets")
+  }
+  let(:mets_file_rtl) {
+    Rails.root.join("spec", "fixtures", "pudl_mets",
+                    "pudl0032-ns73.mets")
+  }
+  let(:mets_file_multi) {
+    Rails.root.join("spec", "fixtures", "pudl_mets",
+                    "pudl0001-4609321-s42.mets")
+  }
+  let(:tiff_file) {
+    Rails.root.join("spec", "fixtures", "files", "color.tif")
+  }
   let(:structure) {
     {
       nodes: [
@@ -70,11 +81,13 @@ RSpec.describe METSDocument do
     end
 
     it "has marks a file not present in the structMap as non-paged" do
-      expect(subject.file_opts(subject.files.last)).to eq(viewing_hint: 'non-paged')
+      expect(subject.file_opts(subject.files.last)) \
+        .to eq(viewing_hint: 'non-paged')
     end
 
     it "has a decorated file" do
-      decorated = subject.decorated_file(path: tiff_file, mime_type: 'image/tiff')
+      decorated = subject.decorated_file(path: tiff_file,
+                                         mime_type: 'image/tiff')
       expect(decorated.mime_type).to eq('image/tiff')
       expect(decorated.original_filename).to eq('color.tif')
     end
@@ -140,7 +153,8 @@ RSpec.describe METSDocument do
         expect(subject.files_for_volume('phys1').length).to eq 3
       end
 
-      it "builds a label for a file from hierarchy (but does not include volume label)" do
+      it "builds a label for a file from hierarchy" \
+         " (but does not include volume label)" do
         expect(subject.file_label('l898s')).to eq('upper cover. pastedown')
       end
     end

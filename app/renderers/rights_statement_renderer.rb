@@ -1,18 +1,22 @@
-class RightsStatementRenderer < CurationConcerns::Renderers::RightsAttributeRenderer
+class RightsStatementRenderer <
+    CurationConcerns::Renderers::RightsAttributeRenderer
   def initialize(rights_statement, rights_note, options = {})
     super(:rights, rights_statement, options)
-    @rights_note = rights_note if !rights_note.nil? && RightsStatementService.notable?(rights_statement)
+    @rights_note = rights_note if
+      !rights_note.nil? && RightsStatementService.notable?(rights_statement)
     @rights_note ||= []
   end
 
-  def render
+  def render # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     markup = ''
 
     return markup if !values.present? && !options[:include_empty]
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
-    attributes = microdata_object_attributes(field).merge(class: "attribute #{field}")
+    attributes = microdata_object_attributes(field) \
+                 .merge(class: "attribute #{field}")
     Array(values).each do |value|
-      markup << "<li#{html_attributes(attributes)}>#{attribute_value_to_html(value.to_s)}</li>"
+      markup << "<li#{html_attributes(attributes)}>" \
+      "#{attribute_value_to_html(value.to_s)}</li>"
     end
     markup << %(</ul>)
     markup << simple_format(RightsStatementService.definition(values.first))

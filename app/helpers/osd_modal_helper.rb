@@ -3,7 +3,10 @@ module OsdModalHelper
     if !id
       block.call # rubocop:disable Performance/RedundantBlockCall
     else
-      content_tag :span, class: 'ignore-select', data: { modal_manifest: "#{IIIFPath.new(id)}/info.json" }, &block
+      content_tag(:span,
+                  class: 'ignore-select',
+                  data: { modal_manifest: "#{IIIFPath.new(id)}/info.json" },
+                  &block)
     end
   end
 end

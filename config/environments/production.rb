@@ -1,5 +1,6 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in
+  # config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -31,17 +32,19 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
-  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
-  # yet still be able to expire them through the digest params.
+  # Asset digests allow you to set far-future HTTP expiration dates on all
+  # assets, yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # `config.assets.precompile` and `config.assets.version` have moved to
+  # config/initializers/assets.rb
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies.
   # config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
@@ -56,18 +59,22 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :mem_cache_store, { namespace: ENV["RAILS_MEMCACHE_NAMESPACE"] || '', compress: true }
+  config.cache_store = :mem_cache_store,
+                       { namespace: ENV["RAILS_MEMCACHE_NAMESPACE"] ||
+                         '', compress: true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
   # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  # Set this to true and configure the email server for immediate delivery
+  # to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: ENV["PMP_MAILER_URL"] || 'localhost' }
+  config.action_mailer.default_url_options =
+    { host: ENV["PMP_MAILER_URL"] || 'localhost' }
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
+  # Enable locale fallbacks for I18n (makes lookups for any locale fall back
+  # to the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.

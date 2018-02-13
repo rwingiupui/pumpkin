@@ -3,7 +3,8 @@ FactoryGirl.define do
     title ["Test title"]
     source_metadata_identifier "1234567"
     rights_statement "http://rightsstatements.org/vocab/NKC/1.0/"
-    description "900 years of time and space, and I’ve never been slapped by someone’s mother."
+    description "900 years of time and space, and I’ve never been slapped" \
+    " by someone’s mother."
     visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
     state "complete"
     pdf_type ["gray"]
@@ -18,11 +19,13 @@ FactoryGirl.define do
 
     # https://github.com/projecthydra/hydra-head/blob/master/hydra-access-controls/app/models/concerns/hydra/access_controls/access_right.rb
     factory :campus_only_scanned_resource do
-      visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
+      visibility \
+        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED
     end
 
     factory :private_scanned_resource do
-      visibility Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+      visibility \
+        Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
     end
 
     factory :open_scanned_resource do
@@ -39,7 +42,8 @@ FactoryGirl.define do
 
     factory :scanned_resource_in_collection do
       after(:create) do |scanned_resource, evaluator|
-        scanned_resource.member_of_collections = [FactoryGirl.create(:collection, user: evaluator.user)]
+        scanned_resource.member_of_collections =
+          [FactoryGirl.create(:collection, user: evaluator.user)]
         scanned_resource.save
       end
     end

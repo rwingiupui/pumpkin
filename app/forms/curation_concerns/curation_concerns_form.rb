@@ -1,6 +1,20 @@
 module CurationConcerns
   class CurationConcernsForm < CurationConcerns::Forms::WorkForm
-    self.terms += %i[holding_location rights_statement rights_note source_metadata_identifier portion_note description state workflow_note collection_ids ocr_language nav_date pdf_type start_canvas]
+    self.terms += %i[
+      holding_location
+      rights_statement
+      rights_note
+      source_metadata_identifier
+      portion_note
+      description
+      state
+      workflow_note
+      collection_ids
+      ocr_language
+      nav_date
+      pdf_type
+      start_canvas
+    ]
     delegate :collection_ids, to: :model
 
     def notable_rights_statement?

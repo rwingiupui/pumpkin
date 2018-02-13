@@ -3,7 +3,8 @@ module Processors
     include Hydra::Derivatives::Processors::ShellBasedProcessor
     class << self
       def encode(path, options, output_file)
-        execute "tesseract #{path} #{output_file.gsub('.hocr', '')} #{options[:options]} hocr"
+        execute "tesseract #{path} #{output_file.gsub('.hocr', '')}" \
+        " #{options[:options]} hocr"
       end
     end
 

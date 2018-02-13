@@ -12,19 +12,23 @@ class METSDocument
   end
 
   def bib_id
-    @mets.xpath("/mets:mets/mets:dmdSec/mets:mdRef/@xlink:href").to_s.gsub(/.*\//, '')
+    @mets.xpath("/mets:mets/mets:dmdSec/mets:mdRef/@xlink:href") \
+         .to_s.gsub(/.*\//, '')
   end
 
   def collection_slugs
-    @mets.xpath("/mets:mets/mets:structMap[@TYPE='RelatedObjects']//mets:div[@TYPE='IsPartOf']/@CONTENTIDS").to_s
+    @mets.xpath("/mets:mets/mets:structMap[@TYPE='RelatedObjects']" \
+                "//mets:div[@TYPE='IsPartOf']/@CONTENTIDS").to_s
   end
 
   def pudl_id
-    @mets.xpath("/mets:mets/mets:metsHdr/mets:metsDocumentID").first.content.gsub(/\.mets/, '')
+    @mets.xpath("/mets:mets/mets:metsHdr/mets:metsDocumentID")
+         .first.content.gsub(/\.mets/, '')
   end
 
   def thumbnail_path
-    xp = "/mets:mets/mets:fileSec/mets:fileGrp[@USE='thumbnail']/mets:file/mets:FLocat/@xlink:href"
+    xp = "/mets:mets/mets:fileSec/mets:fileGrp[@USE='thumbnail']" \
+    "/mets:file/mets:FLocat/@xlink:href"
     @mets.xpath(xp).to_s.gsub(/file:\/\//, '')
   end
 
@@ -33,7 +37,8 @@ class METSDocument
   end
 
   def right_to_left
-    @mets.xpath("/mets:mets/mets:structMap[@TYPE='Physical']/mets:div/@TYPE").to_s.start_with? 'RTL'
+    @mets.xpath("/mets:mets/mets:structMap[@TYPE='Physical']/mets:div/@TYPE") \
+         .to_s.start_with? 'RTL'
   end
 
   def multi_volume?
@@ -47,18 +52,22 @@ class METSDocument
   end
 
   def label_for_volume(volume_id)
-    volume_node = volume_nodes.find { |vol| vol.attribute("ID").value == volume_id }
+    volume_node = volume_nodes.find do |vol|
+      vol.attribute("ID").value == volume_id
+    end
     return volume_node.attribute("LABEL").value if volume_node
   end
 
   def files_for_volume(volume_id)
-    @mets.xpath("//mets:div[@ID='#{volume_id}']//mets:fptr/@FILEID").map do |file_id|
+    @mets.xpath("//mets:div[@ID='#{volume_id}']//mets:fptr/@FILEID") \
+         .map do |file_id|
       file_info(@mets.xpath("//mets:file[@ID='#{file_id.value}']"))
     end
   end
 
   def files
-    @mets.xpath("/mets:mets/mets:fileSec/mets:fileGrp[@USE='masters']/mets:file").map do |f|
+    @mets.xpath("/mets:mets/mets:fileSec/mets:fileGrp[@USE='masters']" \
+                "/mets:file").map do |f|
       file_info(f)
     end
   end
@@ -73,18 +82,23 @@ class METSDocument
   end
 
   def file_opts(file)
-    return {} if @mets.xpath("count(//mets:div/mets:fptr[@FILEID='#{file[:id]}'])").to_i.positive?
+    return {} if
+      @mets.xpath("count(//mets:div/mets:fptr[@FILEID='#{file[:id]}'])") \
+           .to_i.positive?
     { viewing_hint: 'non-paged' }
   end
 
   def decorated_file(f)
-    IoDecorator.new(File.open(f[:path]), f[:mime_type], File.basename(f[:path]))
+    IoDecorator.new(File.open(f[:path]),
+                    f[:mime_type],
+                    File.basename(f[:path]))
   end
 
   private
 
     def volume_nodes
-      xp = "/mets:mets/mets:structMap[@TYPE='Physical']/mets:div[@TYPE='MultiVolumeSet']/mets:div"
+      xp = "/mets:mets/mets:structMap[@TYPE='Physical']" \
+      "/mets:div[@TYPE='MultiVolumeSet']/mets:div"
       @volume_nodes ||= @mets.xpath(xp)
     end
 end

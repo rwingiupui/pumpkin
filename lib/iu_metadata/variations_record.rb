@@ -10,7 +10,13 @@ module IuMetadata
     attr_reader :id, :source
 
     # standard metadata
-    ATTRIBUTES = %i[source_metadata_identifier holding_location physical_description copyright_holder].freeze
+    ATTRIBUTES = %i[
+      source_metadata_identifier
+      holding_location
+      physical_description
+      copyright_holder
+    ].freeze
+
     def attributes
       Hash[ATTRIBUTES.map { |att| [att, send(att)] }]
     end
@@ -32,11 +38,13 @@ module IuMetadata
     end
 
     def physical_description
-      @variations.xpath("//Container/DocumentInfos/DocumentInfo[Type='Score']/Description").first&.content.to_s
+      @variations.xpath("//Container/DocumentInfos/DocumentInfo" \
+      "[Type='Score']/Description").first&.content.to_s
     end
 
     def copyright_holder
-      @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner").map(&:content)
+      @variations.xpath("//Container/CopyrightDecls/CopyrightDecl/Owner") \
+                 .map(&:content)
     end
 
     # default metadata
@@ -86,10 +94,11 @@ module IuMetadata
       end
 
       def items
-        @items ||= @variations.xpath('/ScoreAccessPage/RecordSet/Container/Structure/Item')
+        @items ||= @variations.xpath('/ScoreAccessPage/RecordSet/Container' \
+                                     '/Structure/Item')
       end
 
-      def parse
+      def parse # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
         @files = []
         @variations.xpath('//FileInfos/FileInfo').each do |file|
           @files << file_hash(file)
@@ -115,6 +124,7 @@ module IuMetadata
       end
 
       # builds structure hash AND update file list with titles
+      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       def structure_to_array(xml_node)
         array = []
         xml_node.xpath('child::*').each do |child|
@@ -133,6 +143,7 @@ module IuMetadata
         end
         array
       end
+      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
       def file_hash(file_node)
         values_hash = {}
@@ -145,7 +156,8 @@ module IuMetadata
       end
 
       def filename(file_node)
-        normalized = file_node.xpath('FileName').first&.content.to_s.downcase.sub(/\.\w{3,4}/, '')
+        normalized = file_node.xpath('FileName').first&.content.to_s \
+                              .downcase.sub(/\.\w{3,4}/, '')
         if normalized =~ /^\d+$/
           root = source_metadata_identifier.downcase
           volume = 1
@@ -159,7 +171,8 @@ module IuMetadata
       def file_attributes(_file_node, file_hash)
         att_hash = {}
         att_hash[:title] = ['TITLE MISSING'] # replaced later
-        att_hash[:source_metadata_identifier] = file_hash[:id].gsub(/\.\w{3,4}$/, '').upcase
+        att_hash[:source_metadata_identifier] =
+          file_hash[:id].gsub(/\.\w{3,4}$/, '').upcase
         att_hash
       end
   end

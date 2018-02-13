@@ -22,10 +22,14 @@ RSpec.describe VoyagerUpdater::Dump, vcr: { cassette_name: "voyager_dump" } do
         expect(subject.ids_needing_updated).to eq []
       end
     end
-    context "when there are records with a matching source metadata identifier" do
+    context(
+      "when there are records with a matching source metadata identifier"
+    ) do
       it "returns their record IDs" do
-        s = FactoryGirl.create(:scanned_resource, source_metadata_identifier: "359850")
-        s2 = FactoryGirl.create(:scanned_resource, source_metadata_identifier: "9567836")
+        s = FactoryGirl.create(:scanned_resource,
+                               source_metadata_identifier: "359850")
+        s2 = FactoryGirl.create(:scanned_resource,
+                                source_metadata_identifier: "9567836")
         expect(subject.ids_needing_updated).to eq [s.id, s2.id]
       end
     end

@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
   subject { described_class.new(presenter) }
   let(:resource) do
-    r = FactoryGirl.build(:scanned_resource, id: "test", holding_location: "https://libraries.indiana.edu/music")
+    r = FactoryGirl.build(:scanned_resource,
+                          id: "test",
+                          holding_location:
+                          "https://libraries.indiana.edu/music")
     r.ordered_members << file_set
     r.ordered_members << file_set2
     r.logical_order.order = order
@@ -28,11 +31,15 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
   end
 
   def build_file_set(id:, content:, title: nil)
-    f = FactoryGirl.build(:file_set, content: content, id: id, title: Array.wrap(title))
+    f = FactoryGirl.build(:file_set,
+                          content: content,
+                          id: id,
+                          title: Array.wrap(title))
     solr.add f.to_solr
     solr.commit
     f
   end
+
   let(:file) { fixture("files/color.tif") }
   let(:file2) { fixture("files/color-landscape.tif") }
 
@@ -44,9 +51,11 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
 
   describe "#render" do
     let(:path) { Rails.root.join("tmp", "fixture_pdf.pdf") }
+
     after do
       FileUtils.rm_f(path) if File.exist?(path)
     end
+
     it "renders a PDF to a path" do
       file = subject.render(path)
       expect(file).not_to eq false
@@ -59,6 +68,7 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
       expect(pdf_reader.info[:Title]).to eq "Leonardo's Book é 祝 ي"
       expect(pdf_reader.info[:Description]).to eq "All about Leonardo."
     end
+
     it "doesn't re-render if it exists already" do
       allow(File).to receive(:exist?).and_call_original
       allow(File).to receive(:exist?).with(path).and_return(true)
@@ -69,6 +79,7 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
       expect(file).to eq "test"
       expect(ScannedResourcePDF::Renderer).not_to have_received(:new)
     end
+
     context "when there's an order" do
       let(:order) do
         {
@@ -114,11 +125,17 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
         # First element of Chapter 1a is Page 1
         expect(referenced_object(@section1a[:First])).to eql @page1
       end
+
+      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       def render_and_find_objects
         output = StringIO.new(@pdf.render, 'r+')
         @hash = PDF::Reader::ObjectHash.new(output)
-        @outline_root = @hash.values.find { |obj| obj.is_a?(Hash) && obj[:Type] == :Outlines }
-        @pages = @hash.values.find { |obj| obj.is_a?(Hash) && obj[:Type] == :Pages }[:Kids]
+        @outline_root = @hash.values.find {
+          |obj| obj.is_a?(Hash) && obj[:Type] == :Outlines
+        }
+        @pages = @hash.values.find {
+          |obj| obj.is_a?(Hash) && obj[:Type] == :Pages
+        }[:Kids]
         @section1 = find_by_title('Chapter 1')
         @page1 = find_by_title('Page 1')
         @section1a = find_by_title('Chapter 1a')
@@ -126,8 +143,9 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
         @page2 = find_by_title('Page 2')
       end
 
-      # Outline titles are stored as UTF-16. This method accepts a UTF-8 outline title
-      # and returns the PDF Object that contains an outline with that name
+      # Outline titles are stored as UTF-16. This method accepts a UTF-8
+      # outline title and returns the PDF Object that contains an outline
+      # with that name.
       def find_by_title(title)
         @hash.values.find { |obj|
           next unless obj.is_a?(Hash) && obj[:Title]
@@ -142,14 +160,19 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
         @hash[reference]
       end
     end
+
     describe "#canvas_images" do
       let(:renderer) { ScannedResourcePDF::Renderer.new(subject, path) }
       it "returns all the IIIF ids of canvas images" do
-        expect(renderer.canvas_images.map(&:url)).to eq [
-          "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2",
-          "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fm-intermediate_file.jp2"
-        ]
+        expect(renderer.canvas_images.map(&:url)).to eq \
+          [
+            "http://192.168.99.100:5004" \
+            "/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2",
+            "http://192.168.99.100:5004" \
+            "/x6%2F33%2Ff1%2F04%2Fm-intermediate_file.jp2"
+          ]
       end
+
       it "has width and height" do
         expect(renderer.canvas_images.first.height).to eq 287
         expect(renderer.canvas_images.first.width).to eq 200

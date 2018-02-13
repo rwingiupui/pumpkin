@@ -28,7 +28,8 @@ RSpec.describe "curation_concerns/base/_attributes.html.erb" do
     allow(presenter).to receive(:member_of_collections).and_return([])
 
     assign(:presenter, presenter)
-    allow(view).to receive(:can?).with(:edit, presenter.id).and_return(can_edit)
+    allow(view).to receive(:can?).with(:edit, presenter.id) \
+                                 .and_return(can_edit)
     render
   end
 
@@ -69,6 +70,9 @@ RSpec.describe "curation_concerns/base/_attributes.html.erb" do
   end
 
   def assert_catalog_link(field, value)
-    expect(rendered).to have_link(value, href: search_catalog_path(search_field: field, q: value))
+    expect(rendered).to have_link(
+      value,
+      href: search_catalog_path(search_field: field, q: value)
+    )
   end
 end

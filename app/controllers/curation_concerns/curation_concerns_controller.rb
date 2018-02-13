@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class CurationConcerns::CurationConcernsController < ApplicationController
   include CurationConcerns::CurationConcernController
   include CurationConcerns::Manifest
@@ -11,12 +12,18 @@ class CurationConcerns::CurationConcernsController < ApplicationController
   end
 
   def update
-    authorize!(:complete, curation_concern, message: 'Unable to mark resource complete') if curation_concern.state != 'complete' && params[curation_concern_name][:state] == 'complete'
+    if curation_concern.state != 'complete' &&
+       params[curation_concern_name][:state] == 'complete'
+      authorize!(:complete, curation_concern,
+                 message: 'Unable to mark resource complete')
+    end
     super
   end
 
   def alphabetize_members
-    @sorted = curation_concern.members.sort { |x, y| x.label.to_s <=> y.label.to_s }
+    @sorted = curation_concern.members.sort do |x, y|
+      x.label.to_s <=> y.label.to_s
+    end
     flash[:notice] = "Files have been ordered alphabetically, by filename."
     curation_concern.update_attributes(ordered_members: @sorted)
     redirect_to :back
@@ -32,28 +39,41 @@ class CurationConcerns::CurationConcernsController < ApplicationController
     super
   end
 
-  def flag
+  def flag # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     curation_concern.state = 'flagged'
     note = params[curation_concern_name][:workflow_note]
-    curation_concern.workflow_note = curation_concern.workflow_note + [note] unless note.blank?
+    unless note.blank?
+      curation_concern.workflow_note =
+        curation_concern.workflow_note + [note]
+    end
     if curation_concern.save
       respond_to do |format|
-        format.html { redirect_to [main_app, curation_concern], notice: "Resource updated" }
+        format.html do
+          redirect_to [main_app, curation_concern],
+                      notice: "Resource updated"
+        end
         format.json { render json: { state: state } }
       end
     else
       respond_to do |format|
-        format.html { redirect_to [main_app, curation_concern], alert: "Unable to update resource" }
+        format.html do
+          redirect_to [main_app, curation_concern],
+                      alert: "Unable to update resource"
+        end
         format.json { render json: { error: "Unable to update resource" } }
       end
     end
   end
 
-  def browse_everything_files
+  def browse_everything_files # rubocop:disable Metrics/AbcSize
     upload_set_id = ActiveFedora::Noid::Service.new.mint
-    CompositePendingUpload.create(selected_files_params, curation_concern.id, upload_set_id)
-    BrowseEverythingIngestJob.perform_later(curation_concern.id, upload_set_id, current_user, selected_files_params)
-    redirect_to ::ContextualPath.new(curation_concern, parent_presenter).file_manager
+    CompositePendingUpload.create(selected_files_params, curation_concern.id,
+                                  upload_set_id)
+    BrowseEverythingIngestJob.perform_later(curation_concern.id,
+                                            upload_set_id, current_user,
+                                            selected_files_params)
+    redirect_to ::ContextualPath.new(curation_concern,
+                                     parent_presenter).file_manager
   end
 
   def after_create_response
@@ -70,7 +90,9 @@ class CurationConcerns::CurationConcernsController < ApplicationController
     def additional_response_formats(wants)
       wants.uv do
         presenter && parent_presenter
-        render 'viewer_only.html.erb', layout: 'boilerplate', content_type: 'text/html'
+        render 'viewer_only.html.erb',
+               layout: 'boilerplate',
+               content_type: 'text/html'
       end
     end
 
@@ -96,15 +118,17 @@ class CurationConcerns::CurationConcernsController < ApplicationController
     end
 
     def selected_files_params
-      @whitelisted_upload_files ||= params[:selected_files].delete_if do |_key, value|
-        !validate_remote_url(value['url'])
-      end
+      @whitelisted_upload_files ||=
+        params[:selected_files].delete_if do |_key, value|
+          !validate_remote_url(value['url'])
+        end
     end
 
     def whitelisted_ingest_dirs
       CurationConcerns.config.whitelisted_ingest_dirs
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def validate_remote_url(url)
       uri = URI.parse(URI.encode(url))
       if uri.scheme == 'file'
@@ -112,7 +136,11 @@ class CurationConcerns::CurationConcernsController < ApplicationController
         result = whitelisted_ingest_dirs.any? do |dir|
           path.start_with?(dir) && path.length > dir.length
         end
-        Rails.logger.error "User #{current_user.user_key} attempted to ingest file from url #{url}, which doesn't pass validation and has been skipped." unless result
+        unless result
+          Rails.logger.error "User #{current_user.user_key} attempted to" \
+            " ingest file from url #{url}, which doesn't pass validation" \
+            " and has been skipped."
+        end
         result
       else
         # TODO: It might be a good idea to validate other URLs as well.
@@ -120,4 +148,6 @@ class CurationConcerns::CurationConcernsController < ApplicationController
         true
       end
     end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 end
+# rubocop:enable Metrics/ClassLength

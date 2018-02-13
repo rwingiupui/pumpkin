@@ -25,18 +25,31 @@ class StateBadge
   end
 
   def render_hidden
-    tag :input, id: field_id.to_s, name: field_name, type: :hidden, value: current_state
+    tag :input,
+        id: field_id.to_s,
+        name: field_name,
+        type: :hidden,
+        value: current_state
   end
 
   private
 
+    # rubocop:disable Metrics/MethodLength
     def render_radio_button(state, checked = false)
       content_tag :label, class: 'radio' do
-        tag(:input, id: field_id(state), name: field_name, type: :radio, value: state, checked: checked) +
-          content_tag(:span, I18n.t("state.#{state}.label"), class: "label #{dom_label_class(state)}", for: field_id(state)) +
+        tag(:input,
+            id: field_id(state),
+            name: field_name,
+            type: :radio,
+            value: state,
+            checked: checked) +
+          content_tag(:span, I18n.t("state.#{state}.label"),
+                      class: "label #{dom_label_class(state)}",
+                      for: field_id(state)) +
           " " + I18n.t("state.#{state}.desc")
       end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def dom_label_class(state = current_state)
       state_classes[state]

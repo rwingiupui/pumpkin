@@ -1,10 +1,11 @@
 # new class for imago to handle purl redirection
 class PurlController < ApplicationController
-  def default
+  def default # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     begin
       set_object
       realid = @solr_hit.id
-      url = "#{request.protocol}#{request.host_with_port}#{config.relative_url_root}/concern/#{@subfolder}/#{realid}"
+      url = "#{request.protocol}#{request.host_with_port}" \
+        "#{config.relative_url_root}/concern/#{@subfolder}/#{realid}"
     rescue
       url = Plum.config['purl_redirect_url'] % params[:id]
     end
@@ -21,10 +22,13 @@ class PurlController < ApplicationController
       MultiVolumeWork => /^\w{3}\d{4}$/,
       ScannedResource => /^\w{3}\d{4}$/
     }.freeze
+
     def set_object
       OBJECT_LOOKUPS.each do |klass, match_pattern|
         if params[:id].match match_pattern
-          @solr_hit = klass.search_with_conditions({ source_metadata_identifier_tesim: params[:id] }, rows: 1).first
+          @solr_hit = klass.search_with_conditions(
+            { source_metadata_identifier_tesim: params[:id] }, rows: 1
+          ).first
           @subfolder = klass.to_s.pluralize.underscore
         end
         break if @solr_hit

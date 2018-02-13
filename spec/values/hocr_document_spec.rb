@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe HOCRDocument do
   subject { described_class.new(document) }
-  let(:document) { File.open(Rails.root.join("spec", "fixtures", "files", "test.hocr")) }
+  let(:document) {
+    File.open(Rails.root.join("spec", "fixtures", "files", "test.hocr"))
+  }
 
   describe "#text" do
     it "returns the combined text" do
-      expect(subject.text).to eq "\n \n  \n\n\n  \n  \n\n\n  \n   \n    \n     Studio per l’elaborazione informatica delle fonti storico—artistiche \n     \n    \n   \n  \n\n"
+      expect(subject.text).to eq "\n \n  \n\n\n  \n  \n\n\n  \n   \n    \n" \
+      "     Studio per l’elaborazione informatica delle fonti" \
+      " storico—artistiche \n     \n    \n   \n  \n\n"
     end
   end
 
@@ -77,7 +81,9 @@ RSpec.describe HOCRDocument do
       end
     end
     context "when there is one" do
-      subject { described_class.new(document).pages.first.areas.first.paragraphs.first }
+      subject {
+        described_class.new(document).pages.first.areas.first.paragraphs.first
+      }
       it "returns it" do
         expect(subject.lines.length).to eq 1
 

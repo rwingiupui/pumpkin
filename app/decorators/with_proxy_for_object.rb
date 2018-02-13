@@ -16,7 +16,9 @@ class WithProxyForObject < SimpleDelegator
   def unstructured_objects
     @unstructured_objects ||=
       begin
-        unstructured_proxies = (members - all_nodes).map { |x| { "proxy": x.id } }
+        unstructured_proxies = (members - all_nodes).map do |x|
+          { "proxy": x.id }
+        end
         node_class.new("nodes": unstructured_proxies)
       end
   end

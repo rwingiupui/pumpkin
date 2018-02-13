@@ -7,7 +7,8 @@
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }.to_i
 threads threads_count, threads_count
 
-# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+# Specifies the `port` that Puma will listen on to receive requests.
+# Default is 3000.
 #
 port ENV.fetch("PORT") { 3000 }
 
@@ -49,7 +50,8 @@ end
 before_fork do
   # puts "Starting workers..."
   ActiveRecord::Base.connection_pool.disconnect! if defined?(ActiveRecord)
-  Net::HTTP::Persistent.new('Faraday').shutdown if defined? Net::HTTP::Persistent
+  Net::HTTP::Persistent.new('Faraday').shutdown if
+    defined? Net::HTTP::Persistent
 end
 
 # Allow puma to be restarted by `rails restart` command.

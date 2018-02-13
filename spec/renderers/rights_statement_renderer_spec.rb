@@ -20,7 +20,9 @@ RSpec.describe RightsStatementRenderer do
 
   context "with a InC-RUU rights statement" do
     let(:uri) { 'http://rightsstatements.org/vocab/InC-RUU/1.0/' }
-    let(:label) { 'In Copyright - Rights-holder(s) Unlocatable or Unidentifiable' }
+    let(:label) {
+      'In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'
+    }
     let(:rendered) { described_class.new([uri], [note]).render }
 
     it "includes the label and uri" do

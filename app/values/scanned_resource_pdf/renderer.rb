@@ -7,13 +7,17 @@ class ScannedResourcePDF
       @path = Pathname.new(path.to_s)
     end
 
-    def render
+    def render # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       CoverPageGenerator.new(scanned_resource_pdf).apply(prawn_document)
       canvas_downloaders.each_with_index do |downloader, index|
-        prawn_document.start_new_page layout: downloader.layout if index.positive?
+        prawn_document.start_new_page layout: downloader.layout if
+          index.positive?
         page_size = [Canvas::LETTER_WIDTH, Canvas::LETTER_HEIGHT]
         page_size.reverse! unless downloader.portrait?
-        prawn_document.image downloader.download, width: downloader.width, height: downloader.height, fit: page_size
+        prawn_document.image(downloader.download,
+                             width: downloader.width,
+                             height: downloader.height,
+                             fit: page_size)
       end
       apply_outline
       FileUtils.mkdir_p(path.dirname)
@@ -22,9 +26,10 @@ class ScannedResourcePDF
     end
 
     def canvas_images
-      @canvas_images ||= manifest_builder.canvases.flat_map(&:images).map do |x|
-        Canvas.new(x)
-      end
+      @canvas_images ||=
+        manifest_builder.canvases.flat_map(&:images).map do |x|
+          Canvas.new(x)
+        end
     end
 
     private
@@ -61,18 +66,25 @@ class ScannedResourcePDF
         }
       end
 
-      def metadata_hash
+      def metadata_hash # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
         result =
           manifest_metadata.each_with_object({}) do |entry, hsh|
             hsh[entry["label"].to_sym] = Array(entry["value"]).join(", ")
           end
-        result[:Title] = Array(scanned_resource.title).join(", ") if scanned_resource.title
-        result[:Description] = Array(scanned_resource.description).join(", ") if scanned_resource.description
+        result[:Title] = Array(scanned_resource.title).join(", ") if
+          scanned_resource.title
+        if scanned_resource.description
+          result[:Description] =
+            Array(scanned_resource.description).join(", ")
+        end
         result
       end
 
       def manifest_metadata
-        @manifest_metadata ||= ManifestBuilder::MetadataBuilder.new(scanned_resource).apply(IIIF::Presentation::Manifest.new).metadata
+        @manifest_metadata ||=
+          ManifestBuilder::MetadataBuilder \
+          .new(scanned_resource) \
+          .apply(IIIF::Presentation::Manifest.new).metadata
       end
   end
 end

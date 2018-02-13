@@ -1,7 +1,8 @@
 # Generated via
 #  `rails generate curation_concerns:work ScannedResource`
 
-class CurationConcerns::ScannedResourcesController < CurationConcerns::CurationConcernsController
+class CurationConcerns::ScannedResourcesController <
+    CurationConcerns::CurationConcernsController
   self.curation_concern_type = ScannedResource
   skip_load_and_authorize_resource only: SearchBuilder.show_actions
   before_action :authorize_pdf, only: [:pdf]
@@ -11,7 +12,8 @@ class CurationConcerns::ScannedResourcesController < CurationConcerns::CurationC
   end
 
   def pdf
-    ScannedResourcePDF.new(presenter, quality: params[:pdf_quality]).render(pdf_path)
+    ScannedResourcePDF.new(presenter,
+                           quality: params[:pdf_quality]).render(pdf_path)
     redirect_to main_app.download_path(presenter, file: pdf_type)
   end
 

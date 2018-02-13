@@ -35,7 +35,8 @@ RSpec.describe RightsStatementValidator do
 
         subject.validate(record)
 
-        expect(errors).to have_received(:add).with(:rights_statement, :inclusion, allow_blank: false, value: nil)
+        expect(errors).to have_received(:add) \
+          .with(:rights_statement, :inclusion, allow_blank: false, value: nil)
       end
     end
 
@@ -45,16 +46,21 @@ RSpec.describe RightsStatementValidator do
 
         subject.validate(record)
 
-        expect(errors).to have_received(:add).with(:rights_statement, :inclusion, allow_blank: false, value: "bad")
+        expect(errors).to have_received(:add) \
+          .with(:rights_statement,
+                :inclusion,
+                allow_blank: false,
+                value: "bad")
       end
     end
   end
 
-  def build_record(rights_statement:)
+  def build_record(rights_statement:) # rubocop:disable Metrics/AbcSize
     record = instance_double ScannedResource
     allow(record).to receive(:errors).and_return(errors)
     allow(record).to receive(:rights_statement).and_return(rights_statement)
-    allow(record).to receive(:read_attribute_for_validation).with(:rights_statement).and_return(record.rights_statement)
+    allow(record).to receive(:read_attribute_for_validation) \
+      .with(:rights_statement).and_return(record.rights_statement)
     record
   end
 end

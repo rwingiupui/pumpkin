@@ -1,5 +1,6 @@
 module IuDevOps
-  # Performs a Sidekiq process health check. Uses the same method as the Sidekiq dashboard to discover processes.
+  # Performs a Sidekiq process health check. Uses the same method as the
+  # Sidekiq dashboard to discover processes.
   include OkComputer
   class SidekiqProcessCheck < Check
     # Public: Return the status of the Sidekiq processes

@@ -4,11 +4,12 @@ class ViewingHintValidator < ActiveModel::Validator
   private
 
     def inclusivity_validator
-      @inclusivity_validator ||= ActiveModel::Validations::InclusionValidator.new(
-        attributes: :viewing_hint,
-        in: valid_viewing_hints,
-        allow_blank: true
-      )
+      @inclusivity_validator ||= ActiveModel::Validations::InclusionValidator \
+                                 .new(
+                                   attributes: :viewing_hint,
+                                   in: valid_viewing_hints,
+                                   allow_blank: true
+                                 )
     end
 
     def valid_viewing_hints

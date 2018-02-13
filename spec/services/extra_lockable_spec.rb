@@ -28,7 +28,7 @@ RSpec.describe ExtraLockable do
     end
     context 'when no valid id is present' do
       it 'raises' do
-        expect(work.id.blank?).to eq true # Because work is not persisted in this spec
+        expect(work.id.blank?).to eq true # Because work is not persisted here
         expect { work.lock_id }.to raise_error(ArgumentError)
       end
     end

@@ -27,12 +27,14 @@ RSpec.describe AllCollectionsManifestBuilder do
       expect(manifest_json["viewingDirection"]).to be_nil
     end
     it "has an ID" do
-      expect(manifest_json["@id"]).to eq "http://plum.com/collections/manifest"
+      expect(manifest_json["@id"]) \
+        .to eq "http://plum.com/collections/manifest"
     end
     context "when SSL is set" do
       subject { described_class.new(nil, ssl: true) }
       it "can have an SSL ID" do
-        expect(manifest_json["@id"]).to eq "https://plum.com/collections/manifest"
+        expect(manifest_json["@id"]) \
+          .to eq "https://plum.com/collections/manifest"
       end
     end
   end

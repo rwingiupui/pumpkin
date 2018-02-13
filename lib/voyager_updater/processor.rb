@@ -5,8 +5,9 @@ module VoyagerUpdater
       @ids = ids
     end
 
-    def run!
-      Rails.logger.info "Processing updates for IDs: #{ids.join(', ')}" unless ids.empty?
+    def run! # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      Rails.logger.info "Processing updates for IDs: #{ids.join(', ')}" \
+      unless ids.empty?
       ids.each do |id|
         begin
           resource = ActiveFedora::Base.find(id)

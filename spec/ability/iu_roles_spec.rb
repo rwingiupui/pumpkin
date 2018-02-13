@@ -5,43 +5,66 @@ describe Ability do
   subject { described_class.new(current_user) }
 
   let(:open_multi_volume_work) {
-    FactoryGirl.build(:multi_volume_work, user: creating_user, state: 'complete')
+    FactoryGirl.build(:multi_volume_work,
+                      user: creating_user,
+                      state: 'complete')
   }
 
   let(:open_scanned_resource) {
-    FactoryGirl.build(:open_scanned_resource, user: creating_user, state: 'complete')
+    FactoryGirl.build(:open_scanned_resource,
+                      user: creating_user,
+                      state: 'complete')
   }
 
   let(:private_scanned_resource) {
-    FactoryGirl.build(:private_scanned_resource, user: creating_user, state: 'complete')
+    FactoryGirl.build(:private_scanned_resource,
+                      user: creating_user,
+                      state: 'complete')
   }
 
   let(:campus_only_scanned_resource) {
-    FactoryGirl.build(:campus_only_scanned_resource, user: creating_user, state: 'complete')
+    FactoryGirl.build(:campus_only_scanned_resource,
+                      user: creating_user,
+                      state: 'complete')
   }
 
   let(:pending_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: creating_user, state: 'pending')
+    FactoryGirl.build(:scanned_resource,
+                      user: creating_user,
+                      state: 'pending')
   }
 
   let(:metadata_review_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: creating_user, state: 'metadata_review')
+    FactoryGirl.build(:scanned_resource,
+                      user: creating_user,
+                      state: 'metadata_review')
   }
 
   let(:final_review_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: creating_user, state: 'final_review')
+    FactoryGirl.build(:scanned_resource,
+                      user: creating_user,
+                      state: 'final_review')
   }
 
   let(:complete_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: image_editor, state: 'complete', identifier: 'ark:/99999/fk4445wg45')
+    FactoryGirl.build(:scanned_resource,
+                      user: image_editor,
+                      state: 'complete',
+                      identifier: 'ark:/99999/fk4445wg45')
   }
 
   let(:takedown_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: image_editor, state: 'takedown', identifier: 'ark:/99999/fk4445wg45')
+    FactoryGirl.build(:scanned_resource,
+                      user: image_editor,
+                      state: 'takedown',
+                      identifier: 'ark:/99999/fk4445wg45')
   }
 
   let(:flagged_scanned_resource) {
-    FactoryGirl.build(:scanned_resource, user: image_editor, state: 'flagged', identifier: 'ark:/99999/fk4445wg45')
+    FactoryGirl.build(:scanned_resource,
+                      user: image_editor,
+                      state: 'flagged',
+                      identifier: 'ark:/99999/fk4445wg45')
   }
 
   let(:image_editor_file) { FactoryGirl.build(:file_set, user: image_editor) }
@@ -59,26 +82,54 @@ describe Ability do
   let(:config) { Plum.config.clone }
 
   before do
-    config[:authorized_ldap_groups] = ['Test-Group'] # Enables LDAP lookup system
+    config[:authorized_ldap_groups] =
+      ['Test-Group'] # Enables LDAP lookup system
     allow(Plum).to receive(:config).and_return(config)
-    expect_any_instance_of(Net::LDAP).not_to receive(:search) # Do not make any real LDAP requests
-    [admin_user, image_editor, editor, fulfiller, curator, music_user].each do |obj|
-      allow(obj).to receive(:member_of_ldap_group?).with(config[:authorized_ldap_groups]).and_return(true)
+    # Do not make any real LDAP requests
+    expect_any_instance_of(Net::LDAP).not_to receive(:search)
+    [
+      admin_user,
+      image_editor,
+      editor,
+      fulfiller,
+      curator,
+      music_user
+    ].each do |obj|
+      allow(obj).to receive(:member_of_ldap_group?) \
+        .with(config[:authorized_ldap_groups]).and_return(true)
     end
-    allow(campus_user).to receive(:member_of_ldap_group?).with(config[:authorized_ldap_groups]).and_return(false)
+    allow(campus_user).to receive(:member_of_ldap_group?) \
+      .with(config[:authorized_ldap_groups]).and_return(false)
     allow(open_scanned_resource).to receive(:id).and_return("open")
     allow(private_scanned_resource).to receive(:id).and_return("private")
-    allow(campus_only_scanned_resource).to receive(:id).and_return("campus_only")
+    allow(campus_only_scanned_resource).to receive(:id) \
+      .and_return("campus_only")
     allow(pending_scanned_resource).to receive(:id).and_return("pending")
-    allow(metadata_review_scanned_resource).to receive(:id).and_return("metadata_review")
-    allow(final_review_scanned_resource).to receive(:id).and_return("final_review")
+    allow(metadata_review_scanned_resource).to receive(:id) \
+      .and_return("metadata_review")
+    allow(final_review_scanned_resource).to receive(:id) \
+      .and_return("final_review")
     allow(complete_scanned_resource).to receive(:id).and_return("complete")
     allow(takedown_scanned_resource).to receive(:id).and_return("takedown")
     allow(flagged_scanned_resource).to receive(:id).and_return("flagged")
     allow(image_editor_file).to receive(:id).and_return("image_editor_file")
     allow(admin_file).to receive(:id).and_return("admin_file")
-    [open_scanned_resource, private_scanned_resource, campus_only_scanned_resource, pending_scanned_resource, metadata_review_scanned_resource, final_review_scanned_resource, complete_scanned_resource, takedown_scanned_resource, flagged_scanned_resource, image_editor_file, admin_file].each do |obj|
-      allow(subject.cache).to receive(:get).with(obj.id).and_return(Hydra::PermissionsSolrDocument.new(obj.to_solr, nil))
+    [
+      open_scanned_resource,
+      private_scanned_resource,
+      campus_only_scanned_resource,
+      pending_scanned_resource,
+      metadata_review_scanned_resource,
+      final_review_scanned_resource,
+      complete_scanned_resource,
+      takedown_scanned_resource,
+      flagged_scanned_resource,
+      image_editor_file,
+      admin_file
+    ].each do |obj|
+      allow(subject.cache).to receive(:get) \
+        .with(obj.id) \
+        .and_return(Hydra::PermissionsSolrDocument.new(obj.to_solr, nil))
     end
   end
 
@@ -86,7 +137,9 @@ describe Ability do
     let(:admin_user) { FactoryGirl.create(:admin) }
     let(:creating_user) { image_editor }
     let(:current_user) { admin_user }
-    let(:open_scanned_resource_presenter) { ScannedResourceShowPresenter.new(open_scanned_resource, subject) }
+    let(:open_scanned_resource_presenter) {
+      ScannedResourceShowPresenter.new(open_scanned_resource, subject)
+    }
 
     it {
       should be_able_to(:create, ScannedResource.new)
@@ -308,10 +361,16 @@ describe Ability do
     let(:creating_user) { FactoryGirl.create(:image_editor) }
     let(:current_user) { campus_user }
     let(:color_enabled_resource) {
-      FactoryGirl.build(:open_scanned_resource, user: creating_user, state: 'complete', pdf_type: ['color'])
+      FactoryGirl.build(:open_scanned_resource,
+                        user: creating_user,
+                        state: 'complete',
+                        pdf_type: ['color'])
     }
     let(:no_pdf_scanned_resource) {
-      FactoryGirl.build(:open_scanned_resource, user: creating_user, state: 'complete', pdf_type: [])
+      FactoryGirl.build(:open_scanned_resource,
+                        user: creating_user,
+                        state: 'complete',
+                        pdf_type: [])
     }
 
     it {
@@ -354,10 +413,16 @@ describe Ability do
     let(:creating_user) { FactoryGirl.create(:image_editor) }
     let(:current_user) { nil }
     let(:color_enabled_resource) {
-      FactoryGirl.build(:open_scanned_resource, user: creating_user, state: 'complete', pdf_type: ['color'])
+      FactoryGirl.build(:open_scanned_resource,
+                        user: creating_user,
+                        state: 'complete',
+                        pdf_type: ['color'])
     }
     let(:no_pdf_scanned_resource) {
-      FactoryGirl.build(:open_scanned_resource, user: creating_user, state: 'complete', pdf_type: [])
+      FactoryGirl.build(:open_scanned_resource,
+                        user: creating_user,
+                        state: 'complete',
+                        pdf_type: [])
     }
 
     it {

@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe IuMetadata::VariationsRecord do
-  let(:record1_path) { Rails.root.join("spec", "fixtures", "variations_xml", "bhr9405.xml") }
+  let(:record1_path) {
+    Rails.root.join("spec", "fixtures", "variations_xml", "bhr9405.xml")
+  }
   let(:record1) { described_class.new(record1_path, open(record1_path)) }
   let(:record1_xml) { File.open(record1_path) { |f| Nokogiri::XML(f) } }
   let(:file1) { record1_xml.xpath('//FileInfos/FileInfo').first }
@@ -31,10 +33,14 @@ RSpec.describe IuMetadata::VariationsRecord do
     let(:normalized_filename) { record1.send(:filename, file1) }
     let(:raw_pagenum) { '1.djvu' }
     let(:pagenum_xml) { "<FileName>#{raw_pagenum}</FileName>" }
-    let(:normalized_pagenum) { record1.send(:filename, Nokogiri::XML(pagenum_xml)) }
+    let(:normalized_pagenum) {
+      record1.send(:filename, Nokogiri::XML(pagenum_xml))
+    }
     let(:raw_display) { 'bhr9405-1-1-display.djvu' }
     let(:display_xml) { "<FileName>#{raw_display}</FileName>" }
-    let(:normalized_display) { record1.send(:filename, Nokogiri::XML(pagenum_xml)) }
+    let(:normalized_display) {
+      record1.send(:filename, Nokogiri::XML(pagenum_xml))
+    }
     it "normalizes volume, pagenum components" do
       expect(raw_filename).to match(/[a-z]{3}\d{4}-\d{2}-\d{1}/)
       expect(normalized_filename).to match(/[a-z]{3}\d{4}-\d{1}-\d{4}/)

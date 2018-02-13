@@ -22,7 +22,8 @@ class ManifestBuilder
 
       def see_also_hash
         {
-          "@id" => Plum.config['manifest_builder']['see_also_hash']['id'] % source_metadata_identifier,
+          "@id" => Plum.config['manifest_builder']['see_also_hash']['id'] %
+            source_metadata_identifier,
           "format" => Plum.config['manifest_builder']['see_also_hash']['format']
         }
       end

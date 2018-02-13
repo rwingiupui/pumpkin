@@ -1,11 +1,12 @@
 class AttributeRenderer < CurationConcerns::Renderers::AttributeRenderer
   # Draw the table row for the attribute
-  def render
+  def render # rubocop:disable Metrics/AbcSize
     markup = ''
 
     return markup if !values.present? && !options[:include_empty]
     markup << %(<tr><th>#{label}</th>\n<td><ul class='tabular'>)
-    attributes = microdata_object_attributes(field).merge(class: "attribute #{field}")
+    attributes = microdata_object_attributes(field) \
+                 .merge(class: "attribute #{field}")
     Array(values).each do |value|
       markup << li_markup(value, attributes)
     end
@@ -14,6 +15,7 @@ class AttributeRenderer < CurationConcerns::Renderers::AttributeRenderer
   end
 
   def li_markup(value, attributes)
-    "<li#{html_attributes(attributes)} dir=#{value.dir}>#{attribute_value_to_html(value.to_s)}</li>"
+    "<li#{html_attributes(attributes)}" \
+    " dir=#{value.dir}>#{attribute_value_to_html(value.to_s)}</li>"
   end
 end

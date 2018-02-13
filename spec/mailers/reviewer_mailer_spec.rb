@@ -20,9 +20,13 @@ RSpec.describe ReviewerMailer, type: :mailer do
 
       it 'sends an email to complete_reviewer' do
         expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries.first.from).to eq ['pumpkin@iu.edu']
-        expect(ActionMailer::Base.deliveries.first.to).to eq [complete_reviewer.email]
-        expect(ActionMailer::Base.deliveries.first.subject).to eq "[plum] #{curation_concern.human_readable_type} #{curation_concern.id}: complete"
+        expect(ActionMailer::Base.deliveries.first.from) \
+          .to eq ['pumpkin@iu.edu']
+        expect(ActionMailer::Base.deliveries.first.to) \
+          .to eq [complete_reviewer.email]
+        expect(ActionMailer::Base.deliveries.first.subject) \
+          .to eq "[plum] #{curation_concern.human_readable_type}" \
+        " #{curation_concern.id}: complete"
       end
     end
 
@@ -33,9 +37,13 @@ RSpec.describe ReviewerMailer, type: :mailer do
 
       it 'sends an email to takedown_reviewer' do
         expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries.first.from).to eq ['pumpkin@iu.edu']
-        expect(ActionMailer::Base.deliveries.first.to).to eq [takedown_reviewer.email]
-        expect(ActionMailer::Base.deliveries.first.subject).to eq "[plum] #{curation_concern.human_readable_type} #{curation_concern.id}: takedown"
+        expect(ActionMailer::Base.deliveries.first.from) \
+          .to eq ['pumpkin@iu.edu']
+        expect(ActionMailer::Base.deliveries.first.to) \
+          .to eq [takedown_reviewer.email]
+        expect(ActionMailer::Base.deliveries.first.subject) \
+          .to eq "[plum] #{curation_concern.human_readable_type}" \
+        " #{curation_concern.id}: takedown"
       end
     end
 
@@ -51,15 +59,20 @@ RSpec.describe ReviewerMailer, type: :mailer do
 
     context "multiple addresses" do
       before(:each) do
-        allow_any_instance_of(Role).to receive(:users).and_return([complete_reviewer, takedown_reviewer])
+        allow_any_instance_of(Role).to receive(:users) \
+          .and_return([complete_reviewer, takedown_reviewer])
         described_class.notify(curation_concern.id, 'takedown').deliver_now
       end
 
       it 'sends one email to both complete_reviewer and takedown_reviewer' do
         expect(ActionMailer::Base.deliveries.count).to eq 1
-        expect(ActionMailer::Base.deliveries.first.from).to eq ['pumpkin@iu.edu']
-        expect(ActionMailer::Base.deliveries.first.to).to eq [complete_reviewer.email, takedown_reviewer.email]
-        expect(ActionMailer::Base.deliveries.first.subject).to eq "[plum] #{curation_concern.human_readable_type} #{curation_concern.id}: takedown"
+        expect(ActionMailer::Base.deliveries.first.from) \
+          .to eq ['pumpkin@iu.edu']
+        expect(ActionMailer::Base.deliveries.first.to) \
+          .to eq [complete_reviewer.email, takedown_reviewer.email]
+        expect(ActionMailer::Base.deliveries.first.subject) \
+          .to eq "[plum] #{curation_concern.human_readable_type}" \
+        " #{curation_concern.id}: takedown"
       end
     end
   end

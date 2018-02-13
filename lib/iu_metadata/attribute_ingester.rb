@@ -1,6 +1,9 @@
 module IuMetadata
   class AttributeIngester
-    def initialize(source_id, source_attributes, factory: ScannedResource, context: CONTEXT)
+    def initialize(source_id,
+                   source_attributes,
+                   factory: ScannedResource,
+                   context: CONTEXT)
       @source_id = source_id
       @source_attributes = source_attributes
       @factory = factory
@@ -10,13 +13,15 @@ module IuMetadata
 
     # Runs full transformation pipeline:
     #
-    # * assigns outbound_graph to proxy_record
-    # * filters proxy_record attributes down to those acquired from outbound_graph
-    # * sets attribute values as RDF::Literal for single values, ActiveTriples::Relation for multiple
-    # * (ActiveTriple relations may have non-deterministic order)
+    # * assigns outbound_graph to proxy_record.
+    # * filters proxy_record attributes down to those acquired from
+    #   outbound_graph.
+    # * sets attribute values as RDF::Literal for single values,
+    #   ActiveTriples::Relation for multiple.
+    # * (ActiveTriple relations may have non-deterministic order.)
     #
     # @return [Hash] RDF attributes for the target factory object
-    def attributes
+    def attributes # rubocop:disable Metrics/MethodLength
       @attributes ||=
         begin
           Hash[
@@ -33,12 +38,13 @@ module IuMetadata
 
     # Runs abbreviated transformation pipeline:
     #
-    # * checks outbound_statements against factory predicates
-    # * sets attribute values simple values for single values, Array for multiple
-    # * (Array values should have a deterministic order)
+    # * checks outbound_statements against factory predicates.
+    # * sets attribute values simple values for single values, Array for
+    #   multiple.
+    # * (Array values should have a deterministic order.)
     #
     # @return [Hash] Array, raw-valued attributes for target factory object
-    def raw_attributes
+    def raw_attributes # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       @raw_attributes ||=
         begin
           raw_hash = {}
@@ -81,7 +87,9 @@ module IuMetadata
       def proxy_record
         @proxy_record ||= factory.new.tap do |resource|
           outbound_graph.each do |statement|
-            resource.resource << RDF::Statement.new(resource.rdf_subject, statement.predicate, statement.object)
+            resource.resource << RDF::Statement.new(resource.rdf_subject,
+                                                    statement.predicate,
+                                                    statement.object)
           end
         end
       end
@@ -97,7 +105,9 @@ module IuMetadata
 
       # used by both pipelines
       def singular_fields
-        @singular_fields ||= factory.properties.select { |_att, config| config[:multiple] == false }.keys + ['visibility']
+        @singular_fields ||= factory.properties.select do |_att, config|
+          config[:multiple] == false
+        end.keys + ['visibility']
       end
 
       # used by full pipeline, only
@@ -107,11 +117,18 @@ module IuMetadata
         end
       end
 
-      # used by abbreviated pipeline, only
-      # visibility is not a standard model property, so it is spoofed into the mapping
+      # used by abbreviated pipeline, only visibility is not a standard
+      # model property, so it is spoofed into the mapping.
       def outbound_predicates_to_properties
         @outbound_predicates_to_properties ||=
-          outbound_statements.predicates.map { |p| [p, factory.properties.detect { |_key, value| value.predicate == p }&.first] }.to_h.merge(PULTerms.visibility => 'visibility')
+          outbound_statements.predicates.map do |p|
+            [
+              p,
+              factory.properties.detect do |_key, value|
+                value.predicate == p
+              end&.first
+            ]
+          end.to_h.merge(PULTerms.visibility => 'visibility')
       end
   end
 end

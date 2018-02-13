@@ -8,7 +8,7 @@ class PairtreeDerivativePath < CurationConcerns::DerivativePath
     end
   end
 
-  def extension
+  def extension # rubocop:disable Metrics/MethodLength
     case destination_name
     when 'thumbnail'
       ".#{MIME::Types.type_for('jpg').first.extensions.first}"

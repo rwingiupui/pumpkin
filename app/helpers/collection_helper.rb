@@ -14,11 +14,18 @@ module CollectionHelper
 
   def metadata_for_collection(slug)
     collection_metadata.each do |c|
-      return { exhibit_id: slug, title: [c['title']], description: [c['blurb']] } if c['slug'] == slug
+      if c['slug'] == slug
+        return { exhibit_id: slug,
+                 title: [c['title']],
+                 description: [c['blurb']] }
+      end
     end
   end
 
   def collection_metadata
-    @collection_metadata ||= JSON.parse(File.read(File.join(Rails.root, 'config', 'pudl_collections.json')))
+    @collection_metadata ||=
+      JSON.parse(File.read(File.join(Rails.root,
+                                     'config',
+                                     'pudl_collections.json')))
   end
 end

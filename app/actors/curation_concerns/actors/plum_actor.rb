@@ -21,8 +21,10 @@ module CurationConcerns::Actors
       end
 
       def bad_record_id(err)
-        curation_concern.errors.add :source_metadata_identifier, "Error retrieving metadata"
-        Rails.logger.debug "Error retrieving metadata: #{curation_concern.source_metadata_identifier}: #{err}"
+        curation_concern.errors.add :source_metadata_identifier,
+                                    "Error retrieving metadata"
+        Rails.logger.debug "Error retrieving metadata:" \
+        " #{curation_concern.source_metadata_identifier}: #{err}"
         false
       end
   end

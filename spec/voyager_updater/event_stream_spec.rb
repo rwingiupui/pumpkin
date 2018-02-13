@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe VoyagerUpdater::EventStream, vcr: { cassette_name: 'voyager_dump' } do
+RSpec.describe VoyagerUpdater::EventStream,
+               vcr: { cassette_name: 'voyager_dump' } do
   subject { described_class.new(url) }
   let(:url) { "https://bibdata.princeton.edu/events.json" }
   describe "#events" do
@@ -12,9 +13,11 @@ RSpec.describe VoyagerUpdater::EventStream, vcr: { cassette_name: 'voyager_dump'
 
   describe "#process!" do
     skip "updates all changed records and fires events" do
-      s = FactoryGirl.create(:scanned_resource, source_metadata_identifier: "359850")
+      s = FactoryGirl.create(:scanned_resource,
+                             source_metadata_identifier: "359850")
       manifest_event_generator = instance_double(ManifestEventGenerator)
-      allow(ManifestEventGenerator).to receive(:new).and_return(manifest_event_generator)
+      allow(ManifestEventGenerator).to receive(:new) \
+        .and_return(manifest_event_generator)
       allow(manifest_event_generator).to receive(:record_updated)
       subject.process!
 
@@ -25,12 +28,15 @@ RSpec.describe VoyagerUpdater::EventStream, vcr: { cassette_name: 'voyager_dump'
     it "logs errors" do
       logger = spy('logger')
       allow(Rails).to receive(:logger).and_return(logger)
-      s = FactoryGirl.create(:scanned_resource, source_metadata_identifier: "359850")
+      s = FactoryGirl.create(:scanned_resource,
+                             source_metadata_identifier: "359850")
       allow(ManifestEventGenerator).to receive(:new).and_return(nil)
       subject.process!
 
-      expect(logger).to have_received(:info).with("Processing updates for IDs: #{s.id}")
-      expect(logger).to have_received(:info).with("Unable to process changed Voyager record #{s.id}")
+      expect(logger).to have_received(:info) \
+        .with("Processing updates for IDs: #{s.id}")
+      expect(logger).to have_received(:info) \
+        .with("Unable to process changed Voyager record #{s.id}")
     end
   end
 end

@@ -15,7 +15,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   def hide_parented_resources(solr_params)
     return if show_action? || file_manager?
     solr_params[:fq] ||= []
-    solr_params[:fq] << "!#{ActiveFedora.index_field_mapper.solr_name('ordered_by', :symbol)}:['' TO *]"
+    field = ActiveFedora.index_field_mapper.solr_name('ordered_by', :symbol)
+    solr_params[:fq] << "!#{field}:['' TO *]"
   end
 
   def join_from_parent(solr_params)
@@ -27,7 +28,9 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if unreadable_states.blank?
     solr_params[:fq] ||= []
     state_field = ActiveFedora.index_field_mapper.solr_name('state', :symbol)
-    state_string = readable_states.map { |state| "#{state_field}:#{state}" }.join(" OR ")
+    state_string = readable_states.map do |state|
+      "#{state_field}:#{state}"
+    end.join(" OR ")
     state_string += " OR has_model_ssim:Collection"
     solr_params[:fq] << state_string
   end

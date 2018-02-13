@@ -45,7 +45,8 @@ RSpec.describe CollectionsController do
 
       get :index_manifest, format: :json
 
-      expect(AllCollectionsManifestBuilder).to have_received(:new).with(nil, ability: anything, ssl: false)
+      expect(AllCollectionsManifestBuilder).to have_received(:new) \
+        .with(nil, ability: anything, ssl: false)
       expect(response).to be_success
     end
     context "if not signed in" do

@@ -1,12 +1,29 @@
 class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   include ExtraLockable
 
-  delegate :viewing_hint, :viewing_direction, :state, :type, :identifier, :workflow_note,
-           :logical_order, :logical_order_object, :ocr_language, :full_text, :thumbnail_id,
-           :source_metadata_identifier, :collection, to: :solr_document
+  delegate :viewing_hint,
+           :viewing_direction,
+           :state,
+           :type,
+           :identifier,
+           :workflow_note,
+           :logical_order,
+           :logical_order_object,
+           :ocr_language,
+           :full_text,
+           :thumbnail_id,
+           :source_metadata_identifier,
+           :collection,
+           to: :solr_document
   delegate :flaggable?, to: :state_badge_instance
-  delegate(*ScannedResource.properties.values.map(&:term), to: :solr_document, allow_nil: true)
-  delegate(*ScannedResource.properties.values.map { |x| "#{x.term}_literals" }, to: :solr_document, allow_nil: true)
+  delegate(*ScannedResource.properties.values.map(&:term),
+           to: :solr_document,
+           allow_nil: true)
+  delegate(*ScannedResource.properties.values.map do |x|
+             "#{x.term}_literals"
+           end,
+           to: :solr_document,
+           allow_nil: true)
 
   def state_badge
     state_badge_instance.render
@@ -22,7 +39,8 @@ class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   end
 
   def rights_statement
-    RightsStatementRenderer.new(solr_document.rights_statement, solr_document.rights_note).render
+    RightsStatementRenderer.new(solr_document.rights_statement,
+                                solr_document.rights_note).render
   end
 
   def holding_location
@@ -30,7 +48,9 @@ class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   end
 
   def language
-    Array.wrap(solr_document.language).map { |code| LanguageService.label(code) }
+    Array.wrap(solr_document.language).map do |code|
+      LanguageService.label(code)
+    end
   end
 
   def page_title
@@ -38,11 +58,14 @@ class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   end
 
   def full_title
-    [title, responsibility_note].map { |t| Array.wrap(t).first }.reject(&:blank?).join(' / ')
+    [title, responsibility_note].map do |t|
+      Array.wrap(t).first
+    end.reject(&:blank?).join(' / ')
   end
 
   def display_call_number
-    Array.wrap(lccn_call_number.present? ? lccn_call_number : local_call_number).first
+    number = lccn_call_number.present? ? lccn_call_number : local_call_number
+    Array.wrap(number).first
   end
 
   def start_canvas
@@ -52,7 +75,8 @@ class CurationConcernsShowPresenter < CurationConcerns::WorkShowPresenter
   private
 
     def logical_order_factory
-      @logical_order_factory ||= WithProxyForObject::Factory.new(member_presenters)
+      @logical_order_factory ||=
+        WithProxyForObject::Factory.new(member_presenters)
     end
 
     def state_badge_instance

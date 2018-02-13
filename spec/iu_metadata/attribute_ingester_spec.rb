@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.describe IuMetadata::AttributeIngester do
   let(:att_ingester) { described_class.new(id, attributes) }
   let(:id) { 'file:///foo/bar' }
-  let(:foo_context) { { "@context" => { "id" => "@id", "foo" => { "@id" => "http://opaquenamespace.org/ns/mods/titleForSort" } } } }
+  let(:foo_context) {
+    { "@context" => {
+      "id" => "@id",
+      "foo" => { "@id" => "http://opaquenamespace.org/ns/mods/titleForSort" }
+    } }
+  }
 
   describe "#raw_attributes" do
     context "without a context mapping" do
@@ -16,7 +21,9 @@ RSpec.describe IuMetadata::AttributeIngester do
       context "without a destination" do
         let(:attributes) { { title: 'foobar' } }
         let(:context) { {} }
-        let(:att_ingester) { described_class.new(id, attributes, context: context) }
+        let(:att_ingester) {
+          described_class.new(id, attributes, context: context)
+        }
         it "drops the attribute" do
           expect(att_ingester.raw_attributes['title']).to be_nil
         end
@@ -24,7 +31,9 @@ RSpec.describe IuMetadata::AttributeIngester do
       context "with a destination" do
         context "with a different name" do
           let(:attributes) { { foo: 'bar' } }
-          let(:att_ingester) { described_class.new(id, attributes, context: foo_context) }
+          let(:att_ingester) {
+            described_class.new(id, attributes, context: foo_context)
+          }
           it "passes the value to the new attribute" do
             expect(att_ingester.raw_attributes['sort_title']).to eq 'bar'
           end

@@ -4,10 +4,22 @@ require 'rails_helper'
 
 describe MultiVolumeWork do
   let(:nkc) { 'http://rightsstatements.org/vocab/NKC/1.0/' }
-  let(:multi_volume_work) { FactoryGirl.build(:multi_volume_work, source_metadata_identifier: '12345', rights_statement: nkc) }
-  let(:scanned_resource1) { FactoryGirl.build(:scanned_resource, title: ['Volume 1'], rights_statement: nkc) }
-  let(:scanned_resource2) { FactoryGirl.build(:scanned_resource, title: ['Volume 2'], rights_statement: nkc) }
-  let(:reloaded)          { described_class.find(multi_volume_work.id) }
+  let(:multi_volume_work) {
+    FactoryGirl.build(:multi_volume_work,
+                      source_metadata_identifier: '12345',
+                      rights_statement: nkc)
+  }
+  let(:scanned_resource1) {
+    FactoryGirl.build(:scanned_resource,
+                      title: ['Volume 1'],
+                      rights_statement: nkc)
+  }
+  let(:scanned_resource2) {
+    FactoryGirl.build(:scanned_resource,
+                      title: ['Volume 2'],
+                      rights_statement: nkc)
+  }
+  let(:reloaded) { described_class.find(multi_volume_work.id) }
   subject { multi_volume_work }
 
   describe 'has note fields' do
@@ -63,7 +75,8 @@ describe MultiVolumeWork do
       subject.ordered_members = [scanned_resource1, scanned_resource2]
     end
     it "has scanned resources" do
-      expect(subject.ordered_members).to eq [scanned_resource1, scanned_resource2]
+      expect(subject.ordered_members).to eq \
+        [scanned_resource1, scanned_resource2]
     end
     it "can persist when it has a thumbnail set to scanned resource" do
       subject.thumbnail = scanned_resource1
@@ -74,7 +87,8 @@ describe MultiVolumeWork do
   describe "#pending_uploads" do
     it "returns all pending uploads" do
       subject.save
-      pending_upload = FactoryGirl.create(:pending_upload, curation_concern_id: subject.id)
+      pending_upload = FactoryGirl.create(:pending_upload,
+                                          curation_concern_id: subject.id)
 
       expect(subject.pending_uploads).to eq [pending_upload]
     end
@@ -98,7 +112,10 @@ describe MultiVolumeWork do
     it "sets number_of_pages by sum of child volumes' pages" do
       scanned_resource1.members = [FactoryGirl.create(:file_set)]
       scanned_resource1.save
-      scanned_resource2.members = [FactoryGirl.create(:file_set), FactoryGirl.create(:file_set)]
+      scanned_resource2.members = [
+        FactoryGirl.create(:file_set),
+        FactoryGirl.create(:file_set)
+      ]
       scanned_resource2.save
       subject.ordered_members = [scanned_resource1, scanned_resource2]
       subject.save

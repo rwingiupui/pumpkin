@@ -3,7 +3,11 @@ require 'rails_helper'
 RSpec.describe "CatalogController", type: :feature do
   describe "admin user" do
     let(:user) { FactoryGirl.create(:admin) }
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_in_collection, user: user, language: ['English']) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource_in_collection,
+                         user: user,
+                         language: ['English'])
+    }
 
     before(:each) do
       sign_in user
@@ -13,15 +17,20 @@ RSpec.describe "CatalogController", type: :feature do
     it "Admin users see collection, language, and state facets" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
-      expect(page).to have_selector "div.blacklight-member_of_collections_ssim", text: "Collection"
-      expect(page).to have_selector "div.blacklight-language_sim", text: "Language"
+      expect(page) \
+        .to have_selector("div.blacklight-member_of_collections_ssim",
+                          text: "Collection")
+      expect(page).to have_selector("div.blacklight-language_sim",
+                                    text: "Language")
       expect(page).to have_selector "div.blacklight-state_sim", text: "State"
     end
   end
 
   describe "image_editor user" do
     let(:user) { FactoryGirl.create(:image_editor) }
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, user: user) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource, user: user)
+    }
 
     before(:each) do
       sign_in user
@@ -37,13 +46,16 @@ RSpec.describe "CatalogController", type: :feature do
     it "CurationConcerns creators see editing links" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
-      expect(page).to have_selector "a.itemedit", text: "Edit Scanned Resource"
+      expect(page).to have_selector("a.itemedit",
+                                    text: "Edit Scanned Resource")
     end
   end
 
   describe "anonymous user" do
     let(:user) { FactoryGirl.create(:image_editor) }
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource, user: user) }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource, user: user)
+    }
 
     before(:each) do
       scanned_resource.update_index
@@ -52,7 +64,8 @@ RSpec.describe "CatalogController", type: :feature do
     it "Anonymous users do not see a state facet" do
       visit search_catalog_path q: ""
       expect(page).to have_text "Test title"
-      expect(page).not_to have_selector "div.blacklight-state_sim", text: "State"
+      expect(page).not_to have_selector("div.blacklight-state_sim",
+                                        text: "State")
     end
 
     it "Anonymous users see a viewer link" do

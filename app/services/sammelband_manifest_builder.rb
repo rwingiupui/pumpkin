@@ -14,7 +14,10 @@ class SammelbandManifestBuilder < ManifestBuilder
     end
 
     def logical_order
-      @logical_order ||= LogicalOrder.new(SammelbandLogicalOrder.new(record, record.logical_order).to_h)
+      @logical_order ||=
+        LogicalOrder.new(SammelbandLogicalOrder.new(record,
+                                                    record.logical_order) \
+                           .to_h)
     end
 
     class SammelbandViewingHint < SimpleDelegator

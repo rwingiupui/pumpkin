@@ -2,9 +2,8 @@ class CatalogController < ApplicationController
   before_action :admin_state_facet
 
   include CurationConcerns::CatalogController
-  def self.search_config
+  def self.search_config # rubocop:disable Metrics/MethodLength
     {
-      # 'qf' => %w(title_tesim name_tesim source_metadata_identifier_ssim logical_order_headings_tesim member_of_collection_slugs_ssim full_text_tesim),
       'qf' => %w[title_tesim
                  name_tesim
                  creator_tesim
@@ -19,9 +18,11 @@ class CatalogController < ApplicationController
       'rows' => 10
     }
   end
+
   configure_blacklight do |config|
     config.search_builder_class = SearchBuilder
-    ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
+    ## Default parameters to send to solr for all search-like requests.
+    ## See also SolrHelper#solr_search_params
     config.default_solr_params = {
         qf: search_config['qf'],
         qt: search_config['qt'],
@@ -34,7 +35,8 @@ class CatalogController < ApplicationController
 
     # config.index.thumbnail_field = 'thumbnail_path_ss'
     config.index.thumbnail_method = :iiif_thumbnail_path
-    # config.index.partials.delete(:thumbnail) # we render this inside _index_default.html.erb
+    # config.index.partials.delete(:thumbnail)
+    # we render this inside _index_default.html.erb
     config.index.partials += [:action_menu]
 
     # solr field configuration for document/show views
@@ -44,18 +46,29 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name('human_readable_type', :facetable)
-    config.add_facet_field solr_name('member_of_collections', :symbol), label: 'Collection', limit: true
+    config.add_facet_field solr_name('member_of_collections', :symbol),
+                           label: 'Collection', limit: true
     config.add_facet_field solr_name('tag', :facetable), limit: true
     config.add_facet_field solr_name('creator', :facetable), limit: true
     config.add_facet_field solr_name('subject', :facetable), limit: true
-    config.add_facet_field solr_name('publication_place', :facetable), label: 'Publication Place', limit: true
+    config.add_facet_field solr_name('publication_place', :facetable),
+                           label: 'Publication Place', limit: true
     config.add_facet_field solr_name('publisher', :facetable), limit: true
-    config.add_facet_field solr_name('date_created', :stored_sortable, type: :integer), label: 'Date Created', limit: true
+    config.add_facet_field solr_name('date_created',
+                                     :stored_sortable,
+                                     type: :integer),
+                           label: 'Date Created',
+                           limit: true
     config.add_facet_field solr_name('language', :facetable), limit: true
     # config.add_facet_field solr_name('based_near', :facetable), limit: 5
     # config.add_facet_field solr_name('file_format', :facetable), limit: 5
     # config.add_facet_field 'generic_type_sim', show: false, single: true
-    config.add_facet_field solr_name('number_of_pages', :stored_sortable, type: :string), sort: 'index', label: 'Pages', limit: true
+    config.add_facet_field solr_name('number_of_pages',
+                                     :stored_sortable,
+                                     type: :string),
+                           sort: 'index',
+                           label: 'Pages',
+                           limit: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -78,7 +91,10 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('human_readable_type', :stored_searchable)
     config.add_index_field solr_name('format', :stored_searchable)
     config.add_index_field solr_name('identifier', :stored_searchable)
-    config.add_index_field solr_name('number_of_pages', :stored_sortable, type: :integer), label: 'Pages'
+    config.add_index_field solr_name('number_of_pages',
+                                     :stored_sortable,
+                                     type: :integer),
+                           label: 'Pages'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -89,20 +105,26 @@ class CatalogController < ApplicationController
     # that specifies the same :qt as default for our own internal
     # testing purposes.
     #
-    # The :key is what will be used to identify this BL search field internally,
-    # as well as in URLs -- so changing it after deployment may break bookmarked
-    # urls.  A display label will be automatically calculated from the :key,
-    # or can be specified manually to be different.
+    # The :key is what will be used to identify this BL search field
+    # internally, as well as in URLs -- so changing it after deployment may
+    # break bookmarked urls.  A display label will be automatically
+    # calculated from the :key, or can be specified manually to be different.
     #
     # This one uses all the defaults set by the solr request handler. Which
-    # solr request handler? The one set in config[:default_solr_parameters][:qt],
+    # solr request handler? The one set in
+    #   config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
-    config.add_search_field('all_fields', label: 'All Fields', include_in_advanced_search: false) do |field|
+    config.add_search_field('all_fields',
+                            label: 'All Fields',
+                            include_in_advanced_search: false) do |field|
       title_name = solr_name('title', :stored_searchable, type: :string)
       label_name = solr_name('title', :stored_searchable, type: :string)
-      contributor_name = solr_name('contributor', :stored_searchable, type: :string)
+      contributor_name = solr_name('contributor',
+                                   :stored_searchable,
+                                   type: :string)
       field.solr_parameters = {
-          qf: "#{title_name} #{label_name} file_format_tesim #{contributor_name}",
+          qf: "#{title_name} #{label_name} file_format_tesim" \
+            " #{contributor_name}",
           pf: title_name.to_s
       }
     end
@@ -184,7 +206,9 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('human_readable_type') do |field|
-      solr_name = solr_name('human_readable_type', :stored_searchable, type: :string)
+      solr_name = solr_name('human_readable_type',
+                            :stored_searchable,
+                            type: :string)
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -235,7 +259,9 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('rights_statement') do |field|
-      solr_name = solr_name('rights_statement', :stored_searchable, type: :string)
+      solr_name = solr_name('rights_statement',
+                            :stored_searchable,
+                            type: :string)
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -243,18 +269,31 @@ class CatalogController < ApplicationController
     end
 
     # "sort results by" select (pulldown)
-    # label in pulldown is followed by the name of the SOLR field to sort by and
-    # whether the sort is ascending or descending (it must be asc or desc
+    # label in pulldown is followed by the name of the SOLR field to sort by
+    # and whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     # label is key, solr field is value
-    config.add_sort_field "score desc, #{uploaded_field} desc", label: "relevance \u25BC"
+    config.add_sort_field "score desc, #{uploaded_field} desc",
+                          label: "relevance \u25BC"
     config.add_sort_field "#{modified_field} desc", label: "recently updated"
-    config.add_sort_field "#{solr_name('sort_title', :stored_sortable, type: :string)} asc", label: "title \u25B2"
-    config.add_sort_field "#{solr_name('sort_title', :stored_sortable, type: :string)} desc", label: "title \u25BC"
-    config.add_sort_field "#{solr_name('date_created', :stored_sortable, type: :integer)} asc", label: "date created \u25B2"
-    config.add_sort_field "#{solr_name('date_created', :stored_sortable, type: :integer)} desc", label: "date created \u25BC"
-    config.add_sort_field "#{solr_name('number_of_pages', :stored_sortable, type: :integer)} asc", label: "pages \u25B2"
-    config.add_sort_field "#{solr_name('number_of_pages', :stored_sortable, type: :integer)} desc", label: "pages \u25BC"
+    config.add_sort_field \
+      "#{solr_name('sort_title', :stored_sortable, type: :string)} asc",
+      label: "title \u25B2"
+    config.add_sort_field \
+      "#{solr_name('sort_title', :stored_sortable, type: :string)} desc",
+      label: "title \u25BC"
+    config.add_sort_field \
+      "#{solr_name('date_created', :stored_sortable, type: :integer)} asc",
+      label: "date created \u25B2"
+    config.add_sort_field \
+      "#{solr_name('date_created', :stored_sortable, type: :integer)} desc",
+      label: "date created \u25BC"
+    config.add_sort_field \
+      "#{solr_name('number_of_pages', :stored_sortable, type: :integer)} asc",
+      label: "pages \u25B2"
+    config.add_sort_field \
+      "#{solr_name('number_of_pages', :stored_sortable, type: :integer)} desc",
+      label: "pages \u25BC"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -262,6 +301,7 @@ class CatalogController < ApplicationController
     config.index_presenter_class = RTLIndexPresenter
     config.show_presenter_class = RTLShowPresenter
   end
+
   def admin_state_facet
     return unless can? :create, ScannedResource
     blacklight_config.add_facet_field 'state_sim', label: 'State'

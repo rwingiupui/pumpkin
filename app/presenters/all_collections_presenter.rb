@@ -31,7 +31,8 @@ class AllCollectionsPresenter < CollectionShowPresenter
 
   private
 
-    # Override this method if you want to use an alternate presenter class for the files
+    # Override this method if you want to use an alternate presenter class
+    # for the files
     def file_presenter_class
       CollectionShowPresenter
     end
@@ -41,6 +42,8 @@ class AllCollectionsPresenter < CollectionShowPresenter
     end
 
     def ordered_ids
-      ActiveFedora::SolrService.query("has_model_ssim:Collection", rows: 10_000, fl: "id").map { |x| x["id"] }
+      ActiveFedora::SolrService.query("has_model_ssim:Collection",
+                                      rows: 10_000,
+                                      fl: "id").map { |x| x["id"] }
     end
 end

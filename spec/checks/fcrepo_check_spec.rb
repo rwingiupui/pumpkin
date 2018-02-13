@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe IuDevOps::FcrepoCheck do
-  subject { described_class.new(ActiveFedora.fedora_config.credentials[:url], 5,
-                                [ActiveFedora.fedora_config.credentials[:user], ActiveFedora.fedora_config.credentials[:password]]) }
+  subject {
+    described_class.new(ActiveFedora.fedora_config.credentials[:url], 5,
+                        [ActiveFedora.fedora_config.credentials[:user],
+                         ActiveFedora.fedora_config.credentials[:password]])
+  }
 
   describe '#check' do
     context 'Fedora is up' do

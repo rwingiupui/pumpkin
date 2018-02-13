@@ -4,7 +4,11 @@ module RTLPresenter
   included do
     def field_config(field)
       super(field).tap do |config|
-        config.separator_options = { words_connector: "<br/>", last_word_connector: "<br/>", two_words_connector: "<br/>" } unless config.separator_options
+        unless config.separator_options
+          config.separator_options = { words_connector: "<br/>",
+                                       last_word_connector: "<br/>",
+                                       two_words_connector: "<br/>" }
+        end
       end
     end
 

@@ -38,10 +38,12 @@ RSpec.describe CollectionShowPresenter do
 
   it "can be used to create a manifest" do
     manifest = nil
-    expect { manifest = ManifestBuilder.new(subject).to_json }.not_to raise_error
+    expect { manifest = ManifestBuilder.new(subject).to_json } \
+      .not_to raise_error
     json_manifest = JSON.parse(manifest)
     expect(json_manifest['viewingHint']).not_to eq "multi-part"
-    expect(json_manifest['metadata'][0]['value'].first).to eq subject.exhibit_id.first
+    expect(json_manifest['metadata'][0]['value'].first) \
+      .to eq subject.exhibit_id.first
     expect(json_manifest['structures']).to eq nil
     expect(json_manifest['viewingDirection']).to eq nil
   end

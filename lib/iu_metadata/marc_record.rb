@@ -8,7 +8,21 @@ module IuMetadata
 
     attr_reader :id, :source
 
-    ATTRIBUTES = %i[identifier title sort_title responsibility_note series creator subject publisher publication_place date_published published lccn_call_number local_call_number].freeze
+    ATTRIBUTES = %i[
+      identifier
+      title
+      sort_title
+      responsibility_note
+      series
+      creator
+      subject
+      publisher
+      publication_place
+      date_published
+      published
+      lccn_call_number
+      local_call_number
+    ].freeze
 
     def attributes
       ATTRIBUTES.map { |att| [att, send(att)] }.to_h.compact
@@ -20,16 +34,17 @@ module IuMetadata
       formatted_fields_as_array('520')
     end
 
-    def alternative_titles
+    def alternative_titles # rubocop:disable Metrics/MethodLength
       alt_titles = []
       alt_title_field_tags.each do |tag|
         data.fields(tag).each do |field| # some of these tags are repeatable
           exclude_subfields = tag == '246' ? ['i'] : []
-          alt_titles << format_datafield(field, exclude_alpha: exclude_subfields)
-          if linked_field?(field)
-            field = get_linked_field(field)
-            alt_titles << format_datafield(field, exclude_alpha: exclude_subfields)
-          end
+          alt_titles << format_datafield(field,
+                                         exclude_alpha: exclude_subfields)
+          next unless linked_field?(field)
+          field = get_linked_field(field)
+          alt_titles << format_datafield(field,
+                                         exclude_alpha: exclude_subfields)
         end
       end
       alt_titles
@@ -43,15 +58,16 @@ module IuMetadata
       formatted_fields_as_array('524')
     end
 
-    def contributors
+    def contributors # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       fields = []
       contributors = []
       if creator.empty? && record.any_7xx_without_t?
         fields.push(*record.fields(['100', '110', '111']))
-        fields.push(*record.fields(['700', '710', '711']).reject { |df| df['t'] })
+        fields.push(*record.fields(['700', '710', '711'])
+                      .reject { |df| df['t'] })
         # By getting all of the fields first and then formatting them we keep
-        # the linked field values adjacent to the romanized values. It's a small
-        # thing, but may be useful.
+        # the linked field values adjacent to the romanized values. It's a
+        # small thing, but may be useful.
         fields.each do |field|
           contributors << format_datafield(field)
           if linked_field?(field)
@@ -116,7 +132,7 @@ module IuMetadata
       formatted_subfields_as_array(['260'], codes: ['c'])
     end
 
-    def language_codes
+    def language_codes # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       codes = []
       from_fixed = data['008'].value[35, 3]
       codes << from_fixed unless ['   ', 'mul'].include? from_fixed
@@ -174,6 +190,7 @@ module IuMetadata
       formatted_fields_as_array(['440', '490', '800', '810', '811', '830'])
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def title(include_initial_article = true)
       title_tag = determine_primary_title_field
       ti_field = data.fields(title_tag)[0]
@@ -208,6 +225,7 @@ module IuMetadata
       end
       titles
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def subject
       # Broken: name puctuation won't come out correctly
@@ -221,7 +239,7 @@ module IuMetadata
     end
 
     # We squash together 505s with ' ; '
-    def contents
+    def contents # rubocop:disable Metrics/MethodLength
       entry_sep = ' ; '
       contents = []
       data.fields('505').each do |f|
@@ -284,7 +302,9 @@ module IuMetadata
       ALPHA = %w[a b c d e f g h i j k l m n o p q r s t u v w x y z].freeze
 
       def data
-        @data ||= reader.select { |r| BIB_LEADER06_TYPES.include?(r.leader[6]) }[0]
+        @data ||= reader.select do |r|
+          BIB_LEADER06_TYPES.include?(r.leader[6])
+        end [0]
       end
 
       def reader
@@ -330,6 +350,7 @@ module IuMetadata
         !datafield['6'].nil?
       end
 
+      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       def parts_fields
         fields = []
         data.fields(['700', '710', '711', '730', '740']).each do |field|
@@ -343,6 +364,7 @@ module IuMetadata
         end
         fields
       end
+      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
       def trim_punctuation(ary)
         ary.map { |s| s.sub(/\s*[:;,.]\s*$/, '') }

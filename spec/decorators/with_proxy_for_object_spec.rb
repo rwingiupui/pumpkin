@@ -49,7 +49,8 @@ RSpec.describe WithProxyForObject do
     let(:member_2) { instance_double(ScannedResource, id: "t", to_s: "Alfafa") }
     it "returns nodes in members but not in structure" do
       expect(subject.unstructured_objects.nodes.length).to eq 1
-      expect(subject.unstructured_objects.nodes.first.proxy_for_object).to eq member_2
+      expect(subject.unstructured_objects.nodes.first.proxy_for_object) \
+        .to eq member_2
     end
   end
 end

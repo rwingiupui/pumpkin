@@ -11,15 +11,21 @@ class ScannedResourcePDF
 
     private
 
+      # rubocop:disable Metrics/MethodLength
       def apply_nodes(prawn_document, nodes)
         nodes.each_with_index do |sub_node, _index|
           if !sub_node.proxy_for
             apply_section(prawn_document, sub_node)
           elsif sub_node.proxy_for_object
-            prawn_document.outline.page title: sub_node.proxy_for_object.to_s, destination: flattened_order.index(sub_node.proxy_for_object.id) + 1
+            prawn_document.outline.page(
+              title: sub_node.proxy_for_object.to_s,
+              destination: flattened_order \
+                .index(sub_node.proxy_for_object.id) + 1
+            )
           end
         end
       end
+      # rubocop:enable Metrics/MethodLength
 
       def apply_section(prawn_document, node)
         target_node = node.each_node.first

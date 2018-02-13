@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
-  let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_multi_volume_work, user: user, state: 'metadata_review') }
+  let(:scanned_resource) {
+    FactoryGirl.create(:scanned_resource_with_multi_volume_work,
+                       user: user,
+                       state: 'metadata_review')
+  }
   let(:parent_presenter) do
     ScannedResourceShowPresenter.new(
       SolrDocument.new(
@@ -11,7 +15,11 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     )
   end
 
-  context "an authorized user", vcr: { cassette_name: "bibdata_not_found", allow_playback_repeats: :multiple } do
+  context "an authorized user",
+          vcr: {
+            cassette_name: "bibdata_not_found",
+            allow_playback_repeats: :multiple
+          } do
     before(:each) do
       sign_in user
     end
@@ -33,7 +41,8 @@ RSpec.describe "ScannedResourcesController", type: :feature do
 
       click_button 'Update Scanned resource'
       expect(page).to have_text("Test title")
-      expect(page).to have_selector("span.label-primary", text: "Final Review")
+      expect(page).to have_selector("span.label-primary",
+                                    text: "Final Review")
     end
 
     it "User gets an error for bad metadata identifier change" do
@@ -45,16 +54,19 @@ RSpec.describe "ScannedResourcesController", type: :feature do
       expect(page).to have_text("Error retrieving metadata")
     end
 
-    it "User can follow link to bulk edit scanned resource and add a new file" do
+    it "User can follow link to bulk edit scanned resource" \
+    " and add a new file" do
       allow(CharacterizeJob).to receive(:perform_later).once
-      allow_any_instance_of(FileSet).to receive(:warn) # suppress virus warning messages
+      allow_any_instance_of(FileSet) \
+        .to receive(:warn) # suppress virus warning messages
 
       visit polymorphic_path [scanned_resource]
       click_link I18n.t('file_manager.link_text')
       expect(page).to have_text(I18n.t('file_manager.link_text'))
 
       within("form.new_file_set") do
-        attach_file("file_set[files][]", File.join(Rails.root, 'spec/fixtures/files/image.png'))
+        attach_file("file_set[files][]",
+                    File.join(Rails.root, 'spec/fixtures/files/image.png'))
         click_on("Start upload")
       end
 
@@ -67,15 +79,22 @@ RSpec.describe "ScannedResourcesController", type: :feature do
   end
 
   context "an anonymous user" do
-    let(:scanned_resource) { FactoryGirl.create(:scanned_resource_with_multi_volume_work, user: user, state: 'complete') }
+    let(:scanned_resource) {
+      FactoryGirl.create(:scanned_resource_with_multi_volume_work,
+                         user: user,
+                         state: 'complete')
+    }
     it "User can't edit a scanned resource" do
       visit edit_polymorphic_path [scanned_resource]
-      expect(page).to have_selector("div.alert-info", text: "You are not authorized to access this page")
+      expect(page) \
+        .to have_selector("div.alert-info",
+                          text: "You are not authorized to access this page")
     end
 
     it "User can follow link to parent multi volume work" do
       parent_id = scanned_resource.ordered_by.first.id
-      visit curation_concerns_parent_scanned_resource_path(parent_id, scanned_resource.id)
+      visit curation_concerns_parent_scanned_resource_path(parent_id,
+                                                           scanned_resource.id)
       click_link 'Test title'
       expect(page).to have_text('Test title')
     end

@@ -10,11 +10,18 @@ RSpec.describe "ScannedResourcesController", type: :feature do
 
     it "Logged in user can create a new scanned resource" do
       visit new_polymorphic_path [ScannedResource]
-      expect(page).to_not have_selector("label.label-warning", text: "Pending")
+      expect(page).to_not have_selector("label.label-warning",
+                                        text: "Pending")
 
       fill_in 'scanned_resource_title', with: 'Test Title'
-      expect(page).to have_select 'scanned_resource_rights_statement', selected: 'No Known Copyright'
-      expect(page).to have_select 'scanned_resource_pdf_type', selected: 'Grayscale PDF'
+      expect(page).to have_select(
+        'scanned_resource_rights_statement',
+        selected: 'No Known Copyright'
+      )
+      expect(page).to have_select(
+        'scanned_resource_pdf_type',
+        selected: 'Grayscale PDF'
+      )
       click_button 'Create Scanned resource'
 
       expect(page).to have_selector("h1", text: "Test Title")
@@ -26,7 +33,9 @@ RSpec.describe "ScannedResourcesController", type: :feature do
   context "an anonymous user" do
     it "Anonymous user can't create a scanned resource" do
       visit new_polymorphic_path [ScannedResource]
-      expect(page).to have_selector("div.alert-info", text: "You are not authorized to access this page")
+      expect(page) \
+        .to have_selector("div.alert-info",
+                          text: "You are not authorized to access this page")
     end
   end
 end

@@ -22,6 +22,8 @@ class DateValue
     end
 
     def year_only(dates)
-      dates.length == 2 && dates.first.end_with?("-01-01T00:00:00Z") && dates.last.end_with?("-12-31T23:59:59Z")
+      dates.length == 2 &&
+        dates.first.end_with?("-01-01T00:00:00Z") &&
+        dates.last.end_with?("-12-31T23:59:59Z")
     end
 end

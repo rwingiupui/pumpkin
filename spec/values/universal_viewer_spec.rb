@@ -9,7 +9,8 @@ RSpec.describe UniversalViewer do
   end
   describe "#viewer_link" do
     it "is a relative link to the viewer" do
-      expect(subject.viewer_link).to eq "/#{subject.viewer_root}/uv-2.0.1/lib/embed.js"
+      expect(subject.viewer_link) \
+        .to eq "/#{subject.viewer_root}/uv-2.0.1/lib/embed.js"
     end
   end
 

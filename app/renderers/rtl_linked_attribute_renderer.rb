@@ -4,7 +4,8 @@ class RtlLinkedAttributeRenderer < AttributeRenderer
   end
 
   def li_markup(value, attributes)
-    "<li#{html_attributes(attributes)} dir=#{value.dir}>#{attribute_value_to_html(value.to_s)}</li>"
+    "<li#{html_attributes(attributes)}" \
+    " dir=#{value.dir}>#{attribute_value_to_html(value.to_s)}</li>"
   end
 
   def search_path(value)

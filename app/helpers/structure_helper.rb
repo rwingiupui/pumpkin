@@ -17,7 +17,8 @@ module StructureHelper
       return '' unless @presenter
       link = content_tag(:a, @presenter.page_title,
                          title: @presenter.id,
-                         href: bulk_edit_parent_path(@presenter, @parent_presenter))
+                         href: bulk_edit_parent_path(@presenter,
+                                                     @parent_presenter))
       content_tag(:li, link)
     end
 

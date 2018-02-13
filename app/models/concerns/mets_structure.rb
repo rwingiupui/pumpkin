@@ -11,7 +11,8 @@ module MetsStructure
   def file_label(file_id)
     struct = structure_map('Physical')
     node = struct.xpath(".//mets:fptr[@FILEID='#{file_id}']").first if struct
-    (label_from_hierarchy(node.parent) if node) || label_from_related_objects(file_id)
+    (label_from_hierarchy(node.parent) if node) ||
+      label_from_related_objects(file_id)
   end
 
   private
@@ -35,9 +36,10 @@ module MetsStructure
       nodes
     end
 
-    def structure_recurse(node)
+    def structure_recurse(node) # rubocop:disable Metrics/MethodLength
       children = node.element_children
-      return single_file_object(children.first) if !section(node) && single_file(children)
+      return single_file_object(children.first) if !section(node) &&
+                                                   single_file(children)
 
       child_nodes = []
       if single_file(children)
@@ -60,7 +62,8 @@ module MetsStructure
 
     def single_file_object(node)
       id = node['FILEID']
-      label = label_from_hierarchy(node.parent) || label_from_related_objects(id)
+      label = label_from_hierarchy(node.parent) ||
+              label_from_related_objects(id)
       { label: label, proxy: id }
     end
 
@@ -76,10 +79,15 @@ module MetsStructure
     end
 
     def in_scope(node)
-      multi_volume? ? node.parent.parent.name == 'div' : node.parent.name == 'div'
+      if multi_volume?
+        node.parent.parent.name == 'div'
+      else
+        node.parent.name == 'div'
+      end
     end
 
     def label_from_related_objects(id)
-      @mets.xpath("/mets:mets/mets:structMap[@TYPE='RelatedObjects']//mets:div[mets:fptr/@FILEID='#{id}']/@LABEL").to_s
+      @mets.xpath("/mets:mets/mets:structMap[@TYPE='RelatedObjects']" \
+                  "//mets:div[mets:fptr/@FILEID='#{id}']/@LABEL").to_s
     end
 end

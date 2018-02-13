@@ -4,9 +4,8 @@ describe "curation_concerns/base/_form_required_information.html.erb" do
   let(:curation_concern) { ScannedResource.new }
   before do
     form = simple_form_for([curation_concern])
-    render partial: "curation_concerns/base/form_required_information", locals: {
-      f: form
-    }
+    render partial: "curation_concerns/base/form_required_information",
+           locals: { f: form }
   end
   context "when source metadata ID is not set" do
     it "has a title field" do

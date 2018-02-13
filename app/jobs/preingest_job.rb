@@ -14,7 +14,7 @@ class PreingestJob < ActiveJob::Base
 
   private
 
-    def preingest
+    def preingest # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       yaml_hash = {}
       yaml_hash[:resource] = @document.resource_class.to_s
       yaml_hash[:attributes] = @document.attributes
@@ -29,7 +29,10 @@ class PreingestJob < ActiveJob::Base
         yaml_hash[:files] = @document.files
       end
 
-      yaml_hash[:sources] = [{ title: @document.source_title, file: @document.source_file }]
+      yaml_hash[:sources] = [{
+        title: @document.source_title,
+        file: @document.source_file
+      }]
 
       File.write(@document.yaml_file, yaml_hash.to_yaml)
       logger.info "Created YAML file #{File.basename(@document.yaml_file)}"

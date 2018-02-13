@@ -1,4 +1,4 @@
-class Ability
+class Ability # rubocop:disable Metrics/ClassLength
   include Hydra::Ability
   include CurationConcerns::Ability
 
@@ -18,7 +18,7 @@ class Ability
   end
 
   # Abilities that should be granted to technicians
-  def image_editor_permissions
+  def image_editor_permissions # rubocop:disable Metrics/AbcSize
     can %i[read create modify update publish], curation_concerns
     can %i[file_manager save_structure], ScannedResource
     can %i[file_manager save_structure], MultiVolumeWork
@@ -31,9 +31,7 @@ class Ability
     # only allow deleting for own objects, without ARKs
     can %i[destroy], FileSet, depositor: current_user.uid
     can %i[destroy], curation_concerns, depositor: current_user.uid
-    cannot %i[destroy], curation_concerns do |obj|
-      !obj.identifier.nil?
-    end
+    cannot(%i[destroy], curation_concerns) { |obj| !obj.identifier.nil? }
   end
 
   def editor_permissions
@@ -86,10 +84,12 @@ class Ability
     cannot [:read], curation_concerns do |curation_concern|
       !readable_concern?(curation_concern)
     end
-    # can :pdf, (curation_concerns + [ScannedResourceShowPresenter]) do |curation_concern|
+    # can :pdf, (curation_concerns +
+    # [ScannedResourceShowPresenter]) do |curation_concern|
     #   ["color", "gray"].include?(Array(curation_concern.pdf_type).first)
     # end
-    # can :color_pdf, (curation_concerns + [ScannedResourceShowPresenter]) do |curation_concern|
+    # can :color_pdf, (curation_concerns +
+    # [ScannedResourceShowPresenter]) do |curation_concern|
     #   curation_concern.pdf_type == ["color"]
     # end
   end
@@ -124,7 +124,9 @@ class Ability
   private
 
     def universal_reader?
-      current_user.curator? || current_user.image_editor? || current_user.fulfiller? || current_user.editor? || current_user.admin?
+      current_user.curator? || current_user.image_editor? ||
+        current_user.fulfiller? || current_user.editor? ||
+        current_user.admin?
     end
 
     def curation_concerns
@@ -132,6 +134,15 @@ class Ability
     end
 
     def roles
-      ['anonymous', 'music_patron', 'campus_patron', 'curator', 'fulfiller', 'editor', 'image_editor', 'admin']
+      [
+        'anonymous',
+        'music_patron',
+        'campus_patron',
+        'curator',
+        'fulfiller',
+        'editor',
+        'image_editor',
+        'admin'
+      ]
     end
 end

@@ -36,16 +36,18 @@ RSpec.describe ViewingHintValidator do
 
         subject.validate(record)
 
-        expect(errors).to have_received(:add).with(:viewing_hint, :inclusion, allow_blank: true, value: "bad")
+        expect(errors).to have_received(:add) \
+          .with(:viewing_hint, :inclusion, allow_blank: true, value: "bad")
       end
     end
   end
 
-  def build_record(viewing_hint:)
+  def build_record(viewing_hint:) # rubocop:disable Metrics/AbcSize
     record = instance_double ScannedResource
     allow(record).to receive(:errors).and_return(errors)
     allow(record).to receive(:viewing_hint).and_return(viewing_hint)
-    allow(record).to receive(:read_attribute_for_validation).with(:viewing_hint).and_return(record.viewing_hint)
+    allow(record).to receive(:read_attribute_for_validation) \
+      .with(:viewing_hint).and_return(record.viewing_hint)
     record
   end
 end

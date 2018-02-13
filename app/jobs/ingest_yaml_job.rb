@@ -18,16 +18,30 @@ class IngestYAMLJob < ActiveJob::Base
 
   private
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/PerceivedComplexity
     def ingest
       @counter = IngestCounter.new
-      resource = (@yaml[:volumes].present? ? MultiVolumeWork : ScannedResource).new
+
+      resource = if @yaml[:volumes].present?
+                   MultiVolumeWork.new
+                 else
+                   ScannedResource.new
+                 end
+
       if @yaml[:attributes].present?
-        @yaml[:attributes].each_value { |attributes| resource.attributes = attributes }
+        @yaml[:attributes].each_value do |attributes|
+          resource.attributes = attributes
+        end
       end
-      resource.source_metadata = @yaml[:source_metadata] if @yaml[:source_metadata].present?
+
+      if @yaml[:source_metadata].present?
+        resource.source_metadata = @yaml[:source_metadata]
+      end
 
       resource.apply_depositor_metadata @user
-      resource.member_of_collections = find_or_create_collections(@yaml[:collections])
+      resource.member_of_collections =
+        find_or_create_collections(@yaml[:collections])
 
       resource.save!
       logger.info "Created #{resource.class}: #{resource.id}"
@@ -47,6 +61,8 @@ class IngestYAMLJob < ActiveJob::Base
       resource.state = 'complete'
       resource.save!
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def attach_sources(resource)
       return unless @yaml[:sources].present?
@@ -63,11 +79,15 @@ class IngestYAMLJob < ActiveJob::Base
       actor.attach_content(File.open(file, 'r:UTF-8'))
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def ingest_volumes(parent)
       @volumes = []
       @yaml[:volumes].each do |volume|
         r = ScannedResource.new
-        r.attributes = @yaml[:attributes][:default] if @yaml[:attributes].present? && @yaml[:attributes][:default].present?
+        if @yaml[:attributes].present? &&
+           @yaml[:attributes][:default].present?
+          r.attributes = @yaml[:attributes][:default]
+        end
         r.attributes = volume[:attributes] if volume[:attributes].present?
         r.viewing_direction = parent.viewing_direction
         r.title = volume[:title]
@@ -84,7 +104,9 @@ class IngestYAMLJob < ActiveJob::Base
       parent.ordered_members = @volumes
       parent.save!
     end
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def ingest_files(parent: nil, resource: nil, files: [])
       @file_sets = []
       files.each do |f|
@@ -98,16 +120,20 @@ class IngestYAMLJob < ActiveJob::Base
         else
           actor.create_metadata(resource, f[:file_opts])
         end
-        actor.assign_visibility(resource) unless assign_visibility?(f[:attributes])
+        actor.assign_visibility(resource) unless
+          assign_visibility?(f[:attributes])
         actor.create_content(decorated_file(f))
         ingest_ocr(actor, f)
 
         yaml_to_repo_map[f[:id]] = file_set.id
         @file_sets << file_set if @file_association_method == 'batch'
-        ingest_thumbnail(file_set, resource, parent) if thumbnail_path?(f[:path])
+        ingest_thumbnail(file_set, resource, parent) if
+          thumbnail_path?(f[:path])
       end
-      MembershipBuilder.new(resource, @file_sets).attach_files_to_work if @file_sets.any?
+      MembershipBuilder.new(resource, @file_sets).attach_files_to_work if
+        @file_sets.any?
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def ingest_ocr(actor, f)
       return unless ocr_file?(f)
@@ -153,7 +179,9 @@ class IngestYAMLJob < ActiveJob::Base
 
     # Purloined from FileSetActor, unmodified
     def assign_visibility?(file_set_params = {})
-      !((file_set_params || {}).keys & %w[visibility embargo_release_date lease_expiration_date]).empty?
+      !((file_set_params || {}).keys & %w[visibility
+                                          embargo_release_date
+                                          lease_expiration_date]).empty?
     end
 end
 # rubocop:enable Metrics/ClassLength

@@ -10,9 +10,11 @@ module IuDevOps
 
     # Public: Initialize a new HTTP check.
     #
-    # url - The URL to check, may also contain user:pass@ for basic auth but auth_options will override
-    # request_timeout - How long to wait to connect before timing out. Defaults to 5 seconds.
-    # auth_options - an ordered array containing username then password for :http_basic_authentication
+    # url - The URL to check, may also contain user:pass@ for basic auth but
+    #   auth_options will override request_timeout - How long to wait to
+    #   connect before timing out. Defaults to 5 seconds.
+    # auth_options - an ordered array containing username then password for
+    #   :http_basic_authentication.
     def initialize(url, request_timeout = 5, auth_options = [])
       super(url, request_timeout)
       self.auth_options = auth_options

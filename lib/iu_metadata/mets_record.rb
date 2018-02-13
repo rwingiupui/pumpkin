@@ -9,7 +9,12 @@ module IuMetadata
     attr_reader :id, :source
 
     # local metadata
-    ATTRIBUTES = %i[identifier replaces source_metadata_identifier viewing_direction].freeze
+    ATTRIBUTES = %i[
+      identifier
+      replaces
+      source_metadata_identifier
+      viewing_direction
+    ].freeze
 
     def attributes
       ATTRIBUTES.map { |att| [att, send(att)] }.to_h.compact
@@ -57,7 +62,8 @@ module IuMetadata
           f[:file_opts] = file_opts(f)
           f[:attributes] ||= {}
           f[:attributes][:title] = [file_label(f[:id])]
-          f[:attributes][:replaces] = "#{pudl_id}/#{File.basename(f[:path], File.extname(f[:path]))}"
+          f[:attributes][:replaces] =
+            "#{pudl_id}/#{File.basename(f[:path], File.extname(f[:path]))}"
         end
         file_hash_array
       end

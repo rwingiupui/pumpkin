@@ -1,7 +1,8 @@
 class Tesseract
   class << self
     def languages
-      language_output.split("\n")[1..-1].map(&:to_sym).each_with_object({}) do |lang, hsh|
+      language_output.split("\n")[1..-1].map(&:to_sym) \
+                     .each_with_object({}) do |lang, hsh|
         hsh[lang] = label(lang)
       end
     end
@@ -12,7 +13,8 @@ class Tesseract
         if iso_result(lang)
           iso_result(lang).english_name
         else
-          I18n.t("simple_form.options.defaults.ocr_language.#{lang}", default: lang.to_s)
+          I18n.t("simple_form.options.defaults.ocr_language.#{lang}",
+                 default: lang.to_s)
         end
       end
 

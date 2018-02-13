@@ -2,11 +2,14 @@ require 'rails_helper'
 
 describe PairtreeDerivativePath do
   before do
-    allow(CurationConcerns.config).to receive(:derivatives_path).and_return('tmp')
+    allow(CurationConcerns.config).to receive(:derivatives_path) \
+      .and_return('tmp')
   end
 
   describe '.derivative_path_for_reference' do
-    subject { described_class.derivative_path_for_reference(object, destination_name) }
+    subject {
+      described_class.derivative_path_for_reference(object, destination_name)
+    }
 
     let(:object) { double(id: '08612n57q') }
     let(:destination_name) { 'thumbnail' }
@@ -32,7 +35,8 @@ describe PairtreeDerivativePath do
         let(:destination_name) { 'color-pdf' }
         it "returns a unique PDF path based on the resource identifier" do
           identifier = instance_double(ResourceIdentifier)
-          allow(ResourceIdentifier).to receive(:new).with(object.id).and_return(identifier)
+          allow(ResourceIdentifier).to receive(:new).with(object.id) \
+                                                    .and_return(identifier)
           allow(identifier).to receive(:to_s).and_return("banana")
 
           expect(subject).to eql "tmp/08/61/2n/57/q-banana-color-pdf.pdf"
@@ -42,7 +46,8 @@ describe PairtreeDerivativePath do
         let(:destination_name) { 'gray-pdf' }
         it "returns a unique PDF path based on the resource identifier" do
           identifier = instance_double(ResourceIdentifier)
-          allow(ResourceIdentifier).to receive(:new).with(object.id).and_return(identifier)
+          allow(ResourceIdentifier).to receive(:new).with(object.id) \
+                                                    .and_return(identifier)
           allow(identifier).to receive(:to_s).and_return("banana")
 
           expect(subject).to eql "tmp/08/61/2n/57/q-banana-gray-pdf.pdf"

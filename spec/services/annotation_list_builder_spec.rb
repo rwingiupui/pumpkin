@@ -27,7 +27,9 @@ RSpec.describe AnnotationListBuilder do
       let(:hocr) do
         HOCRDocument.new(File.open(document))
       end
-      let(:document) { File.open(Rails.root.join("spec", "fixtures", "files", "test.hocr")) }
+      let(:document) {
+        File.open(Rails.root.join("spec", "fixtures", "files", "test.hocr"))
+      }
       let(:bounding_box) do
         b = hocr.lines.first.bounding_box
         "#{b.top_left.x},#{b.top_left.y},#{b.width},#{b.height}"

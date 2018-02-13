@@ -1,31 +1,53 @@
 # rubocop:disable Metrics/ClassLength
 class PlumSchema < ActiveTriples::Schema
   property :sort_title, predicate: ::OpaqueMods.titleForSort, multiple: false
-  property :portion_note, predicate: ::RDF::Vocab::SKOS.scopeNote, multiple: false
+  property :portion_note,
+           predicate: ::RDF::Vocab::SKOS.scopeNote,
+           multiple: false
   property :description, predicate: ::RDF::Vocab::DC.abstract, multiple: false
   property :identifier, predicate: ::RDF::Vocab::DC.identifier, multiple: false
   property :replaces, predicate: ::RDF::Vocab::DC.replaces, multiple: false
-  property :rights_statement, predicate: ::RDF::Vocab::EDM.rights, multiple: false
+  property :rights_statement,
+           predicate: ::RDF::Vocab::EDM.rights,
+           multiple: false
   property :rights_note, predicate: ::RDF::Vocab::DC11.rights, multiple: false
-  property :source_metadata_identifier, predicate: ::PULTerms.metadata_id, multiple: false
+  property :source_metadata_identifier,
+           predicate: ::PULTerms.metadata_id,
+           multiple: false
   # Moved to DisplayableSchema
-  # property :source_metadata, predicate: ::PULTerms.source_metadata, multiple: false
+  # property :source_metadata,
+  #          predicate: ::PULTerms.source_metadata,
+  #          multiple: false
   property :state, predicate: ::F3Access.objState, multiple: false
   property :workflow_note, predicate: ::RDF::Vocab::MODS.note
-  property :holding_location, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/heldBy"), multiple: false
+  property :holding_location,
+           predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/heldBy"),
+           multiple: false
   property :ocr_language, predicate: ::PULTerms.ocr_language
-  property :nav_date, predicate: ::RDF::URI("http://iiif.io/api/presentation/2#navDate"), multiple: false
+  property :nav_date,
+           predicate: ::RDF::URI("http://iiif.io/api/presentation/2#navDate"),
+           multiple: false
   property :pdf_type, predicate: ::PULTerms.pdf_type
-  property :start_canvas, predicate: ::RDF::Vocab::IIIF.hasStartCanvas, multiple: false
+  property :start_canvas,
+           predicate: ::RDF::Vocab::IIIF.hasStartCanvas,
+           multiple: false
   # Newspaper metadata
   property :alternative_title, predicate: ::RDF::Vocab::DC.alternative
-  property :digital_date, predicate: ::RDF::Vocab::DC.available, multiple: false
-  property :usage_right, predicate: ::RDF::Vocab::DC.accessRights, multiple: false
-  property :volume_and_issue_no, predicate: ::RDF::Vocab::DC.hasPart, multiple: false
+  property :digital_date,
+           predicate: ::RDF::Vocab::DC.available,
+           multiple: false
+  property :usage_right,
+           predicate: ::RDF::Vocab::DC.accessRights,
+           multiple: false
+  property :volume_and_issue_no,
+           predicate: ::RDF::Vocab::DC.hasPart,
+           multiple: false
 
   # Generated from Context
-  property :edition, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/editionStatement")
-  property :series, predicate: RDF::URI("http://id.loc.gov/ontologies/bibframe/seriesStatement")
+  property :edition, predicate: RDF::URI("http://id.loc.gov/ontologies" \
+                                         "/bibframe/editionStatement")
+  property :series, predicate: RDF::URI("http://id.loc.gov/ontologies" \
+                                        "/bibframe/seriesStatement")
   property :coverage, predicate: RDF::Vocab::DC11.coverage
   property :date, predicate: RDF::Vocab::DC11.date
   property :digital_specifications, predicate: RDF::Vocab::DC11.format
@@ -36,7 +58,9 @@ class PlumSchema < ActiveTriples::Schema
   property :modified, predicate: RDF::Vocab::DC.modified
   property :lccn_call_number, predicate: RDF::Vocab::Identifiers.lccn
   property :local_call_number, predicate: RDF::Vocab::Identifiers.local
-  property :physical_description, predicate: RDF::Vocab::MODS.physicalExtent, multiple: false
+  property :physical_description,
+           predicate: RDF::Vocab::MODS.physicalExtent,
+           multiple: false
   property :abridger, predicate: RDF::Vocab::MARCRelators.abr
   property :actor, predicate: RDF::Vocab::MARCRelators.act
   property :adapter, predicate: RDF::Vocab::MARCRelators.adp
@@ -58,10 +82,13 @@ class PlumSchema < ActiveTriples::Schema
   property :attributed_name, predicate: RDF::Vocab::MARCRelators.att
   property :auctioneer, predicate: RDF::Vocab::MARCRelators.auc
   property :author, predicate: RDF::Vocab::MARCRelators.aut
-  property :author_in_quotations_or_text_abstracts, predicate: RDF::Vocab::MARCRelators.aqt
-  property :author_of_afterword_colophon_etc, predicate: RDF::Vocab::MARCRelators.aft
+  property :author_in_quotations_or_text_abstracts,
+           predicate: RDF::Vocab::MARCRelators.aqt
+  property :author_of_afterword_colophon_etc,
+           predicate: RDF::Vocab::MARCRelators.aft
   property :author_of_dialog, predicate: RDF::Vocab::MARCRelators.aud
-  property :author_of_introduction_etc, predicate: RDF::Vocab::MARCRelators.aui
+  property :author_of_introduction_etc,
+           predicate: RDF::Vocab::MARCRelators.aui
   property :autographer, predicate: RDF::Vocab::MARCRelators.ato
   property :bibliographic_antecedent, predicate: RDF::Vocab::MARCRelators.ant
   property :binder, predicate: RDF::Vocab::MARCRelators.bnd
@@ -86,7 +113,8 @@ class PlumSchema < ActiveTriples::Schema
   property :collotyper, predicate: RDF::Vocab::MARCRelators.clt
   property :colorist, predicate: RDF::Vocab::MARCRelators.clr
   property :commentator, predicate: RDF::Vocab::MARCRelators.cmm
-  property :commentator_for_written_text, predicate: RDF::Vocab::MARCRelators.cwt
+  property :commentator_for_written_text,
+           predicate: RDF::Vocab::MARCRelators.cwt
   property :compiler, predicate: RDF::Vocab::MARCRelators.com
   property :complainant, predicate: RDF::Vocab::MARCRelators.cpl
   property :complainant_appellant, predicate: RDF::Vocab::MARCRelators.cpt
@@ -156,7 +184,8 @@ class PlumSchema < ActiveTriples::Schema
   property :forger, predicate: RDF::Vocab::MARCRelators.frg
   property :former_owner, predicate: RDF::Vocab::MARCRelators.fmo
   property :funding, predicate: RDF::Vocab::MARCRelators.fnd
-  property :geographic_information_specialist, predicate: RDF::Vocab::MARCRelators.gis
+  property :geographic_information_specialist,
+           predicate: RDF::Vocab::MARCRelators.gis
   property :honoree, predicate: RDF::Vocab::MARCRelators.hnr
   property :host, predicate: RDF::Vocab::MARCRelators.hst
   property :host_institution, predicate: RDF::Vocab::MARCRelators.his
@@ -294,11 +323,14 @@ class PlumSchema < ActiveTriples::Schema
   property :witness, predicate: RDF::Vocab::MARCRelators.wit
   property :wood_engraver, predicate: RDF::Vocab::MARCRelators.wde
   property :woodcutter, predicate: RDF::Vocab::MARCRelators.wdc
-  property :writer_of_accompanying_material, predicate: RDF::Vocab::MARCRelators.wam
-  property :writer_of_added_commentary, predicate: RDF::Vocab::MARCRelators.wac
+  property :writer_of_accompanying_material,
+           predicate: RDF::Vocab::MARCRelators.wam
+  property :writer_of_added_commentary,
+           predicate: RDF::Vocab::MARCRelators.wac
   property :writer_of_added_text, predicate: RDF::Vocab::MARCRelators.wat
   property :writer_of_added_lyrics, predicate: RDF::Vocab::MARCRelators.wal
-  property :writer_of_supplementary_textual_content, predicate: RDF::Vocab::MARCRelators.wst
+  property :writer_of_supplementary_textual_content,
+           predicate: RDF::Vocab::MARCRelators.wst
   property :writer_of_introduction, predicate: RDF::Vocab::MARCRelators.win
   property :writer_of_preface, predicate: RDF::Vocab::MARCRelators.wpr
   property :call_number, predicate: PULTerms.call_number
@@ -306,10 +338,30 @@ class PlumSchema < ActiveTriples::Schema
   property :responsibility_note, predicate: ::RDF::Vocab::SKOS.note
 
   # All of the fields to display when looping through Plum's schema.
-  # Ignore things like admin data (workflow note), title, description, etc, as
-  # those have custom display logic.
-  def self.display_fields
-    ScannedResource.properties.values.map(&:term) - %i[description state rights_statement rights_note holding_location title depositor source_metadata_identifier source_metadata date_modified date_uploaded workflow_note nav_date pdf_type ocr_language keyword create_date modified_date head tail start_canvas] - IIIFBookSchema.properties.map(&:name)
+  # Ignore things like admin data (workflow note), title, description, etc,
+  # as those have custom display logic.
+  def self.display_fields # rubocop:disable Metrics/MethodLength
+    ScannedResource.properties.values.map(&:term) -
+      %i[description
+         state
+         rights_statement
+         rights_note
+         holding_location title
+         depositor
+         source_metadata_identifier
+         source_metadata
+         date_modified
+         date_uploaded
+         workflow_note
+         nav_date
+         pdf_type
+         ocr_language
+         keyword
+         create_date
+         modified_date
+         head
+         tail
+         start_canvas] - IIIFBookSchema.properties.map(&:name)
   end
 
   def self.edit_fields

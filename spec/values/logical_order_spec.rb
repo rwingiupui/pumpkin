@@ -42,7 +42,9 @@ RSpec.describe LogicalOrder do
   end
 
   it "can accept a URI" do
-    expect { described_class.new(params, RDF::URI("http://test.com/bla")) }.not_to raise_error
+    expect {
+      described_class.new(params, RDF::URI("http://test.com/bla"))
+    }.not_to raise_error
   end
 
   describe "#each_section" do
@@ -63,7 +65,8 @@ RSpec.describe LogicalOrder do
       expect(subject.nodes.map(&:label)).to eq ["Chapter 1", "Chapter 2"]
     end
     it "has sub-nodes with titles" do
-      expect(subject.nodes.first.nodes.map(&:label)).to eq ["Page 1", "Page 1", "Chapter 1b"]
+      expect(subject.nodes.first.nodes.map(&:label)) \
+        .to eq ["Page 1", "Page 1", "Chapter 1b"]
     end
     it "goes N levels deep" do
       deep_node = subject.nodes.first.nodes.first

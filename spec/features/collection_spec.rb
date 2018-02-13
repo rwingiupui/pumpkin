@@ -9,7 +9,9 @@ RSpec.describe 'Collections', type: :feature do
 
     it 'attempting to create a collection fails' do
       visit new_collection_path
-      expect(page).to have_selector 'div.alert', text: 'You are not authorized to access this page'
+      expect(page) \
+        .to have_selector('div.alert',
+                          text: 'You are not authorized to access this page')
     end
   end
 

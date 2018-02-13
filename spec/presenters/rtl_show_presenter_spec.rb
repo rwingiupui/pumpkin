@@ -8,8 +8,12 @@ RSpec.describe RTLShowPresenter do
   end
   let(:blacklight_config) do
     double(
-      show_fields: { field: Blacklight::Configuration::Field.new(field: :field) },
-      index_fields: { field: Blacklight::Configuration::Field.new(field: :field) },
+      show_fields: {
+        field: Blacklight::Configuration::Field.new(field: :field)
+      },
+      index_fields: {
+        field: Blacklight::Configuration::Field.new(field: :field)
+      },
       view_config: double("struct", title_field: :field)
     )
   end
@@ -18,7 +22,8 @@ RSpec.describe RTLShowPresenter do
   describe "#field_value" do
     context "when given a RTL string" do
       it "renders it as a RTL list item" do
-        expect(subject.field_value(:field)).to eq "<ul><li dir=\"rtl\">بي</li><li dir=\"ltr\">one</li></ul>"
+        expect(subject.field_value(:field)) \
+          .to eq "<ul><li dir=\"rtl\">بي</li><li dir=\"ltr\">one</li></ul>"
       end
     end
   end

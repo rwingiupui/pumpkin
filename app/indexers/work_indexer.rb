@@ -1,10 +1,12 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
 class WorkIndexer < CurationConcerns::WorkIndexer
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def generate_solr_document
     super.tap do |solr_doc|
       object.member_of_collections.each do |col|
-        solr_doc[Solrizer.solr_name('member_of_collection_slugs', :symbol)] = col.exhibit_id
+        solr_doc[Solrizer.solr_name('member_of_collection_slugs', :symbol)] =
+          col.exhibit_id
       end
 
       (PlumSchema.display_fields + [:title]).each do |field|
@@ -25,20 +27,32 @@ class WorkIndexer < CurationConcerns::WorkIndexer
         solr_doc[Solrizer.solr_name("#{field}_literals", :symbol)] = output
       end
 
-      solr_doc[Solrizer.solr_name('sort_title', :stored_sortable)] = object.title.first
+      solr_doc[Solrizer.solr_name('sort_title', :stored_sortable)] =
+        object.title.first
 
       pages = object.member_ids.size
       if object.is_a? MultiVolumeWork
-        pages = object.member_ids.map { |id| ScannedResource.search_with_conditions({ id: id }, rows: 1).first&.dig('number_of_pages_isi').to_i }.reduce(:+)
+        pages = object.member_ids.map do |id|
+          ScannedResource.search_with_conditions({ id: id }, rows: 1) \
+                         .first&.dig('number_of_pages_isi').to_i
+        end.reduce(:+)
       end
-      solr_doc[Solrizer.solr_name('number_of_pages', :stored_sortable, type: :integer)] = pages
-      solr_doc[Solrizer.solr_name('number_of_pages', :stored_sortable, type: :string)] = pages_bucket(pages, 100)
+      solr_doc[Solrizer.solr_name('number_of_pages',
+                                  :stored_sortable,
+                                  type: :integer)] = pages
+      solr_doc[Solrizer.solr_name('number_of_pages',
+                                  :stored_sortable,
+                                  type: :string)] = pages_bucket(pages, 100)
 
       unless object.date_created.blank?
-        solr_doc[Solrizer.solr_name('date_created', :stored_sortable, type: :integer)] = object.date_created.first.to_i
+        solr_doc[Solrizer.solr_name('date_created',
+                                    :stored_sortable,
+                                    type: :integer)] =
+          object.date_created.first.to_i
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   private
 

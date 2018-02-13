@@ -21,13 +21,15 @@ class RangeBuilder
 
   private
 
-    def build_range
+    def build_range # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       range = IIIF::Presentation::Range.new
       range.label = label
       range['@id'] = path
       range.viewing_hint = "top" if top
       unless regular_nodes.empty?
-        range['ranges'] = regular_nodes.map { |x| self.class.new(x, parent_path).to_h }
+        range['ranges'] = regular_nodes.map do |x|
+          self.class.new(x, parent_path).to_h
+        end
       end
       unless proxy_nodes.empty?
         range['canvases'] = proxy_nodes.map do |proxy_node|
@@ -50,7 +52,9 @@ class RangeBuilder
     end
 
     def regular_nodes
-      @regular_nodes ||= nodes.select { |x| !x.proxy_for.present? && x.nodes.any? }
+      @regular_nodes ||= nodes.select do |x|
+        !x.proxy_for.present? && x.nodes.any?
+      end
     end
 
     def canvas_id(id)

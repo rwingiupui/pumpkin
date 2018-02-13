@@ -1,9 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest" } do
+RSpec.describe PolymorphicManifestBuilder,
+               vcr: { cassette_name: "iiif_manifest" } do
   subject { described_class.new(solr_document) }
 
-  let(:solr_document) { ScannedResourceShowPresenter.new(SolrDocument.new(record.to_solr), nil) }
+  let(:solr_document) {
+    ScannedResourceShowPresenter.new(SolrDocument.new(record.to_solr), nil)
+  }
   let(:record) { FactoryGirl.build(:scanned_resource) }
   before do
     allow(record).to receive(:persisted?).and_return(true)
@@ -14,45 +17,64 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
 
   context "when given a MVW with Children" do
     subject { described_class.new(mvw_document) }
-    let(:mvw_document) { MultiVolumeWorkShowPresenter.new(SolrDocument.new(mvw_record.to_solr), nil) }
-    let(:mvw_record) { FactoryGirl.build(:multi_volume_work, viewing_hint: viewing_hint) }
+    let(:mvw_document) {
+      MultiVolumeWorkShowPresenter.new(SolrDocument.new(mvw_record.to_solr),
+                                       nil)
+    }
+    let(:mvw_record) {
+      FactoryGirl.build(:multi_volume_work, viewing_hint: viewing_hint)
+    }
     let(:manifest) { JSON.parse(subject.manifest.to_json) }
     let(:viewing_hint) { "individuals" }
+
     before do
       allow(mvw_record).to receive(:persisted?).and_return(true)
       allow(mvw_record).to receive(:id).and_return("2")
-      allow(mvw_document).to receive(:member_presenters).and_return([solr_document])
+      allow(mvw_document).to receive(:member_presenters) \
+        .and_return([solr_document])
     end
+
     it "renders as a collection" do
       expect(manifest['@type']).to eq "sc:Collection"
-      expect(manifest['@id']).to eq "http://plum.com/concern/multi_volume_works/2/manifest"
+      expect(manifest['@id']) \
+        .to eq "http://plum.com/concern/multi_volume_works/2/manifest"
       expect(manifest['viewingHint']).to eq "multi-part"
       expect(manifest['viewingDirection']).to be_nil
     end
+
     it "renders a manifest for every child scanned resource" do
       expect(subject.manifests.length).to eq 1
       expect(manifest['manifests'].length).to eq 1
       expect(manifest['manifests'].first['label']).to eq solr_document.to_s
       expect(manifest['manifests'].first['@type']).to eq "sc:Manifest"
     end
+
     it "doesn't render structures for child manifests" do
       expect(manifest['manifests'].first['structures']).to eq nil
     end
+
     it "doesn't render canvases for child manifests" do
-      allow(ManifestBuilder::SequenceBuilder).to receive(:new).and_call_original
+      allow(ManifestBuilder::SequenceBuilder).to receive(:new) \
+        .and_call_original
 
       expect(manifest['manifests'].first['sequences']).to eq nil
-      expect(ManifestBuilder::SequenceBuilder).to have_received(:new).exactly(1).times
+      expect(ManifestBuilder::SequenceBuilder) \
+        .to have_received(:new).exactly(1).times
     end
+
     it "doesn't generate a PDF link" do
       expect(manifest['rendering']).to eql nil
     end
+
     context "with SSL on" do
       subject { described_class.new(mvw_document, ssl: true) }
+
       it "renders collections with HTTPS urls" do
-        expect(manifest['manifests'].first['@id']).to eq "https://plum.com/concern/scanned_resources/1/manifest"
+        expect(manifest['manifests'].first['@id']) \
+          .to eq "https://plum.com/concern/scanned_resources/1/manifest"
       end
     end
+
     context "and some are canvases" do
       let(:file_set) do
         build_file_set("x633f104m")
@@ -63,12 +85,22 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
       let(:file_set3) do
         build_file_set("x633f104o")
       end
-      let(:file_set_presenter) { FileSetPresenter.new(SolrDocument.new(file_set.to_solr), nil) }
-      let(:file_set2_presenter) { FileSetPresenter.new(SolrDocument.new(file_set2.to_solr), nil) }
-      let(:file_set3_presenter) { FileSetPresenter.new(SolrDocument.new(file_set3.to_solr), nil) }
-      let(:sr_2) { ScannedResourceShowPresenter.new(SolrDocument.new(sr_2_resource.to_solr), nil) }
+      let(:file_set_presenter) {
+        FileSetPresenter.new(SolrDocument.new(file_set.to_solr), nil)
+      }
+      let(:file_set2_presenter) {
+        FileSetPresenter.new(SolrDocument.new(file_set2.to_solr), nil)
+      }
+      let(:file_set3_presenter) {
+        FileSetPresenter.new(SolrDocument.new(file_set3.to_solr), nil)
+      }
+      let(:sr_2) {
+        ScannedResourceShowPresenter \
+          .new(SolrDocument.new(sr_2_resource.to_solr), nil)
+      }
       let(:sr_2_resource) { FactoryGirl.build(:scanned_resource, id: "2") }
       let(:solr) { ActiveFedora.solr.conn }
+
       before do
         record.ordered_members << file_set2
         record.logical_order.order = {
@@ -84,34 +116,48 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
             }
           ]
         }
-        allow(mvw_document).to receive(:member_presenters).and_return([solr_document, file_set_presenter, sr_2])
-        allow(solr_document).to receive(:member_presenters).and_return([file_set2_presenter])
-        allow(solr_document).to receive(:logical_order).and_return(record.logical_order.order)
-        allow(sr_2).to receive(:member_presenters).and_return([file_set3_presenter])
+        allow(mvw_document) \
+          .to receive(:member_presenters) \
+          .and_return([solr_document, file_set_presenter, sr_2])
+        allow(solr_document) \
+          .to receive(:member_presenters) \
+          .and_return([file_set2_presenter])
+        allow(solr_document) \
+          .to receive(:logical_order) \
+          .and_return(record.logical_order.order)
+        allow(sr_2) \
+          .to receive(:member_presenters) \
+          .and_return([file_set3_presenter])
       end
+
       it "renders them all as canvases" do
         expect(manifest['manifests']).to eq nil
         expect(manifest['sequences'].first['canvases'].length).to eq 3
       end
+
       context "and there's a viewing hint" do
         let(:viewing_hint) { "paged" }
         it "can render it" do
           expect(manifest['viewingHint']).to eq "paged"
         end
       end
+
       it "renders ranges" do
         expect(manifest["structures"].length).to eq 1
         first_structure = manifest["structures"].first
         expect(first_structure["viewingHint"]).to eq "top"
         expect(first_structure["ranges"].length).to eq 2
-        expect(first_structure["ranges"].first["label"]).to eq record.title.first
+        expect(first_structure["ranges"].first["label"]) \
+          .to eq record.title.first
         expect(first_structure["ranges"].first["ranges"].length).to eq 1
-        expect(first_structure["ranges"].first["ranges"].first["canvases"].first).to eq manifest["sequences"].first["canvases"].first['@id']
+        expect(first_structure["ranges"].first["ranges"] \
+                 .first["canvases"].first) \
+          .to eq manifest["sequences"].first["canvases"].first['@id']
       end
     end
   end
 
-  def build_file_set(id)
+  def build_file_set(id) # rubocop:disable Metrics/AbcSize
     FileSet.new.tap do |g|
       allow(g).to receive(:persisted?).and_return(true)
       allow(g).to receive(:id).and_return(id)
@@ -164,32 +210,46 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
         solr.add record.list_source.to_solr
         solr.commit
       end
+
       let(:first_canvas) { subject.canvases.first }
       let(:manifest_json) { JSON.parse(subject.to_json) }
+
       it "has two" do
         expect(manifest_json["sequences"].first["canvases"].length).to eq 2
-        expect(manifest_json["sequences"].first["canvases"].first["width"]).to eq 487
-        expect(manifest_json["sequences"].first["canvases"].first["height"]).to eq 400
+        expect(manifest_json["sequences"].first["canvases"].first["width"]) \
+          .to eq 487
+        expect(manifest_json["sequences"].first["canvases"] \
+                 .first["height"]) \
+          .to eq 400
       end
+
       it "has a label" do
         expect(first_canvas.label).to eq file_set.to_s
       end
+
       it "uses the selected fileset as a thumbnail" do
-        expect(manifest_json["thumbnail"]).to eq(
-          "@id" => "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2/full/!200,150/0/default.jpg",
-          "service" => {
-            "@context" => "http://iiif.io/api/image/2/context.json",
-            "@id" => "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2",
-            "profile" => "http://iiif.io/api/image/2/level2.json"
-          }
-        )
+        expect(manifest_json["thumbnail"]) \
+          .to eq("@id" => "http://192.168.99.100:5004/" \
+                 "x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2" \
+                 "/full/!200,150/0/default.jpg",
+                 "service" => {
+                   "@context" => "http://iiif.io/api/image/2/context.json",
+                   "@id" => "http://192.168.99.100:5004" \
+                   "/x6%2F33%2Ff1%2F04%2Fn-intermediate_file.jp2",
+                   "profile" => "http://iiif.io/api/image/2/level2.json"
+                 })
       end
+
       it "applies the startCanvas option for the start_canvas" do
-        expect(manifest_json["sequences"].first["startCanvas"]).to eq manifest_json["sequences"].first["canvases"].last["@id"]
+        expect(manifest_json["sequences"].first["startCanvas"]) \
+          .to eq manifest_json["sequences"].first["canvases"].last["@id"]
       end
+
       it "has a viewing hint on the sequence" do
-        expect(manifest_json["sequences"].first["viewingHint"]).to eq "individuals"
+        expect(manifest_json["sequences"].first["viewingHint"]) \
+          .to eq "individuals"
       end
+
       it "has a viewing hint" do
         file_set.viewing_hint = "non-paged"
         solr.add file_set.to_solr
@@ -198,6 +258,7 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
         expect(first_canvas.viewing_hint).to eq "non-paged"
         expect { subject.manifest.to_json }.not_to raise_error
       end
+
       it "handles facing-pages" do
         file_set.viewing_hint = "facing-pages"
         solr.add file_set.to_solr
@@ -206,16 +267,21 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
         expect(first_canvas.viewing_hint).to eq "facing-pages"
         expect { subject.manifest.to_json }.not_to raise_error
       end
+
       it "is a valid manifest" do
         expect { subject.manifest.to_json }.not_to raise_error
       end
+
       it "has an ordered image" do
         first_image = first_canvas.images.first
         expect(first_canvas.images.length).to eq 1
         expect(first_image.resource.format).to eq "image/jpeg"
-        expect(first_image.resource.service['@id']).to eq "http://192.168.99.100:5004/x6%2F33%2Ff1%2F04%2Fm-intermediate_file.jp2"
+        expect(first_image.resource.service['@id']) \
+          .to eq "http://192.168.99.100:5004" \
+        "/x6%2F33%2Ff1%2F04%2Fm-intermediate_file.jp2"
         expect(first_image["on"]).to eq first_canvas['@id']
       end
+
       it "builds ranges" do
         expect(manifest_json["structures"].length).to eq 1
         first_structure = manifest_json["structures"].first
@@ -223,28 +289,42 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
         expect(first_structure["label"]).to eq "TOP!"
         expect(first_structure["ranges"].length).to eq 1
         expect(first_structure["ranges"].first["canvases"].length).to eq 2
-        expect(first_structure["ranges"].first["canvases"].first).to eq manifest_json["sequences"].first["canvases"].first['@id']
+        expect(first_structure["ranges"].first["canvases"].first) \
+          .to eq manifest_json["sequences"].first["canvases"].first['@id']
       end
+
       it "has a pdf link" do
-        expect(manifest_json['sequences'][0]["rendering"]["@id"]).to eql "http://plum.com/concern/scanned_resources/1/pdf/gray"
+        expect(manifest_json['sequences'][0]["rendering"]["@id"]) \
+          .to eql "http://plum.com/concern/scanned_resources/1/pdf/gray"
       end
+
       context "when given a color PDF enabled resource" do
-        let(:record) { FactoryGirl.build(:scanned_resource, pdf_type: ['color']) }
+        let(:record) {
+          FactoryGirl.build(:scanned_resource, pdf_type: ['color'])
+        }
+
         it "has a color PDF link" do
-          expect(manifest_json['sequences'][0]["rendering"]["@id"]).to eql "http://plum.com/concern/scanned_resources/1/pdf/color"
+          expect(manifest_json['sequences'][0]["rendering"]["@id"]) \
+            .to eql "http://plum.com/concern/scanned_resources/1/pdf/color"
         end
       end
+
       context "when given SSL" do
         subject { described_class.new(solr_document, ssl: true) }
         it "generates https links appropriately for pdfs" do
-          expect(manifest_json['sequences'][0]["rendering"]["@id"]).to eql "https://plum.com/concern/scanned_resources/1/pdf/gray"
+          expect(manifest_json['sequences'][0]["rendering"]["@id"]) \
+            .to eql "https://plum.com/concern/scanned_resources/1/pdf/gray"
         end
       end
+
       it "has an otherContent" do
         first_canvas = manifest_json["sequences"][0]["canvases"][0]
-        expect(first_canvas["otherContent"][0]["@id"]).to eq "http://plum.com/concern/container/1/file_sets/x633f104m/text"
+        expect(first_canvas["otherContent"][0]["@id"]) \
+          .to eq "http://plum.com/concern/container/1/file_sets/" \
+        "x633f104m/text"
       end
     end
+
     it "has none" do
       expect(subject.canvases).to eq []
     end
@@ -255,27 +335,39 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
     let(:json_result) { JSON.parse(result.to_json) }
     xit "should have a good JSON-LD result" do
     end
+
     it "has a label" do
       expect(result.label).to eq record.to_s
     end
+
     it "has an ID" do
-      expect(result['@id']).to eq "http://plum.com/concern/scanned_resources/1/manifest"
+      expect(result['@id']) \
+        .to eq "http://plum.com/concern/scanned_resources/1/manifest"
     end
+
     it "has a description" do
       expect(result.description).to eq [record.description]
     end
+
     context "when it has a bibdata ID" do
       it "links to seeAlso" do
-        expect(json_result["seeAlso"]["@id"]).to eq Plum.config['manifest_builder']['see_also_hash']['id'] % '1234567'
-        expect(json_result["seeAlso"]["format"]).to eq Plum.config['manifest_builder']['see_also_hash']['format']
+        expect(json_result["seeAlso"]["@id"]) \
+          .to eq Plum.config['manifest_builder']['see_also_hash']['id'] \
+        % '1234567'
+        expect(json_result["seeAlso"]["format"]) \
+          .to eq Plum.config['manifest_builder']['see_also_hash']['format']
       end
     end
+
     context "when it has no bibdata id" do
-      let(:record) { FactoryGirl.build(:scanned_resource, source_metadata_identifier: nil) }
+      let(:record) {
+        FactoryGirl.build(:scanned_resource, source_metadata_identifier: nil)
+      }
       it "doesn't do seeAlso" do
         expect(json_result["seeAlso"]).to be_blank
       end
     end
+
     describe "metadata" do
       it "has a creator" do
         record.creator = ["Test Author"]
@@ -286,6 +378,7 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
           ]
         )
       end
+
       it "can do authors" do
         record.author = ["Test Author"]
         expect(result.metadata.first).to eql(
@@ -295,6 +388,7 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
           ]
         )
       end
+
       it "wraps URLs with <a> tags" do
         url = "http://purl.test/1234567"
         record.identifier = url
@@ -305,6 +399,7 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
           ]
         )
       end
+
       it "can handle RDF literals" do
         record.creator = [::RDF::Literal.new("Test Author", language: "fr")]
         expect(result.metadata.first).to eql(
@@ -317,13 +412,16 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
           ]
         )
       end
+
       it "is empty with no metadata" do
         expect(result.metadata).to be_empty
       end
+
       it "doesn't render ocr_language" do
         record.ocr_language = ["test"]
         expect(result.metadata.first).to be_nil
       end
+
       it "has a date created" do
         record.date_created = ["1981-01-31"]
         expect(result.metadata).not_to be_empty
@@ -331,7 +429,10 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
     end
     describe "a record in a collection" do
       let(:resource) { FactoryGirl.create(:scanned_resource_in_collection) }
-      let(:solr_document) { ScannedResourceShowPresenter.new(SolrDocument.new(resource.to_solr), nil) }
+      let(:solr_document) {
+        ScannedResourceShowPresenter.new(SolrDocument.new(resource.to_solr),
+                                         nil)
+      }
 
       it "has collection title" do
         expect(subject.manifest.metadata.first).to eql(
@@ -342,27 +443,34 @@ RSpec.describe PolymorphicManifestBuilder, vcr: { cassette_name: "iiif_manifest"
         )
       end
     end
+
     it "has a viewing hint" do
       record.viewing_hint = "paged"
       expect(result.viewing_hint).to eq "paged"
     end
+
     it "has a default viewing hint" do
       expect(result.viewing_hint).to eq "individuals"
     end
+
     it "has a viewing direction" do
       record.viewing_direction = "right-to-left"
       expect(result.viewing_direction).to eq "right-to-left"
     end
+
     it "has a default viewing direction" do
       expect(result.viewing_direction).to eq "left-to-right"
     end
+
     it "is valid" do
       expect { subject.manifest.to_json }.not_to raise_error
     end
+
     context "with SSL on" do
       subject { described_class.new(solr_document, ssl: true) }
       it "has an SSL ID" do
-        expect(result['@id']).to eq "https://plum.com/concern/scanned_resources/1/manifest"
+        expect(result['@id']) \
+          .to eq "https://plum.com/concern/scanned_resources/1/manifest"
       end
     end
   end

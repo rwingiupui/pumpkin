@@ -7,11 +7,13 @@ class UniversalViewer
   end
 
   def script_tag
-    "<script type=\"text/javascript\" id=\"embedUV\" src=\"#{viewer_link}\"></script>".html_safe
+    "<script type=\"text/javascript\" id=\"embedUV\" src=\"#{viewer_link}\">" \
+    "</script>".html_safe
   end
 
   def viewer_link
-    "#{Rails.application.config.relative_url_root}/#{viewer_root}/uv-#{viewer_version}/lib/embed.js"
+    "#{Rails.application.config.relative_url_root}" \
+    "/#{viewer_root}/uv-#{viewer_version}/lib/embed.js"
   end
 
   def viewer_root

@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/LineLength
 source 'https://rubygems.org'
 
 # Complain if developer not using the common Ruby version
@@ -63,7 +64,8 @@ group :development, :test do
   gem 'rubocop', '~> 0.51.0', require: false
   gem 'rubocop-rspec', '~> 1.20.0', require: false
   gem 'simplecov', require: false
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a
+  # debugger console
   gem "factory_girl_rails"
   gem 'guard-rspec', require: false
   gem 'guard-rubocop', require: false
@@ -87,7 +89,8 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-rails'
   gem 'capistrano-rails-console'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running
+  # in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

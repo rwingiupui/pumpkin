@@ -32,12 +32,14 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
 
   before do
     assign(:presenter, parent_presenter)
-    allow(parent_presenter).to receive(:member_presenters).and_return(members)
+    allow(parent_presenter).to receive(:member_presenters) \
+      .and_return(members)
     stub_blacklight_views
     allow(view).to receive(:curation_concern).and_return(parent)
-    allow(view).to receive(:contextual_path).with(anything, anything) do |x, y|
-      CurationConcerns::ContextualPath.new(x, y).show
-    end
+    allow(view).to receive(:contextual_path) \
+      .with(anything, anything) do |x, y|
+        CurationConcerns::ContextualPath.new(x, y).show
+      end
     allow(file_set).to receive(:thumbnail_id).and_return('test_thumbnail_id')
     render
   end
@@ -51,33 +53,51 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
     end
     let(:file_set) { ScannedResourceShowPresenter.new(solr_doc, nil) }
     let(:resource) { FactoryGirl.build(:scanned_resource) }
-    it "uses ScannedResource's thumbnail_id values for Thumbnail radio options" do
-      expect(rendered).to have_selector "input[name='thumbnail_id'][type='radio'][value='#{file_set.thumbnail_id}']"
+    it "uses ScannedResource's thumbnail_id values" \
+    " for Thumbnail radio options" do
+      expect(rendered).to have_selector \
+        "input[name='thumbnail_id'][type='radio']" \
+        "[value='#{file_set.thumbnail_id}']"
     end
-    it "uses ScannedResource's start_canvas values for Starting Page radio options" do
-      expect(rendered).to have_selector "input[name='start_canvas'][type='radio'][value='#{file_set.thumbnail_id}']"
+    it "uses ScannedResource's start_canvas values" \
+    " for Starting Page radio options" do
+      expect(rendered).to have_selector \
+        "input[name='start_canvas'][type='radio']" \
+        "[value='#{file_set.thumbnail_id}']"
     end
     it "renders scanned resources as reorderable" do
-      expect(rendered).to have_selector "input[name='scanned_resource[title][]'][type='text'][value='#{file_set}']"
+      expect(rendered).to have_selector \
+        "input[name='scanned_resource[title][]'][type='text']" \
+        "[value='#{file_set}']"
     end
     it "has a link back to parent" do
-      expect(rendered).to have_link "Test title", href: curation_concerns_multi_volume_work_path(id: "resource")
+      expect(rendered).to have_link(
+        "Test title",
+        href: curation_concerns_multi_volume_work_path(id: "resource")
+      )
     end
     it "doesn't have radio inputs" do
-      expect(rendered).not_to have_selector("#sortable input[type=radio][name='scanned_resource[viewing_hint]']")
+      expect(rendered).not_to have_selector(
+        "#sortable input[type=radio][name='scanned_resource[viewing_hint]']"
+      )
     end
   end
 
   it "displays helper text" do
-    expect(rendered).to include "Select files or directories to upload, or drag them here."
+    expect(rendered).to include(
+      "Select files or directories to upload, or drag them here."
+    )
   end
 
   it "has a file manager header" do
-    expect(rendered).to include "<h1>#{I18n.t('file_manager.link_text')}</h1>"
+    expect(rendered).to include(
+      "<h1>#{I18n.t('file_manager.link_text')}</h1>"
+    )
   end
 
   it "displays each file set's label" do
-    expect(rendered).to have_selector "input[name='file_set[title][]'][type='text'][value='#{file_set}']"
+    expect(rendered).to have_selector \
+      "input[name='file_set[title][]'][type='text'][value='#{file_set}']"
   end
 
   it "displays each file set's file name" do
@@ -89,7 +109,10 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
   end
 
   it "has a link back to parent" do
-    expect(rendered).to have_link "Test title", href: curation_concerns_scanned_resource_path(id: "resource")
+    expect(rendered).to have_link(
+      "Test title",
+      href: curation_concerns_scanned_resource_path(id: "resource")
+    )
   end
 
   it "has an actions bar for labeling" do
@@ -103,9 +126,15 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
     expect(response).to have_selector("*[data-action=file-manager]")
   end
 
-  it "has thumbnails for each resource with fallback to default placeholder image" do
-    expect(rendered).to have_selector("img[src='#{IIIFPath.new(file_set.thumbnail_id)}/full/!200,150/0/default.jpg']")
-    expect(rendered).to have_selector('img[onerror="this.src=\'/assets/default.png\'"]')
+  it "has thumbnails for each resource" \
+  " with fallback to default placeholder image" do
+    expect(rendered).to have_selector(
+      "img[src='#{IIIFPath.new(file_set.thumbnail_id)}" \
+      "/full/!200,150/0/default.jpg']"
+    )
+    expect(rendered).to have_selector(
+      'img[onerror="this.src=\'/assets/default.png\'"]'
+    )
   end
 
   it "renders a form for each member" do
@@ -121,14 +150,18 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
   end
 
   it "has radio inputs for viewing hints" do
-    expect(rendered).to have_selector("input[type=radio][name='file_set[viewing_hint]']", count: 3)
+    expect(rendered).to have_selector(
+      "input[type=radio][name='file_set[viewing_hint]']", count: 3
+    )
     ["Single Page", "Non-Paged", "Facing pages"].each do |hint|
       expect(rendered).to have_field hint
     end
   end
 
   it "renders an OSD link for each member" do
-    expect(rendered).to have_selector("*[data-modal-manifest='#{IIIFPath.new(file_set.thumbnail_id)}/info.json']")
+    expect(rendered).to have_selector \
+      "*[data-modal-manifest='#{IIIFPath.new(file_set.thumbnail_id)}" \
+      "/info.json']"
   end
 
   it "renders a server upload form" do
@@ -141,27 +174,38 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
   end
 
   it "has inputs to edit the viewing hint" do
-    expect(rendered).to have_selector("input[name='scanned_resource[viewing_hint]']")
+    expect(rendered).to have_selector \
+      "input[name='scanned_resource[viewing_hint]']"
   end
 
   it "has a multi-select input to edit the ocr language" do
-    expect(rendered).to have_selector("select[name='scanned_resource[ocr_language][]']")
-    expect(rendered).to have_selector("select[name='scanned_resource[ocr_language][]'] > option[value='eng']")
+    expect(rendered).to have_selector \
+      "select[name='scanned_resource[ocr_language][]']"
+    expect(rendered).to have_selector \
+      "select[name='scanned_resource[ocr_language][]'] > option[value='eng']"
     expect(rendered).to have_text "English"
   end
 
   it "has a hidden field for start_canvas" do
-    expect(rendered).to have_selector("input[type=hidden][name='scanned_resource[start_canvas]']", visible: false)
+    expect(rendered).to have_selector(
+      "input[type=hidden][name='scanned_resource[start_canvas]']",
+      visible: false
+    )
   end
 
   it "has a shared radio button for start_canvas" do
-    expect(rendered).to have_selector("input[name='start_canvas']", count: members.length)
+    expect(rendered).to have_selector(
+      "input[name='start_canvas']",
+      count: members.length
+    )
   end
 
   context "when it's a MVW" do
     let(:parent) { FactoryGirl.build(:multi_volume_work) }
     it "has a correct input to edit the viewing hint" do
-      expect(rendered).to have_selector("input[name='multi_volume_work[viewing_hint]']")
+      expect(rendered).to have_selector(
+        "input[name='multi_volume_work[viewing_hint]']"
+      )
     end
   end
 end

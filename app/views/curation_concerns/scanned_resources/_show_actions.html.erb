@@ -5,23 +5,12 @@
       <%= link_to t('file_manager.link_text'), ContextualPath.new(@presenter, @parent_presenter).file_manager, class: 'btn btn-default' %>
       <%= link_to "Edit Structure", ContextualPath.new(@presenter, @parent_presenter).structure, class: 'btn btn-default' %>
       <%= link_to "Delete This #{@presenter.human_readable_type}", [main_app, @presenter], class: 'btn btn-danger pull-right', data: { confirm: "Delete this #{@presenter.human_readable_type}?" }, method: :delete %>
-      <% if can?(:color_pdf, ScannedResource) %>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Download PDF<span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <%= link_to "Color", polymorphic_path([main_app, :pdf, @presenter], pdf_quality: "color")%>
-            </li>
-            <li>
-              <%= link_to "Grayscale", polymorphic_path([main_app, :pdf, @presenter], pdf_quality: "gray")%>
-            </li>
-          </ul>
-        </div>
-      <% else %>
-        <%= link_to "Download PDF", polymorphic_path([main_app, :pdf, @presenter], pdf_quality: "gray"), class: "btn btn-default" %>
-      <% end %>
+      <%= render 'download_pdf' %>
     <% end %>
   </div>
+<% elsif Plum.config['allow_pdf_download'] %>
+  <div class="form-actions">
+    <%= render 'download_pdf' %>
+  </div>
 <% end %>
+

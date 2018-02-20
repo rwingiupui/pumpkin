@@ -10,6 +10,7 @@ defaults: &defaults
   create_hocr_files: <%= ENV["PMP_CREATE_HOCR_FILES"] || true %>
   index_hocr_files: <%= ENV["PMP_INDEX_HOCR_FILES"] || true %>
   create_word_boundaries: <%= ENV["PMP_CREATE_WORD_BOUNDARIES"] || true %>
+  allow_pdf_download: <%= ENV["PMP_ALLOW_PDF_DOWNLOAD"] || false %>
 
   jp2_recipes:
     default_color: >

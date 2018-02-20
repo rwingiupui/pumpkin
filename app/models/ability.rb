@@ -84,14 +84,18 @@ class Ability # rubocop:disable Metrics/ClassLength
     cannot [:read], curation_concerns do |curation_concern|
       !readable_concern?(curation_concern)
     end
-    # can :pdf, (curation_concerns +
-    # [ScannedResourceShowPresenter]) do |curation_concern|
-    #   ["color", "gray"].include?(Array(curation_concern.pdf_type).first)
-    # end
-    # can :color_pdf, (curation_concerns +
-    # [ScannedResourceShowPresenter]) do |curation_concern|
-    #   curation_concern.pdf_type == ["color"]
-    # end
+    curation_concern_pdf_permissions if Plum.config['allow_pdf_download']
+  end
+
+  def curation_concern_pdf_permissions
+    can :pdf, (curation_concerns +
+    [ScannedResourceShowPresenter]) do |curation_concern|
+      ["color", "gray"].include?(Array(curation_concern.pdf_type).first)
+    end
+    can :color_pdf, (curation_concerns +
+    [ScannedResourceShowPresenter]) do |curation_concern|
+      curation_concern.pdf_type == ["color"]
+    end
   end
 
   def readable_concern?(curation_concern)

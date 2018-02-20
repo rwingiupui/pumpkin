@@ -45,13 +45,24 @@ RSpec.describe "ScannedResourcesController", type: :feature do
                                     text: "Final Review")
     end
 
-    it "User gets an error for bad metadata identifier change" do
-      visit edit_polymorphic_path [scanned_resource]
-      fill_in 'scanned_resource_source_metadata_identifier', with: '359850'
-      check "refresh_remote_metadata"
+    describe "User gets an error for bad metadata identifier change" do
+      specify "when no record is found" do
+        visit edit_polymorphic_path [scanned_resource]
+        fill_in 'scanned_resource_source_metadata_identifier', with: '359850'
+        check "refresh_remote_metadata"
 
-      click_button 'Update Scanned resource'
-      expect(page).to have_text("Error retrieving metadata")
+        click_button 'Update Scanned resource'
+        expect(page).to have_text("The entered ID did not match")
+      end
+      specify "when the identifier is invalid" do
+        visit edit_polymorphic_path [scanned_resource]
+        fill_in 'scanned_resource_source_metadata_identifier',
+                with: 'invalid identifier'
+        check "refresh_remote_metadata"
+
+        click_button 'Update Scanned resource'
+        expect(page).to have_text('valid metadata identifier')
+      end
     end
 
     it "User can follow link to bulk edit scanned resource" \

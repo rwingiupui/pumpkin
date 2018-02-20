@@ -62,8 +62,10 @@ module CommonMetadata
       def remote_metadata_factory
         if RemoteRecord.bibdata?(source_metadata_identifier)
           JSONLDRecord::Factory.new(self.class)
-        else
+        elsif source_metadata_identifier.blank?
           RemoteRecord
+        else
+          raise RemoteRecord::BibdataError, RemoteRecord.bibdata_error_message
         end
       end
 

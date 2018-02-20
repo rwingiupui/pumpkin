@@ -6,6 +6,9 @@ class RemoteRecord < SimpleDelegator
   class << self
     def retrieve(id)
       if id.present?
+        # FIXME: below will always raise an Argument error -- but this action
+        # should also be short-cutted by raising the Bibdata error earlier, so
+        # this is probably vestigial at this point
         result = new(IuMetadata::Client.retrieve(id))
         raise JSONLDRecord::MissingRemoteRecordError if result.source.blank?
         result
@@ -16,6 +19,10 @@ class RemoteRecord < SimpleDelegator
 
     def bibdata?(source_metadata_identifier)
       IuMetadata::Client.bibdata?(source_metadata_identifier)
+    end
+
+    def bibdata_error_message
+      IuMetadata::Client::BIBDATA_ERROR_MESSAGE
     end
   end
 
@@ -40,4 +47,6 @@ class RemoteRecord < SimpleDelegator
       {}
     end
   end
+
+  class BibdataError < StandardError; end
 end

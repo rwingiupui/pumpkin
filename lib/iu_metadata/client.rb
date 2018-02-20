@@ -25,6 +25,9 @@ module IuMetadata
       (source_metadata_id =~ /\A\w+\z/)&.zero? || false
     end
 
+    BIBDATA_ERROR_MESSAGE = 'A valid metadata identifier may contain only ' \
+                            'alphanumeric and underscore characters.'.freeze
+
     # Extracts the data payload from a YAZ Proxy response
     private_class_method def self.strip_yaz(src)
       noko = Nokogiri::XML(src) do |config|

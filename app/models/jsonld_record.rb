@@ -9,9 +9,9 @@ class JSONLDRecord
     def retrieve(bib_id)
       marc = IuMetadata::Client.retrieve(bib_id, :marc)
       mods = IuMetadata::Client.retrieve(bib_id, :mods)
-      raise MissingRemoteRecordError, 'Missing MARC record' if
+      raise MissingRemoteRecordError, 'No MARC record found for this ID' if
         marc.source.blank?
-      raise MissingRemoteRecordError, 'Missing MODS record' if
+      raise MissingRemoteRecordError, 'No MODS record found for this ID' if
         mods.source.blank?
       JSONLDRecord.new(bib_id, marc, mods, factory: factory)
     end

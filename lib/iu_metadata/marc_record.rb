@@ -8,6 +8,8 @@ module IuMetadata
 
     attr_reader :id, :source
 
+    class MarcParsingError < StandardError; end
+
     ATTRIBUTES = %i[
       identifier
       title
@@ -305,6 +307,11 @@ module IuMetadata
         @data ||= reader.select do |r|
           BIB_LEADER06_TYPES.include?(r.leader[6])
         end [0]
+        if @data.nil?
+          raise MarcParsingError,
+                'The MARC leader for this record is not valid.'
+        end
+        @data
       end
 
       def reader

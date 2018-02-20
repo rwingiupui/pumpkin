@@ -14,6 +14,10 @@ describe IuMetadata::MarcRecord do
     pth = File.join(fixture_path, '345682.mrx')
     described_class.new(pth, File.open(pth).read)
   }
+  let(:bad_record) {
+    pth = File.join(fixture_path, 'marc_with_bad_leader.mrx')
+    described_class.new(pth, File.open(pth).read)
+  }
   record1_atts =
     {
       title: ['The weeping angels'],
@@ -143,6 +147,15 @@ describe IuMetadata::MarcRecord do
   describe '#contents' do
     it 'gets the 505s as one squashed string' do
       expect(record1.contents).to eq 'Contents / foo.'
+    end
+  end
+
+  describe '#data' do
+    context 'when leader value fails filtering' do
+      it 'raises IuMetadata::MarcRecord::MarcParsingError' do
+        expect { bad_record.send(:data) }
+          .to raise_error IuMetadata::MarcRecord::MarcParsingError
+      end
     end
   end
 end

@@ -8,10 +8,11 @@ json.resource do
 end
 
 page_word_list = @pages_json[doc[:id]]
-xywh = if !@pages_json[doc[:id]] || page_word_list[doc[:word]].nil?
+real_key = page_word_list.keys.find { |k| doc[:word].downcase == k.downcase }
+xywh = if !@pages_json[doc[:id]] || page_word_list[real_key].nil?
   "0,0,0,0"
 else
-  word_bounds = page_word_list[doc[:word]].shift
+  word_bounds = page_word_list[real_key].shift
   # FIXME: This is the wrong place to set all of these to integers
   if word_bounds
     x = word_bounds["x0"].to_i

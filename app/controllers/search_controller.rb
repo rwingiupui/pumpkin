@@ -12,7 +12,8 @@ class SearchController < ApplicationController
                                       fq: "ordered_by_ssim:#{params[:id]}")
     @docs = @response.map do |doc|
       doc_text = doc['full_text_tesim'][0]
-      doc[:hit_number] = doc_text.scan(/\w+/).count(search_term)
+      doc[:hit_number] =
+        doc_text.scan(/\w+/).count { |t| t.casecmp(search_term).zero? }
       doc[:word] = search_term
       doc
     end

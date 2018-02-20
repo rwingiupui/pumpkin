@@ -41,7 +41,10 @@ class SearchController < ApplicationController
 
     def find_parent_path(id)
       response = ActiveFedora::SolrService.query("id:#{id}")
-      "#{request.base_url}/concern/" \
+      base_url = "#{request.protocol}#{request.host_with_port}" \
+        "#{config.relative_url_root}"
+      base_url.chop! if base_url.end_with? '/'
+      "#{base_url}/concern/" \
       "#{response[0]['has_model_ssim'][0].to_s.underscore}s/#{id}"
     end
 end

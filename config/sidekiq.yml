@@ -10,3 +10,4 @@ production:
   - ingest
   - default
   - lowest
+  - word_boundaries

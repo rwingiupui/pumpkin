@@ -90,10 +90,11 @@ class FileSet < ActiveFedora::Base # rubocop:disable Metrics/ClassLength
     # @param id [String] Fileset id
     def create_ocr(id, filename)
       return unless Plum.config[:create_hocr_files]
+
       # If store_original_files is false, explicitly call the OCRRunner
       # since RunOCRJob only uses the stored content object as the source
-      # and doesn't know about the original file.
-      RunOCRJob.perform_later(id) if Plum.config[:store_original_files]
+      # and doesn't know about the original file
+      RunOCRJob.perform_now(id) if Plum.config[:store_original_files]
       OCRRunner.new(self).from_original_file(filename) unless
         Plum.config[:store_original_files]
     end

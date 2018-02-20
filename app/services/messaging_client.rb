@@ -5,7 +5,7 @@ class MessagingClient
   end
 
   def enabled?
-    !amqp_url.blank?
+    amqp_url.present?
   end
 
   def publish(message)

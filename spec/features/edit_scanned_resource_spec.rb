@@ -77,7 +77,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
 
       within("form.new_file_set") do
         attach_file("file_set[files][]",
-                    File.join(Rails.root, 'spec/fixtures/files/image.png'))
+                    Rails.root.join('spec', 'fixtures', 'files', 'image.png'))
         click_on("Start upload")
       end
 

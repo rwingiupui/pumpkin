@@ -19,7 +19,7 @@
           <% begin %>
             <%= f.input display_field, **fieldset[:args] %>
           <% rescue %>
-            <%= "Error displaying: #{display_field}<br/>".html_safe %>
+            <%= safe_join ['Error displaying: ', display_field, tag(:br)] %>
           <% end %>
         <% end %>
         </fieldset>

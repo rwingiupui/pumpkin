@@ -52,10 +52,10 @@ class OCRRunner
     end
 
     def language
-      return try_language(:ocr_language).join("+") unless
-        try_language(:ocr_language).blank?
-      return try_language(:language).join("+") unless
-        try_language(:language).blank?
+      return try_language(:ocr_language).join("+") if
+        try_language(:ocr_language).present?
+      return try_language(:language).join("+") if
+        try_language(:language).present?
       "eng"
     end
 

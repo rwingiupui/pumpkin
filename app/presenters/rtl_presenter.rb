@@ -1,4 +1,5 @@
 module RTLPresenter
+  include ActionView::Helpers::TagHelper
   extend ActiveSupport::Concern
 
   included do
@@ -15,12 +16,10 @@ module RTLPresenter
     private
 
       def to_list(values)
-        string = "<ul>"
-        values.split("<br/>").each do |value|
-          string << "<li dir=\"#{value.dir}\">#{value}</li>"
-        end
-        string << "</ul>"
-        string.html_safe
+        li_entries = values.split('<br/>').map do |value|
+          content_tag(:li, value, dir: value.dir)
+        end.inject(&:+)
+        content_tag(:ul, li_entries)
       end
   end
 end

@@ -2,6 +2,7 @@ require: rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.3
+  TargetRailsVersion: 4.2
   DisplayCopNames: true
   Include:
     - '**/Rakefile'
@@ -166,31 +167,6 @@ Naming/FileName:
 
 Naming/VariableNumber:
   Enabled: true
-
-Rails/ApplicationJob:
-  Enabled: false
-
-Rails/ApplicationRecord:
-  Enabled: false
-
-Rails/Blank:
-  Enabled: false
-
-Rails/DynamicFindBy:
-  Enabled: false
-
-Rails/FilePath:
-  Enabled: false
-
-Rails/HttpPositionalArguments:
-  Enabled: false
-
-Rails/OutputSafety:
-  Enabled: false
-
-Rails/Present:
-  Enabled: false
-
 RSpec/AnyInstance:
   Enabled: false
 

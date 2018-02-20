@@ -17,8 +17,14 @@ class HoldingLocationRenderer < CurationConcerns::Renderers::AttributeRenderer
     end
 
     def location_string(loc)
-      "#{loc.label}<br/>#{loc.address}<br/>
-Contact at <a href=\"mailto:#{loc.email}\">#{loc.email}</a>,
-                 <a href=\"tel:#{loc.phone}\">#{loc.phone}</a>".html_safe
+      contact_string = safe_join(['Contact at ',
+                                  content_tag(:a,
+                                              loc.email,
+                                              href: "mailto:#{loc.email}"),
+                                  ', ',
+                                  content_tag(:a,
+                                              loc.phone,
+                                              href: "tel:#{loc.phone}")])
+      safe_join([loc.label, loc.address, contact_string], tag(:br))
     end
 end

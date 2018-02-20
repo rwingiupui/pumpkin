@@ -10,7 +10,7 @@ module CurationConcerns::LockWarning
     private
 
       def lock_id?
-        presenter.respond_to?(:id) && !presenter.try(:id).blank?
+        presenter.try(:id).present?
       end
   end
 end

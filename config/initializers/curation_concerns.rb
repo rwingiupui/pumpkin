@@ -26,7 +26,7 @@ CurationConcerns.configure do |config|
 
   # Location on local file system where derivatives will be stored.
   config.derivatives_path = ENV["PMP_DERIVATIVES_PATH"] ||
-                            File.join(Rails.root, 'tmp', 'derivatives')
+                            Rails.root.join('tmp', 'derivatives')
 
   # If you have ffmpeg installed and want to transcode audio and video
   # uncomment this line

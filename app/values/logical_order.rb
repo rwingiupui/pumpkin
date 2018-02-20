@@ -80,7 +80,7 @@ class LogicalOrder
   def each_section(&block)
     return enum_for(:each_section) unless block_given?
     nodes.each do |node|
-      yield node unless node.proxy_for.present?
+      yield node if node.proxy_for.blank?
       node.send(:each_section, &block)
     end
   end

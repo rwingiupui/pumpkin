@@ -1,16 +1,15 @@
 module StructureHelper
   def structure_page_header
-    h = content_tag(:h1, 'Edit Structure')
-    h += bulk_edit_breadcrumb
-    h.html_safe
+    safe_join([content_tag(:h1, 'Edit Structure'), bulk_edit_breadcrumb])
   end
 
   private
 
     def bulk_edit_breadcrumb
-      content_tag(:ul, class: 'breadcrumb') do
-        (bulk_edit_grandparent_work + bulk_edit_parent_work + header).html_safe
-      end
+      li_entries = safe_join([bulk_edit_grandparent_work,
+                              bulk_edit_parent_work,
+                              header])
+      content_tag(:ul, li_entries, class: 'breadcrumb')
     end
 
     def bulk_edit_parent_work

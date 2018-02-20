@@ -10,7 +10,8 @@ module Plum
   private
 
     def config_yaml
-      YAML.safe_load(ERB.new(File.read("#{Rails.root}/config/config.yml")) \
+      YAML.safe_load(ERB.new(File.read(Rails.root.join('config',
+                                                       'config.yml'))) \
                        .result, [Symbol], [], true)[Rails.env]
     end
 

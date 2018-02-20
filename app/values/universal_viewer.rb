@@ -1,5 +1,6 @@
 class UniversalViewer
   include Singleton
+  include ActionView::Helpers::TagHelper
   class << self
     def script_tag
       @script_tag ||= instance.script_tag
@@ -7,17 +8,20 @@ class UniversalViewer
   end
 
   def script_tag
-    "<script type=\"text/javascript\" id=\"embedUV\" src=\"#{viewer_link}\">" \
-    "</script>".html_safe
+    content_tag(:script,
+                '',
+                type: 'text/javascript',
+                id: 'embedUV',
+                src: viewer_link)
   end
 
   def viewer_link
-    "#{Rails.application.config.relative_url_root}" \
-    "/#{viewer_root}/uv-#{viewer_version}/lib/embed.js"
+    safe_join([Rails.application.config.relative_url_root, viewer_root, \
+               "uv-#{viewer_version}", 'lib', 'embed.js'], '/')
   end
 
   def viewer_root
-    "bower_includes/universalviewer/dist"
+    'bower_includes/universalviewer/dist'
   end
 
   def viewer_version

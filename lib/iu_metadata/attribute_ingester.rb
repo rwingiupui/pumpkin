@@ -64,7 +64,8 @@ module IuMetadata
 
     private
 
-      CONTEXT = YAML.safe_load(File.read(Rails.root.join('config/context.yml')))
+      CONTEXT = YAML.safe_load(File.read(Rails.root.join('config',
+                                                         'context.yml')))
 
       # used by both pipelines
       def outbound_statements

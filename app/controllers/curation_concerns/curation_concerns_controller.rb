@@ -42,7 +42,7 @@ class CurationConcerns::CurationConcernsController < ApplicationController
   def flag # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     curation_concern.state = 'flagged'
     note = params[curation_concern_name][:workflow_note]
-    unless note.blank?
+    if note.present?
       curation_concern.workflow_note =
         curation_concern.workflow_note + [note]
     end

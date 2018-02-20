@@ -65,7 +65,7 @@ class IngestYAMLJob < ActiveJob::Base
     # rubocop:enable Metrics/PerceivedComplexity
 
     def attach_sources(resource)
-      return unless @yaml[:sources].present?
+      return if @yaml[:sources].blank?
       @yaml[:sources].each do |source|
         attach_source(resource, source[:title], source[:file])
       end

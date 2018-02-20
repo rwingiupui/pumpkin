@@ -28,16 +28,18 @@ class ScannedResourcePDF
 
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def apply(prawn_document)
-      noto_cjk_b = Rails.root.join("app/assets/fonts/NotoSansCJK",
-                                   "NotoSansCJKtc-Bold.ttf")
-      noto_cjk_r = Rails.root.join("app/assets/fonts/NotoSansCJK",
-                                   "NotoSansCJKtc-Regular.ttf")
-      noto_ara_b = Rails.root.join("app/assets/fonts/NotoNaskhArabic",
-                                   "NotoNaskhArabic-Bold.ttf")
-      noto_ara_r = Rails.root.join("app/assets/fonts/NotoNaskhArabic",
-                                   "NotoNaskhArabic-Regular.ttf")
-      amiri_b = Rails.root.join("app/assets/fonts/amiri/amiri-bold.ttf")
-      amiri_r = Rails.root.join("app/assets/fonts/amiri/amiri-regular.ttf")
+      noto_cjk_b = Rails.root.join('app', 'assets', 'fonts', 'NotoSansCJKtc',
+                                   'NotoSansCJKtc-Bold.ttf')
+      noto_cjk_r = Rails.root.join('app', 'assets', 'fonts', 'NotoSansCJK',
+                                   'NotoSansCJKtc-Regular.ttf')
+      noto_ara_b = Rails.root.join('app', 'assets', 'fonts', 'NotoNaskhArabic',
+                                   'NotoNaskhArabic-Bold.ttf')
+      noto_ara_r = Rails.root.join('app', 'assets', 'fonts', 'NotoNaskhArabic',
+                                   'NotoNaskhArabic-Regular.ttf')
+      amiri_b = Rails.root.join('app', 'assets', 'fonts', 'amiri', \
+                                'amiri-bold.ttf')
+      amiri_r = Rails.root.join('app', 'assets', 'fonts', 'amiri', \
+                                'amiri-regular.ttf')
 
       prawn_document.font_families.update(
         "amiri" => {
@@ -65,7 +67,7 @@ class ScannedResourcePDF
                                   width: Canvas::LETTER_WIDTH - 30,
                                   height: Canvas::LETTER_HEIGHT - 30) do
         image_path =
-          Rails.root.join("app/assets/images/iu-sig-formal.2x.png")
+          Rails.root.join('app', 'assets', 'images', 'iu-sig-formal.2x.png')
         prawn_document.image(
           image_path.to_s,
           position: :center,

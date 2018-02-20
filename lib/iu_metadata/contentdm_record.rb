@@ -129,7 +129,7 @@ module IuMetadata
           end
         end
         cdm2pmp_multi.each do |pmp, cdm|
-          next unless item.xpath(cdm).present?
+          next if item.xpath(cdm).blank?
           vals = []
           item.xpath(cdm).each do |val|
             vals.push val.text

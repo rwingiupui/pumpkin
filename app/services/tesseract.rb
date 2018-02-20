@@ -19,7 +19,9 @@ class Tesseract
       end
 
       def iso_result(lang)
+        # rubocop:disable Rails/DynamicFindBy
         ISO_639.find_by_code(lang.to_s)
+        # rubocop:enable Rails/DynamicFindBy
       end
 
       def language_output

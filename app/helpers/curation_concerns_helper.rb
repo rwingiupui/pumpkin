@@ -3,6 +3,6 @@ module CurationConcernsHelper
   include CurationConcerns::MainAppHelpers
 
   def default_icon_fallback
-    "this.src='#{image_path('default.png')}'".html_safe
+    safe_join ["this.src='", image_path('default.png'), "'"]
   end
 end

@@ -32,12 +32,12 @@ class MembershipBuilder
   private
 
     def set_representative(work, file_set)
-      return unless work.representative_id.blank?
+      return if work.representative_id.present?
       work.representative = file_set
     end
 
     def set_thumbnail(work, file_set)
-      return unless work.thumbnail_id.blank?
+      return if work.thumbnail_id.present?
       work.thumbnail = file_set
     end
 

@@ -57,7 +57,7 @@ describe CurationConcerns::MultiVolumeWorksController do
           .and_return(true)
       end
       allow(CurationConcerns.config).to receive(:whitelisted_ingest_dirs) \
-        .and_return([Rails.root.join("spec/fixtures").to_s])
+        .and_return([Rails.root.join('spec', 'fixtures').to_s])
       post(:browse_everything_files,
            id: resource.id,
            selected_files: params["selected_files"])

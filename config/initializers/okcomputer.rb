@@ -2,7 +2,7 @@
 # otherwise it is effectively disabled
 OkComputer.mount_at = ENV["PMP_OK_URL"] || false
 
-unless ENV["PMP_OK_USER"].blank?
+if ENV["PMP_OK_USER"].present?
   OkComputer.require_authentication(ENV["PMP_OK_USER"],
                                     ENV["PMP_OK_PASS"])
 end

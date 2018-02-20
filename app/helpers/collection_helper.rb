@@ -24,8 +24,7 @@ module CollectionHelper
 
   def collection_metadata
     @collection_metadata ||=
-      JSON.parse(File.read(File.join(Rails.root,
-                                     'config',
-                                     'pudl_collections.json')))
+      JSON.parse(File.read(Rails.root.join('config',
+                                           'pudl_collections.json')))
   end
 end

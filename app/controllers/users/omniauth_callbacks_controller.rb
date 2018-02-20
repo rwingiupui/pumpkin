@@ -3,8 +3,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You need to implement the method below in your model (e.g.
     # app/models/user.rb)
     @user = User.from_omniauth(request.env["omniauth.auth"])
-    @user.authorized_ldap_member?(:force) unless
-      Plum.config[:authorized_ldap_groups].blank?
+    @user.authorized_ldap_member?(:force) if
+      Plum.config[:authorized_ldap_groups].present?
 
     # this will throw if @user is not activated
     sign_in_and_redirect @user, event: :authentication

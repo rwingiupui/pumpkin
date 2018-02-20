@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# rubocop:disable Rails/DynamicFindBy
 RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
   subject { described_class.new(presenter) }
   let(:resource) do
@@ -180,3 +180,4 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
     end
   end
 end
+# rubocop:enable Rails/DynamicFindBy

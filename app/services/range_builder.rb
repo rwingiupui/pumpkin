@@ -53,7 +53,7 @@ class RangeBuilder
 
     def regular_nodes
       @regular_nodes ||= nodes.select do |x|
-        !x.proxy_for.present? && x.nodes.any?
+        x.proxy_for.blank? && x.nodes.any?
       end
     end
 

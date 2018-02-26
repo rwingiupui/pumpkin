@@ -20,8 +20,11 @@ class DownloadsController < ApplicationController
       file_reference = params[:file]
       return default_file unless file_reference
 
+      return dereference_file(file_reference).reader if file_reference == 'extracted_text'
+
       file_path = PairtreeDerivativePath \
                   .derivative_path_for_reference(asset, file_reference)
+
       File.exist?(file_path) ? file_path : nil
     end
 end

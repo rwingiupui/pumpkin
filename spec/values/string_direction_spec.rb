@@ -3,15 +3,17 @@ require 'rails_helper'
 RSpec.describe String do
   describe "#dir" do
     context "when given an arabic string" do
-      subject { "حكاية" }
+      let(:string) { "حكاية" }
+
       it "returns rtl" do
-        expect(subject.dir).to eq "rtl"
+        expect(string.dir).to eq "rtl"
       end
     end
     context "when given an english string" do
-      subject { "string" }
+      let(:string) { "string" }
+
       it "returns ltr" do
-        expect(subject.dir).to eq "ltr"
+        expect(string.dir).to eq "ltr"
       end
     end
   end

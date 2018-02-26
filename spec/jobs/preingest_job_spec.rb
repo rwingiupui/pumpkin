@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PreingestJob do
   let(:user) { FactoryGirl.build(:admin) }
+
   shared_examples "successfully preingests" do
     it "writes the expected yaml output" do
       yaml_content = File.open(yaml_file) { |f| Psych.load(f) }
@@ -31,18 +32,21 @@ RSpec.describe PreingestJob do
     context "with a single-volume mets file",
             vcr: { cassette_name: 'bibdata-bhr9405' } do
       let(:preingest_file) { mets_file_single }
+
       include_examples "successfully preingests"
     end
 
     context "with a right-to-left mets file",
             vcr: { cassette_name: 'bibdata-bhr9405' } do
       let(:preingest_file) { mets_file_rtl }
+
       include_examples "successfully preingests"
     end
 
     context "preingests a multi-volume yaml file",
             vcr: { cassette_name: 'bibdata-bhr9405' } do
       let(:preingest_file) { mets_file_multi }
+
       include_examples "successfully preingests"
     end
   end
@@ -62,12 +66,14 @@ RSpec.describe PreingestJob do
     context "with a single-volume Variations file",
             vcr: { cassette_name: 'bibdata-bhr9405' } do
       let(:preingest_file) { variations_file_single }
+
       include_examples "successfully preingests"
     end
 
     context "with a multi-volume Variations file",
             vcr: { cassette_name: 'bibdata-abe9721' } do
       let(:preingest_file) { variations_file_multi }
+
       include_examples "successfully preingests"
     end
   end
@@ -82,6 +88,7 @@ RSpec.describe PreingestJob do
 
     context "with a multi-volume CDM XML export file" do
       let(:preingest_file) { cdm_file_multiple }
+
       include_examples "successfully preingests"
     end
   end

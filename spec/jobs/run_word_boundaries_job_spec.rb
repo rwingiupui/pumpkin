@@ -7,7 +7,7 @@ RSpec.describe RunWordBoundariesJob do
     context "word boundaries file already exists" do
       before do
         mock_runner = double
-        allow(mock_runner).to receive(:json_exists?) { true }
+        allow(mock_runner).to receive(:json_exists?).and_return(true)
         allow(WordBoundariesRunner).to receive(:new).and_return(mock_runner)
       end
       it "logs a message" do
@@ -20,9 +20,9 @@ RSpec.describe RunWordBoundariesJob do
     context "hocr file exists" do
       before do
         @mock_runner = double
-        allow(@mock_runner).to receive(:json_exists?) { false }
-        allow(@mock_runner).to receive(:hocr_exists?) { true }
-        allow(@mock_runner).to receive(:create) { nil }
+        allow(@mock_runner).to receive(:json_exists?).and_return(false)
+        allow(@mock_runner).to receive(:hocr_exists?).and_return(true)
+        allow(@mock_runner).to receive(:create).and_return(nil)
         allow(WordBoundariesRunner).to receive(:new).and_return(@mock_runner)
       end
       it "creates a WordBoundariesRunner" do
@@ -35,11 +35,11 @@ RSpec.describe RunWordBoundariesJob do
       before do
         mock_runner = double
         mock_job = double
-        allow(mock_runner).to receive(:json_exists?) { false }
-        allow(mock_runner).to receive(:hocr_exists?) { false }
+        allow(mock_runner).to receive(:json_exists?).and_return(false)
+        allow(mock_runner).to receive(:hocr_exists?).and_return(false)
         allow(mock_job).to receive(:perform_later)
         allow(WordBoundariesRunner).to receive(:new).and_return(mock_runner)
-        allow(described_class).to receive(:set) { mock_job }
+        allow(described_class).to receive(:set).and_return(mock_job)
       end
       it "logs a message and set up to run later" do
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")

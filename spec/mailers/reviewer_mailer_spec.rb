@@ -14,7 +14,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
     end
 
     context "complete" do
-      before(:each) do
+      before do
         described_class.notify(curation_concern.id, 'complete').deliver_now
       end
 
@@ -31,7 +31,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
     end
 
     context "takedown" do
-      before(:each) do
+      before do
         described_class.notify(curation_concern.id, 'takedown').deliver_now
       end
 
@@ -48,7 +48,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
     end
 
     context "pending" do
-      before(:each) do
+      before do
         described_class.notify(curation_concern.id, 'pending').deliver_now
       end
 
@@ -58,7 +58,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
     end
 
     context "multiple addresses" do
-      before(:each) do
+      before do
         allow_any_instance_of(Role).to receive(:users) \
           .and_return([complete_reviewer, takedown_reviewer])
         described_class.notify(curation_concern.id, 'takedown').deliver_now

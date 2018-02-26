@@ -20,14 +20,13 @@ describe MultiVolumeWork do
                       rights_statement: nkc)
   }
   let(:reloaded) { described_class.find(multi_volume_work.id) }
-  subject { multi_volume_work }
 
   describe 'has note fields' do
     %i[portion_note description].each do |note_type|
       it "should let me set a #{note_type}" do
         note = 'This is note text'
-        subject.send("#{note_type}=", note)
-        expect { subject.save }.to_not raise_error
+        multi_volume_work.send("#{note_type}=", note)
+        expect { multi_volume_work.save }.not_to raise_error
         expect(reloaded.send(note_type)).to eq note
       end
     end
@@ -36,67 +35,67 @@ describe MultiVolumeWork do
   describe 'has source metadata id' do
     it 'allows setting of metadata id' do
       id = '12345'
-      subject.source_metadata_identifier = id
-      expect { subject.save }.to_not raise_error
+      multi_volume_work.source_metadata_identifier = id
+      expect { multi_volume_work.save }.not_to raise_error
       expect(reloaded.source_metadata_identifier).to eq id
     end
   end
 
   context "validating title and metadata id" do
     before do
-      subject.source_metadata_identifier = nil
-      subject.title = nil
+      multi_volume_work.source_metadata_identifier = nil
+      multi_volume_work.title = nil
     end
     context "when neither metadata id nor title is set" do
       it 'fails' do
-        expect(subject.valid?).to eq false
+        expect(multi_volume_work.valid?).to eq false
       end
     end
     context "when only metadata id is set" do
       before do
-        subject.source_metadata_identifier = "12355"
+        multi_volume_work.source_metadata_identifier = "12355"
       end
       it 'passes' do
-        expect(subject.valid?).to eq true
+        expect(multi_volume_work.valid?).to eq true
       end
     end
     context "when only title id is set" do
       before do
-        subject.title = ["A Title.."]
+        multi_volume_work.title = ["A Title.."]
       end
       it 'passes' do
-        expect(subject.valid?).to eq true
+        expect(multi_volume_work.valid?).to eq true
       end
     end
   end
 
   describe 'has scanned resource members' do
     before do
-      subject.ordered_members = [scanned_resource1, scanned_resource2]
+      multi_volume_work.ordered_members = [scanned_resource1, scanned_resource2]
     end
     it "has scanned resources" do
-      expect(subject.ordered_members).to eq \
+      expect(multi_volume_work.ordered_members).to eq \
         [scanned_resource1, scanned_resource2]
     end
     it "can persist when it has a thumbnail set to scanned resource" do
-      subject.thumbnail = scanned_resource1
-      expect(subject.save).to eq true
+      multi_volume_work.thumbnail = scanned_resource1
+      expect(multi_volume_work.save).to eq true
     end
   end
 
   describe "#pending_uploads" do
     it "returns all pending uploads" do
-      subject.save
+      multi_volume_work.save
       pending_upload = FactoryGirl.create(:pending_upload,
-                                          curation_concern_id: subject.id)
+                                          curation_concern_id: multi_volume_work.id)
 
-      expect(subject.pending_uploads).to eq [pending_upload]
+      expect(multi_volume_work.pending_uploads).to eq [pending_upload]
     end
     it "doesn't return anything for other resources' pending uploads" do
-      subject.save
+      multi_volume_work.save
       FactoryGirl.create(:pending_upload, curation_concern_id: "banana")
 
-      expect(subject.pending_uploads).to eq []
+      expect(multi_volume_work.pending_uploads).to eq []
     end
     context "when not persisted" do
       it "returns a blank array" do
@@ -105,8 +104,12 @@ describe MultiVolumeWork do
     end
   end
 
-  include_examples "structural metadata"
-  include_examples "common metadata"
+  include_examples "structural metadata" do
+    let(:curation_concern) { multi_volume_work }
+  end
+  include_examples "common metadata" do
+    let(:curation_concern) { multi_volume_work }
+  end
 
   describe "solr indexing" do
     it "sets number_of_pages by sum of child volumes' pages" do
@@ -117,9 +120,9 @@ describe MultiVolumeWork do
         FactoryGirl.create(:file_set)
       ]
       scanned_resource2.save
-      subject.ordered_members = [scanned_resource1, scanned_resource2]
-      subject.save
-      expect(subject.to_solr['number_of_pages_isi']).to eq 3
+      multi_volume_work.ordered_members = [scanned_resource1, scanned_resource2]
+      multi_volume_work.save
+      expect(multi_volume_work.to_solr['number_of_pages_isi']).to eq 3
     end
   end
 end

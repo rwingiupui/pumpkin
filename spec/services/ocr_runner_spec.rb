@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe OCRRunner do
+  let(:runner) { described_class.new(file_set) }
   let(:file_set) { FactoryGirl.build(:file_set) }
-  subject { described_class.new(file_set) }
 
   before do
     allow(file_set).to receive(:in_works).and_return([parent])
@@ -18,22 +18,25 @@ RSpec.describe OCRRunner do
                           language: ['spa'],
                           ocr_language: ['ita'])
       }
+
       it "uses ocr_language when it is set" do
-        expect(subject.send(:language)).to eq('ita')
+        expect(runner.send(:language)).to eq('ita')
       end
     end
 
     context "when ocr_language is not set" do
       let(:parent) { FactoryGirl.build(:scanned_resource, language: ['spa']) }
+
       it "uses language when ocr_language is not set" do
-        expect(subject.send(:language)).to eq('spa')
+        expect(runner.send(:language)).to eq('spa')
       end
     end
 
     context "when neither language nor ocr_language is set" do
       let(:parent) { FactoryGirl.build(:scanned_resource) }
+
       it "defaults to english" do
-        expect(subject.send(:language)).to eq('eng')
+        expect(runner.send(:language)).to eq('eng')
       end
     end
 
@@ -41,8 +44,9 @@ RSpec.describe OCRRunner do
       let(:parent) {
         FactoryGirl.build(:scanned_resource, ocr_language: ['xxx'])
       }
+
       it "defaults to english" do
-        expect(subject.send(:language)).to eq('eng')
+        expect(runner.send(:language)).to eq('eng')
       end
     end
 
@@ -53,8 +57,9 @@ RSpec.describe OCRRunner do
                           language: ['spa'],
                           ocr_language: ['xxx'])
       }
+
       it "uses the supported language value" do
-        expect(subject.send(:language)).to eq('spa')
+        expect(runner.send(:language)).to eq('spa')
       end
     end
   end

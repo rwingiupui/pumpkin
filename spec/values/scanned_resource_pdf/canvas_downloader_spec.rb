@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ScannedResourcePDF::CanvasDownloader,
                vcr: { cassette_name: "iiif_manifest" } do
-  subject { described_class.new(canvas) }
+  let(:canvas_downloader) { described_class.new(canvas) }
+
   let(:canvas) do
     c = instance_double ScannedResourcePDF::Canvas
     allow(c).to receive(:url).and_return(path)
@@ -15,23 +16,25 @@ RSpec.describe ScannedResourcePDF::CanvasDownloader,
   }
   let(:width) { 700 }
   let(:height) { 800 }
+
   describe "#layout" do
     context "when height is bigger" do
       it "returns portrait" do
-        expect(subject.layout).to eq :portrait
+        expect(canvas_downloader.layout).to eq :portrait
       end
     end
     context "when width is bigger" do
       let(:width) { 900 }
+
       it "returns landscape" do
-        expect(subject.layout).to eq :landscape
+        expect(canvas_downloader.layout).to eq :landscape
       end
     end
   end
 
   describe "#download" do
     it "returns an IO object" do
-      expect(subject.download).to respond_to(:read)
+      expect(canvas_downloader.download).to respond_to(:read)
     end
   end
 end

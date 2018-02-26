@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StateValidator do
-  subject { described_class.new }
+  let(:validator) { described_class.new }
 
   describe "#validate" do
     let(:errors) { double("Errors") }
@@ -22,7 +22,7 @@ RSpec.describe StateValidator do
         it "does not add errors" do
           record = build_record(state, nil)
 
-          subject.validate(record)
+          validator.validate(record)
 
           expect(errors).not_to have_received(:add)
         end
@@ -33,7 +33,7 @@ RSpec.describe StateValidator do
       it "does not add errors" do
         record = build_record(nil, nil)
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).not_to have_received(:add)
       end
@@ -43,7 +43,7 @@ RSpec.describe StateValidator do
       it "adds errors" do
         record = build_record("bad", "bad")
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:state, :inclusion, allow_blank: true, value: "bad")

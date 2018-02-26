@@ -172,22 +172,11 @@ Naming/FileName:
 
 Naming/VariableNumber:
   Enabled: true
+
 RSpec/AnyInstance:
   Enabled: false
 
-RSpec/BeEql:
-  Enabled: false
-
 RSpec/ContextWording:
-  Enabled: false
-
-RSpec/EmptyExampleGroup:
-  Enabled: false
-
-RSpec/EmptyLineAfterFinalLet:
-  Enabled: false
-
-RSpec/EmptyLineAfterSubject:
   Enabled: false
 
 RSpec/ExampleLength:
@@ -199,55 +188,16 @@ RSpec/ExpectInHook:
 RSpec/HookArgument:
   Enabled: false
 
-RSpec/ImplicitExpect:
-  Enabled: false
-
-RSpec/LeadingSubject:
-  Enabled: false
-
-RSpec/LetBeforeExamples:
-  Enabled: false
-
-RSpec/LetSetup:
-  Enabled: false
-
 RSpec/MessageSpies:
   Enabled: false
 
 RSpec/MultipleExpectations:
   Enabled: false
 
-RSpec/NamedSubject:
-  Enabled: false
-
 RSpec/NestedGroups:
   Enabled: false
 
-RSpec/NotToNot:
-  Enabled: false
-
-RSpec/OverwritingSetup:
-  Enabled: false
-
-RSpec/PredicateMatcher:
-  Enabled: false
-
-RSpec/ReturnFromStub:
-  Enabled: false
-
-RSpec/ScatteredLet:
-  Enabled: false
-
-RSpec/ScatteredSetup:
-  Enabled: false
-
-RSpec/SubjectStub:
-  Enabled: false
-
 RSpec/VerifiedDoubles:
-  Enabled: false
-
-RSpec/VoidExpect:
   Enabled: false
 
 Security/YAMLLoad:

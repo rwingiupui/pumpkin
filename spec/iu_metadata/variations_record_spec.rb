@@ -41,6 +41,7 @@ RSpec.describe IuMetadata::VariationsRecord do
     let(:normalized_display) {
       record1.send(:filename, Nokogiri::XML(pagenum_xml))
     }
+
     it "normalizes volume, pagenum components" do
       expect(raw_filename).to match(/[a-z]{3}\d{4}-\d{2}-\d{1}/)
       expect(normalized_filename).to match(/[a-z]{3}\d{4}-\d{1}-\d{4}/)

@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe RTLShowPresenter do
+  let(:presenter) { described_class.new(document, controller) }
+
   let(:document) do
     {
       field: ["بي", "one"]
@@ -18,11 +20,11 @@ RSpec.describe RTLShowPresenter do
     )
   end
   let(:controller) { double(blacklight_config: blacklight_config) }
-  subject { described_class.new(document, controller) }
+
   describe "#field_value" do
     context "when given a RTL string" do
       it "renders it as a RTL list item" do
-        expect(subject.field_value(:field)) \
+        expect(presenter.field_value(:field)) \
           .to eq "<ul><li dir=\"rtl\">بي</li><li dir=\"ltr\">one</li></ul>"
       end
     end

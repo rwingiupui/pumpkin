@@ -2,33 +2,36 @@ require 'rails_helper'
 
 RSpec.describe ManifestEventGenerator do
   context "Message queue is disabled" do
-    subject { described_class.new(rabbit_connection) }
+    let(:generator) { described_class.new(rabbit_connection) }
+
     let(:rabbit_connection) {
       instance_double(MessagingClient, publish: true, enabled?: false)
     }
     let(:record) { FactoryGirl.build(:scanned_resource) }
+
     describe "#record_created" do
       it "does not publish" do
-        expect(subject.record_created(record)).to eq(false)
+        expect(generator.record_created(record)).to eq(false)
         expect(rabbit_connection).not_to have_received(:publish)
       end
     end
     describe "#record_deleted" do
       it "does not publish" do
-        expect(subject.record_deleted(record)).to eq(false)
+        expect(generator.record_deleted(record)).to eq(false)
         expect(rabbit_connection).not_to have_received(:publish)
       end
     end
     describe "#record_updated" do
       it "does not publish" do
-        expect(subject.record_updated(record)).to eq(false)
+        expect(generator.record_updated(record)).to eq(false)
         expect(rabbit_connection).not_to have_received(:publish)
       end
     end
   end
 
   context "Message queue is enabled" do
-    subject { described_class.new(rabbit_connection) }
+    let(:generator) { described_class.new(rabbit_connection) }
+
     let(:rabbit_connection) {
       instance_double(MessagingClient, publish: true, enabled?: true)
     }
@@ -38,6 +41,7 @@ RSpec.describe ManifestEventGenerator do
       FactoryGirl.build(:scanned_resource,
                         member_of_collections: [collection])
     }
+
     describe "#record_created" do
       it "publishes a persistent JSON message" do
         record.save
@@ -49,7 +53,7 @@ RSpec.describe ManifestEventGenerator do
           "collection_slugs" => []
         }
 
-        subject.record_created(record)
+        generator.record_created(record)
 
         expect(rabbit_connection).to have_received(:publish) \
           .with(expected_result.to_json)
@@ -64,7 +68,7 @@ RSpec.describe ManifestEventGenerator do
           "collection_slugs" => [collection.exhibit_id]
         }
 
-        subject.record_created(record_in_collection)
+        generator.record_created(record_in_collection)
 
         expect(rabbit_connection).to have_received(:publish) \
           .with(expected_result.to_json)
@@ -82,7 +86,7 @@ RSpec.describe ManifestEventGenerator do
           "http://plum.com/concern/scanned_resources/#{record.id}/manifest"
         }
 
-        subject.record_deleted(record)
+        generator.record_deleted(record)
 
         expect(rabbit_connection).to have_received(:publish) \
           .with(expected_result.to_json)
@@ -102,7 +106,7 @@ RSpec.describe ManifestEventGenerator do
           "collection_slugs" => [collection.exhibit_id]
         }
 
-        subject.record_updated(record)
+        generator.record_updated(record)
 
         expect(rabbit_connection).to have_received(:publish) \
           .with(expected_result.to_json)

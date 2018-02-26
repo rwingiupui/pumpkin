@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe HoldingLocationAuthority do
-  subject { described_class.new }
+  let(:hl_authority) { described_class.new }
   let(:id) { 'https://libraries.indiana.edu/music' }
   let(:obj) {
     {
@@ -21,14 +21,15 @@ RSpec.describe HoldingLocationAuthority do
       "id" => "https://libraries.indiana.edu/music"
     }
   }
+
   context "with data" do
     it "finds a holding location by id" do
-      expect(subject.find(id)).to eq(obj.stringify_keys)
+      expect(hl_authority.find(id)).to eq(obj.stringify_keys)
     end
 
     it "lists all of the holding locations" do
-      expect(subject.all.length).to eq(1)
-      expect(subject.all).to include(obj.stringify_keys)
+      expect(hl_authority.all.length).to eq(1)
+      expect(hl_authority.all).to include(obj.stringify_keys)
     end
   end
 end

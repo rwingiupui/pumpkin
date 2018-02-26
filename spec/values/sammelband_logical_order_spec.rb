@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe SammelbandLogicalOrder do
-  subject { described_class.new(source_presenter, source_structure) }
+  let(:s_l_o) { described_class.new(source_presenter, source_structure) }
 
   let(:source_presenter) { MultiVolumeWorkShowPresenter.new(solr_doc, nil) }
   let(:solr_doc) { SolrDocument.new(resource.to_solr) }
   let(:resource) { FactoryGirl.build(:multi_volume_work) }
   let(:source_structure) { {} }
+
   describe "#to_h" do
     context "when there's scanned resources and canvases" do
       let(:sr_1_presenter) {
@@ -23,8 +24,9 @@ RSpec.describe SammelbandLogicalOrder do
       let(:file_1_presenter) { FileSetPresenter.new(file_1, nil) }
       let(:file_2_presenter) { FileSetPresenter.new(file_2, nil) }
       let(:file_3_presenter) { FileSetPresenter.new(file_3, nil) }
+
       before do
-        allow(subject).to receive(:member_presenters) \
+        allow(s_l_o).to receive(:member_presenters) \
           .and_return([sr_1_presenter, sr_2_presenter, file_3_presenter])
         allow(sr_1_presenter).to receive(:member_presenters) \
           .and_return([file_1_presenter])
@@ -83,8 +85,9 @@ RSpec.describe SammelbandLogicalOrder do
             ]
           }.with_indifferent_access
         end
+
         it "embeds the structures in the right place" do
-          expect(subject.to_h).to eq({
+          expect(s_l_o.to_h).to eq({
             "nodes": [
               {
                 "label": "Covers",
@@ -111,7 +114,7 @@ RSpec.describe SammelbandLogicalOrder do
           allow(sr_2_presenter).to receive(:logical_order).and_return({})
         end
         it "uses their canvas IDs instead" do
-          expect(subject.to_h).to eq({
+          expect(s_l_o.to_h).to eq({
             "nodes": [
               {
                 "label": sr_1_presenter.to_s,
@@ -130,7 +133,7 @@ RSpec.describe SammelbandLogicalOrder do
         end
       end
       it "merges in their ranges" do
-        expect(subject.to_h).to eq({
+        expect(s_l_o.to_h).to eq({
           "nodes": [
             {
               "label": sr_1_presenter.to_s,

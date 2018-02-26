@@ -25,6 +25,7 @@ describe PurlController do
 
   describe "default" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user
       scanned_resource
@@ -33,17 +34,19 @@ describe PurlController do
     end
     context "with a matching id" do
       shared_examples "responses for matches" do
-        before(:each) do
+        before do
           get :default, id: id, format: format
         end
         context "in html" do
           let(:format) { 'html' }
+
           it "redirects to the scanned_resource page" do
             expect(response).to redirect_to target_path
           end
         end
         context "in json" do
           let(:format) { 'json' }
+
           it 'renders a json response' do
             expect(JSON.parse(response.body)['url']).to match target_path
           end
@@ -54,6 +57,7 @@ describe PurlController do
         let(:target_path) {
           curation_concerns_scanned_resource_path(scanned_resource)
         }
+
         include_examples "responses for matches"
       end
       context "for a MultiVolumeWork" do
@@ -61,27 +65,31 @@ describe PurlController do
         let(:target_path) {
           curation_concerns_multi_volume_work_path(multi_volume_work)
         }
+
         include_examples "responses for matches"
       end
       context "for a FileSet" do
         let(:id) { file_set.source_metadata_identifier }
         let(:target_path) { curation_concerns_file_set_path(file_set) }
+
         include_examples "responses for matches"
       end
     end
     shared_examples "responses for no matches" do
       let(:target_path) { Plum.config['purl_redirect_url'] % id }
-      before(:each) do
+      before do
         get :default, id: id, format: format
       end
       context "in html" do
         let(:format) { 'html' }
+
         it "redirects to #{Plum.config['purl_redirect_url']}" do
           expect(response).to redirect_to target_path
         end
       end
       context "in json" do
         let(:format) { 'json' }
+
         it 'renders a json response' do
           expect(JSON.parse(response.body)['url']).to match target_path
         end
@@ -89,14 +97,17 @@ describe PurlController do
     end
     context "with an invalid id" do
       let(:id) { 'BHR940' }
-      before(:each) do
+
+      before do
         scanned_resource
       end
       include_examples "responses for no matches"
     end
     context "with an unmatched id" do
-      let!(:id) { scanned_resource.source_metadata_identifier }
-      before(:each) do
+      let(:id) { scanned_resource.source_metadata_identifier }
+
+      before do
+        id
         scanned_resource.destroy!
       end
       include_examples "responses for no matches"

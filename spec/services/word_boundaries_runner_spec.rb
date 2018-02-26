@@ -44,11 +44,19 @@ RSpec.describe WordBoundariesRunner do
     end
   end
   describe "#hocr_exists" do
-    context "when it exists"
-    context "when it doesn't exist"
+    context "when it exists" do
+      pending "what does it do?!"
+    end
+    context "when it doesn't exist" do
+      pending "what does it do?!"
+    end
   end
   describe "#json_exists" do
-    context "when it exists"
-    context "when it doesn't exist"
+    context "when it exists" do
+      pending "what does it do?!"
+    end
+    context "when it doesn't exist" do
+      pending "what does it do?!"
+    end
   end
 end

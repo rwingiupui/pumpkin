@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LogicalOrder do
-  subject { described_class.new(params, label) }
+  let(:logical_order) { described_class.new(params, label) }
   let(:label) {}
   let(:params) do
     {
@@ -49,7 +49,7 @@ RSpec.describe LogicalOrder do
 
   describe "#each_section" do
     it "returns every section in the order" do
-      expect(subject.each_section.map(&:label)).to eq [
+      expect(logical_order.each_section.map(&:label)).to eq [
         "Chapter 1",
         "Chapter 1b",
         "Chapter 2"
@@ -59,17 +59,17 @@ RSpec.describe LogicalOrder do
 
   describe "#nodes" do
     it "returns the two nodes" do
-      expect(subject.nodes.length).to eq 2
+      expect(logical_order.nodes.length).to eq 2
     end
     it "returns orders with labels" do
-      expect(subject.nodes.map(&:label)).to eq ["Chapter 1", "Chapter 2"]
+      expect(logical_order.nodes.map(&:label)).to eq ["Chapter 1", "Chapter 2"]
     end
     it "has sub-nodes with titles" do
-      expect(subject.nodes.first.nodes.map(&:label)) \
+      expect(logical_order.nodes.first.nodes.map(&:label)) \
         .to eq ["Page 1", "Page 1", "Chapter 1b"]
     end
     it "goes N levels deep" do
-      deep_node = subject.nodes.first.nodes.first
+      deep_node = logical_order.nodes.first.nodes.first
       expect(deep_node.label).to eq "Page 1"
       expect(deep_node.nodes).to eq []
       expect(deep_node.proxy_for_id).to eq "a"
@@ -91,13 +91,15 @@ RSpec.describe LogicalOrder do
         ]
       }
     end
+
     it "has two nodes" do
-      expect(subject.nodes.length).to eq 2
+      expect(logical_order.nodes.length).to eq 2
     end
   end
 
   describe "#to_graph" do
-    let(:result) { subject.to_graph }
+    let(:result) { logical_order.to_graph }
+
     context "for a single level node" do
       let(:params) do
         {
@@ -109,6 +111,7 @@ RSpec.describe LogicalOrder do
         }
       end
       let(:label) { "Test Label" }
+
       it "returns a tiny ordered graph" do
         expect(result.statements.to_a.length).to eq 3
       end
@@ -128,6 +131,7 @@ RSpec.describe LogicalOrder do
           ]
         }
       end
+
       it "builds the right number of statements" do
         expect(result.statements.to_a.length).to eq 8
       end
@@ -143,8 +147,9 @@ RSpec.describe LogicalOrder do
           ]
         }
       end
+
       it "doesn't have two-level deep nodes" do
-        expect(subject.nodes.first.nodes).to eq []
+        expect(logical_order.nodes.first.nodes).to eq []
       end
       it "returns a connected graph" do
         expect(result.statements.to_a.length).to eq 4
@@ -177,6 +182,7 @@ RSpec.describe LogicalOrder do
           ]
         }
       end
+
       it "returns a correct graph" do
         expect(result.statements.to_a.length).to eq 11
       end

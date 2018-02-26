@@ -13,6 +13,7 @@ RSpec.describe "curation_concerns/base/_structure_node.html.erb" do
     f = FileSet.new(id: "a")
     FileSetPresenter.new(SolrDocument.new(f.to_solr), nil)
   end
+
   before do
     stub_blacklight_views
     render partial: "curation_concerns/base/structure_node",

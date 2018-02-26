@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe RightsStatementValidator do
-  subject { described_class.new }
+  let(:validator) { described_class.new }
 
   describe "#validate" do
     let(:errors) { double("Errors") }
+
     valid_statements = [
       'http://rightsstatements.org/vocab/InC/1.0/',
       'http://rightsstatements.org/vocab/InC-RUU/1.0/',
@@ -22,7 +23,7 @@ RSpec.describe RightsStatementValidator do
         it "does not add errors" do
           record = build_record(rights_statement: statement)
 
-          subject.validate(record)
+          validator.validate(record)
 
           expect(errors).not_to have_received(:add)
         end
@@ -33,7 +34,7 @@ RSpec.describe RightsStatementValidator do
       it "add errors" do
         record = build_record(rights_statement: nil)
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:rights_statement, :inclusion, allow_blank: false, value: nil)
@@ -44,7 +45,7 @@ RSpec.describe RightsStatementValidator do
       it "adds errors" do
         record = build_record(rights_statement: "bad")
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:rights_statement,

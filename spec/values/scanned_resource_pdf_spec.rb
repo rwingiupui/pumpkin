@@ -1,7 +1,7 @@
 require 'rails_helper'
 # rubocop:disable Rails/DynamicFindBy
 RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
-  subject { described_class.new(presenter) }
+  let(:sr_pdf) { described_class.new(presenter) }
   let(:resource) do
     r = FactoryGirl.build(:scanned_resource,
                           id: "test",
@@ -29,6 +29,8 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
   let(:presenter) do
     ScannedResourceShowPresenter.new(SolrDocument.new(resource.to_solr), nil)
   end
+  let(:file) { fixture("files/color.tif") }
+  let(:file2) { fixture("files/color-landscape.tif") }
 
   def build_file_set(id:, content:, title: nil)
     f = FactoryGirl.build(:file_set,
@@ -40,12 +42,9 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
     f
   end
 
-  let(:file) { fixture("files/color.tif") }
-  let(:file2) { fixture("files/color-landscape.tif") }
-
   describe "#pages" do
     it "returns the number of pages in the PDF representation" do
-      expect(subject.pages).to eq 3 # Num. of canvases + cover page
+      expect(sr_pdf.pages).to eq 3 # Num. of canvases + cover page
     end
   end
 
@@ -57,7 +56,7 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
     end
 
     it "renders a PDF to a path" do
-      file = subject.render(path)
+      file = sr_pdf.render(path)
       expect(file).not_to eq false
       expect(file).to be_kind_of File
       pdf_reader = PDF::Reader.new(file.path)
@@ -75,7 +74,7 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
       allow(File).to receive(:open).and_call_original
       allow(File).to receive(:open).with(path).and_return("test")
       allow(ScannedResourcePDF::Renderer).to receive(:new).and_call_original
-      file = subject.render(path)
+      file = sr_pdf.render(path)
       expect(file).to eq "test"
       expect(ScannedResourcePDF::Renderer).not_to have_received(:new)
     end
@@ -109,8 +108,9 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
           ]
         }
       end
+
       it "builds up an outline" do
-        renderer = ScannedResourcePDF::Renderer.new(subject, path)
+        renderer = ScannedResourcePDF::Renderer.new(sr_pdf, path)
         renderer.render
         @pdf = renderer.send(:prawn_document)
         render_and_find_objects
@@ -162,7 +162,8 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
     end
 
     describe "#canvas_images" do
-      let(:renderer) { ScannedResourcePDF::Renderer.new(subject, path) }
+      let(:renderer) { ScannedResourcePDF::Renderer.new(sr_pdf, path) }
+
       it "returns all the IIIF ids of canvas images" do
         expect(renderer.canvas_images.map(&:url)).to eq \
           [

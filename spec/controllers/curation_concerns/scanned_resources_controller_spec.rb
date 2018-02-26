@@ -17,6 +17,7 @@ describe CurationConcerns::ScannedResourcesController do
 
   describe "delete" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user
     end
@@ -43,6 +44,7 @@ describe CurationConcerns::ScannedResourcesController do
   end
   describe "create" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user
     end
@@ -53,6 +55,7 @@ describe CurationConcerns::ScannedResourcesController do
           source_metadata_identifier: "2028405"
         )
       end
+
       it "updates the metadata" do
         post :create, scanned_resource: scanned_resource_attributes
         s = ScannedResource.last
@@ -82,6 +85,7 @@ describe CurationConcerns::ScannedResourcesController do
           source_metadata_identifier: "359850"
         )
       end
+
       it "receives an error" do
         expect do
           post :create, scanned_resource: scanned_resource_attributes
@@ -107,6 +111,7 @@ describe CurationConcerns::ScannedResourcesController do
                    .except(:source_metadata_identifier) \
                    .merge(member_of_collection_ids: [collection.id])
       end
+
       it "successfully add the resource to the collection" do
         post :create, scanned_resource: scanned_resource_attributes
         s = ScannedResource.last
@@ -140,6 +145,7 @@ describe CurationConcerns::ScannedResourcesController do
   describe "#manifest" do
     let(:solr) { ActiveFedora.solr.conn }
     let(:user) { FactoryGirl.create(:user) }
+
     context "when requesting JSON" do
       render_views
       before do
@@ -226,6 +232,7 @@ describe CurationConcerns::ScannedResourcesController do
         let(:scanned_resource) {
           FactoryGirl.create(:scanned_resource_in_collection, user: user)
         }
+
         it "doesn't remove the item from collections" do
           patch(:update,
                 id: scanned_resource,
@@ -285,6 +292,7 @@ describe CurationConcerns::ScannedResourcesController do
         s
       end
       let(:file_set) { FactoryGirl.create(:file_set) }
+
       it "updates OCR on file sets" do
         ocr_runner = instance_double(OCRRunner)
         allow(OCRRunner).to receive(:new).and_return(ocr_runner)
@@ -309,7 +317,7 @@ describe CurationConcerns::ScannedResourcesController do
       end
 
       it "updates collection membership" do
-        expect(resource.member_of_collections).to_not be_empty
+        expect(resource.member_of_collections).not_to be_empty
 
         updated_attributes = resource.attributes
         updated_attributes[:member_of_collection_ids] = [col2.id]
@@ -347,6 +355,7 @@ describe CurationConcerns::ScannedResourcesController do
     end
     context "when the user is anonymous" do
       let(:user) { nil }
+
       context "and the work's incomplete" do
         it "redirects for auth" do
           resource = FactoryGirl.create(:scanned_resource, state: 'pending')
@@ -380,6 +389,7 @@ describe CurationConcerns::ScannedResourcesController do
 
     context "when the user's an admin" do
       let(:user) { FactoryGirl.create(:admin) }
+
       context "and the work's incomplete" do
         it "works" do
           resource = FactoryGirl.create(:open_scanned_resource,
@@ -447,6 +457,7 @@ describe CurationConcerns::ScannedResourcesController do
       context "and given permission" do
         let(:user) { FactoryGirl.create(:admin) }
         let(:sign_in_user) { user }
+
         it "works" do
           pdf = double("Actor")
           allow(ScannedResourcePDF).to receive(:new) \
@@ -462,6 +473,7 @@ describe CurationConcerns::ScannedResourcesController do
         context "when not given permission" do
           let(:user) { FactoryGirl.create(:campus_patron) }
           let(:sign_in_user) { user }
+
           # Commented because Admin is our only PDF enabled role and
           # this test needs a non-admin role.
           # context "and color PDF is enabled" do
@@ -494,6 +506,7 @@ describe CurationConcerns::ScannedResourcesController do
     end
     context "when requesting gray" do
       let(:sign_in_user) { nil }
+
       context "when given permission" do
         let(:user) { FactoryGirl.create(:admin) }
         let(:sign_in_user) { user } # Admin is only role with PDF ability.
@@ -516,6 +529,7 @@ describe CurationConcerns::ScannedResourcesController do
                                                     user: user,
                                                     title: ['Dummy Title'],
                                                     pdf_type: []) }
+
         it "redirects to root" do
           get :pdf, id: scanned_resource, pdf_quality: "gray"
 
@@ -528,6 +542,7 @@ describe CurationConcerns::ScannedResourcesController do
       context "when not given permission" do
         let(:scanned_resource) { FactoryGirl.create(:private_scanned_resource,
                                                     title: ['Dummy Title']) }
+
         context "and not logged in" do
           it "redirects for auth" do
             get :pdf, id: scanned_resource, pdf_quality: "gray"
@@ -537,6 +552,7 @@ describe CurationConcerns::ScannedResourcesController do
         end
         context "and logged in" do
           let(:sign_in_user) { FactoryGirl.create(:user) }
+
           it "redirects to root" do
             get :pdf, id: scanned_resource, pdf_quality: "gray"
 
@@ -631,6 +647,7 @@ describe CurationConcerns::ScannedResourcesController do
                                                   ['Existing note']) }
       let(:flag_attributes) { { workflow_note: 'Page 4 is broken' } }
       let(:reloaded) { ScannedResource.find scanned_resource.id }
+
       before do
         sign_in user
       end
@@ -654,6 +671,7 @@ describe CurationConcerns::ScannedResourcesController do
                                                   state: 'complete') }
       let(:flag_attributes) { { workflow_note: 'Page 4 is broken' } }
       let(:reloaded) { ScannedResource.find scanned_resource.id }
+
       before do
         sign_in user
       end
@@ -676,6 +694,7 @@ describe CurationConcerns::ScannedResourcesController do
                                                   state: 'pending') }
       let(:flag_attributes) { { workflow_note: 'Page 4 is broken' } }
       let(:reloaded) { ScannedResource.find scanned_resource.id }
+
       before do
         sign_in user
       end
@@ -707,6 +726,7 @@ describe CurationConcerns::ScannedResourcesController do
 
     context "as an admin" do
       let(:admin) { FactoryGirl.create(:admin) }
+
       before do
         sign_in admin
         Ezid::Client.configure do |conf|
@@ -728,6 +748,7 @@ describe CurationConcerns::ScannedResourcesController do
 
     context "when the item already has an ARK" do
       let(:admin) { FactoryGirl.create(:admin) }
+
       before do
         sign_in admin
         scanned_resource.identifier = 'ark:/99999/fk4c255165'

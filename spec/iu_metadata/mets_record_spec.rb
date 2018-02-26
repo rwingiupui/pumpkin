@@ -6,6 +6,7 @@ RSpec.describe IuMetadata::METSRecord do
     pth = File.join(fixture_path, 'pudl_mets/pudl0001-4609321-s42.mets')
     described_class.new('file://' + pth, open(pth))
   }
+
   record1_attributes =
     {
       source_metadata_identifier: 'bhr9405',

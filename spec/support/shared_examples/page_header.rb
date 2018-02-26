@@ -18,16 +18,27 @@ RSpec.shared_examples "page header" do |header_method, page_title|
                                     to_model: scanned_resource,
                                     model_name: scanned_resource.model_name,
                                     page_title: "Parent") }
+
     before do
       assign(:presenter, presenter)
       allow(presenter).to receive(:page_title).and_return('Test Resource')
     end
 
     describe 'page_header' do
+      subject { subject_header }
+
+      let(:subject_header) { helper.send header_method }
+      let(:href) { Rails.application.routes.url_helpers
+                        .curation_concerns_scanned_resource_path(parent_id) }
+
+      it { is_expected.to have_selector('h1', text: page_title) }
+      it { is_expected.to have_link('Test Resource', href: href) }
+      it { is_expected.to have_selector('ul.breadcrumb') }
+
       context "when there is no parent presenter" do
         it "returns two lis" do
-          expect(subject).to have_selector("li", text: "Test Resource")
-          expect(subject).to have_selector("li.active", text: page_title)
+          expect(subject_header).to have_selector("li", text: "Test Resource")
+          expect(subject_header).to have_selector("li.active", text: page_title)
         end
       end
       context "when there is a parent presenter" do
@@ -35,19 +46,11 @@ RSpec.shared_examples "page header" do |header_method, page_title|
           assign(:parent_presenter, parent_presenter)
         end
         it "returns three lis" do
-          expect(subject).to have_selector("li", text: "Parent")
-          expect(subject).to have_selector("li", text: "Test Resource")
-          expect(subject).to have_selector("li.active", text: page_title)
+          expect(subject_header).to have_selector("li", text: "Parent")
+          expect(subject_header).to have_selector("li", text: "Test Resource")
+          expect(subject_header).to have_selector("li.active", text: page_title)
         end
       end
-      subject { helper.send header_method }
-
-      let(:href) { Rails.application.routes.url_helpers
-                        .curation_concerns_scanned_resource_path(parent_id) }
-
-      it { is_expected.to have_selector('h1', text: page_title) }
-      it { is_expected.to have_link('Test Resource', href: href) }
-      it { is_expected.to have_selector('ul.breadcrumb') }
     end
   end
 end

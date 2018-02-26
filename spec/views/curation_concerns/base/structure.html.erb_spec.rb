@@ -24,6 +24,11 @@ RSpec.describe "curation_concerns/base/structure" do
       build_file_set(id: "b", to_s: "banana")
     ]
   end
+  let(:scanned_resource) {
+    ScannedResourceShowPresenter.new(
+      SolrDocument.new(ScannedResource.new(id: "test").to_solr), nil
+    )
+  }
 
   def build_file_set(id:, to_s:)
     i = instance_double(FileSetPresenter,
@@ -36,11 +41,6 @@ RSpec.describe "curation_concerns/base/structure" do
     i
   end
 
-  let(:scanned_resource) {
-    ScannedResourceShowPresenter.new(
-      SolrDocument.new(ScannedResource.new(id: "test").to_solr), nil
-    )
-  }
   before do
     stub_blacklight_views
     assign(:logical_order, logical_order)
@@ -68,6 +68,7 @@ RSpec.describe "curation_concerns/base/structure" do
         SolrDocument.new(MultiVolumeWork.new(id: "test").to_solr), nil
       )
     }
+
     it "renders" do
       expect(rendered).to have_selector("li", count: 5)
       expect(rendered).to have_selector(

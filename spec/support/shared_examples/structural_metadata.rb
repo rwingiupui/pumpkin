@@ -58,60 +58,61 @@ RSpec.shared_examples "structural metadata" do
     end
     let(:resource1) { FactoryGirl.create(:file_set) }
     let(:resource2) { FactoryGirl.create(:file_set) }
+
     it "is a resource that can have an order" do
-      expect(subject.logical_order).to be_kind_of LogicalOrderBase
+      expect(curation_concern.logical_order).to be_kind_of LogicalOrderBase
     end
     it "can have an order assigned" do
-      subject.logical_order.order = params
+      curation_concern.logical_order.order = params
 
-      expect(subject.logical_order.resource.statements.to_a.length).to eq 20
+      expect(curation_concern.logical_order.resource.statements.to_a.length).to eq 20
     end
     it "marshals logical order into solr" do
-      subject.logical_order.order = params
-      subject.save
-      expect(subject.to_solr["logical_order_tesim"]) \
-        .to eq [subject.logical_order.order.to_json]
+      curation_concern.logical_order.order = params
+      curation_concern.save
+      expect(curation_concern.to_solr["logical_order_tesim"]) \
+        .to eq [curation_concern.logical_order.order.to_json]
     end
     it "indexes the headings into the solr record" do
-      subject.logical_order.order = params2
-      subject.save
+      curation_concern.logical_order.order = params2
+      curation_concern.save
 
-      expect(subject.to_solr["logical_order_headings_tesim"]).to eq [
+      expect(curation_concern.to_solr["logical_order_headings_tesim"]).to eq [
         "Chapter 1",
         "Chapter 2",
         "Chapter 2b"
       ]
     end
     it "can index even without order" do
-      expect(subject.to_solr["logical_order_headings_tesim"]).to eq []
+      expect(curation_concern.to_solr["logical_order_headings_tesim"]).to eq []
     end
     it "survives persistence" do
-      subject.logical_order.order = params
-      subject.save
+      curation_concern.logical_order.order = params
+      curation_concern.save
 
-      expect(subject.reload.logical_order.order) \
+      expect(curation_concern.reload.logical_order.order) \
         .to eq params.with_indifferent_access
     end
     it "can have order pulled out of solr" do
-      subject.logical_order.order = params
-      subject.save
+      curation_concern.logical_order.order = params
+      curation_concern.save
 
       doc =
-        SolrDocument.new(ActiveFedora::SolrService.query("id:#{subject.id}") \
+        SolrDocument.new(ActiveFedora::SolrService.query("id:#{curation_concern.id}") \
                            .first)
-      expect(doc.logical_order).to eq subject.logical_order.order
+      expect(doc.logical_order).to eq curation_concern.logical_order.order
     end
     it "has no order by default" do
-      expect(subject.logical_order.order).to eq({})
+      expect(curation_concern.logical_order.order).to eq({})
     end
     it "can have order re-assigned" do
-      subject.logical_order.order = params
-      subject.save
-      subject.reload
-      subject.logical_order.order = params2
-      subject.save
+      curation_concern.logical_order.order = params
+      curation_concern.save
+      curation_concern.reload
+      curation_concern.logical_order.order = params2
+      curation_concern.save
 
-      expect(subject.reload.logical_order.order) \
+      expect(curation_concern.reload.logical_order.order) \
         .to eq params2.with_indifferent_access
     end
   end

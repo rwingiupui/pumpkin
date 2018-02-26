@@ -18,7 +18,7 @@ RSpec.describe 'Collections', type: :feature do
   describe 'a logged in user is allowed to create a collection' do
     let(:user) { FactoryGirl.create(:image_editor) }
 
-    before(:each) do
+    before do
       sign_in user
     end
 
@@ -63,7 +63,8 @@ RSpec.describe 'Collections', type: :feature do
     let(:collection2) { FactoryGirl.create(:collection, title: ['Col 2']) }
     let(:resource) { FactoryGirl.create(:scanned_resource) }
     let(:user) { FactoryGirl.create(:image_editor) }
-    before(:each) do
+
+    before do
       collection1
       collection2
       resource

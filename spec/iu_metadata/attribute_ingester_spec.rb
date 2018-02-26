@@ -13,6 +13,7 @@ RSpec.describe IuMetadata::AttributeIngester do
   describe "#raw_attributes" do
     context "without a context mapping" do
       let(:attributes) { { foo: 'bar' } }
+
       it "drops the attribute" do
         expect(att_ingester.raw_attributes['foobar']).to be_nil
       end
@@ -24,6 +25,7 @@ RSpec.describe IuMetadata::AttributeIngester do
         let(:att_ingester) {
           described_class.new(id, attributes, context: context)
         }
+
         it "drops the attribute" do
           expect(att_ingester.raw_attributes['title']).to be_nil
         end
@@ -34,6 +36,7 @@ RSpec.describe IuMetadata::AttributeIngester do
           let(:att_ingester) {
             described_class.new(id, attributes, context: foo_context)
           }
+
           it "passes the value to the new attribute" do
             expect(att_ingester.raw_attributes['sort_title']).to eq 'bar'
           end
@@ -41,12 +44,14 @@ RSpec.describe IuMetadata::AttributeIngester do
         context "with a single-valued attribute" do
           context "with a single value" do
             let(:attributes) { { sort_title: 'foobar' } }
+
             it "passes the attribute" do
               expect(att_ingester.raw_attributes['sort_title']).to eq 'foobar'
             end
           end
           context "with multiple values" do
             let(:attributes) { { sort_title: ['foo', 'bar'] } }
+
             it "passes the attribute, with the final value only" do
               expect(att_ingester.raw_attributes['sort_title']).to eq 'bar'
             end
@@ -55,12 +60,14 @@ RSpec.describe IuMetadata::AttributeIngester do
         context "with a multi-valued attribute" do
           context "with a single value" do
             let(:attributes) { { title: 'foobar' } }
+
             it "passes the attribute, array-wrapping the value" do
               expect(att_ingester.raw_attributes['title']).to eq ['foobar']
             end
           end
           context "with multiple values" do
             let(:attributes) { { title: ['foo', 'bar'] } }
+
             it "passes the attribute, with all values" do
               expect(att_ingester.raw_attributes['title']).to eq ['foo', 'bar']
             end

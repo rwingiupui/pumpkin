@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "curation_concerns/base/_form_required_information.html.erb" do
   let(:curation_concern) { ScannedResource.new }
+
   before do
     form = simple_form_for([curation_concern])
     render partial: "curation_concerns/base/form_required_information",
@@ -19,6 +20,7 @@ describe "curation_concerns/base/_form_required_information.html.erb" do
         x.source_metadata_identifier = "41"
       end
     end
+
     it "has a readonly title field" do
       expect(rendered).to have_selector "#scanned_resource_title[readonly]"
     end

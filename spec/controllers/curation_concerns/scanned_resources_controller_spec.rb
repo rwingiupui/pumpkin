@@ -89,7 +89,7 @@ describe CurationConcerns::ScannedResourcesController do
       it "receives an error" do
         expect do
           post :create, scanned_resource: scanned_resource_attributes
-        end.not_to change { ScannedResource.count }
+        end.not_to(change { ScannedResource.count })
         expect(response.status).to be 422
       end
       it "doesn't post a creation event" do

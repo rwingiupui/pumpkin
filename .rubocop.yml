@@ -143,12 +143,6 @@ Capybara/CurrentPathExpectation:
 Capybara/FeatureMethods:
   Enabled: true
 
-Lint/AmbiguousBlockAssociation:
-  Enabled: true
-
-Lint/DuplicateMethods:
-  Enabled: false
-
 Lint/RescueWithoutErrorClass:
   Enabled: false
 

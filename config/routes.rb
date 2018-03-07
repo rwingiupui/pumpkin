@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     resources :scanned_resources, only: [] do
       member do
         get "/pdf/:pdf_quality", action: :pdf, as: :pdf
+        get "/highlight/:search_term", action: :show
         patch :alphabetize_members
         get :structure
         post :structure, action: :save_structure

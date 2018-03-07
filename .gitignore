@@ -39,3 +39,9 @@ noid-minter-state
 
 # Ignore Redis dump file
 dump.rdb
+
+# Ignore fits log
+fits.log
+
+# Ignore OSx files
+.DS_Store

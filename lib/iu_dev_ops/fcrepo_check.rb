@@ -23,7 +23,7 @@ module IuDevOps
     # Public: Return the status of the HTTP check
     def check
       mark_message "HTTP on Fedora REST interface successful" if ping?
-    rescue => e
+    rescue StandardError => e
       mark_message "Error: '#{e}'"
       mark_failure
     end

@@ -143,9 +143,6 @@ Capybara/CurrentPathExpectation:
 Capybara/FeatureMethods:
   Enabled: true
 
-Lint/RescueWithoutErrorClass:
-  Enabled: false
-
 Metrics/BlockLength:
   Enabled: false
 

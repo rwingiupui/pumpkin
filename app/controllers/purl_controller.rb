@@ -6,7 +6,7 @@ class PurlController < ApplicationController
       realid = @solr_hit.id
       url = "#{request.protocol}#{request.host_with_port}" \
         "#{config.relative_url_root}/concern/#{@subfolder}/#{realid}"
-    rescue
+    rescue StandardError
       url = Plum.config['purl_redirect_url'] % params[:id]
     end
     respond_to do |f|

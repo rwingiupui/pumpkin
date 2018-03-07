@@ -15,7 +15,7 @@ class SaveStructureJob < ActiveJob::Base
       raise ActiveFedora::RecordNotSaved,
             "#{curation_concern.id} logical order not saved!"
     end
-  rescue
+  rescue StandardError
     Rails.logger.error "SaveStructureJob failed on #{curation_concern.id}!" \
     " Following structure may not be persisted:\n#{structure}"
     raise

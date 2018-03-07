@@ -14,7 +14,7 @@ module VoyagerUpdater
           resource.apply_remote_metadata
           resource.save!
           messenger.record_updated(resource)
-        rescue
+        rescue StandardError
           Rails.logger.info "Unable to process changed Voyager record #{id}"
         end
       end

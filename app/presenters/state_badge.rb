@@ -34,7 +34,6 @@ class StateBadge
 
   private
 
-    # rubocop:disable Metrics/MethodLength
     def render_radio_button(state, checked = false)
       content_tag :label, class: 'radio' do
         tag(:input,
@@ -49,7 +48,6 @@ class StateBadge
           " " + I18n.t("state.#{state}.desc")
       end
     end
-    # rubocop:enable Metrics/MethodLength
 
     def dom_label_class(state = current_state)
       state_classes[state]

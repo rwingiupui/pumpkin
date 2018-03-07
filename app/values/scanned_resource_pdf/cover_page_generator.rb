@@ -115,7 +115,7 @@ class ScannedResourcePDF
                             inline_format: true)
       end
     end
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     private
 
@@ -131,6 +131,7 @@ class ScannedResourcePDF
         RightsStatementService.definition(statement).gsub(/<br\/>/, "\n")
       end
 
+      # rubocop:disable Metrics/AbcSize
       def display_text(prawn_document, text, options = {})
         bidi_text = dir_split(text).map do |s|
           s = s.connect_arabic_letters.gsub("\uFEDF\uFE8E", "\uFEFB") if
@@ -141,6 +142,7 @@ class ScannedResourcePDF
           bidi_text.dir == 'rtl'
         prawn_document.text bidi_text, options
       end
+      # rubocop:enable Metrics/AbcSize
 
       def lang_is_arabic?
         solr_document.language&.first == 'ara'

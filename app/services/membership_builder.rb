@@ -9,7 +9,7 @@ class MembershipBuilder
   end
 
   # Modified from FileSetActor#attach_file_to_work
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def attach_files_to_work
     return if @members.empty?
     acquire_lock_for(work.id) do

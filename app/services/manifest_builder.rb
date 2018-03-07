@@ -32,7 +32,7 @@ class ManifestBuilder
 
   private
 
-    def builders # rubocop:disable Metrics/MethodLength
+    def builders
       @builders ||=
         CompositeBuilder.new(
           record_property_builder,

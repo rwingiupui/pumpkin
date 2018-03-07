@@ -1,6 +1,6 @@
 # new class for imago to handle purl redirection
 class PurlController < ApplicationController
-  def default # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def default # rubocop:disable Metrics/AbcSize
     begin
       set_object
       realid = @solr_hit.id

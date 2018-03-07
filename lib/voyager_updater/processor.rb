@@ -5,7 +5,7 @@ module VoyagerUpdater
       @ids = ids
     end
 
-    def run! # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def run! # rubocop:disable Metrics/AbcSize
       Rails.logger.info "Processing updates for IDs: #{ids.join(', ')}" \
       unless ids.empty?
       ids.each do |id|

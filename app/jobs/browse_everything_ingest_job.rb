@@ -2,7 +2,7 @@ class BrowseEverythingIngestJob < ActiveJob::Base
   prepend ::LockableJob
   queue_as :default
 
-  def perform(curation_concern_id, # rubocop:disable Metrics/MethodLength
+  def perform(curation_concern_id,
               upload_set_id,
               current_user,
               selected_files)

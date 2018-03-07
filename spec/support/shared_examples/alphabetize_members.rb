@@ -1,5 +1,4 @@
 RSpec.shared_examples "alphabetize_members" do
-  # rubocop:disable RSpec/DescribeClass
   describe "#alphabetize_members" do
     let(:fileA) { FactoryGirl.create :file_set, label: 'A' }
     let(:fileB) { FactoryGirl.create :file_set, label: 'B' }

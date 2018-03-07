@@ -36,7 +36,7 @@ module IuMetadata
       formatted_fields_as_array('520')
     end
 
-    def alternative_titles # rubocop:disable Metrics/MethodLength
+    def alternative_titles
       alt_titles = []
       alt_title_field_tags.each do |tag|
         data.fields(tag).each do |field| # some of these tags are repeatable
@@ -60,7 +60,7 @@ module IuMetadata
       formatted_fields_as_array('524')
     end
 
-    def contributors # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def contributors # rubocop:disable Metrics/AbcSize
       fields = []
       contributors = []
       if creator.empty? && record.any_7xx_without_t?
@@ -134,7 +134,7 @@ module IuMetadata
       formatted_subfields_as_array(['260'], codes: ['c'])
     end
 
-    def language_codes # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def language_codes # rubocop:disable Metrics/AbcSize
       codes = []
       from_fixed = data['008'].value[35, 3]
       codes << from_fixed unless ['   ', 'mul'].include? from_fixed
@@ -241,7 +241,7 @@ module IuMetadata
     end
 
     # We squash together 505s with ' ; '
-    def contents # rubocop:disable Metrics/MethodLength
+    def contents
       entry_sep = ' ; '
       contents = []
       data.fields('505').each do |f|
@@ -357,7 +357,7 @@ module IuMetadata
         !datafield['6'].nil?
       end
 
-      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop:disable Metrics/AbcSize
       def parts_fields
         fields = []
         data.fields(['700', '710', '711', '730', '740']).each do |field|
@@ -371,7 +371,7 @@ module IuMetadata
         end
         fields
       end
-      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop:enable Metrics/AbcSize
 
       def trim_punctuation(ary)
         ary.map { |s| s.sub(/\s*[:;,.]\s*$/, '') }

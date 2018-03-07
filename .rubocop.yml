@@ -144,21 +144,12 @@ Capybara/FeatureMethods:
   Enabled: true
 
 Lint/AmbiguousBlockAssociation:
-  Enabled: false
+  Enabled: true
 
 Lint/DuplicateMethods:
   Enabled: false
 
 Lint/RescueWithoutErrorClass:
-  Enabled: false
-
-Lint/UnneededDisable:
-  Enabled: false
-
-Lint/UriEscapeUnescape:
-  Enabled: false
-
-Lint/Void:
   Enabled: false
 
 Metrics/BlockLength:

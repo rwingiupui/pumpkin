@@ -599,7 +599,7 @@ describe CurationConcerns::ScannedResourcesController do
       expect(reloaded.file_sets.first.files.first.mime_type) \
         .to eq "image/tiff"
       path = Rails.application.class.routes.url_helpers \
-                  .file_manager_curation_concerns_scanned_resource_path(resource) # rubocop:disable Metrics/LineLength
+                  .file_manager_curation_concerns_scanned_resource_path(resource)
       expect(response).to redirect_to path
       expect(reloaded.pending_uploads.length).to eq 0
     end
@@ -613,7 +613,7 @@ describe CurationConcerns::ScannedResourcesController do
              selected_files: params["selected_files"],
              parent_id: resource.id)
         path = Rails.application.class.routes.url_helpers \
-                    .file_manager_curation_concerns_parent_scanned_resource_path(id: resource.id, parent_id: resource.id) # rubocop:disable Metrics/LineLength
+                    .file_manager_curation_concerns_parent_scanned_resource_path(id: resource.id, parent_id: resource.id)
         expect(response).to redirect_to path
       end
     end

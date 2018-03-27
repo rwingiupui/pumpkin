@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe CollectionsController do
   describe "#manifest" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user if user
     end
@@ -18,6 +19,7 @@ RSpec.describe CollectionsController do
 
     context "when not logged in" do
       let(:user) {}
+
       it "returns a manifest for a public collection" do
         coll = FactoryGirl.create(:collection)
 
@@ -36,6 +38,7 @@ RSpec.describe CollectionsController do
 
   describe "#index_manifest" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user if user
     end
@@ -51,6 +54,7 @@ RSpec.describe CollectionsController do
     end
     context "if not signed in" do
       let(:user) { nil }
+
       it "returns all public collections" do
         FactoryGirl.create(:collection)
         FactoryGirl.create(:private_collection)

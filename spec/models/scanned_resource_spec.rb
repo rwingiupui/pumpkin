@@ -11,14 +11,13 @@ describe ScannedResource do
                       workflow_note: ['Note 1'])
   }
   let(:reloaded) { described_class.find(scanned_resource.id) }
-  subject { scanned_resource }
 
   describe 'has note fields' do
     %i[portion_note description].each do |note_type|
       it "should let me set a #{note_type}" do
         note = 'This is note text'
-        subject.send("#{note_type}=", note)
-        expect { subject.save }.to_not raise_error
+        scanned_resource.send("#{note_type}=", note)
+        expect { scanned_resource.save }.not_to raise_error
         expect(reloaded.send(note_type)).to eq note
       end
     end
@@ -26,13 +25,13 @@ describe ScannedResource do
 
   describe 'has a repeatable workflow note field' do
     it "allows multiple workflow notes" do
-      subject.workflow_note = ['Note 1', 'Note 2']
-      expect { subject.save }.to_not raise_error
+      scanned_resource.workflow_note = ['Note 1', 'Note 2']
+      expect { scanned_resource.save }.not_to raise_error
       expect(reloaded.workflow_note).to include 'Note 1', 'Note 2'
     end
     it "allows adding to the workflow notes" do
-      subject.workflow_note << 'Note 2'
-      expect { subject.save }.to_not raise_error
+      scanned_resource.workflow_note << 'Note 2'
+      expect { scanned_resource.save }.not_to raise_error
       expect(reloaded.workflow_note).to include 'Note 1', 'Note 2'
     end
   end
@@ -40,36 +39,36 @@ describe ScannedResource do
   describe 'has source metadata id' do
     it 'allows setting of metadata id' do
       id = '12345'
-      subject.source_metadata_identifier = id
-      expect { subject.save }.to_not raise_error
+      scanned_resource.source_metadata_identifier = id
+      expect { scanned_resource.save }.not_to raise_error
       expect(reloaded.source_metadata_identifier).to eq id
     end
   end
 
   context "validating title and metadata id" do
     before do
-      subject.source_metadata_identifier = nil
-      subject.title = nil
+      scanned_resource.source_metadata_identifier = nil
+      scanned_resource.title = nil
     end
     context "when neither metadata id nor title is set" do
       it 'fails' do
-        expect(subject.valid?).to eq false
+        expect(scanned_resource.valid?).to eq false
       end
     end
     context "when only metadata id is set" do
       before do
-        subject.source_metadata_identifier = "12355"
+        scanned_resource.source_metadata_identifier = "12355"
       end
       it 'passes' do
-        expect(subject.valid?).to eq true
+        expect(scanned_resource.valid?).to eq true
       end
     end
     context "when only title id is set" do
       before do
-        subject.title = ["A Title.."]
+        scanned_resource.title = ["A Title.."]
       end
       it 'passes' do
-        expect(subject.valid?).to eq true
+        expect(scanned_resource.valid?).to eq true
       end
     end
   end
@@ -77,25 +76,25 @@ describe ScannedResource do
   describe '#rights_statement' do
     it "sets rights_statement" do
       nkc = 'http://rightsstatements.org/vocab/NKC/1.0/'
-      subject.rights_statement = nkc
-      expect { subject.save }.to_not raise_error
+      scanned_resource.rights_statement = nkc
+      expect { scanned_resource.save }.not_to raise_error
       expect(reloaded.rights_statement).to eq nkc
     end
 
     it "requires rights_statement" do
-      subject.rights_statement = nil
-      expect(subject.valid?).to be_falsey
+      scanned_resource.rights_statement = nil
+      expect(scanned_resource).not_to be_valid
     end
   end
 
   describe 'apply_remote_metadata' do
     context 'when source_metadata_identifier is not set' do
-      before { subject.source_metadata_identifier = nil }
+      before { scanned_resource.source_metadata_identifier = nil }
       it 'does nothing' do
-        original_attributes = subject.attributes
-        expect(subject.send(:remote_metadata_factory)).to_not receive(:new)
-        subject.apply_remote_metadata
-        expect(subject.attributes).to eq(original_attributes)
+        original_attributes = scanned_resource.attributes
+        expect(scanned_resource.send(:remote_metadata_factory)).not_to receive(:new)
+        scanned_resource.apply_remote_metadata
+        expect(scanned_resource.attributes).to eq(original_attributes)
       end
     end
 
@@ -103,38 +102,38 @@ describe ScannedResource do
     context 'With a Voyager ID',
             vcr: { cassette_name: "bibdata", record: :new_episodes } do
       before do
-        subject.source_metadata_identifier = '2028405'
+        scanned_resource.source_metadata_identifier = '2028405'
       end
 
       it 'Extracts Voyager Metadata' do
-        subject.apply_remote_metadata
-        expect(subject.title).to eq(['The last resort : a novel'])
-        expect(subject.resource.get_values(:title, literal: true)) \
+        scanned_resource.apply_remote_metadata
+        expect(scanned_resource.title).to eq(['The last resort : a novel'])
+        expect(scanned_resource.resource.get_values(:title, literal: true)) \
           .to eq([RDF::Literal.new('The last resort : a novel')])
-        expect(subject.creator) \
+        expect(scanned_resource.creator) \
           .to eq(['Johnson, Pamela Hansford, 1912-1981'])
-        expect(subject.publisher.sort) \
+        expect(scanned_resource.publisher.sort) \
           .to eq(["St. Martin's Press", "Macmillan & co., ltd.,"].sort)
       end
 
       it 'Saves a record with extacted Voyager metadata' do
-        subject.apply_remote_metadata
-        subject.save
-        expect { subject.save }.to_not raise_error
-        expect(subject.id).to be_truthy
+        scanned_resource.apply_remote_metadata
+        scanned_resource.save
+        expect { scanned_resource.save }.not_to raise_error
+        expect(scanned_resource.id).to be_truthy
       end
     end
   end
 
   describe 'gets a noid' do
     it 'that conforms to a valid pattern' do
-      expect { subject.save }.to_not raise_error
+      expect { scanned_resource.save }.not_to raise_error
       noid_service = ActiveFedora::Noid::Service.new
-      expect(noid_service.valid?(subject.id)).to be_truthy
+      expect(noid_service).to be_valid(scanned_resource.id)
     end
     it "generates an ID which starts with the environment's first letter" do
-      expect { subject.save }.to_not raise_error
-      expect(subject.id.first).to eq "t"
+      expect { scanned_resource.save }.not_to raise_error
+      expect(scanned_resource.id.first).to eq "t"
     end
   end
 
@@ -154,98 +153,100 @@ describe ScannedResource do
 
   describe "validations" do
     it "validates with the viewing direction validator" do
-      expect(subject._validators[nil].map(&:class)) \
+      expect(scanned_resource._validators[nil].map(&:class)) \
         .to include ViewingDirectionValidator
     end
     it "validates with the viewing hint validator" do
-      expect(subject._validators[nil].map(&:class)) \
+      expect(scanned_resource._validators[nil].map(&:class)) \
         .to include ViewingHintValidator
     end
   end
 
   describe "#state" do
     it "validates with the state validator" do
-      expect(subject._validators[nil].map(&:class)).to include StateValidator
+      expect(scanned_resource._validators[nil].map(&:class)).to include StateValidator
     end
     it "accepts a valid state" do
-      subject.state = "pending"
-      expect(subject.valid?).to eq true
+      scanned_resource.state = "pending"
+      expect(scanned_resource.valid?).to eq true
     end
     it "rejects an invalid state" do
-      subject.state = "blargh"
-      expect(subject.valid?).to eq false
+      scanned_resource.state = "blargh"
+      expect(scanned_resource.valid?).to eq false
     end
   end
 
   describe "#check_state" do
-    subject {
+    let(:scanned_resource) {
       FactoryGirl.build(:scanned_resource,
                         source_metadata_identifier: '12345',
                         rights_statement:
                         'http://rightsstatements.org/vocab/NKC/1.0/',
                         state: 'final_review')
     }
+
     let(:complete_reviewer) { FactoryGirl.create(:complete_reviewer) }
+
     before do
       complete_reviewer.save
-      subject.save
+      scanned_resource.save
       allow(Ezid::Identifier).to receive(:modify).and_return(true)
     end
     it "completes record when state changes to 'complete'",
        vcr: { cassette_name: "ezid" } do
-      allow(subject).to receive("state_changed?").and_return true
-      subject.state = 'complete'
-      expect { subject.check_state } \
+      allow(scanned_resource).to receive("state_changed?").and_return true
+      scanned_resource.state = 'complete'
+      expect { scanned_resource.check_state } \
         .to change { ActionMailer::Base.deliveries.count }.by(1)
       if Plum.config['ezid']['mint']
-        expect(subject.identifier).to eq 'ark:/99999/fk4445wg45'
+        expect(scanned_resource.identifier).to eq 'ark:/99999/fk4445wg45'
       end
     end
     it "does not complete record when state doesn't change" do
-      allow(subject).to receive("state_changed?").and_return false
-      subject.state = 'complete'
-      expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state } \
+      allow(scanned_resource).to receive("state_changed?").and_return false
+      scanned_resource.state = 'complete'
+      expect(scanned_resource).not_to receive(:complete_record)
+      expect { scanned_resource.check_state } \
         .not_to change { ActionMailer::Base.deliveries.count }
     end
     it "does not complete record when state isn't 'complete'" do
-      subject.state = 'final_review'
-      expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state } \
+      scanned_resource.state = 'final_review'
+      expect(scanned_resource).not_to receive(:complete_record)
+      expect { scanned_resource.check_state } \
         .not_to change { ActionMailer::Base.deliveries.count }
     end
     it "does not overwrite existing identifier" do
-      allow(subject).to receive("state_changed?").and_return true
-      subject.state = 'complete'
-      subject.identifier = '1234'
-      expect(subject).not_to receive("identifier=")
-      expect { subject.check_state } \
+      allow(scanned_resource).to receive("state_changed?").and_return true
+      scanned_resource.state = 'complete'
+      scanned_resource.identifier = '1234'
+      expect(scanned_resource).not_to receive("identifier=")
+      expect { scanned_resource.check_state } \
         .to change { ActionMailer::Base.deliveries.count }.by(1)
-      expect(subject.identifier).to eq('1234')
+      expect(scanned_resource.identifier).to eq('1234')
     end
     it "does not complete the record when the state transition is invalid" do
-      allow(subject).to receive("state_changed?").and_return true
-      subject.state = 'pending'
-      expect(subject).not_to receive(:complete_record)
-      expect { subject.check_state } \
+      allow(scanned_resource).to receive("state_changed?").and_return true
+      scanned_resource.state = 'pending'
+      expect(scanned_resource).not_to receive(:complete_record)
+      expect { scanned_resource.check_state } \
         .not_to change { ActionMailer::Base.deliveries.count }
-      expect(subject.identifier).to eq(nil)
+      expect(scanned_resource.identifier).to eq(nil)
     end
   end
 
   describe "#pending_uploads" do
     it "returns all pending uploads" do
-      subject.save
+      scanned_resource.save
       pending_upload = FactoryGirl.create(:pending_upload,
-                                          curation_concern_id: subject.id)
+                                          curation_concern_id: scanned_resource.id)
 
-      expect(subject.pending_uploads).to eq [pending_upload]
+      expect(scanned_resource.pending_uploads).to eq [pending_upload]
     end
     it "doesn't return anything for other resources' pending uploads" do
-      subject.save
+      scanned_resource.save
       FactoryGirl.create(:pending_upload, curation_concern_id: "banana")
 
-      expect(subject.pending_uploads).to eq []
+      expect(scanned_resource.pending_uploads).to eq []
     end
     context "when not persisted" do
       it "returns a blank array" do
@@ -254,14 +255,19 @@ describe ScannedResource do
     end
   end
 
-  include_examples "structural metadata"
-  include_examples "common metadata"
+  include_examples "structural metadata" do
+    let(:curation_concern) { scanned_resource }
+  end
+  include_examples "common metadata" do
+    let(:curation_concern) { scanned_resource }
+  end
 
   describe "collection indexing" do
     let(:scanned_resource) {
       FactoryGirl.create(:scanned_resource_in_collection)
     }
     let(:solr_doc) { scanned_resource.to_solr }
+
     it "indexes collection" do
       expect(solr_doc['member_of_collections_ssim']) \
         .to eq(['Test Collection'])
@@ -275,9 +281,9 @@ describe ScannedResource do
       expect(described_class.new.pdf_type).to eq []
     end
     it "can be set" do
-      subject.pdf_type = ["color"]
+      scanned_resource.pdf_type = ["color"]
 
-      expect(subject.pdf_type).to eq ["color"]
+      expect(scanned_resource.pdf_type).to eq ["color"]
     end
   end
 
@@ -287,6 +293,7 @@ describe ScannedResource do
                          title: [::RDF::Literal.new("Test", language: :fr)])
     }
     let(:solr_doc) { scanned_resource.to_solr }
+
     it "indexes literals with tags in a new field" do
       expect(solr_doc['title_tesim']).to eq ['Test']
       expect(solr_doc['title_literals_ssim']) \
@@ -299,6 +306,7 @@ describe ScannedResource do
       FactoryGirl.create(:scanned_resource_with_file)
     }
     let(:solr_doc) { scanned_resource.to_solr }
+
     it "indexes the number of pages" do
       expect(solr_doc['number_of_pages_isi']).to eq 1
       expect(solr_doc['number_of_pages_ssi']).to eq "0-99 pages"
@@ -310,6 +318,7 @@ describe ScannedResource do
       FactoryGirl.create(:scanned_resource, date_created: ['2016'])
     }
     let(:solr_doc) { scanned_resource.to_solr }
+
     it "indexes date_created as an integer" do
       expect(solr_doc['date_created_isi']).to eq 2016
     end
@@ -320,6 +329,7 @@ describe ScannedResource do
       FactoryGirl.create(:scanned_resource, title: ['ABC'])
     }
     let(:solr_doc) { scanned_resource.to_solr }
+
     it "indexes title as a sortable solr field" do
       expect(solr_doc['sort_title_ssi']).to eq 'ABC'
     end

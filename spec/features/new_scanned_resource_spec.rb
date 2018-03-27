@@ -4,13 +4,13 @@ RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
 
   context "an authorized user" do
-    before(:each) do
+    before do
       sign_in user
     end
 
     it "Logged in user can create a new scanned resource" do
       visit new_polymorphic_path [ScannedResource]
-      expect(page).to_not have_selector("label.label-warning",
+      expect(page).not_to have_selector("label.label-warning",
                                         text: "Pending")
 
       fill_in 'scanned_resource_title', with: 'Test Title'

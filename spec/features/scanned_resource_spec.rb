@@ -9,7 +9,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
                          title: ["first title", "second title"], user: user)
     }
 
-    before(:each) do
+    before do
       sign_in user
       scanned_resource
     end

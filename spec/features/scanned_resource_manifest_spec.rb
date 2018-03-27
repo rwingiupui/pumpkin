@@ -22,7 +22,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
   end
 
   context "an authenticated user" do
-    before(:each) do
+    before do
       sign_in user
     end
 

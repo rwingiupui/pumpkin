@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe WithProxyForObject do
-  subject { described_class.new(logical_order, members) }
+  let(:proxy) { described_class.new(logical_order, members) }
+
   let(:logical_order) do
     instance_double(LogicalOrder, proxy_for_id: "test", label: label)
   end
@@ -14,20 +15,21 @@ RSpec.describe WithProxyForObject do
 
   describe "#proxy_for_object" do
     it "returns the matching object" do
-      expect(subject.proxy_for_object).to eq members.first
+      expect(proxy.proxy_for_object).to eq members.first
     end
   end
 
   describe "#label" do
     context "when there's a node label" do
       let(:label) { "plum" }
+
       it "returns it" do
-        expect(subject.label).to eq "plum"
+        expect(proxy.label).to eq "plum"
       end
     end
     context "when there is only a label on the resource" do
       it "returns it" do
-        expect(subject.label).to eq "Banana"
+        expect(proxy.label).to eq "Banana"
       end
     end
   end
@@ -47,9 +49,10 @@ RSpec.describe WithProxyForObject do
       ]
     end
     let(:member_2) { instance_double(ScannedResource, id: "t", to_s: "Alfafa") }
+
     it "returns nodes in members but not in structure" do
-      expect(subject.unstructured_objects.nodes.length).to eq 1
-      expect(subject.unstructured_objects.nodes.first.proxy_for_object) \
+      expect(proxy.unstructured_objects.nodes.length).to eq 1
+      expect(proxy.unstructured_objects.nodes.first.proxy_for_object) \
         .to eq member_2
     end
   end

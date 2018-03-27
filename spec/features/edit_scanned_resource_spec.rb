@@ -20,7 +20,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
             cassette_name: "bibdata_not_found",
             allow_playback_repeats: :multiple
           } do
-    before(:each) do
+    before do
       sign_in user
     end
 
@@ -95,6 +95,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
                          user: user,
                          state: 'complete')
     }
+
     it "User can't edit a scanned resource" do
       visit edit_polymorphic_path [scanned_resource]
       expect(page) \

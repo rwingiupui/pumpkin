@@ -9,7 +9,7 @@ RSpec.describe "CatalogController", type: :feature do
                          language: ['English'])
     }
 
-    before(:each) do
+    before do
       sign_in user
       scanned_resource.update_index
     end
@@ -32,7 +32,7 @@ RSpec.describe "CatalogController", type: :feature do
       FactoryGirl.create(:scanned_resource, user: user)
     }
 
-    before(:each) do
+    before do
       sign_in user
       scanned_resource.update_index
     end
@@ -57,7 +57,7 @@ RSpec.describe "CatalogController", type: :feature do
       FactoryGirl.create(:scanned_resource, user: user)
     }
 
-    before(:each) do
+    before do
       scanned_resource.update_index
     end
 

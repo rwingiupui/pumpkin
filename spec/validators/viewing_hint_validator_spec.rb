@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ViewingHintValidator do
-  subject { described_class.new }
+  let(:validator) { described_class.new }
 
   describe "#validate" do
     let(:errors) { double("Errors") }
+
     before do
       allow(errors).to receive(:add)
     end
@@ -13,7 +14,7 @@ RSpec.describe ViewingHintValidator do
         it "does not add errors" do
           record = build_record(viewing_hint: direction)
 
-          subject.validate(record)
+          validator.validate(record)
 
           expect(errors).not_to have_received(:add)
         end
@@ -24,7 +25,7 @@ RSpec.describe ViewingHintValidator do
       it "does not add errors" do
         record = build_record(viewing_hint: nil)
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).not_to have_received(:add)
       end
@@ -34,7 +35,7 @@ RSpec.describe ViewingHintValidator do
       it "adds errors" do
         record = build_record(viewing_hint: "bad")
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:viewing_hint, :inclusion, allow_blank: true, value: "bad")

@@ -1,100 +1,102 @@
 require 'rails_helper'
 
 describe StateWorkflow do
-  subject { described_class.new :pending }
+  let(:workflow) { described_class.new :pending }
 
   describe 'ingest workflow' do
     it 'proceeds through ingest workflow' do
       # initial state: pending
-      expect(subject.pending?).to be true
-      expect(subject.aasm.current_state).to eq :pending
-      expect(subject.may_finalize_digitization?).to be true
-      expect(subject.may_finalize_metadata?).to be false
-      expect(subject.may_complete?).to be false
-      expect(subject.may_takedown?).to be false
-      expect(subject.may_flag?).to be false
-      expect(subject.suppressed?).to be true
+      expect(workflow.pending?).to be true
+      expect(workflow.aasm.current_state).to eq :pending
+      expect(workflow.may_finalize_digitization?).to be true
+      expect(workflow.may_finalize_metadata?).to be false
+      expect(workflow.may_complete?).to be false
+      expect(workflow.may_takedown?).to be false
+      expect(workflow.may_flag?).to be false
+      expect(workflow.suppressed?).to be true
 
       # digitization signoff moves to metadata review
-      expect(subject.finalize_digitization).to be true
-      expect(subject.metadata_review?).to be true
-      expect(subject.aasm.current_state).to eq :metadata_review
-      expect(subject.may_finalize_digitization?).to be false
-      expect(subject.may_finalize_metadata?).to be true
-      expect(subject.may_complete?).to be false
-      expect(subject.may_takedown?).to be false
-      expect(subject.may_flag?).to be false
-      expect(subject.suppressed?).to be true
+      expect(workflow.finalize_digitization).to be true
+      expect(workflow.metadata_review?).to be true
+      expect(workflow.aasm.current_state).to eq :metadata_review
+      expect(workflow.may_finalize_digitization?).to be false
+      expect(workflow.may_finalize_metadata?).to be true
+      expect(workflow.may_complete?).to be false
+      expect(workflow.may_takedown?).to be false
+      expect(workflow.may_flag?).to be false
+      expect(workflow.suppressed?).to be true
 
       # metadata signoff moves to final review
-      expect(subject.finalize_metadata).to be true
-      expect(subject.final_review?).to be true
-      expect(subject.aasm.current_state).to eq :final_review
-      expect(subject.may_finalize_digitization?).to be false
-      expect(subject.may_finalize_metadata?).to be false
-      expect(subject.may_complete?).to be true
-      expect(subject.may_takedown?).to be false
-      expect(subject.may_flag?).to be false
-      expect(subject.suppressed?).to be true
+      expect(workflow.finalize_metadata).to be true
+      expect(workflow.final_review?).to be true
+      expect(workflow.aasm.current_state).to eq :final_review
+      expect(workflow.may_finalize_digitization?).to be false
+      expect(workflow.may_finalize_metadata?).to be false
+      expect(workflow.may_complete?).to be true
+      expect(workflow.may_takedown?).to be false
+      expect(workflow.may_flag?).to be false
+      expect(workflow.suppressed?).to be true
 
       # final signoff moves to complete
-      expect(subject.complete).to be true
-      expect(subject.complete?).to be true
-      expect(subject.aasm.current_state).to eq :complete
-      expect(subject.may_finalize_digitization?).to be false
-      expect(subject.may_finalize_metadata?).to be false
-      expect(subject.may_complete?).to be false
-      expect(subject.may_takedown?).to be true
-      expect(subject.may_flag?).to be true
-      expect(subject.suppressed?).to be false
+      expect(workflow.complete).to be true
+      expect(workflow.complete?).to be true
+      expect(workflow.aasm.current_state).to eq :complete
+      expect(workflow.may_finalize_digitization?).to be false
+      expect(workflow.may_finalize_metadata?).to be false
+      expect(workflow.may_complete?).to be false
+      expect(workflow.may_takedown?).to be true
+      expect(workflow.may_flag?).to be true
+      expect(workflow.suppressed?).to be false
     end
   end
 
   describe 'takedown workflow' do
-    subject { described_class.new :complete }
+    let(:workflow) { described_class.new :complete }
+
     it 'goes back and forth between complete and takedown' do
-      expect(subject.complete?).to be true
-      expect(subject.aasm.current_state).to eq :complete
-      expect(subject.may_restore?).to be false
-      expect(subject.may_takedown?).to be true
-      expect(subject.suppressed?).to be false
+      expect(workflow.complete?).to be true
+      expect(workflow.aasm.current_state).to eq :complete
+      expect(workflow.may_restore?).to be false
+      expect(workflow.may_takedown?).to be true
+      expect(workflow.suppressed?).to be false
 
-      expect(subject.takedown).to be true
-      expect(subject.takedown?).to be true
-      expect(subject.aasm.current_state).to eq :takedown
-      expect(subject.may_restore?).to be true
-      expect(subject.may_takedown?).to be false
-      expect(subject.suppressed?).to be true
+      expect(workflow.takedown).to be true
+      expect(workflow.takedown?).to be true
+      expect(workflow.aasm.current_state).to eq :takedown
+      expect(workflow.may_restore?).to be true
+      expect(workflow.may_takedown?).to be false
+      expect(workflow.suppressed?).to be true
 
-      expect(subject.restore).to be true
-      expect(subject.complete?).to be true
-      expect(subject.aasm.current_state).to eq :complete
-      expect(subject.may_restore?).to be false
-      expect(subject.may_takedown?).to be true
-      expect(subject.suppressed?).to be false
+      expect(workflow.restore).to be true
+      expect(workflow.complete?).to be true
+      expect(workflow.aasm.current_state).to eq :complete
+      expect(workflow.may_restore?).to be false
+      expect(workflow.may_takedown?).to be true
+      expect(workflow.suppressed?).to be false
     end
   end
 
   describe 'flagging workflow' do
-    subject { described_class.new :complete }
+    let(:workflow) { described_class.new :complete }
+
     it 'goes back and forth between flagged and unflagged' do
-      expect(subject.complete?).to be true
-      expect(subject.aasm.current_state).to eq :complete
-      expect(subject.may_flag?).to be true
-      expect(subject.may_unflag?).to be false
-      expect(subject.suppressed?).to be false
+      expect(workflow.complete?).to be true
+      expect(workflow.aasm.current_state).to eq :complete
+      expect(workflow.may_flag?).to be true
+      expect(workflow.may_unflag?).to be false
+      expect(workflow.suppressed?).to be false
 
-      expect(subject.flag).to be true
-      expect(subject.aasm.current_state).to eq :flagged
-      expect(subject.may_flag?).to be false
-      expect(subject.may_unflag?).to be true
-      expect(subject.suppressed?).to be false
+      expect(workflow.flag).to be true
+      expect(workflow.aasm.current_state).to eq :flagged
+      expect(workflow.may_flag?).to be false
+      expect(workflow.may_unflag?).to be true
+      expect(workflow.suppressed?).to be false
 
-      expect(subject.unflag).to be true
-      expect(subject.aasm.current_state).to eq :complete
-      expect(subject.may_flag?).to be true
-      expect(subject.may_unflag?).to be false
-      expect(subject.suppressed?).to be false
+      expect(workflow.unflag).to be true
+      expect(workflow.aasm.current_state).to eq :complete
+      expect(workflow.may_flag?).to be true
+      expect(workflow.may_unflag?).to be false
+      expect(workflow.suppressed?).to be false
     end
   end
 

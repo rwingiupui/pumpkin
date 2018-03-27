@@ -4,7 +4,7 @@ RSpec.shared_examples "common metadata" do
     # rubocop:enable RSpec/DescribeClass
     # tests workaround for modifying property arity via schema inclusion
     it "returns false on multiple? check" do
-      expect(subject.class.multiple?(:identifier)).not_to be true
+      expect(curation_concern.class.multiple?(:identifier)).not_to be true
     end
   end
 end

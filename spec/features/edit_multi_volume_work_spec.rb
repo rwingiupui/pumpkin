@@ -8,7 +8,7 @@ RSpec.describe "MultiVolumeWorksController", type: :feature do
                        state: 'metadata_review')
   }
 
-  before(:each) do
+  before do
     sign_in user
   end
 

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CollectionShowPresenter do
-  subject { described_class.new(solr_doc, nil) }
+  let(:cs_presenter) { described_class.new(solr_doc, nil) }
+
   let(:solr_doc) { SolrDocument.new(doc) }
   let(:doc) do
     c = FactoryGirl.build(:collection, id: "collection")
@@ -20,37 +21,37 @@ RSpec.describe CollectionShowPresenter do
 
   describe "#member_presenters" do
     it "returns presenters for each Scanned Resource" do
-      expect(subject.member_presenters.map(&:id)).to eq [scanned_resource.id]
+      expect(cs_presenter.member_presenters.map(&:id)).to eq [scanned_resource.id]
     end
   end
 
   describe "#logical_order" do
     it "returns an empty hash" do
-      expect(subject.logical_order).to eq({})
+      expect(cs_presenter.logical_order).to eq({})
     end
   end
 
   describe "#viewing_hint" do
     it "is always nil" do
-      expect(subject.viewing_hint).to eq nil
+      expect(cs_presenter.viewing_hint).to eq nil
     end
   end
 
   it "can be used to create a manifest" do
     manifest = nil
-    expect { manifest = ManifestBuilder.new(subject).to_json } \
+    expect { manifest = ManifestBuilder.new(cs_presenter).to_json } \
       .not_to raise_error
     json_manifest = JSON.parse(manifest)
     expect(json_manifest['viewingHint']).not_to eq "multi-part"
     expect(json_manifest['metadata'][0]['value'].first) \
-      .to eq subject.exhibit_id.first
+      .to eq cs_presenter.exhibit_id.first
     expect(json_manifest['structures']).to eq nil
     expect(json_manifest['viewingDirection']).to eq nil
   end
 
   describe "#label" do
     it "is an empty array" do
-      expect(subject.label).to eq []
+      expect(cs_presenter.label).to eq []
     end
   end
 end

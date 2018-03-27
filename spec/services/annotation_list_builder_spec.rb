@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe AnnotationListBuilder do
-  subject { described_class.new(file_set, parent_path, canvas_id) }
+  let(:builder) { described_class.new(file_set, parent_path, canvas_id) }
+
   let(:file_set) do
     instance_double(FileSet, ocr_document: hocr)
   end
@@ -16,7 +17,7 @@ RSpec.describe AnnotationListBuilder do
   describe "#as_json" do
     context "when there's no HOCR attached" do
       it "is empty" do
-        expect(subject.as_json).to eq(
+        expect(builder.as_json).to eq(
           "@context" => "http://iiif.io/api/presentation/2/context.json",
           "@id" => parent_path.to_s,
           "@type" => "sc:AnnotationList"
@@ -36,7 +37,7 @@ RSpec.describe AnnotationListBuilder do
       end
 
       it "builds a resource for every line" do
-        expect(subject.as_json).to eq(
+        expect(builder.as_json).to eq(
           "@context" => "http://iiif.io/api/presentation/2/context.json",
           "@id" => parent_path.to_s,
           "@type" => "sc:AnnotationList",

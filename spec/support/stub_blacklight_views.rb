@@ -1,6 +1,6 @@
 module BlacklightStubbing
   def stub_blacklight_views # rubocop:disable Metrics/AbcSize
-    allow(view).to receive(:dom_class) { '' }
+    allow(view).to receive(:dom_class).and_return('')
     allow(view).to receive(:can?).and_return(true)
     allow(view).to receive(:blacklight_config) \
       .and_return(CatalogController.new.blacklight_config)

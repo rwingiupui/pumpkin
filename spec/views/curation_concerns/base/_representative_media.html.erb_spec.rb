@@ -11,6 +11,7 @@ RSpec.describe "curation_concerns/base/_representative_media.html.erb" do
     )
   }
   let(:member_presenters) { [] }
+
   before do
     allow(presenter).to receive(:to_model).and_return(presenter)
     render partial: "curation_concerns/base/representative_media",
@@ -23,6 +24,7 @@ RSpec.describe "curation_concerns/base/_representative_media.html.erb" do
   end
   context "when there are generic files" do
     let(:member_presenters) { [1] }
+
     it "renders the viewer" do
       expect(response).to have_selector ".viewer[data-uri]"
     end

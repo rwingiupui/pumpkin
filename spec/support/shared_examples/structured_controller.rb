@@ -2,9 +2,6 @@ RSpec.shared_examples "structure persister" \
 do |resource_symbol, presenter_factory|
   describe "#structure" do
     let(:user) { FactoryGirl.create(:user) }
-    before do
-      sign_in user
-    end
     let(:solr) { ActiveFedora.solr.conn }
     let(:resource) do
       r = FactoryGirl.build(resource_symbol)
@@ -17,13 +14,16 @@ do |resource_symbol, presenter_factory|
       allow(f).to receive(:id).and_return("2")
       f
     end
+
     before do
+      sign_in user
       resource.ordered_members << file_set
       solr.add file_set.to_solr.merge(ordered_by_ssim: [resource.id])
       solr.add resource.to_solr
       solr.add resource.list_source.to_solr
       solr.commit
     end
+
     it "sets @members" do
       get :structure, id: "1"
 
@@ -43,11 +43,6 @@ do |resource_symbol, presenter_factory|
     let(:resource) { FactoryGirl.create(resource_symbol, user: user) }
     let(:file_set) { FactoryGirl.create(:file_set, user: user) }
     let(:user) { FactoryGirl.create(:admin) }
-    before do
-      sign_in user
-      resource.ordered_members << file_set
-      resource.save
-    end
     let(:nodes) do
       [
         {
@@ -60,6 +55,13 @@ do |resource_symbol, presenter_factory|
         }
       ]
     end
+
+    before do
+      sign_in user
+      resource.ordered_members << file_set
+      resource.save
+    end
+
     it "persists order" do
       post :save_structure, nodes: nodes, id: resource.id, label: "TOP!"
 

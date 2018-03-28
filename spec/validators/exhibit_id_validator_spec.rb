@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ExhibitIdValidator do
-  subject { described_class.new }
+  let(:validator) { described_class.new }
 
   describe "#validate" do
     let(:errors) { double("Errors") }
@@ -14,6 +14,7 @@ RSpec.describe ExhibitIdValidator do
         }.stringify_keys
       }.stringify_keys
     }
+
     before do
       expect(ActiveFedora::SolrService).to receive(:get) \
         .and_return(solr_response)
@@ -23,7 +24,7 @@ RSpec.describe ExhibitIdValidator do
     context "when the exhibit id unique" do
       it "does not add errors" do
         record = build_record("slug2")
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).not_to have_received(:add)
       end
@@ -32,7 +33,7 @@ RSpec.describe ExhibitIdValidator do
     context "when the exhibit id already exists" do
       it "adds errors" do
         record = build_record("slug1")
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:exhibit_id, :exclusion, value: "slug1")

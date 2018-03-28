@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe PolymorphicManifestBuilder,
                vcr: { cassette_name: "iiif_manifest" } do
-  subject { described_class.new(solr_document) }
+  let(:builder) { described_class.new(solr_document) }
 
   let(:solr_document) {
     ScannedResourceShowPresenter.new(SolrDocument.new(record.to_solr), nil)
   }
   let(:record) { FactoryGirl.build(:scanned_resource) }
+
   before do
     allow(record).to receive(:persisted?).and_return(true)
     allow(record).to receive(:id).and_return("1")
@@ -16,7 +17,8 @@ RSpec.describe PolymorphicManifestBuilder,
   end
 
   context "when given a MVW with Children" do
-    subject { described_class.new(mvw_document) }
+    let(:builder) { described_class.new(mvw_document) }
+
     let(:mvw_document) {
       MultiVolumeWorkShowPresenter.new(SolrDocument.new(mvw_record.to_solr),
                                        nil)
@@ -24,7 +26,7 @@ RSpec.describe PolymorphicManifestBuilder,
     let(:mvw_record) {
       FactoryGirl.build(:multi_volume_work, viewing_hint: viewing_hint)
     }
-    let(:manifest) { JSON.parse(subject.manifest.to_json) }
+    let(:manifest) { JSON.parse(builder.manifest.to_json) }
     let(:viewing_hint) { "individuals" }
 
     before do
@@ -43,7 +45,7 @@ RSpec.describe PolymorphicManifestBuilder,
     end
 
     it "renders a manifest for every child scanned resource" do
-      expect(subject.manifests.length).to eq 1
+      expect(builder.manifests.length).to eq 1
       expect(manifest['manifests'].length).to eq 1
       expect(manifest['manifests'].first['label']).to eq solr_document.to_s
       expect(manifest['manifests'].first['@type']).to eq "sc:Manifest"
@@ -63,11 +65,11 @@ RSpec.describe PolymorphicManifestBuilder,
     end
 
     it "doesn't generate a PDF link" do
-      expect(manifest['rendering']).to eql nil
+      expect(manifest['rendering']).to be nil
     end
 
     context "with SSL on" do
-      subject { described_class.new(mvw_document, ssl: true) }
+      let(:builder) { described_class.new(mvw_document, ssl: true) }
 
       it "renders collections with HTTPS urls" do
         expect(manifest['manifests'].first['@id']) \
@@ -137,6 +139,7 @@ RSpec.describe PolymorphicManifestBuilder,
 
       context "and there's a viewing hint" do
         let(:viewing_hint) { "paged" }
+
         it "can render it" do
           expect(manifest['viewingHint']).to eq "paged"
         end
@@ -179,6 +182,9 @@ RSpec.describe PolymorphicManifestBuilder,
         build_file_set("x633f104n")
       end
       let(:solr) { ActiveFedora.solr.conn }
+      let(:first_canvas) { builder.canvases.first }
+      let(:manifest_json) { JSON.parse(builder.to_json) }
+
       before do
         record.ordered_members << file_set2
         record.ordered_member_proxies.insert_target_at(0, file_set)
@@ -210,9 +216,6 @@ RSpec.describe PolymorphicManifestBuilder,
         solr.add record.list_source.to_solr
         solr.commit
       end
-
-      let(:first_canvas) { subject.canvases.first }
-      let(:manifest_json) { JSON.parse(subject.to_json) }
 
       it "has two" do
         expect(manifest_json["sequences"].first["canvases"].length).to eq 2
@@ -256,7 +259,7 @@ RSpec.describe PolymorphicManifestBuilder,
         solr.commit
 
         expect(first_canvas.viewing_hint).to eq "non-paged"
-        expect { subject.manifest.to_json }.not_to raise_error
+        expect { builder.manifest.to_json }.not_to raise_error
       end
 
       it "handles facing-pages" do
@@ -265,11 +268,11 @@ RSpec.describe PolymorphicManifestBuilder,
         solr.commit
 
         expect(first_canvas.viewing_hint).to eq "facing-pages"
-        expect { subject.manifest.to_json }.not_to raise_error
+        expect { builder.manifest.to_json }.not_to raise_error
       end
 
       it "is a valid manifest" do
-        expect { subject.manifest.to_json }.not_to raise_error
+        expect { builder.manifest.to_json }.not_to raise_error
       end
 
       it "has an ordered image" do
@@ -310,7 +313,8 @@ RSpec.describe PolymorphicManifestBuilder,
       end
 
       context "when given SSL" do
-        subject { described_class.new(solr_document, ssl: true) }
+        let(:builder) { described_class.new(solr_document, ssl: true) }
+
         it "generates https links appropriately for pdfs" do
           expect(manifest_json['sequences'][0]["rendering"]["@id"]) \
             .to eql "https://plum.com/concern/scanned_resources/1/pdf/gray"
@@ -326,13 +330,14 @@ RSpec.describe PolymorphicManifestBuilder,
     end
 
     it "has none" do
-      expect(subject.canvases).to eq []
+      expect(builder.canvases).to eq []
     end
   end
 
   describe "#manifest" do
-    let(:result) { subject.manifest }
+    let(:result) { builder.manifest }
     let(:json_result) { JSON.parse(result.to_json) }
+
     xit "should have a good JSON-LD result" do
     end
 
@@ -363,6 +368,7 @@ RSpec.describe PolymorphicManifestBuilder,
       let(:record) {
         FactoryGirl.build(:scanned_resource, source_metadata_identifier: nil)
       }
+
       it "doesn't do seeAlso" do
         expect(json_result["seeAlso"]).to be_blank
       end
@@ -435,7 +441,7 @@ RSpec.describe PolymorphicManifestBuilder,
       }
 
       it "has collection title" do
-        expect(subject.manifest.metadata.first).to eql(
+        expect(builder.manifest.metadata.first).to eql(
           "label" => "Collection",
           "value" => [
             "Test Collection"
@@ -463,11 +469,12 @@ RSpec.describe PolymorphicManifestBuilder,
     end
 
     it "is valid" do
-      expect { subject.manifest.to_json }.not_to raise_error
+      expect { builder.manifest.to_json }.not_to raise_error
     end
 
     context "with SSL on" do
-      subject { described_class.new(solr_document, ssl: true) }
+      let(:builder) { described_class.new(solr_document, ssl: true) }
+
       it "has an SSL ID" do
         expect(result['@id']) \
           .to eq "https://plum.com/concern/scanned_resources/1/manifest"

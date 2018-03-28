@@ -5,6 +5,7 @@ RSpec.describe CurationConcerns::FileSetsController do
   let(:parent) { FactoryGirl.create(:scanned_resource) }
   let(:user) { FactoryGirl.create(:admin) }
   let(:file) { fixture_file_upload("files/color.tif", "image/tiff") }
+
   describe "#update" do
     before do
       sign_in user

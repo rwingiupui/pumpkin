@@ -15,7 +15,7 @@ RSpec.describe SaveStructureJob do
   end
 
   it "saves logical order without accumulating fragments" do
-    expect(work.logical_order.nodes.empty?)
+    expect(work.logical_order.nodes).to be_empty
 
     described_class.perform_now(work, structure)
     work.reload

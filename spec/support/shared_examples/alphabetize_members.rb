@@ -3,6 +3,7 @@ RSpec.shared_examples "alphabetize_members" do
   describe "#alphabetize_members" do
     let(:fileA) { FactoryGirl.create :file_set, label: 'A' }
     let(:fileB) { FactoryGirl.create :file_set, label: 'B' }
+
     before do
       sign_in FactoryGirl.create(:admin)
       request.env['HTTP_REFERER'] = ':back'

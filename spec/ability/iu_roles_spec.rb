@@ -2,74 +2,64 @@ require 'rails_helper'
 require "cancan/matchers"
 
 describe Ability do
-  subject { described_class.new(current_user) }
+  subject { ability }
 
+  let(:ability) { described_class.new(current_user) }
   let(:open_multi_volume_work) {
     FactoryGirl.build(:multi_volume_work,
                       user: creating_user,
                       state: 'complete')
   }
-
   let(:open_scanned_resource) {
     FactoryGirl.build(:open_scanned_resource,
                       user: creating_user,
                       state: 'complete')
   }
-
   let(:private_scanned_resource) {
     FactoryGirl.build(:private_scanned_resource,
                       user: creating_user,
                       state: 'complete')
   }
-
   let(:campus_only_scanned_resource) {
     FactoryGirl.build(:campus_only_scanned_resource,
                       user: creating_user,
                       state: 'complete')
   }
-
   let(:pending_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: creating_user,
                       state: 'pending')
   }
-
   let(:metadata_review_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: creating_user,
                       state: 'metadata_review')
   }
-
   let(:final_review_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: creating_user,
                       state: 'final_review')
   }
-
   let(:complete_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: image_editor,
                       state: 'complete',
                       identifier: 'ark:/99999/fk4445wg45')
   }
-
   let(:takedown_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: image_editor,
                       state: 'takedown',
                       identifier: 'ark:/99999/fk4445wg45')
   }
-
   let(:flagged_scanned_resource) {
     FactoryGirl.build(:scanned_resource,
                       user: image_editor,
                       state: 'flagged',
                       identifier: 'ark:/99999/fk4445wg45')
   }
-
   let(:image_editor_file) { FactoryGirl.build(:file_set, user: image_editor) }
   let(:admin_file) { FactoryGirl.build(:file_set, user: admin_user) }
-
   let(:admin_user) { FactoryGirl.create(:admin) }
   let(:image_editor) { FactoryGirl.create(:image_editor) }
   let(:editor) { FactoryGirl.create(:editor) }
@@ -127,7 +117,7 @@ describe Ability do
       image_editor_file,
       admin_file
     ].each do |obj|
-      allow(subject.cache).to receive(:get) \
+      allow(ability.cache).to receive(:get) \
         .with(obj.id) \
         .and_return(Hydra::PermissionsSolrDocument.new(obj.to_solr, nil))
     end
@@ -138,35 +128,35 @@ describe Ability do
     let(:creating_user) { image_editor }
     let(:current_user) { admin_user }
     let(:open_scanned_resource_presenter) {
-      ScannedResourceShowPresenter.new(open_scanned_resource, subject)
+      ScannedResourceShowPresenter.new(open_scanned_resource, ability)
     }
 
     it {
-      should be_able_to(:create, ScannedResource.new)
-      should be_able_to(:create, FileSet.new)
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:read, private_scanned_resource)
-      should be_able_to(:read, takedown_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:pdf, open_scanned_resource)
-      should be_able_to(:color_pdf, open_scanned_resource)
-      should be_able_to(:edit, open_scanned_resource)
-      should be_able_to(:edit, open_scanned_resource_presenter.id)
-      should be_able_to(:edit, private_scanned_resource)
-      should be_able_to(:edit, takedown_scanned_resource)
-      should be_able_to(:edit, flagged_scanned_resource)
-      should be_able_to(:file_manager, open_scanned_resource)
-      should be_able_to(:file_manager, open_multi_volume_work)
-      should be_able_to(:update, open_scanned_resource)
-      should be_able_to(:update, private_scanned_resource)
-      should be_able_to(:update, takedown_scanned_resource)
-      should be_able_to(:update, flagged_scanned_resource)
-      should be_able_to(:destroy, open_scanned_resource)
-      should be_able_to(:destroy, private_scanned_resource)
-      should be_able_to(:destroy, takedown_scanned_resource)
-      should be_able_to(:destroy, flagged_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:manifest, pending_scanned_resource)
+      is_expected.to be_able_to(:create, ScannedResource.new)
+      is_expected.to be_able_to(:create, FileSet.new)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:read, private_scanned_resource)
+      is_expected.to be_able_to(:read, takedown_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:pdf, open_scanned_resource)
+      is_expected.to be_able_to(:color_pdf, open_scanned_resource)
+      is_expected.to be_able_to(:edit, open_scanned_resource)
+      is_expected.to be_able_to(:edit, open_scanned_resource_presenter.id)
+      is_expected.to be_able_to(:edit, private_scanned_resource)
+      is_expected.to be_able_to(:edit, takedown_scanned_resource)
+      is_expected.to be_able_to(:edit, flagged_scanned_resource)
+      is_expected.to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.to be_able_to(:update, open_scanned_resource)
+      is_expected.to be_able_to(:update, private_scanned_resource)
+      is_expected.to be_able_to(:update, takedown_scanned_resource)
+      is_expected.to be_able_to(:update, flagged_scanned_resource)
+      is_expected.to be_able_to(:destroy, open_scanned_resource)
+      is_expected.to be_able_to(:destroy, private_scanned_resource)
+      is_expected.to be_able_to(:destroy, takedown_scanned_resource)
+      is_expected.to be_able_to(:destroy, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:manifest, pending_scanned_resource)
     }
   end
 
@@ -175,34 +165,34 @@ describe Ability do
     let(:current_user) { image_editor }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:flag, open_scanned_resource)
-      should be_able_to(:read, campus_only_scanned_resource)
-      should be_able_to(:read, private_scanned_resource)
-      should be_able_to(:read, pending_scanned_resource)
-      should be_able_to(:read, metadata_review_scanned_resource)
-      should be_able_to(:read, final_review_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:read, takedown_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:download, image_editor_file)
-      should be_able_to(:file_manager, open_scanned_resource)
-      should be_able_to(:file_manager, open_multi_volume_work)
-      should be_able_to(:save_structure, open_scanned_resource)
-      should be_able_to(:update, open_scanned_resource)
-      should be_able_to(:create, ScannedResource.new)
-      should be_able_to(:create, FileSet.new)
-      should be_able_to(:destroy, image_editor_file)
-      should be_able_to(:destroy, pending_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:flag, open_scanned_resource)
+      is_expected.to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.to be_able_to(:read, private_scanned_resource)
+      is_expected.to be_able_to(:read, pending_scanned_resource)
+      is_expected.to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.to be_able_to(:read, final_review_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:read, takedown_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:download, image_editor_file)
+      is_expected.to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.to be_able_to(:update, open_scanned_resource)
+      is_expected.to be_able_to(:create, ScannedResource.new)
+      is_expected.to be_able_to(:create, FileSet.new)
+      is_expected.to be_able_to(:destroy, image_editor_file)
+      is_expected.to be_able_to(:destroy, pending_scanned_resource)
 
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
-      should_not be_able_to(:pdf, open_scanned_resource)
-      should_not be_able_to(:color_pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:color_pdf, open_scanned_resource)
     }
   end
 
@@ -211,35 +201,35 @@ describe Ability do
     let(:current_user) { editor }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:read, campus_only_scanned_resource)
-      should be_able_to(:read, private_scanned_resource)
-      should be_able_to(:read, pending_scanned_resource)
-      should be_able_to(:read, metadata_review_scanned_resource)
-      should be_able_to(:read, final_review_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:read, takedown_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:flag, open_scanned_resource)
-      should be_able_to(:flag, private_scanned_resource)
-      should be_able_to(:file_manager, open_scanned_resource)
-      should be_able_to(:file_manager, open_multi_volume_work)
-      should be_able_to(:save_structure, open_scanned_resource)
-      should be_able_to(:update, open_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.to be_able_to(:read, private_scanned_resource)
+      is_expected.to be_able_to(:read, pending_scanned_resource)
+      is_expected.to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.to be_able_to(:read, final_review_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:read, takedown_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:flag, open_scanned_resource)
+      is_expected.to be_able_to(:flag, private_scanned_resource)
+      is_expected.to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.to be_able_to(:update, open_scanned_resource)
 
-      should_not be_able_to(:download, image_editor_file)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
-      should_not be_able_to(:pdf, open_scanned_resource)
-      should_not be_able_to(:color_pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:download, image_editor_file)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:color_pdf, open_scanned_resource)
     }
   end
 
@@ -248,34 +238,34 @@ describe Ability do
     let(:current_user) { fulfiller }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:read, campus_only_scanned_resource)
-      should be_able_to(:read, private_scanned_resource)
-      should be_able_to(:read, pending_scanned_resource)
-      should be_able_to(:read, metadata_review_scanned_resource)
-      should be_able_to(:read, final_review_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:read, takedown_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:flag, open_scanned_resource)
-      should be_able_to(:flag, private_scanned_resource)
-      should be_able_to(:download, image_editor_file)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.to be_able_to(:read, private_scanned_resource)
+      is_expected.to be_able_to(:read, pending_scanned_resource)
+      is_expected.to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.to be_able_to(:read, final_review_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:read, takedown_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:flag, open_scanned_resource)
+      is_expected.to be_able_to(:flag, private_scanned_resource)
+      is_expected.to be_able_to(:download, image_editor_file)
 
-      should_not be_able_to(:file_manager, open_scanned_resource)
-      should_not be_able_to(:file_manager, open_multi_volume_work)
-      should_not be_able_to(:save_structure, open_scanned_resource)
-      should_not be_able_to(:update, open_scanned_resource)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
-      should_not be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.not_to be_able_to(:update, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
     }
   end
 
@@ -284,33 +274,33 @@ describe Ability do
     let(:current_user) { curator }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:read, campus_only_scanned_resource)
-      should be_able_to(:read, private_scanned_resource)
-      should be_able_to(:read, metadata_review_scanned_resource)
-      should be_able_to(:read, final_review_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:read, takedown_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:flag, open_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.to be_able_to(:read, private_scanned_resource)
+      is_expected.to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.to be_able_to(:read, final_review_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:read, takedown_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:flag, open_scanned_resource)
 
-      should_not be_able_to(:read, pending_scanned_resource)
-      should_not be_able_to(:download, image_editor_file)
-      should_not be_able_to(:file_manager, open_scanned_resource)
-      should_not be_able_to(:file_manager, open_multi_volume_work)
-      should_not be_able_to(:save_structure, open_scanned_resource)
-      should_not be_able_to(:update, open_scanned_resource)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
-      should_not be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:read, pending_scanned_resource)
+      is_expected.not_to be_able_to(:download, image_editor_file)
+      is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.not_to be_able_to(:update, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
     }
   end
 
@@ -319,41 +309,41 @@ describe Ability do
     let(:current_user) { music_user }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:read, campus_only_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:manifest, campus_only_scanned_resource)
-      should be_able_to(:manifest, complete_scanned_resource)
-      should be_able_to(:manifest, flagged_scanned_resource)
-      should be_able_to(:flag, open_scanned_resource)
-      should be_able_to(:flag, campus_only_scanned_resource)
-      should be_able_to(:flag, complete_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:manifest, campus_only_scanned_resource)
+      is_expected.to be_able_to(:manifest, complete_scanned_resource)
+      is_expected.to be_able_to(:manifest, flagged_scanned_resource)
+      is_expected.to be_able_to(:flag, open_scanned_resource)
+      is_expected.to be_able_to(:flag, campus_only_scanned_resource)
+      is_expected.to be_able_to(:flag, complete_scanned_resource)
 
-      should_not be_able_to(:read, private_scanned_resource)
-      should_not be_able_to(:read, pending_scanned_resource)
-      should_not be_able_to(:read, metadata_review_scanned_resource)
-      should_not be_able_to(:read, final_review_scanned_resource)
-      should_not be_able_to(:read, takedown_scanned_resource)
-      should_not be_able_to(:download, image_editor_file)
-      should_not be_able_to(:file_manager, open_scanned_resource)
-      should_not be_able_to(:file_manager, open_multi_volume_work)
-      should_not be_able_to(:save_structure, open_scanned_resource)
-      should_not be_able_to(:update, open_scanned_resource)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
-      should_not be_able_to(:pdf, open_scanned_resource)
-      should_not be_able_to(:pdf, campus_only_scanned_resource)
-      should_not be_able_to(:pdf, complete_scanned_resource)
-      should_not be_able_to(:pdf, flagged_scanned_resource)
+      is_expected.not_to be_able_to(:read, private_scanned_resource)
+      is_expected.not_to be_able_to(:read, pending_scanned_resource)
+      is_expected.not_to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, final_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, takedown_scanned_resource)
+      is_expected.not_to be_able_to(:download, image_editor_file)
+      is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.not_to be_able_to(:update, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:pdf, campus_only_scanned_resource)
+      is_expected.not_to be_able_to(:pdf, complete_scanned_resource)
+      is_expected.not_to be_able_to(:pdf, flagged_scanned_resource)
     }
   end
 
@@ -374,38 +364,38 @@ describe Ability do
     }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
 
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:manifest, complete_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, flagged_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:manifest, complete_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, flagged_scanned_resource)
 
-      should_not be_able_to(:color_pdf, color_enabled_resource)
-      should_not be_able_to(:pdf, open_scanned_resource)
-      should_not be_able_to(:pdf, no_pdf_scanned_resource)
-      should_not be_able_to(:flag, open_scanned_resource)
-      should_not be_able_to(:read, campus_only_scanned_resource)
-      should_not be_able_to(:read, private_scanned_resource)
-      should_not be_able_to(:read, pending_scanned_resource)
-      should_not be_able_to(:read, metadata_review_scanned_resource)
-      should_not be_able_to(:read, final_review_scanned_resource)
-      should_not be_able_to(:read, takedown_scanned_resource)
-      should_not be_able_to(:download, image_editor_file)
-      should_not be_able_to(:file_manager, open_scanned_resource)
-      should_not be_able_to(:file_manager, open_multi_volume_work)
-      should_not be_able_to(:save_structure, open_scanned_resource)
-      should_not be_able_to(:update, open_scanned_resource)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:color_pdf, color_enabled_resource)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:pdf, no_pdf_scanned_resource)
+      is_expected.not_to be_able_to(:flag, open_scanned_resource)
+      is_expected.not_to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.not_to be_able_to(:read, private_scanned_resource)
+      is_expected.not_to be_able_to(:read, pending_scanned_resource)
+      is_expected.not_to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, final_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, takedown_scanned_resource)
+      is_expected.not_to be_able_to(:download, image_editor_file)
+      is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.not_to be_able_to(:update, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
     }
   end
 
@@ -426,37 +416,37 @@ describe Ability do
     }
 
     it {
-      should be_able_to(:read, open_scanned_resource)
-      should be_able_to(:manifest, open_scanned_resource)
-      should be_able_to(:read, complete_scanned_resource)
-      should be_able_to(:manifest, complete_scanned_resource)
-      should be_able_to(:read, flagged_scanned_resource)
-      should be_able_to(:manifest, flagged_scanned_resource)
+      is_expected.to be_able_to(:read, open_scanned_resource)
+      is_expected.to be_able_to(:manifest, open_scanned_resource)
+      is_expected.to be_able_to(:read, complete_scanned_resource)
+      is_expected.to be_able_to(:manifest, complete_scanned_resource)
+      is_expected.to be_able_to(:read, flagged_scanned_resource)
+      is_expected.to be_able_to(:manifest, flagged_scanned_resource)
 
-      should_not be_able_to(:color_pdf, color_enabled_resource)
-      should_not be_able_to(:pdf, open_scanned_resource)
-      should_not be_able_to(:pdf, no_pdf_scanned_resource)
-      should_not be_able_to(:flag, open_scanned_resource)
-      should_not be_able_to(:read, campus_only_scanned_resource)
-      should_not be_able_to(:read, private_scanned_resource)
-      should_not be_able_to(:read, pending_scanned_resource)
-      should_not be_able_to(:read, metadata_review_scanned_resource)
-      should_not be_able_to(:read, final_review_scanned_resource)
-      should_not be_able_to(:read, takedown_scanned_resource)
-      should_not be_able_to(:download, image_editor_file)
-      should_not be_able_to(:file_manager, open_scanned_resource)
-      should_not be_able_to(:file_manager, open_multi_volume_work)
-      should_not be_able_to(:save_structure, open_scanned_resource)
-      should_not be_able_to(:update, open_scanned_resource)
-      should_not be_able_to(:create, ScannedResource.new)
-      should_not be_able_to(:create, FileSet.new)
-      should_not be_able_to(:destroy, image_editor_file)
-      should_not be_able_to(:destroy, pending_scanned_resource)
-      should_not be_able_to(:destroy, complete_scanned_resource)
-      should_not be_able_to(:create, Role.new)
-      should_not be_able_to(:destroy, role)
-      should_not be_able_to(:complete, pending_scanned_resource)
-      should_not be_able_to(:destroy, admin_file)
+      is_expected.not_to be_able_to(:color_pdf, color_enabled_resource)
+      is_expected.not_to be_able_to(:pdf, open_scanned_resource)
+      is_expected.not_to be_able_to(:pdf, no_pdf_scanned_resource)
+      is_expected.not_to be_able_to(:flag, open_scanned_resource)
+      is_expected.not_to be_able_to(:read, campus_only_scanned_resource)
+      is_expected.not_to be_able_to(:read, private_scanned_resource)
+      is_expected.not_to be_able_to(:read, pending_scanned_resource)
+      is_expected.not_to be_able_to(:read, metadata_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, final_review_scanned_resource)
+      is_expected.not_to be_able_to(:read, takedown_scanned_resource)
+      is_expected.not_to be_able_to(:download, image_editor_file)
+      is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
+      is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+      is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+      is_expected.not_to be_able_to(:update, open_scanned_resource)
+      is_expected.not_to be_able_to(:create, ScannedResource.new)
+      is_expected.not_to be_able_to(:create, FileSet.new)
+      is_expected.not_to be_able_to(:destroy, image_editor_file)
+      is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
+      is_expected.not_to be_able_to(:create, Role.new)
+      is_expected.not_to be_able_to(:destroy, role)
+      is_expected.not_to be_able_to(:complete, pending_scanned_resource)
+      is_expected.not_to be_able_to(:destroy, admin_file)
     }
   end
 end

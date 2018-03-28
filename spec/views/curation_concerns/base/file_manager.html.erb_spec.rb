@@ -53,6 +53,7 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
     end
     let(:file_set) { ScannedResourceShowPresenter.new(solr_doc, nil) }
     let(:resource) { FactoryGirl.build(:scanned_resource) }
+
     it "uses ScannedResource's thumbnail_id values" \
     " for Thumbnail radio options" do
       expect(rendered).to have_selector \
@@ -202,6 +203,7 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
 
   context "when it's a MVW" do
     let(:parent) { FactoryGirl.build(:multi_volume_work) }
+
     it "has a correct input to edit the viewing hint" do
       expect(rendered).to have_selector(
         "input[name='multi_volume_work[viewing_hint]']"

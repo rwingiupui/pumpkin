@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe BrowseEverythingIngester do
-  subject {
+  let(:ingester) {
     described_class.new(curation_concern, upload_set_id, actor, file_info)
   }
+
   let(:curation_concern) { FactoryGirl.create(:scanned_resource) }
   let(:upload_set_id) { "2" }
   let(:actor) do
@@ -23,6 +24,7 @@ RSpec.describe BrowseEverythingIngester do
 
   describe "#save" do
     let(:download_path) { Rails.root.join("tmp", "spec", "downloaded.tif") }
+
     before do
       FileUtils.mkdir_p(download_path.dirname)
       FileUtils.cp(file.path, download_path)
@@ -32,7 +34,7 @@ RSpec.describe BrowseEverythingIngester do
         .to receive(:download).and_return(download_path)
     end
     it "cleans up the downloaded file" do
-      subject.save
+      ingester.save
 
       expect(File.exist?(download_path)).to eq false
     end

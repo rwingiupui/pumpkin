@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe VoyagerUpdater::Event,
                vcr: { cassette_name: 'voyager_dump' } do
-  subject { described_class.new(json) }
+  let(:event_instance) { described_class.new(json) }
   let(:json) do
     {
       id: 1096,
@@ -15,29 +15,30 @@ RSpec.describe VoyagerUpdater::Event,
     }.stringify_keys
   end
   let(:dump_type) { "CHANGED_RECORDS" }
+
   describe "#id" do
     it "returns the ID" do
-      expect(subject.id).to eq 1096
+      expect(event_instance.id).to eq 1096
     end
   end
 
   describe "#dump_type" do
     it "returns the type" do
-      expect(subject.dump_type).to eq "CHANGED_RECORDS"
+      expect(event_instance.dump_type).to eq "CHANGED_RECORDS"
     end
   end
 
   describe "#processed?" do
     context "when there's no processed event" do
       it "returns false" do
-        expect(subject).not_to be_processed
+        expect(event_instance).not_to be_processed
       end
     end
     context "when there's a processed event" do
       it "returns true" do
         ProcessedEvent.create(event_id: 1096)
 
-        expect(subject).to be_processed
+        expect(event_instance).to be_processed
       end
     end
   end
@@ -46,26 +47,27 @@ RSpec.describe VoyagerUpdater::Event,
     skip "updates all changed records" do
       s = FactoryGirl.create(:scanned_resource,
                              source_metadata_identifier: "359850")
-      subject.process!
+      event_instance.process!
 
       expect(s.reload.title).to eq ["Coda"]
-      expect(subject).to be_processed
+      expect(event_instance).to be_processed
     end
     context "when processed" do
       it "doesn't reprocess" do
         allow(VoyagerUpdater::Processor).to receive(:new)
         ProcessedEvent.create(event_id: 1096)
 
-        subject.process!
+        event_instance.process!
         expect(VoyagerUpdater::Processor).not_to have_received(:new)
       end
     end
     context "when dump type isn't changed_records" do
       let(:dump_type) { "ALL_RECORDS" }
+
       it "doesn't process" do
         allow(VoyagerUpdater::Processor).to receive(:new)
 
-        subject.process!
+        event_instance.process!
         expect(VoyagerUpdater::Processor).not_to have_received(:new)
       end
     end
@@ -73,8 +75,8 @@ RSpec.describe VoyagerUpdater::Event,
 
   describe "#dump" do
     it "returns a dump object" do
-      expect(subject.dump).to be_kind_of VoyagerUpdater::Dump
-      expect(subject.dump.url).to eq json["dump_url"]
+      expect(event_instance.dump).to be_kind_of VoyagerUpdater::Dump
+      expect(event_instance.dump.url).to eq json["dump_url"]
     end
   end
 end

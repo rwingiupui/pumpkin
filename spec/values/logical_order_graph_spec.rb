@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LogicalOrderGraph do
-  subject { described_class.new(graph, head_subject) }
-
+  let(:lo_graph) { described_class.new(graph, head_subject) }
   let(:graph) { order.to_graph }
   let(:order) { LogicalOrder.new(params) }
   let(:head_subject) { order.rdf_subject }
@@ -46,16 +45,16 @@ RSpec.describe LogicalOrderGraph do
 
   describe "#to_h" do
     it "returns a good hash" do
-      expect(subject.to_h).to eq params
+      expect(lo_graph.to_h).to eq params
     end
   end
 
   describe "#nodes" do
     it "returns an array of nodes" do
-      expect(subject.nodes.length).to eq 2
+      expect(lo_graph.nodes.length).to eq 2
     end
     it "returns labels" do
-      expect(subject.nodes.first.label).to eq "Chapter 1"
+      expect(lo_graph.nodes.first.label).to eq "Chapter 1"
     end
   end
 
@@ -70,8 +69,9 @@ RSpec.describe LogicalOrderGraph do
         ]
       }
     end
+
     it "returns it" do
-      expect(subject.nodes.first.proxy_for_id).to eq "a"
+      expect(lo_graph.nodes.first.proxy_for_id).to eq "a"
     end
   end
 end

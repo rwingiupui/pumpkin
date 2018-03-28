@@ -11,6 +11,7 @@ RSpec.describe "curation_concerns/scanned_resources/_show_actions.html.erb" do
   let(:editor) { true }
   let(:collector) { true }
   let(:parent_presenter) {}
+
   before do
     assign(:presenter, presenter)
     assign(:parent_presenter, parent_presenter)
@@ -38,6 +39,7 @@ RSpec.describe "curation_concerns/scanned_resources/_show_actions.html.erb" do
   end
   context "when there's a parent presenter" do
     let(:parent_presenter) { presenter }
+
     it "renders a link to the contextual file manager" do
       expect(rendered).to have_link(
         "File Manager",

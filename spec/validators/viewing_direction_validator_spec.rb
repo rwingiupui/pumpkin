@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ViewingDirectionValidator do
-  subject { described_class.new }
+  let(:validator) { described_class.new }
 
   describe "#validate" do
     let(:errors) { double("Errors") }
+
     before do
       allow(errors).to receive(:add)
     end
@@ -14,7 +15,7 @@ RSpec.describe ViewingDirectionValidator do
         it "does not add errors" do
           record = build_record(viewing_direction: direction)
 
-          subject.validate(record)
+          validator.validate(record)
 
           expect(errors).not_to have_received(:add)
         end
@@ -25,7 +26,7 @@ RSpec.describe ViewingDirectionValidator do
       it "does not add errors" do
         record = build_record(viewing_direction: nil)
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).not_to have_received(:add)
       end
@@ -35,7 +36,7 @@ RSpec.describe ViewingDirectionValidator do
       it "adds errors" do
         record = build_record(viewing_direction: "bad")
 
-        subject.validate(record)
+        validator.validate(record)
 
         expect(errors).to have_received(:add) \
           .with(:viewing_direction,

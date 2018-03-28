@@ -2,12 +2,13 @@ require 'rails_helper'
 
 RSpec.describe VoyagerUpdater::EventStream,
                vcr: { cassette_name: 'voyager_dump' } do
-  subject { described_class.new(url) }
+  let(:event_stream) { described_class.new(url) }
   let(:url) { "https://bibdata.princeton.edu/events.json" }
+
   describe "#events" do
     it "is a bunch of Events" do
-      expect(subject.events.map(&:class).uniq).to eq [VoyagerUpdater::Event]
-      expect(subject.events.length).to eq 3
+      expect(event_stream.events.map(&:class).uniq).to eq [VoyagerUpdater::Event]
+      expect(event_stream.events.length).to eq 3
     end
   end
 
@@ -19,7 +20,7 @@ RSpec.describe VoyagerUpdater::EventStream,
       allow(ManifestEventGenerator).to receive(:new) \
         .and_return(manifest_event_generator)
       allow(manifest_event_generator).to receive(:record_updated)
-      subject.process!
+      event_stream.process!
 
       expect(s.reload.title).to eq ["Coda"]
       expect(manifest_event_generator).to have_received(:record_updated).with(s)
@@ -31,7 +32,7 @@ RSpec.describe VoyagerUpdater::EventStream,
       s = FactoryGirl.create(:scanned_resource,
                              source_metadata_identifier: "359850")
       allow(ManifestEventGenerator).to receive(:new).and_return(nil)
-      subject.process!
+      event_stream.process!
 
       expect(logger).to have_received(:info) \
         .with("Processing updates for IDs: #{s.id}")

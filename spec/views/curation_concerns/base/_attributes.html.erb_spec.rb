@@ -24,7 +24,7 @@ RSpec.describe "curation_concerns/base/_attributes.html.erb" do
   let(:can_edit) { false }
 
   before do
-    allow(view).to receive(:dom_class) { '' }
+    allow(view).to receive(:dom_class).and_return('')
     allow(presenter).to receive(:member_of_collections).and_return([])
 
     assign(:presenter, presenter)
@@ -55,6 +55,7 @@ RSpec.describe "curation_concerns/base/_attributes.html.erb" do
 
   context "when they can edit" do
     let(:can_edit) { true }
+
     it "displays workflow note" do
       expect(rendered).to have_content "Workflow note"
       expect(rendered).to have_content "First"
@@ -63,6 +64,7 @@ RSpec.describe "curation_concerns/base/_attributes.html.erb" do
 
   context "when they can't edit" do
     let(:can_edit) { false }
+
     it "doesn't display workflow note" do
       expect(rendered).not_to have_content "Workflow note"
       expect(rendered).not_to have_content "First"

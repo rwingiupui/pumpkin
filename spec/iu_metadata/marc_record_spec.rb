@@ -18,6 +18,7 @@ describe IuMetadata::MarcRecord do
     pth = File.join(fixture_path, 'marc_with_bad_leader.mrx')
     described_class.new(pth, File.open(pth).read)
   }
+
   record1_atts =
     {
       title: ['The weeping angels'],

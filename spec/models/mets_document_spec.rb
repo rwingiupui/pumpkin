@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe METSDocument do
+  let(:mets_doc) { described_class.new selected_file }
   let(:mets_file) {
     Rails.root.join("spec", "fixtures", "pudl_mets",
                     "pudl0001-4612596.mets")
@@ -46,123 +47,124 @@ RSpec.describe METSDocument do
   }
 
   describe "identifiers" do
-    subject { described_class.new mets_file }
+    let(:selected_file) { mets_file }
 
     it "has an ark id" do
-      expect(subject.ark_id).to eq('ark:/88435/5m60qr98h')
+      expect(mets_doc.ark_id).to eq('ark:/88435/5m60qr98h')
     end
 
     it "has a bib id" do
-      expect(subject.bib_id).to eq('bhr9405')
+      expect(mets_doc.bib_id).to eq('bhr9405')
     end
 
     it "has a pudl id" do
-      expect(subject.pudl_id).to eq('pudl0001/4612596')
+      expect(mets_doc.pudl_id).to eq('pudl0001/4612596')
     end
 
     it "has a collection slug" do
-      expect(subject.collection_slugs).to eq('libmus_personal')
+      expect(mets_doc.collection_slugs).to eq('libmus_personal')
     end
   end
 
   describe "files" do
-    subject { described_class.new mets_file_rtl }
+    let(:selected_file) { mets_file_rtl }
 
     it "has a thumbnail url" do
-      expect(subject.thumbnail_path).to eq('/tmp/pudl0032/ns73/00000001.tif')
+      expect(mets_doc.thumbnail_path).to eq('/tmp/pudl0032/ns73/00000001.tif')
     end
 
     it "has an array of files" do
-      expect(subject.files.length).to eq(189)
+      expect(mets_doc.files.length).to eq(189)
     end
 
     it "has no options for files present in the structMap" do
-      expect(subject.file_opts(subject.files.first)).to eq({})
+      expect(mets_doc.file_opts(mets_doc.files.first)).to eq({})
     end
 
     it "has marks a file not present in the structMap as non-paged" do
-      expect(subject.file_opts(subject.files.last)) \
+      expect(mets_doc.file_opts(mets_doc.files.last)) \
         .to eq(viewing_hint: 'non-paged')
     end
 
     it "has a decorated file" do
-      decorated = subject.decorated_file(path: tiff_file,
-                                         mime_type: 'image/tiff')
+      decorated = mets_doc.decorated_file(path: tiff_file,
+                                          mime_type: 'image/tiff')
       expect(decorated.mime_type).to eq('image/tiff')
       expect(decorated.original_filename).to eq('color.tif')
     end
 
     it 'finds labels for files' do
-      expect(subject.file_label('gjpt0')).to eq('Upper cover. outside')
+      expect(mets_doc.file_label('gjpt0')).to eq('Upper cover. outside')
     end
   end
 
   describe "viewing direction" do
     context "a left-to-right object" do
-      subject { described_class.new mets_file }
+      let(:selected_file) { mets_file }
 
       it "is right-to-left" do
-        expect(subject.right_to_left).to be false
+        expect(mets_doc.right_to_left).to be false
       end
       it "has a right-to-left viewing direction" do
-        expect(subject.viewing_direction).to eq('left-to-right')
+        expect(mets_doc.viewing_direction).to eq('left-to-right')
       end
     end
 
     context "a right-to-left object" do
-      subject { described_class.new mets_file_rtl }
+      let(:selected_file) { mets_file_rtl }
 
       it "is right-to-left" do
-        expect(subject.right_to_left).to be true
+        expect(mets_doc.right_to_left).to be true
       end
       it "has a right-to-left viewing direction" do
-        expect(subject.viewing_direction).to eq('right-to-left')
+        expect(mets_doc.viewing_direction).to eq('right-to-left')
       end
     end
   end
 
   describe "multi-volume" do
     context "a single-volume mets file" do
-      subject { described_class.new mets_file }
+      let(:selected_file) { mets_file }
 
       it "is not multi-volume" do
-        expect(subject.multi_volume?).to be false
+        expect(mets_doc.multi_volume?).to be false
       end
 
       it "has no volume ids" do
-        expect(subject.volume_ids).to eq []
+        expect(mets_doc.volume_ids).to eq []
       end
     end
 
     context "a multi-volume mets file" do
-      subject { described_class.new mets_file_multi }
+      let(:selected_file) { mets_file_multi }
 
       it "is multi-volume" do
-        expect(subject.multi_volume?).to be true
+        expect(mets_doc.multi_volume?).to be true
       end
 
       it "has volume ids" do
-        expect(subject.volume_ids).to eq ['phys1', 'phys2']
+        expect(mets_doc.volume_ids).to eq ['phys1', 'phys2']
       end
 
       it "has volume labels" do
-        expect(subject.label_for_volume('phys1')).to eq 'first volume'
+        expect(mets_doc.label_for_volume('phys1')).to eq 'first volume'
       end
 
       it "has volume file lists" do
-        expect(subject.files_for_volume('phys1').length).to eq 3
+        expect(mets_doc.files_for_volume('phys1').length).to eq 3
       end
 
       it "builds a label for a file from hierarchy" \
          " (but does not include volume label)" do
-        expect(subject.file_label('l898s')).to eq('upper cover. pastedown')
+        expect(mets_doc.file_label('l898s')).to eq('upper cover. pastedown')
       end
     end
 
     context "an item with logical structure" do
-      subject { described_class.new mets_file_rtl }
+      let(:selected_file) { mets_file_rtl }
+
       it "has structure" do
-        expect(subject.structure).to eq structure
+        expect(mets_doc.structure).to eq structure
       end
     end
   end

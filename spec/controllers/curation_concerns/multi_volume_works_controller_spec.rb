@@ -14,6 +14,7 @@ describe CurationConcerns::MultiVolumeWorksController do
 
   describe "create" do
     let(:user) { FactoryGirl.create(:admin) }
+
     before do
       sign_in user
     end
@@ -24,6 +25,7 @@ describe CurationConcerns::MultiVolumeWorksController do
           source_metadata_identifier: "2028405"
         )
       end
+
       it "updates the metadata" do
         post :create, multi_volume_work: multi_volume_work_attributes
         s = MultiVolumeWork.last
@@ -49,6 +51,7 @@ describe CurationConcerns::MultiVolumeWorksController do
       }
     end
     let(:stub) {}
+
     before do
       sign_in user
       allow(CharacterizeJob).to receive(:perform_later).once

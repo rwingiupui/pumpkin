@@ -23,9 +23,6 @@ RSpec.describe IngestYAMLJob do
     let(:jpg2_file) {
       Rails.root.join("spec", "fixtures", "files", "image.jp2")
     }
-    let(:ocr_file) {
-      Rails.root.join("spec", "fixtures", "files", "fulltext.txt")
-    }
     let(:user) { FactoryGirl.build(:admin) }
     let(:actor1) { double('actor1') }
     let(:actor2) { double('actor2') }
@@ -95,14 +92,17 @@ RSpec.describe IngestYAMLJob do
     end
     context "with FILE_ASSOCIATION_METHOD: individual" do
       let(:file_association_method) { 'individual' }
+
       include_examples "HTTP error recovery"
     end
     context "with FILE_ASSOCIATION_METHOD: batch" do
       let(:file_association_method) { 'batch' }
+
       include_examples "HTTP error recovery"
     end
     context "with FILE_ASSOCIATION_METHOD: none" do
       let(:file_association_method) { 'none' }
+
       include_examples "HTTP error recovery"
     end
 
@@ -178,14 +178,17 @@ RSpec.describe IngestYAMLJob do
     end
     context "with FILE_ASSOCIATION_METHOD: individual" do
       let(:file_association_method) { 'individual' }
+
       include_examples "ingest cases"
     end
     context "with FILE_ASSOCIATION_METHOD: batch" do
       let(:file_association_method) { 'batch' }
+
       include_examples "ingest cases"
     end
     context "with FILE_ASSOCIATION_METHOD: none" do
       let(:file_association_method) { 'none' }
+
       include_examples "ingest cases"
     end
   end

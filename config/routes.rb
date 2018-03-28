@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     resources :multi_volume_works, only: [] do
       member do
         get :manifest, defaults: { format: :json }
+        get "/highlight/:search_term", action: :show
         post :flag
         post :browse_everything_files
         patch :alphabetize_members

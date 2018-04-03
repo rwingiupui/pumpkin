@@ -1,7 +1,7 @@
 module LockableJob
   extend ActiveSupport::Concern
 
-  def self.prepended(mod) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
+  def self.prepended(mod) # rubocop:disable Metrics/AbcSize
     mod.class_eval do
       before_enqueue do |job|
         job.arguments << { lock_info: job_subject(job).lock }

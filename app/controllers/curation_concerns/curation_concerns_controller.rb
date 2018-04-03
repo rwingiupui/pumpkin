@@ -130,9 +130,9 @@ class CurationConcerns::CurationConcernsController < ApplicationController
 
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def validate_remote_url(url)
-      uri = URI.parse(URI.encode(url))
+      uri = URI.parse(URI.encode_www_form_component(url))
       if uri.scheme == 'file'
-        path = File.absolute_path(URI.decode(uri.path))
+        path = File.absolute_path(URI.decode_www_form_component(uri.path))
         result = whitelisted_ingest_dirs.any? do |dir|
           path.start_with?(dir) && path.length > dir.length
         end

@@ -1,5 +1,4 @@
 RSpec.shared_examples "page header" do |header_method, page_title|
-  # rubocop:disable RSpec/DescribeClass
   describe "page header" do
     let(:solr_document) { SolrDocument.new }
     let(:parent_id) { 'testid' }

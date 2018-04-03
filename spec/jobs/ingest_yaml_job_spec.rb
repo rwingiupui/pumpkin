@@ -71,7 +71,7 @@ RSpec.describe IngestYAMLJob do
         allow(actor2).to receive(:assign_visibility)
 
         call_count = 0
-        allow_any_instance_of(Net::HTTP).to receive(:transport_request) \
+        allow_any_instance_of(Net::HTTP).to(receive(:transport_request) \
           .and_wrap_original { |m, *args, &block|
             call_count += 1
             if call_count.odd? && args.first['user-agent'] =~ /^Faraday/
@@ -80,7 +80,7 @@ RSpec.describe IngestYAMLJob do
               # Causes a 400 error in Fedora.
             end
             m.call(*args, &block)
-          }
+          })
         expect_any_instance_of(Faraday::Request::Retry) \
           .to receive(:retry_request?).at_least(:once).and_call_original
 

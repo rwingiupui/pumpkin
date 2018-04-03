@@ -126,7 +126,7 @@ RSpec.describe ScannedResourcePDF, vcr: { cassette_name: "iiif_manifest" } do
         expect(referenced_object(@section1a[:First])).to eql @page1
       end
 
-      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      # rubocop:disable Metrics/AbcSize
       def render_and_find_objects
         output = StringIO.new(@pdf.render, 'r+')
         @hash = PDF::Reader::ObjectHash.new(output)

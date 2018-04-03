@@ -10,7 +10,7 @@ class MessagingClient
 
   def publish(message)
     exchange.publish(message, persistent: true) if enabled?
-  rescue
+  rescue StandardError
     Rails.logger.warn "Unable to publish message to #{amqp_url}"
   end
 

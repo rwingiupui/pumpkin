@@ -36,7 +36,7 @@ module MetsStructure
       nodes
     end
 
-    def structure_recurse(node) # rubocop:disable Metrics/MethodLength
+    def structure_recurse(node)
       children = node.element_children
       return single_file_object(children.first) if !section(node) &&
                                                    single_file(children)

@@ -207,13 +207,13 @@ describe ScannedResource do
       scanned_resource.state = 'complete'
       expect(scanned_resource).not_to receive(:complete_record)
       expect { scanned_resource.check_state } \
-        .not_to change { ActionMailer::Base.deliveries.count }
+        .not_to(change { ActionMailer::Base.deliveries.count })
     end
     it "does not complete record when state isn't 'complete'" do
       scanned_resource.state = 'final_review'
       expect(scanned_resource).not_to receive(:complete_record)
       expect { scanned_resource.check_state } \
-        .not_to change { ActionMailer::Base.deliveries.count }
+        .not_to(change { ActionMailer::Base.deliveries.count })
     end
     it "does not overwrite existing identifier" do
       allow(scanned_resource).to receive("state_changed?").and_return true
@@ -229,7 +229,7 @@ describe ScannedResource do
       scanned_resource.state = 'pending'
       expect(scanned_resource).not_to receive(:complete_record)
       expect { scanned_resource.check_state } \
-        .not_to change { ActionMailer::Base.deliveries.count }
+        .not_to(change { ActionMailer::Base.deliveries.count })
       expect(scanned_resource.identifier).to eq(nil)
     end
   end

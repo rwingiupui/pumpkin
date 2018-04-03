@@ -27,7 +27,7 @@ class ManifestBuilder
           helper.polymorphic_url([:pdf, record], pdf_quality: "gray",
                                                  protocol: protocol)
         end
-      rescue
+      rescue StandardError
         nil
       end
 

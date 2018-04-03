@@ -21,7 +21,7 @@ module IuMetadata
     # * (ActiveTriple relations may have non-deterministic order.)
     #
     # @return [Hash] RDF attributes for the target factory object
-    def attributes # rubocop:disable Metrics/MethodLength
+    def attributes
       @attributes ||=
         begin
           Hash[

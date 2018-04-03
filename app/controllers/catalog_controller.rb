@@ -2,7 +2,7 @@ class CatalogController < ApplicationController
   before_action :admin_state_facet
 
   include CurationConcerns::CatalogController
-  def self.search_config # rubocop:disable Metrics/MethodLength
+  def self.search_config
     {
       'qf' => %w[title_tesim
                  name_tesim

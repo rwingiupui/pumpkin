@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/LineLength
 source 'https://rubygems.org'
 
 # Complain if developer not using the common Ruby version

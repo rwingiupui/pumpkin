@@ -2,7 +2,7 @@ class SaveStructureJob < ActiveJob::Base
   prepend ::LockableJob
   queue_as :default
 
-  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def perform(curation_concern, structure)
     return unless curation_concern.respond_to?(:logical_order)
     # Remove existing logical order object to avoid accumulation of fragments.
@@ -15,10 +15,10 @@ class SaveStructureJob < ActiveJob::Base
       raise ActiveFedora::RecordNotSaved,
             "#{curation_concern.id} logical order not saved!"
     end
-  rescue
+  rescue StandardError
     Rails.logger.error "SaveStructureJob failed on #{curation_concern.id}!" \
     " Following structure may not be persisted:\n#{structure}"
     raise
   end
-  # rubocop:ensable Metrics/AbcSize, Metrics/MethodLength
+  # rubocop:ensable Metrics/AbcSize
 end

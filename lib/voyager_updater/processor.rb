@@ -5,7 +5,7 @@ module VoyagerUpdater
       @ids = ids
     end
 
-    def run! # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    def run! # rubocop:disable Metrics/AbcSize
       Rails.logger.info "Processing updates for IDs: #{ids.join(', ')}" \
       unless ids.empty?
       ids.each do |id|
@@ -14,7 +14,7 @@ module VoyagerUpdater
           resource.apply_remote_metadata
           resource.save!
           messenger.record_updated(resource)
-        rescue
+        rescue StandardError
           Rails.logger.info "Unable to process changed Voyager record #{id}"
         end
       end

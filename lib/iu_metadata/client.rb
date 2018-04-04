@@ -2,7 +2,7 @@ require 'faraday'
 require 'nokogiri'
 module IuMetadata
   class Client
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:disable Metrics/AbcSize
     def self.retrieve(id, format)
       raise ArgumentError, 'Invalid id argument' unless bibdata? id
       if format == :mods
@@ -18,7 +18,7 @@ module IuMetadata
       end
       record
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize
 
     # Used for validating metadata identifiers in URLs
     def self.bibdata?(source_metadata_id)

@@ -6,7 +6,7 @@ module Faraday
   class EssServerError < Faraday::EssError; end
 
   class Response::RaiseEssError < Response::Middleware
-    def on_complete(env) # rubocop:disable Metrics/MethodLength
+    def on_complete(env)
       case env[:status]
       # Not actually encountered in the wild, but easy to trigger in tests.
       when 400

@@ -7,9 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its
   # `secret_key` by default. You can change it below and use your own secret
   # key.
-  # rubocop:disable Metrics/LineLength
   # config.secret_key = '220218bb2add81b748e513968a60334d74246c508caf7ecea8d191983ca3282540e6af26dfd95d891e9581c5509b1fd96e041d4b5dc794488089107d14569df2'
-  # rubocop:enable Metrics/LineLength
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -113,9 +111,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # rubocop:disable Metrics/LineLength
   # config.pepper = '11f9ae55b8a4778003b650107a7902b2d7aea61132383003b245a8d5bd0900885921704355aef86c704eb30851101a5672b4eb9e9f9b9cd057c42bdcde3399b7'
-  # rubocop:enable Metrics/LineLength
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

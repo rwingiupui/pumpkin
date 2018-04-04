@@ -38,7 +38,7 @@ RSpec.describe CurationConcerns::FileSetsController do
       patch :update, id: file_set.id, file_set: { viewing_hint: 'non-paged' }
       expect(response) \
         .to redirect_to(Rails.application.class.routes.url_helpers \
-                          .file_manager_curation_concerns_scanned_resource_path(parent.id)) # rubocop:disable Metrics/LineLength
+                          .file_manager_curation_concerns_scanned_resource_path(parent.id))
     end
   end
 

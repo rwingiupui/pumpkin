@@ -104,7 +104,7 @@ class IngestYAMLJob < ActiveJob::Base
       parent.ordered_members = @volumes
       parent.save!
     end
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def ingest_files(parent: nil, resource: nil, files: [])

@@ -11,7 +11,6 @@ class ScannedResourcePDF
 
     private
 
-      # rubocop:disable Metrics/MethodLength
       def apply_nodes(prawn_document, nodes)
         nodes.each_with_index do |sub_node, _index|
           if !sub_node.proxy_for
@@ -25,7 +24,6 @@ class ScannedResourcePDF
           end
         end
       end
-      # rubocop:enable Metrics/MethodLength
 
       def apply_section(prawn_document, node)
         target_node = node.each_node.first

@@ -66,7 +66,7 @@ class ScannedResourcePDF
         }
       end
 
-      def metadata_hash # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+      def metadata_hash # rubocop:disable Metrics/AbcSize
         result =
           manifest_metadata.each_with_object({}) do |entry, hsh|
             hsh[entry["label"].to_sym] = Array(entry["value"]).join(", ")

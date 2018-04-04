@@ -5,7 +5,7 @@ RSpec.describe "Curation Concerns Routing" do
     "#browse_everything_files_curation_concerns_scanned_resource_path"
   ) do
     it "routes" do
-      expect(post(browse_everything_files_curation_concerns_scanned_resource_path(id: 1))) # rubocop:disable Metrics/LineLength \
+      expect(post(browse_everything_files_curation_concerns_scanned_resource_path(id: 1))) \
         .to route_to(
           controller: "curation_concerns/scanned_resources",
           action: "browse_everything_files",

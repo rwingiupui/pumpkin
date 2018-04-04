@@ -4,13 +4,13 @@ module CurationConcerns::Actors
       super.tap do |result|
         messenger.record_updated(curation_concern) if result
       end
-    rescue => err
+    rescue StandardError => err
       update_or_create_error(err)
     end
 
     def create(attributes)
       super
-    rescue => err
+    rescue StandardError => err
       update_or_create_error(err)
     end
 

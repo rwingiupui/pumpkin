@@ -56,7 +56,7 @@ class SolrDocument # rubocop:disable Metrics/ClassLength
       begin
         JSON.parse(self[Solrizer.solr_name("logical_order",
                                            :stored_searchable)].first)
-      rescue
+      rescue StandardError
         {}
       end
   end

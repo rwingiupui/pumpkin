@@ -1,12 +1,12 @@
 # new class for imago to handle purl redirection
 class PurlController < ApplicationController
-  def default # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def default # rubocop:disable Metrics/AbcSize
     begin
       set_object
       realid = @solr_hit.id
       url = "#{request.protocol}#{request.host_with_port}" \
         "#{config.relative_url_root}/concern/#{@subfolder}/#{realid}"
-    rescue
+    rescue StandardError
       url = Plum.config['purl_redirect_url'] % params[:id]
     end
     respond_to do |f|

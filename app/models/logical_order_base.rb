@@ -26,7 +26,6 @@ class LogicalOrderBase < ActiveFedora::Base
     self.nodes = graph.subjects.reject { |x| x == rdf_subject }
     @order = nil
     @logical_order = nil
-    order
   end
 
   def order

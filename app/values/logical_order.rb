@@ -3,7 +3,7 @@
 # order.
 class LogicalOrder
   attr_reader :order_hash, :node_class, :top
-  attr_accessor :rdf_subject
+  attr_writer :rdf_subject
   # @param [Hash] order_hash The params representation of the order.
   # @param [RDF::URI] rdf_subject The subject of the head node
   # @param [#new] node_class The factory to generate child nodes.

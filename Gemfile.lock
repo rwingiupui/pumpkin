@@ -425,7 +425,7 @@ GEM
     logging (2.1.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.2.0)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.10)
@@ -512,7 +512,7 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 4.2.0, < 6.0)
     rack (1.6.8)
-    rack-protection (1.5.3)
+    rack-protection (1.5.5)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)

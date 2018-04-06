@@ -1,6 +1,27 @@
 <% if presenter.respond_to?(:member_presenters) && presenter.member_presenters.present? %>
   <div class="uv viewer" data-config="<%= "#{Rails.application.config.relative_url_root}/uv_config.json" %>" data-uri="<%= main_app.polymorphic_path([main_app,:manifest,presenter]) %>" ></div>
   <%= UniversalViewer.script_tag %>
+  <% if params[:search_term].present? %>
+    <script>
+      $(document).ready(function(){
+        WaitForUV();
+      });
+
+      function WaitForUV(){
+        if($("iframe").contents().find(".searchTextContainer input").length){
+          UVloaded();
+        }else{
+          setTimeout("WaitForUV();", 100);
+        }
+      }
+
+      function UVloaded()
+      {
+        $("iframe").contents().find(".searchTextContainer input").val("<%= CGI.unescape(params[:search_term]) %>");
+        $("iframe").contents().find(".searchTextContainer a")[0].click();
+      }
+    </script>
+  <% end %>
 <% else %>
   <%= image_tag 'nope.png', class: "canonical-image" %>
 <% end %>

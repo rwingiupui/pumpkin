@@ -7,10 +7,10 @@
     rights_statement: http://rightsstatements.org/vocab/NKC/1.0/
     visibility: open
   :local:
-    source_metadata_identifier: Womankind &lt;br&gt; http://indiamond6.ulib.iupui.edu/cdm/search/collection/Womankind
+    source_metadata_identifier: Womankind &lt;br&gt; http://cdm.ulib.iupui.edu/cdm/search/collection/Womankind
     viewing_direction: left-to-right
-:source_metadata: 
-:thumbnail_path: 
+:source_metadata:
+:thumbnail_path:
 :collections: []
 :volumes:
 - :title:
@@ -47,8 +47,8 @@
     :attributes:
       :title:
       - page1
-    :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=186
-    :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=186
+    :thumbnail: http://cdm.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=186
+    :path: http://cdm.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=186
     :ocr_path: spec/fixtures/contentdm_xml/womankind_short/Womankind, 1978, vol. 1,
       no. 6/page1/fulltext.txt
     :file_opts: {}
@@ -57,8 +57,8 @@
     :attributes:
       :title:
       - page2
-    :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=187
-    :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=187
+    :thumbnail: http://cdm.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=187
+    :path: http://cdm.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=187
     :ocr_path: spec/fixtures/contentdm_xml/womankind_short/Womankind, 1978, vol. 1,
       no. 6/page2/fulltext.txt
     :file_opts: {}
@@ -67,8 +67,8 @@
     :attributes:
       :title:
       - page3
-    :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=188
-    :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=188
+    :thumbnail: http://cdm.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=188
+    :path: http://cdm.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=188
     :ocr_path: spec/fixtures/contentdm_xml/womankind_short/Womankind, 1978, vol. 1,
       no. 6/page3/fulltext.txt
     :file_opts: {}
@@ -104,8 +104,8 @@
     :attributes:
       :title:
       - page1
-    :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=198
-    :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=198
+    :thumbnail: http://cdm.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=198
+    :path: http://cdm.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=198
     :ocr_path: spec/fixtures/contentdm_xml/womankind_short/Womankind, 1983, vol. 4,
       no. 24/page1/fulltext.txt
     :file_opts: {}
@@ -114,8 +114,8 @@
     :attributes:
       :title:
       - page2
-    :thumbnail: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=199
-    :path: http://indiamond6.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=199
+    :thumbnail: http://cdm.ulib.iupui.edu:2012/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=199
+    :path: http://cdm.ulib.iupui.edu:2012/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=199
     :ocr_path: spec/fixtures/contentdm_xml/womankind_short/Womankind, 1983, vol. 4,
       no. 24/page2/fulltext.txt
     :file_opts: {}

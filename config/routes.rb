@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     resources :multi_volume_works, only: [] do
       member do
         get :manifest, defaults: { format: :json }
+        get "/highlight/:search_term", action: :show
         post :flag
         post :browse_everything_files
         patch :alphabetize_members
@@ -78,6 +79,7 @@ Rails.application.routes.draw do
     resources :scanned_resources, only: [] do
       member do
         get "/pdf/:pdf_quality", action: :pdf, as: :pdf
+        get "/highlight/:search_term", action: :show
         patch :alphabetize_members
         get :structure
         post :structure, action: :save_structure

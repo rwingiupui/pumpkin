@@ -3,7 +3,7 @@ require 'rails_helper'
 describe SearchController do
   subject { described_class }
 
-  context "#search" do
+  context "when #search" do
     describe "when a id and q are given" do
       before do
         allow(PairtreeDerivativePath) \

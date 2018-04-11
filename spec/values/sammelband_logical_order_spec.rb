@@ -64,7 +64,7 @@ RSpec.describe SammelbandLogicalOrder do
           g.title = ["Test"]
         end
       end
-      context "and the record has a source structure" do
+      context "with the record has a source structure" do
         let(:source_structure) do
           {
             "nodes": [
@@ -109,7 +109,7 @@ RSpec.describe SammelbandLogicalOrder do
           }.with_indifferent_access)
         end
       end
-      context "and one doesn't have a structure" do
+      context "with one doesn't have a structure" do
         before do
           allow(sr_2_presenter).to receive(:logical_order).and_return({})
         end

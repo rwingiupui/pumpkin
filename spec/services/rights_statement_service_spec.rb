@@ -15,7 +15,7 @@ RSpec.describe RightsStatementService do
     ]
   }
 
-  context "rights statements" do
+  context "when rights statements" do
     it "lists all valid rights statements" do
       expect(described_class.valid_statements).to eq(valid_statements)
     end

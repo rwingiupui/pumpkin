@@ -42,7 +42,7 @@ describe PairtreeDerivativePath do
       end
     end
     context "when given a PDF" do
-      context "which is color" do
+      context "when it is color" do
         let(:destination_name) { 'color-pdf' }
 
         it "returns a unique PDF path based on the resource identifier" do
@@ -54,7 +54,7 @@ describe PairtreeDerivativePath do
           expect(subject_path).to eql "tmp/08/61/2n/57/q-banana-color-pdf.pdf"
         end
       end
-      context "which is gray" do
+      context "when it is gray" do
         let(:destination_name) { 'gray-pdf' }
 
         it "returns a unique PDF path based on the resource identifier" do

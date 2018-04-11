@@ -45,7 +45,7 @@ describe ScannedResource do
     end
   end
 
-  context "validating title and metadata id" do
+  context "when validating title and metadata id" do
     before do
       scanned_resource.source_metadata_identifier = nil
       scanned_resource.title = nil

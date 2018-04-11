@@ -99,7 +99,7 @@ RSpec.describe METSDocument do
   end
 
   describe "viewing direction" do
-    context "a left-to-right object" do
+    context "when as a left-to-right object" do
       let(:selected_file) { mets_file }
 
       it "is right-to-left" do
@@ -110,7 +110,7 @@ RSpec.describe METSDocument do
       end
     end
 
-    context "a right-to-left object" do
+    context "when as a right-to-left object" do
       let(:selected_file) { mets_file_rtl }
 
       it "is right-to-left" do
@@ -123,7 +123,7 @@ RSpec.describe METSDocument do
   end
 
   describe "multi-volume" do
-    context "a single-volume mets file" do
+    context "when as a single-volume mets file" do
       let(:selected_file) { mets_file }
 
       it "is not multi-volume" do
@@ -135,7 +135,7 @@ RSpec.describe METSDocument do
       end
     end
 
-    context "a multi-volume mets file" do
+    context "when as a multi-volume mets file" do
       let(:selected_file) { mets_file_multi }
 
       it "is multi-volume" do
@@ -160,7 +160,7 @@ RSpec.describe METSDocument do
       end
     end
 
-    context "an item with logical structure" do
+    context "when as an item with logical structure" do
       let(:selected_file) { mets_file_rtl }
 
       it "has structure" do

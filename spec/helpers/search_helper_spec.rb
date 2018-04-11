@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe SearchHelper do
-  context "#annotation_url" do
+  context "when #annotation_url" do
     describe "When only an ID is given" do
       it "Returns annotaion url" do
         expect(helper.annotation_url("123")).to eq("urn:pmp:123_0")
@@ -13,7 +13,7 @@ describe SearchHelper do
       end
     end
   end
-  context "#manifest_canvas_on_xywh" do
+  context "when #manifest_canvas_on_xywh" do
     describe "When id and coordinates are given" do
       it "Returns manifest url" do
         expect(helper.manifest_canvas_on_xywh("http://sample.com/123",

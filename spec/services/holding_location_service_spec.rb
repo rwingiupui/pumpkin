@@ -8,7 +8,7 @@ RSpec.describe HoldingLocationService do
   let(:label) { 'William & Gayle Cook Music Library' }
   let(:phone) { '(812) 855-2970' }
 
-  context "rights statements" do
+  context "with rights statements" do
     it "gets the email of a holding location" do
       expect(service.email).to eq(email)
     end

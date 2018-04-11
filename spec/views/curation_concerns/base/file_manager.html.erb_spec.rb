@@ -44,7 +44,7 @@ RSpec.describe "curation_concerns/base/file_manager.html.erb" do
     render
   end
 
-  context "for a MVW" do
+  context "when for a MVW" do
     let(:parent) { FactoryGirl.build(:multi_volume_work) }
     let(:parent_presenter) do
       s = MultiVolumeWorkShowPresenter.new(parent_solr_doc, nil)

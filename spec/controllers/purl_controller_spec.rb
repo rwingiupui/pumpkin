@@ -37,14 +37,14 @@ describe PurlController do
         before do
           get :default, id: id, format: format
         end
-        context "in html" do
+        context "when in html" do
           let(:format) { 'html' }
 
           it "redirects to the scanned_resource page" do
             expect(response).to redirect_to target_path
           end
         end
-        context "in json" do
+        context "when in json" do
           let(:format) { 'json' }
 
           it 'renders a json response' do
@@ -52,7 +52,7 @@ describe PurlController do
           end
         end
       end
-      context "for a ScannedResource" do
+      context "when for a ScannedResource" do
         let(:id) { scanned_resource.source_metadata_identifier }
         let(:target_path) {
           curation_concerns_scanned_resource_path(scanned_resource)
@@ -60,7 +60,7 @@ describe PurlController do
 
         include_examples "responses for matches"
       end
-      context "for a MultiVolumeWork" do
+      context "when for a MultiVolumeWork" do
         let(:id) { multi_volume_work.source_metadata_identifier }
         let(:target_path) {
           curation_concerns_multi_volume_work_path(multi_volume_work)
@@ -68,7 +68,7 @@ describe PurlController do
 
         include_examples "responses for matches"
       end
-      context "for a FileSet" do
+      context "when for a FileSet" do
         let(:id) { file_set.source_metadata_identifier }
         let(:target_path) { curation_concerns_file_set_path(file_set) }
 
@@ -80,14 +80,14 @@ describe PurlController do
       before do
         get :default, id: id, format: format
       end
-      context "in html" do
+      context "when in html" do
         let(:format) { 'html' }
 
         it "redirects to #{Plum.config['purl_redirect_url']}" do
           expect(response).to redirect_to target_path
         end
       end
-      context "in json" do
+      context "when in json" do
         let(:format) { 'json' }
 
         it 'renders a json response' do

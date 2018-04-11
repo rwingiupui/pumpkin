@@ -6,7 +6,7 @@ RSpec.describe FileSet do
   }
 
   describe "metadata" do
-    context "singular" do
+    context "when singular" do
       {
         'viewing_hint' => ::RDF::Vocab::IIIF.viewingHint,
         'identifier' => ::RDF::Vocab::DC.identifier,
@@ -166,7 +166,7 @@ RSpec.describe FileSet do
       expect(file_set.to_solr["full_text_tesim"]).to include "OCR text file."
     end
 
-    context "store_original_files is false" do
+    context "when store_original_files is false" do
       it "still creates, stores, and indexes OCR derivatives" do
         allow_any_instance_of(described_class) \
           .to receive(:warn) # suppress virus check warnings

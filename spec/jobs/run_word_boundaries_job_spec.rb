@@ -4,7 +4,7 @@ RSpec.describe RunWordBoundariesJob do
   let(:job) { described_class.new }
 
   describe "#perform" do
-    context "word boundaries file already exists" do
+    context "when word boundaries file already exists" do
       before do
         mock_runner = double
         allow(mock_runner).to receive(:json_exists?).and_return(true)
@@ -17,7 +17,7 @@ RSpec.describe RunWordBoundariesJob do
         job.perform('123')
       end
     end
-    context "hocr file exists" do
+    context "when hocr file exists" do
       before do
         @mock_runner = double
         allow(@mock_runner).to receive(:json_exists?).and_return(false)
@@ -31,7 +31,7 @@ RSpec.describe RunWordBoundariesJob do
         job.perform('123')
       end
     end
-    context "conditions not met for word boundaries file creation" do
+    context "when conditions not met for word boundaries file creation" do
       before do
         mock_runner = double
         mock_job = double

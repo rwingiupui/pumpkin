@@ -41,7 +41,7 @@ describe MultiVolumeWork do
     end
   end
 
-  context "validating title and metadata id" do
+  context "when validating title and metadata id" do
     before do
       multi_volume_work.source_metadata_identifier = nil
       multi_volume_work.title = nil

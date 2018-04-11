@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ManifestEventGenerator do
-  context "Message queue is disabled" do
+  context "when Message queue is disabled" do
     let(:generator) { described_class.new(rabbit_connection) }
 
     let(:rabbit_connection) {
@@ -29,7 +29,7 @@ RSpec.describe ManifestEventGenerator do
     end
   end
 
-  context "Message queue is enabled" do
+  context "when Message queue is enabled" do
     let(:generator) { described_class.new(rabbit_connection) }
 
     let(:rabbit_connection) {

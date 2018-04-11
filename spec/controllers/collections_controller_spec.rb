@@ -52,7 +52,7 @@ RSpec.describe CollectionsController do
         .with(nil, ability: anything, ssl: false)
       expect(response).to be_success
     end
-    context "if not signed in" do
+    context "without signed in" do
       let(:user) { nil }
 
       it "returns all public collections" do

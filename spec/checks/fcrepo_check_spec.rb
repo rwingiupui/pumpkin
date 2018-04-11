@@ -8,14 +8,14 @@ RSpec.describe IuDevOps::FcrepoCheck do
   }
 
   describe '#check' do
-    context 'Fedora is up' do
+    context 'when Fedora is up' do
       it 'reports success' do
         fcrepo_check.check
         expect(fcrepo_check.success?).to eq(true)
       end
     end
 
-    context 'Fedora is down' do
+    context 'when Fedora is down' do
       before { fcrepo_check.url = "#{fcrepo_check.url}/badpath" }
       it 'reports failure' do
         fcrepo_check.check

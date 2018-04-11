@@ -9,7 +9,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     FactoryGirl.create(:private_scanned_resource, user: user)
   }
 
-  context "an anonymous user" do
+  context "when as an anonymous user" do
     it "views a public manifest" do
       visit manifest_curation_concerns_scanned_resource_path open_resource
       expect(page.status_code).to eq 200
@@ -21,7 +21,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     end
   end
 
-  context "an authenticated user" do
+  context "when as an authenticated user" do
     before do
       sign_in user
     end

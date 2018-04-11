@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
 
-  context "an authorized user" do
+  context "when as an authorized user" do
     let(:scanned_resource) {
       FactoryGirl.create(:scanned_resource,
                          title: ["first title", "second title"], user: user)

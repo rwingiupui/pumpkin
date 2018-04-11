@@ -100,7 +100,7 @@ RSpec.describe LogicalOrder do
   describe "#to_graph" do
     let(:result) { logical_order.to_graph }
 
-    context "for a single level node" do
+    context "when for a single level node" do
       let(:params) do
         {
           "nodes": [
@@ -116,7 +116,7 @@ RSpec.describe LogicalOrder do
         expect(result.statements.to_a.length).to eq 3
       end
     end
-    context "for sibling nodes" do
+    context "when for sibling nodes" do
       let(:params) do
         {
           "nodes": [
@@ -136,7 +136,7 @@ RSpec.describe LogicalOrder do
         expect(result.statements.to_a.length).to eq 8
       end
     end
-    context "for two deep nodes" do
+    context "when for two deep nodes" do
       let(:params) do
         {
           "nodes": [
@@ -162,7 +162,7 @@ RSpec.describe LogicalOrder do
         )
       end
     end
-    context "for two siblings, one with deep" do
+    context "when for two siblings, one with deep" do
       let(:params) do
         {
           "nodes": [
@@ -187,7 +187,7 @@ RSpec.describe LogicalOrder do
         expect(result.statements.to_a.length).to eq 11
       end
     end
-    context "for a big graph" do
+    context "when for a big graph" do
       it "builds it" do
         expect(result.statements.to_a.length).to eq 25
       end

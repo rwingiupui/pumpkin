@@ -12,7 +12,7 @@ RSpec.describe DownloadsController do
   end
 
   describe "show" do
-    context "requested extracted text" do
+    context "when requested extracted text" do
       it "renders the extracted text file" do
         get :show, id: fileset, file: 'extracted_text'
         expect(response.body).to eq File.read(doc_path, mode: 'rb')

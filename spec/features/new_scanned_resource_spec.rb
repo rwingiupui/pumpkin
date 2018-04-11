@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "ScannedResourcesController", type: :feature do
   let(:user) { FactoryGirl.create(:image_editor) }
 
-  context "an authorized user" do
+  context "when as an authorized user" do
     before do
       sign_in user
     end
@@ -30,7 +30,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     end
   end
 
-  context "an anonymous user" do
+  context "when as an anonymous user" do
     it "Anonymous user can't create a scanned resource" do
       visit new_polymorphic_path [ScannedResource]
       expect(page) \

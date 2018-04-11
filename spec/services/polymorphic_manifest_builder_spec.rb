@@ -77,7 +77,7 @@ RSpec.describe PolymorphicManifestBuilder,
       end
     end
 
-    context "and some are canvases" do
+    context "with some are canvases" do
       let(:file_set) do
         build_file_set("x633f104m")
       end
@@ -137,7 +137,7 @@ RSpec.describe PolymorphicManifestBuilder,
         expect(manifest['sequences'].first['canvases'].length).to eq 3
       end
 
-      context "and there's a viewing hint" do
+      context "with there's a viewing hint" do
         let(:viewing_hint) { "paged" }
 
         it "can render it" do

@@ -89,7 +89,7 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     end
   end
 
-  context "an anonymous user" do
+  context "when as an anonymous user" do
     let(:scanned_resource) {
       FactoryGirl.create(:scanned_resource_with_multi_volume_work,
                          user: user,

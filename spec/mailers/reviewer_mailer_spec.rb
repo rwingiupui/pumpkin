@@ -13,7 +13,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
       takedown_reviewer.save
     end
 
-    context "complete" do
+    context "when complete" do
       before do
         described_class.notify(curation_concern.id, 'complete').deliver_now
       end
@@ -30,7 +30,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
       end
     end
 
-    context "takedown" do
+    context "when takedown" do
       before do
         described_class.notify(curation_concern.id, 'takedown').deliver_now
       end
@@ -47,7 +47,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
       end
     end
 
-    context "pending" do
+    context "when pending" do
       before do
         described_class.notify(curation_concern.id, 'pending').deliver_now
       end
@@ -57,7 +57,7 @@ RSpec.describe ReviewerMailer, type: :mailer do
       end
     end
 
-    context "multiple addresses" do
+    context "when multiple addresses" do
       before do
         allow_any_instance_of(Role).to receive(:users) \
           .and_return([complete_reviewer, takedown_reviewer])

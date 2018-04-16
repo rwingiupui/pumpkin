@@ -30,7 +30,7 @@ do |resource_symbol, presenter_factory|
       expect(assigns(:members).map(&:id)).to eq ["2"]
     end
     it "sets @logical_order" do
-      obj = double("logical order object")
+      obj = instance_double("logical order object")
       allow_any_instance_of(presenter_factory) \
         .to receive(:logical_order_object).and_return(obj)
       get :structure, id: "1"

@@ -4,7 +4,7 @@ RSpec.describe StateValidator do
   let(:validator) { described_class.new }
 
   describe "#validate" do
-    let(:errors) { double("Errors") }
+    let(:errors) { instance_double("Errors") }
 
     before do
       allow(errors).to receive(:add)
@@ -52,7 +52,9 @@ RSpec.describe StateValidator do
   end
 
   def build_record(state, state_was) # rubocop:disable Metrics/AbcSize
-    record = double "ScannedResource"
+    # Using instance_double does not work here. Got errors when run rspec.
+    # Workaround is using FactoryGirl to initial scanned_resource
+    record = FactoryGirl.build(:scanned_resource)
     allow(record).to receive(:errors).and_return(errors)
     allow(record).to receive(:state).and_return(state)
     allow(record).to receive(:read_attribute_for_validation) \

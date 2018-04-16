@@ -27,7 +27,7 @@ RSpec.describe VoyagerUpdater::EventStream,
     end
 
     it "logs errors" do
-      logger = spy('logger')
+      logger = instance_spy('logger')
       allow(Rails).to receive(:logger).and_return(logger)
       s = FactoryGirl.create(:scanned_resource,
                              source_metadata_identifier: "359850")

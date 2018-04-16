@@ -4,7 +4,7 @@ RSpec.describe RightsStatementValidator do
   let(:validator) { described_class.new }
 
   describe "#validate" do
-    let(:errors) { double("Errors") }
+    let(:errors) { instance_double("Errors") }
 
     valid_statements = [
       'http://rightsstatements.org/vocab/InC/1.0/',

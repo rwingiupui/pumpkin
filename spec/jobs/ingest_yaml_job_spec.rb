@@ -24,8 +24,8 @@ RSpec.describe IngestYAMLJob do
       Rails.root.join("spec", "fixtures", "files", "image.jp2")
     }
     let(:user) { FactoryGirl.build(:admin) }
-    let(:actor1) { double('actor1') }
-    let(:actor2) { double('actor2') }
+    let(:actor1) { instance_double('actor1') }
+    let(:actor2) { instance_double('actor2') }
     let(:fileset) { FileSet.new }
     let(:work) { MultiVolumeWork.new }
     let(:resource1) { ScannedResource.new id: 'resource1' }
@@ -40,9 +40,9 @@ RSpec.describe IngestYAMLJob do
     let(:ocr_file) {
       described_class.new.send(:decorated_file, ocr_file_hash)
     }
-    let(:logical_order) { double('logical_order') }
-    let(:order_object) { double('order_object') }
-    let(:ingest_counter) { double('ingest_counter') }
+    let(:logical_order) { instance_double('logical_order') }
+    let(:order_object) { instance_double('order_object') }
+    let(:ingest_counter) { instance_double('ingest_counter') }
 
     before do
       allow(FileSetActor).to receive(:new).and_return(actor1, actor2)

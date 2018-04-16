@@ -2,21 +2,21 @@ RSpec.shared_examples "page header" do |header_method, page_title|
   describe "page header" do
     let(:solr_document) { SolrDocument.new }
     let(:parent_id) { 'testid' }
-    let(:presenter) { double(solr_document: solr_document,
-                             id: parent_id,
-                             model_name: scanned_resource.model_name,
-                             to_model: scanned_resource) }
+    let(:presenter) { instance_double("presenter", solr_document: solr_document,
+                                                   id: parent_id,
+                                                   model_name: scanned_resource.model_name,
+                                                   to_model: scanned_resource) }
     let(:scanned_resource) do
       s = FactoryGirl.build(:scanned_resource)
       allow(s).to receive(:persisted?).and_return(true)
       allow(s).to receive(:id).and_return(parent_id)
       s
     end
-    let(:parent_presenter) { double(solr_document: solr_document,
-                                    id: "test",
-                                    to_model: scanned_resource,
-                                    model_name: scanned_resource.model_name,
-                                    page_title: "Parent") }
+    let(:parent_presenter) { instance_double("parent_presenter", solr_document: solr_document,
+                                                                 id: "test",
+                                                                 to_model: scanned_resource,
+                                                                 model_name: scanned_resource.model_name,
+                                                                 page_title: "Parent") }
 
     before do
       assign(:presenter, presenter)

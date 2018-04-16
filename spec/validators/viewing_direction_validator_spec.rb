@@ -4,7 +4,7 @@ RSpec.describe ViewingDirectionValidator do
   let(:validator) { described_class.new }
 
   describe "#validate" do
-    let(:errors) { double("Errors") }
+    let(:errors) { instance_double("Errors") }
 
     before do
       allow(errors).to receive(:add)

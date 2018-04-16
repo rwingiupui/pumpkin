@@ -30,7 +30,7 @@ describe "curation_concerns/multi_volume_works/show.html.erb" do
     ScannedResourceShowPresenter.new(resource_document, ability)
   end
   let(:ability) do
-    a = double("ability")
+    a = instance_double("ability")
     allow(a).to receive(:can?).and_return(true)
     a
   end

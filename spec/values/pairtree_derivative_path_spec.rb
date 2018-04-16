@@ -10,7 +10,7 @@ describe PairtreeDerivativePath do
     let(:subject_path) {
       described_class.derivative_path_for_reference(object, destination_name)
     }
-    let(:object) { double(id: '08612n57q') }
+    let(:object) { instance_double(ResourceIdentifier, id: '08612n57q') }
 
     context "when given a thumbnail" do
       let(:destination_name) { 'thumbnail' }

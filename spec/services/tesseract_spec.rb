@@ -9,7 +9,7 @@ RSpec.describe Tesseract do
         .and_return("List of available languages (107):" \
                     "\neng\nita\nbanana\nrfccode")
       allow(ISO_639).to receive(:find_by_code).and_call_original
-      rfc_stub = double("RFC Result", english_name: "Translated")
+      rfc_stub = instance_double("RFC Result", english_name: "Translated")
       allow(ISO_639).to receive(:find_by_code).with("rfccode") \
                                               .and_return(rfc_stub)
     end

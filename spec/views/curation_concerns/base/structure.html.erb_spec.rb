@@ -37,7 +37,7 @@ RSpec.describe "curation_concerns/base/structure" do
                         to_s: to_s,
                         collection?: false)
     allow(IIIFPath).to receive(:new).with(id) \
-                                    .and_return(double(thumbnail: nil))
+                                    .and_return(instance_double(IIIFPath, thumbnail: nil))
     i
   end
 

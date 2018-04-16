@@ -459,7 +459,7 @@ describe CurationConcerns::ScannedResourcesController do
         let(:sign_in_user) { user }
 
         it "works" do
-          pdf = double("Actor")
+          pdf = instance_double("Actor")
           allow(ScannedResourcePDF).to receive(:new) \
             .with(anything, quality: "color").and_return(pdf)
           allow(pdf).to receive(:render).and_return(true)
@@ -512,7 +512,7 @@ describe CurationConcerns::ScannedResourcesController do
         let(:sign_in_user) { user } # Admin is only role with PDF ability.
 
         it 'generates the pdf then redirects to its download url' do
-          pdf = double("Actor")
+          pdf = instance_double("Actor")
           allow(ScannedResourcePDF).to receive(:new) \
             .with(anything, quality: "gray").and_return(pdf)
           allow(pdf).to receive(:render).and_return(true)

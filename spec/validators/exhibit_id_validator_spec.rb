@@ -4,7 +4,7 @@ RSpec.describe ExhibitIdValidator do
   let(:validator) { described_class.new }
 
   describe "#validate" do
-    let(:errors) { double("Errors") }
+    let(:errors) { instance_double("Errors") }
     let(:solr_response) {
       {
         "facet_counts": {

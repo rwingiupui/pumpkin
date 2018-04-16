@@ -177,9 +177,6 @@ RSpec/NestedGroups:
   Enabled: true
   Max: 5
 
-RSpec/VerifiedDoubles:
-  Enabled: false
-
 Security/YAMLLoad:
   Enabled: true
 

@@ -9,17 +9,16 @@ RSpec.describe RTLShowPresenter do
     }
   end
   let(:blacklight_config) do
-    double(
-      show_fields: {
-        field: Blacklight::Configuration::Field.new(field: :field)
-      },
-      index_fields: {
-        field: Blacklight::Configuration::Field.new(field: :field)
-      },
-      view_config: double("struct", title_field: :field)
-    )
+    instance_double("blacklight_config",
+                    show_fields: {
+                      field: Blacklight::Configuration::Field.new(field: :field)
+                    },
+                    index_fields: {
+                      field: Blacklight::Configuration::Field.new(field: :field)
+                    },
+                    view_config: instance_double("struct", title_field: :field))
   end
-  let(:controller) { double(blacklight_config: blacklight_config) }
+  let(:controller) { instance_double("controller", blacklight_config: blacklight_config) }
 
   describe "#field_value" do
     context "when given a RTL string" do

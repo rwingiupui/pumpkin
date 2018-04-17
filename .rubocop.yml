@@ -164,9 +164,6 @@ RSpec/ExampleLength:
 RSpec/ExpectInHook:
   Enabled: false
 
-RSpec/HookArgument:
-  Enabled: false
-
 RSpec/MessageSpies:
   Enabled: false
 

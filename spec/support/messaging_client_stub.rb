@@ -1,5 +1,5 @@
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before do
     messaging_client = instance_double(MessagingClient,
                                        publish: true,
                                        enabled?: true)

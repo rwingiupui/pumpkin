@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     search_terms = search_term.scan(/\w+/)
     @docs = @response.map do |doc|
       doc_text = doc['full_text_tesim'][0]
-      hit_number = Array.new
+      hit_number = []
       search_terms.each do |term|
         hit_number << doc_text.scan(/\w+/).count { |t| t.casecmp(term).zero? }
       end

@@ -43,5 +43,5 @@ Rails.application.configure do
 
   # config.relative_url_root = "/pmp"
 
-  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_adapter = :sidekiq
 end

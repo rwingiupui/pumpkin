@@ -14,4 +14,5 @@ class PULTerms < RDF::StrictVocabulary('http://library.princeton.edu/terms/')
   term :published, label: "Published".freeze, type: 'rdf:Property'.freeze
   # visibility is specified for preingest attribute mapping
   term :visibility, label: "Visibility".freeze, type: 'rdf:Property'.freeze
+  term :full_text_searchable, label: "Search within".freeze, type: 'rdf:Property'.freeze
 end

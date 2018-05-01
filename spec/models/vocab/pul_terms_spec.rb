@@ -10,7 +10,8 @@ RSpec.describe PULTerms do
       pdf_type: 'PDF Type',
       call_number: 'Call Number',
       published: 'Published',
-      visibility: 'Visibility'
+      visibility: 'Visibility',
+      full_text_searchable: 'Search within'
     }.each do |term, label|
       describe term.to_s do
         it "has the right label" do

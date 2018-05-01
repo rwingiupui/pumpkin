@@ -28,6 +28,9 @@ class PlumSchema < ActiveTriples::Schema
            predicate: ::RDF::URI("http://iiif.io/api/presentation/2#navDate"),
            multiple: false
   property :pdf_type, predicate: ::PULTerms.pdf_type
+  property :full_text_searchable,
+           predicate: ::PULTerms.full_text_searchable,
+           multiple: false
   property :start_canvas,
            predicate: ::RDF::Vocab::IIIF.hasStartCanvas,
            multiple: false

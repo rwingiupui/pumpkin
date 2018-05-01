@@ -24,6 +24,7 @@ module CurationConcerns
       funding
       digital_specifications
       author
+      full_text_searchable
     ]
   end
 end

@@ -334,4 +334,15 @@ describe ScannedResource do
       expect(solr_doc['sort_title_ssi']).to eq 'ABC'
     end
   end
+
+  describe "#full_text_searchable" do
+    it "is true by default" do
+      expect(described_class.new.full_text_searchable).to eq nil
+    end
+    it "can be set" do
+      scanned_resource.full_text_searchable = "disabled"
+
+      expect(scanned_resource.full_text_searchable).to eq "disabled"
+    end
+  end
 end

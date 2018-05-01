@@ -159,7 +159,8 @@ RSpec/AnyInstance:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
+  Enabled: true
+  Max: 20
 
 RSpec/ExpectInHook:
   Enabled: false

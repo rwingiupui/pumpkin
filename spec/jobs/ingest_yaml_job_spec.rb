@@ -107,6 +107,7 @@ RSpec.describe IngestYAMLJob do
     end
 
     shared_examples "ingest cases" do
+      # rubocop:disable RSpec/ExampleLength
       it "ingests a single-volume yaml file" do
         expect(actor1).to receive(:attach_related_object).with(resource1)
         expect(actor1).to receive(:attach_content).with(instance_of(File))
@@ -131,6 +132,7 @@ RSpec.describe IngestYAMLJob do
           Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
         )
       end
+      # rubocop:enable RSpec/ExampleLength
       it "ingests a right-to-left yaml file" do
         allow(actor1).to receive(:attach_related_object)
         allow(actor1).to receive(:attach_content)
@@ -148,6 +150,7 @@ RSpec.describe IngestYAMLJob do
         allow(actor2).to receive(:assign_visibility)
         described_class.perform_now(yaml_file_ocr, user)
       end
+      # rubocop:disable RSpec/ExampleLength
       it "ingests a multi-volume yaml file" do
         allow(actor1).to receive(:attach_related_object)
         allow(actor1).to receive(:attach_content)
@@ -175,6 +178,7 @@ RSpec.describe IngestYAMLJob do
                                     file_association_method)
         expect(work.ordered_member_ids).to eq(['resource1', 'resource2'])
       end
+      # rubocop:enable RSpec/ExampleLength
     end
     context "with FILE_ASSOCIATION_METHOD: individual" do
       let(:file_association_method) { 'individual' }

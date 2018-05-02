@@ -8,13 +8,18 @@ class SearchController < ApplicationController
     @parent_id = params[:id]
     @parent_path = find_parent_path(@parent_id)
     @response =
-      ActiveFedora::SolrService.query("full_text_tesim:#{search_term}",
+      ActiveFedora::SolrService.query("full_text_tesim:(#{search_term})",
                                       fq: "ordered_by_ssim:#{params[:id]}")
+
+    search_terms = search_term.scan(/\w+/)
     @docs = @response.map do |doc|
       doc_text = doc['full_text_tesim'][0]
-      doc[:hit_number] =
-        doc_text.scan(/\w+/).count { |t| t.casecmp(search_term).zero? }
-      doc[:word] = search_term
+      hit_number = []
+      search_terms.each do |term|
+        hit_number << doc_text.scan(/\w+/).count { |t| t.casecmp(term).zero? }
+      end
+      doc[:hit_number] = hit_number
+      doc[:word] = search_terms
       doc
     end
 

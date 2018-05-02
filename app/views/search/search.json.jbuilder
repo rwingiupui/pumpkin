@@ -14,12 +14,19 @@ json.hits @docs, partial: 'search/hit', as: :doc
 # We rework this into individual resource_docs/annotations so that
 # we trick UV into showing the number of hits for each page.
 resource_docs = []
+
 @docs.each do |doc|
-  doc[:hit_number].times do |time|
-     word = doc[:word]
-     new_doc = {id: doc['id'], resource: doc['resource'], time: time, word: word}
-     resource_docs << new_doc
+  word_count = 0
+  time_count = 0
+  doc[:hit_number].each do |t|
+    t.times do
+      word = doc[:word][word_count]
+      new_doc = {id: doc['id'], resource: doc['resource'], time: time_count, word: word}
+      time_count += 1
+      resource_docs << new_doc
+    end
+    word_count += 1
   end
 end
 
- json.resources resource_docs, partial: 'search/resource', as: :doc
+json.resources resource_docs, partial: 'search/resource', as: :doc

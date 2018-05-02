@@ -1,6 +1,7 @@
 require 'rails_helper'
 require "cancan/matchers"
 
+# rubocop:disable RSpec/ExampleLength
 describe Ability do
   subject { ability }
 
@@ -380,3 +381,4 @@ describe Ability do
     }
   end
 end
+# rubocop:enable RSpec/ExampleLength

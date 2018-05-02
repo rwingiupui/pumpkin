@@ -72,6 +72,7 @@ RSpec.describe FileSet do
 
       expect(thumbnail_path).not_to exist
     end
+
     it "creates a JP2" do
       allow_any_instance_of(described_class)\
         .to receive(:warn) # suppress virus check warnings
@@ -83,6 +84,7 @@ RSpec.describe FileSet do
 
       expect(path).to exist
     end
+
     it "copies a JP2" do
       allow_any_instance_of(described_class) \
         .to receive(:warn) # suppress virus check warnings
@@ -94,6 +96,8 @@ RSpec.describe FileSet do
 
       expect(path).to exist
     end
+
+    # rubocop:disable RSpec/ExampleLength
     it "creates full text, attaches it to the object, and indexes it" do
       allow_any_instance_of(described_class) \
         .to receive(:warn) # suppress virus check warnings
@@ -125,6 +129,8 @@ RSpec.describe FileSet do
                .content) \
         .to include "<div class='ocr_page'"
     end
+    # rubocop:enable RSpec/ExampleLength
+
     it "does not create full text if OCR is disabled in configuration." do
       allow_any_instance_of(described_class) \
         .to receive(:warn) # suppress virus check warnings
@@ -145,6 +151,7 @@ RSpec.describe FileSet do
 
       expect(ocr_path).not_to exist
     end
+
     it "creates full text from text file when provided." do
       allow_any_instance_of(described_class) \
         .to receive(:warn) # suppress virus check warnings
@@ -194,6 +201,7 @@ RSpec.describe FileSet do
         expect(file_set.files.size).to eq(2)
       end
     end
+
     after do
       FileUtils.rm_rf(path.parent) if path.exist?
       FileUtils.rm_rf(ocr_path.parent) if ocr_path.exist?

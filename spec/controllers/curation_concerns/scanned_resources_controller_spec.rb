@@ -306,6 +306,26 @@ describe CurationConcerns::ScannedResourcesController do
       end
     end
 
+    describe "ocr and full text options" do
+      let(:scanned_resource) { FactoryGirl.build(:scanned_resource) }
+      let(:user) { FactoryGirl.create(:admin) }
+
+      before do
+        sign_in user
+        scanned_resource.save!
+      end
+
+      it "updates metadata" do
+        post(:update,
+             id: scanned_resource.id,
+             scanned_resource: {
+               full_text_searchable: 'disabled'
+             })
+        scanned_resource.reload
+        expect(scanned_resource.full_text_searchable).to eq 'disabled'
+      end
+    end
+
     context "with collections" do
       let(:resource) { FactoryGirl.create(:scanned_resource_in_collection,
                                           user: user) }

@@ -7,4 +7,6 @@ Blacklight.onLoad(function() {
   new RadioTracker($("#resource-form > div:eq(1)"))
   // OCR Language
   new SelectTracker($("#resource-form select:eq(0)"))
+  // Search within opts
+  new RadioTracker($("#resource-form > div:eq(3)"))
 })

@@ -32,6 +32,8 @@ export default class PlumFileManager {
     new RadioTracker($("#resource-form > div:eq(1)"))
     // OCR Language
     new SelectTracker($("#resource-form select:eq(0)"))
+    // Search within opts
+    new RadioTracker($("#resource-form > div:eq(3)"))
   }
 
   get resource_manager() {

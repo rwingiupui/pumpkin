@@ -4,6 +4,7 @@ describe StateWorkflow do
   let(:workflow) { described_class.new :pending }
 
   describe 'ingest workflow' do
+    # rubocop:disable RSpec/ExampleLength
     it 'proceeds through ingest workflow' do
       # initial state: pending
       expect(workflow.pending?).to be true
@@ -48,6 +49,7 @@ describe StateWorkflow do
       expect(workflow.may_flag?).to be true
       expect(workflow.suppressed?).to be false
     end
+    # rubocop:enable RSpec/ExampleLength
   end
 
   describe 'takedown workflow' do

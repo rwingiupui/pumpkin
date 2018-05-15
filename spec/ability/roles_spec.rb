@@ -1,7 +1,6 @@
 require 'rails_helper'
 require "cancan/matchers"
 
-# rubocop:disable RSpec/ExampleLength
 describe Ability do
   subject { ability }
 
@@ -123,6 +122,8 @@ describe Ability do
       is_expected.to be_able_to(:read, flagged_scanned_resource)
       is_expected.to be_able_to(:pdf, open_scanned_resource)
       is_expected.to be_able_to(:color_pdf, open_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:edit, open_scanned_resource)
       is_expected.to be_able_to(:edit, open_scanned_resource_presenter.id)
       is_expected.to be_able_to(:edit, private_scanned_resource)
@@ -131,6 +132,8 @@ describe Ability do
       is_expected.to be_able_to(:file_manager, open_scanned_resource)
       is_expected.to be_able_to(:file_manager, open_multi_volume_work)
       is_expected.to be_able_to(:update, open_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:update, private_scanned_resource)
       is_expected.to be_able_to(:update, takedown_scanned_resource)
       is_expected.to be_able_to(:update, flagged_scanned_resource)
@@ -139,6 +142,8 @@ describe Ability do
       is_expected.to be_able_to(:destroy, takedown_scanned_resource)
       is_expected.to be_able_to(:destroy, flagged_scanned_resource)
       is_expected.to be_able_to(:manifest, open_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:manifest, pending_scanned_resource)
     }
   end
@@ -156,6 +161,8 @@ describe Ability do
       is_expected.to be_able_to(:read, campus_only_scanned_resource)
       is_expected.to be_able_to(:read, private_scanned_resource)
       is_expected.to be_able_to(:read, pending_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:read, metadata_review_scanned_resource)
       is_expected.to be_able_to(:read, final_review_scanned_resource)
       is_expected.to be_able_to(:read, complete_scanned_resource)
@@ -164,15 +171,18 @@ describe Ability do
       is_expected.to be_able_to(:download, image_editor_file)
       is_expected.to be_able_to(:file_manager, open_scanned_resource)
       is_expected.to be_able_to(:file_manager, open_multi_volume_work)
+    }
+    it {
       is_expected.to be_able_to(:save_structure, open_scanned_resource)
       is_expected.to be_able_to(:update, open_scanned_resource)
       is_expected.to be_able_to(:create, ScannedResource.new)
       is_expected.to be_able_to(:create, FileSet.new)
       is_expected.to be_able_to(:destroy, image_editor_file)
       is_expected.to be_able_to(:destroy, pending_scanned_resource)
-
       is_expected.not_to be_able_to(:create, Role.new)
       is_expected.not_to be_able_to(:destroy, role)
+    }
+    it {
       is_expected.not_to be_able_to(:complete, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
       is_expected.not_to be_able_to(:destroy, admin_file)
@@ -192,6 +202,8 @@ describe Ability do
       is_expected.to be_able_to(:read, final_review_scanned_resource)
       is_expected.to be_able_to(:read, complete_scanned_resource)
       is_expected.to be_able_to(:read, takedown_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:read, flagged_scanned_resource)
       is_expected.to be_able_to(:manifest, open_scanned_resource)
       is_expected.not_to be_able_to(:pdf, open_scanned_resource)
@@ -200,15 +212,18 @@ describe Ability do
       is_expected.to be_able_to(:flag, private_scanned_resource)
       is_expected.to be_able_to(:file_manager, open_scanned_resource)
       is_expected.to be_able_to(:file_manager, open_multi_volume_work)
+    }
+    it {
       is_expected.to be_able_to(:save_structure, open_scanned_resource)
       is_expected.to be_able_to(:update, open_scanned_resource)
-
       is_expected.not_to be_able_to(:download, image_editor_file)
       is_expected.not_to be_able_to(:create, ScannedResource.new)
       is_expected.not_to be_able_to(:create, FileSet.new)
       is_expected.not_to be_able_to(:destroy, image_editor_file)
       is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
       is_expected.not_to be_able_to(:create, Role.new)
+    }
+    it {
       is_expected.not_to be_able_to(:destroy, role)
       is_expected.not_to be_able_to(:complete, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
@@ -229,13 +244,16 @@ describe Ability do
       is_expected.to be_able_to(:read, final_review_scanned_resource)
       is_expected.to be_able_to(:read, complete_scanned_resource)
       is_expected.to be_able_to(:read, takedown_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:read, flagged_scanned_resource)
       is_expected.to be_able_to(:manifest, open_scanned_resource)
       is_expected.not_to be_able_to(:pdf, open_scanned_resource)
       is_expected.to be_able_to(:flag, open_scanned_resource)
       is_expected.to be_able_to(:flag, private_scanned_resource)
       is_expected.to be_able_to(:download, image_editor_file)
-
+    }
+    it {
       is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
       is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
       is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
@@ -244,6 +262,8 @@ describe Ability do
       is_expected.not_to be_able_to(:create, FileSet.new)
       is_expected.not_to be_able_to(:destroy, image_editor_file)
       is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
+    }
+    it {
       is_expected.not_to be_able_to(:create, Role.new)
       is_expected.not_to be_able_to(:destroy, role)
       is_expected.not_to be_able_to(:complete, pending_scanned_resource)
@@ -265,15 +285,18 @@ describe Ability do
       is_expected.to be_able_to(:read, complete_scanned_resource)
       is_expected.to be_able_to(:read, takedown_scanned_resource)
       is_expected.to be_able_to(:read, flagged_scanned_resource)
+    }
+    it {
       is_expected.to be_able_to(:manifest, open_scanned_resource)
       is_expected.not_to be_able_to(:pdf, open_scanned_resource)
       is_expected.to be_able_to(:flag, open_scanned_resource)
-
       is_expected.not_to be_able_to(:read, pending_scanned_resource)
       is_expected.not_to be_able_to(:download, image_editor_file)
       is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
       is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
       is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
+    }
+    it {
       is_expected.not_to be_able_to(:update, open_scanned_resource)
       is_expected.not_to be_able_to(:create, ScannedResource.new)
       is_expected.not_to be_able_to(:create, FileSet.new)
@@ -282,6 +305,8 @@ describe Ability do
       is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
       is_expected.not_to be_able_to(:create, Role.new)
       is_expected.not_to be_able_to(:destroy, role)
+    }
+    it {
       is_expected.not_to be_able_to(:complete, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, admin_file)
     }
@@ -300,6 +325,8 @@ describe Ability do
       is_expected.to be_able_to(:manifest, campus_only_scanned_resource)
       is_expected.to be_able_to(:manifest, complete_scanned_resource)
       is_expected.to be_able_to(:manifest, flagged_scanned_resource)
+    }
+    it {
       is_expected.not_to be_able_to(:pdf, open_scanned_resource)
       is_expected.not_to be_able_to(:pdf, campus_only_scanned_resource)
       is_expected.not_to be_able_to(:pdf, complete_scanned_resource)
@@ -307,7 +334,8 @@ describe Ability do
       is_expected.to be_able_to(:flag, open_scanned_resource)
       is_expected.to be_able_to(:flag, campus_only_scanned_resource)
       is_expected.to be_able_to(:flag, complete_scanned_resource)
-
+    }
+    it {
       is_expected.not_to be_able_to(:read, private_scanned_resource)
       is_expected.not_to be_able_to(:read, pending_scanned_resource)
       is_expected.not_to be_able_to(:read, metadata_review_scanned_resource)
@@ -316,6 +344,8 @@ describe Ability do
       is_expected.not_to be_able_to(:download, image_editor_file)
       is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
       is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
+    }
+    it {
       is_expected.not_to be_able_to(:save_structure, open_scanned_resource)
       is_expected.not_to be_able_to(:update, open_scanned_resource)
       is_expected.not_to be_able_to(:create, ScannedResource.new)
@@ -324,6 +354,8 @@ describe Ability do
       is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
       is_expected.not_to be_able_to(:create, Role.new)
+    }
+    it {
       is_expected.not_to be_able_to(:destroy, role)
       is_expected.not_to be_able_to(:complete, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, admin_file)
@@ -355,7 +387,8 @@ describe Ability do
       is_expected.to be_able_to(:read, flagged_scanned_resource)
       is_expected.to be_able_to(:manifest, flagged_scanned_resource)
       is_expected.not_to be_able_to(:color_pdf, color_enabled_resource)
-
+    }
+    it {
       is_expected.not_to be_able_to(:pdf, no_pdf_scanned_resource)
       is_expected.not_to be_able_to(:flag, open_scanned_resource)
       is_expected.not_to be_able_to(:read, campus_only_scanned_resource)
@@ -364,6 +397,8 @@ describe Ability do
       is_expected.not_to be_able_to(:read, metadata_review_scanned_resource)
       is_expected.not_to be_able_to(:read, final_review_scanned_resource)
       is_expected.not_to be_able_to(:read, takedown_scanned_resource)
+    }
+    it {
       is_expected.not_to be_able_to(:download, image_editor_file)
       is_expected.not_to be_able_to(:file_manager, open_scanned_resource)
       is_expected.not_to be_able_to(:file_manager, open_multi_volume_work)
@@ -372,6 +407,8 @@ describe Ability do
       is_expected.not_to be_able_to(:create, ScannedResource.new)
       is_expected.not_to be_able_to(:create, FileSet.new)
       is_expected.not_to be_able_to(:destroy, image_editor_file)
+    }
+    it {
       is_expected.not_to be_able_to(:destroy, pending_scanned_resource)
       is_expected.not_to be_able_to(:destroy, complete_scanned_resource)
       is_expected.not_to be_able_to(:create, Role.new)
@@ -381,4 +418,3 @@ describe Ability do
     }
   end
 end
-# rubocop:enable RSpec/ExampleLength

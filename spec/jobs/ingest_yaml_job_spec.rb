@@ -108,6 +108,7 @@ RSpec.describe IngestYAMLJob do
 
     shared_examples "ingest cases" do
       # rubocop:disable RSpec/ExampleLength
+      # rubocop:disable RSpec/MultipleExpectations
       it "ingests a single-volume yaml file" do
         expect(actor1).to receive(:attach_related_object).with(resource1)
         expect(actor1).to receive(:attach_content).with(instance_of(File))
@@ -132,6 +133,7 @@ RSpec.describe IngestYAMLJob do
           Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
         )
       end
+      # rubocop:enable RSpec/MultipleExpectations
       # rubocop:enable RSpec/ExampleLength
       it "ingests a right-to-left yaml file" do
         allow(actor1).to receive(:attach_related_object)
@@ -232,7 +234,7 @@ RSpec.describe IngestYAMLJob do
       allow(IngestFileJob).to receive(:perform_later).and_return(true)
       allow(CharacterizeJob).to receive(:perform_later).and_return(true)
     end
-
+    # rubocop:disable RSpec/MultipleExpectations
     it "ingests a yaml file" do
       described_class.perform_now(mets_file, user,
                                   file_association_method: 'individual')
@@ -253,5 +255,6 @@ RSpec.describe IngestYAMLJob do
         "<mets:mets"
       )
     end
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end

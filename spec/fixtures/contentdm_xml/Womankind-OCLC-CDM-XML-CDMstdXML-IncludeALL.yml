@@ -1,0 +1,4208 @@
+---
+:resource: MultiVolumeWork
+:attributes:
+  :default:
+    state: final_review
+    viewing_direction: left-to-right
+    rights_statement: http://rightsstatements.org/vocab/NKC/1.0/
+    visibility: open
+  :local:
+    source_metadata_identifier: Womankind
+    viewing_direction: left-to-right
+:source_metadata: |-
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <!-- Length implementation at offset 22 should hold a digit. Assuming 0 -->
+    <leader>01834 am a2200445Mi 4500</leader>
+    <controlfield tag="001">ocn1016047849</controlfield>
+    <controlfield tag="003">OCoLC</controlfield>
+    <controlfield tag="005">20180102070818.1</controlfield>
+    <controlfield tag="008">170809e201607  enka          000 0 eng d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)ocn1016047849</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)1016047849</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">STF</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">STF</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">IUL</subfield>
+    </datafield>
+    <datafield tag="043" ind1=" " ind2=" ">
+      <subfield code="a">f-et---</subfield>
+      <subfield code="a">f-rh---</subfield>
+    </datafield>
+    <datafield tag="050" ind1=" " ind2="4">
+      <subfield code="a">HV1448.E8</subfield>
+      <subfield code="b">C36 2016</subfield>
+    </datafield>
+    <datafield tag="049" ind1=" " ind2=" ">
+      <subfield code="a">IULA</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Cansfield, Bethan,</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">More than a roof :</subfield>
+      <subfield code="b">documenting the work of specialist women's organisations providing holistic shelter services in Ethiopia and Zimbabwe /</subfield>
+      <subfield code="c">authored and researched by Bethan Cansfield and Laura Brown.</subfield>
+    </datafield>
+    <datafield tag="246" ind1="3" ind2=" ">
+      <subfield code="a">Documenting the work of specialist women's organizations providing holistic shelter services in Ethiopia and Zimbabwe</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">London :</subfield>
+      <subfield code="b">Womankind Worldwide,</subfield>
+      <subfield code="c">July 2016.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">45 pages :</subfield>
+      <subfield code="b">illustrations ;</subfield>
+      <subfield code="c">30 cm</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+      <subfield code="a">text</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="337" ind1=" " ind2=" ">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield tag="338" ind1=" " ind2=" ">
+      <subfield code="a">volume</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Women's shelters</subfield>
+      <subfield code="z">Ethiopia.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Women's shelters</subfield>
+      <subfield code="z">Zimbabwe.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Abused women</subfield>
+      <subfield code="x">Services for</subfield>
+      <subfield code="z">Ethiopia.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Abused women</subfield>
+      <subfield code="x">Services for</subfield>
+      <subfield code="z">Zimbabwe.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Women social workers</subfield>
+      <subfield code="z">Ethiopia.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Women social workers</subfield>
+      <subfield code="z">Zimbabwe.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="7">
+      <subfield code="a">Women's shelters.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01178844</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="7">
+      <subfield code="a">Abused women</subfield>
+      <subfield code="x">Services for.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00794896</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="7">
+      <subfield code="a">Women social workers.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01178549</subfield>
+    </datafield>
+    <datafield tag="651" ind1=" " ind2="7">
+      <subfield code="a">Ethiopia.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01205830</subfield>
+    </datafield>
+    <datafield tag="651" ind1=" " ind2="7">
+      <subfield code="a">Zimbabwe.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01209419</subfield>
+    </datafield>
+    <datafield tag="648" ind1=" " ind2="7">
+      <subfield code="a">2015 (October)-2016 (March)</subfield>
+      <subfield code="2">fast</subfield>
+    </datafield>
+    <datafield tag="655" ind1=" " ind2="7">
+      <subfield code="a">Case studies.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423765</subfield>
+    </datafield>
+    <datafield tag="700" ind1="1" ind2=" ">
+      <subfield code="a">Brown, Laura,</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2=" ">
+      <subfield code="a">Womankind Worldwide (Organization)</subfield>
+    </datafield>
+    <datafield tag="596" ind1=" " ind2=" ">
+      <subfield code="a">5</subfield>
+    </datafield>
+    <datafield tag="926" ind1=" " ind2=" ">
+      <subfield code="a">B-ALF</subfield>
+      <subfield code="b">_ALF</subfield>
+      <subfield code="c">HV1448.E8 C36 2016</subfield>
+      <subfield code="d">NORMAL</subfield>
+      <subfield code="f">1</subfield>
+    </datafield>
+  </record>
+:thumbnail_path: 
+:collections: []
+:volumes:
+- :title:
+  - Womankind, 1978, vol. 2, no. 7
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1978'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=0
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=0
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=1
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=1
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=2
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=2
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=3
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=3
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=4
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=4
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=5
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=5
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=6
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=6
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=7
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=7
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=8
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=8
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=9
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=9
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=10
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=10
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=11
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=11
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 2, no. 7/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1980, vol. 2, no. 14
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1980'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=13
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=13
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=14
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=14
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=15
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=15
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=16
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=16
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=17
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=17
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=18
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=18
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=19
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=19
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=20
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=20
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=21
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=21
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=22
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=22
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=23
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=23
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=24
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=24
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 14/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1981, vol. 3, no. 18
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1981'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=26
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=26
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=27
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=27
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=28
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=28
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=29
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=29
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=30
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=30
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=31
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=31
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=32
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=32
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=33
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=33
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=34
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=34
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=35
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=35
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=36
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=36
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=37
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=37
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 3, no. 18/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1982, vol. 4, no. 21
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1982'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=39
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=39
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=40
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=40
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=41
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=41
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=42
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=42
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=43
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=43
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=44
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=44
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=45
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=45
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=46
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=46
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=47
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=47
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=48
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=48
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=49
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=49
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=50
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=50
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 21/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1978, vol. 1, no. 5
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1978'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=52
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=52
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=53
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=53
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=54
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=54
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=55
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=55
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=56
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=56
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=57
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=57
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=58
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=58
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=59
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=59
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=60
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=60
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=61
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=61
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=62
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=62
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=63
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=63
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 5/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1980, vol. 2, no. 16
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1980'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=65
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=65
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=66
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=66
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=67
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=67
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=68
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=68
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=69
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=69
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=70
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=70
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=71
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=71
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=72
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=72
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=73
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=73
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=74
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=74
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=75
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=75
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=76
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=76
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 16/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1982, vol. 4, no. 23
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1982'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=78
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=78
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=79
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=79
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=80
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=80
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=81
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=81
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=82
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=82
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=83
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=83
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=84
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=84
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=85
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=85
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=86
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=86
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=87
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=87
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=88
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=88
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=89
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=89
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 23/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1980, vol. 2, no. 15
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1980'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=91
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=91
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=92
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=92
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=93
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=93
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=94
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=94
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=95
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=95
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=96
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=96
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=97
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=97
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=98
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=98
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=99
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=99
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=100
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=100
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=101
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=101
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=102
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=102
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 15/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1977, vol. 1, no. 2
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1977'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=104
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=104
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=105
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=105
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=106
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=106
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=107
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=107
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=108
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=108
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=109
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=109
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=110
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=110
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=111
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=111
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=112
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=112
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=113
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=113
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=114
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=114
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=115
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=115
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 2/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1979, vol. 2, no. 10
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1979'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=117
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=117
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=118
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=118
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=119
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=119
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=120
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=120
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=121
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=121
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=122
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=122
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=123
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=123
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=124
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=124
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=125
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=125
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=126
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=126
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=127
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=127
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=128
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=128
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 10/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1980, vol. 2, no. 13
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1980'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=130
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=130
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=131
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=131
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=132
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=132
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=133
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=133
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=134
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=134
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=135
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=135
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=136
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=136
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=137
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=137
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=138
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=138
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=139
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=139
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=140
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=140
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=141
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=141
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 13/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1977, vol. 1, no. 1
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1977'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+    - :label: page13
+      :proxy: page13
+    - :label: page14
+      :proxy: page14
+    - :label: page15
+      :proxy: page15
+    - :label: page16
+      :proxy: page16
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=143
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=143
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=144
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=144
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=145
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=145
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=146
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=146
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=147
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=147
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=148
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=148
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=149
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=149
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=150
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=150
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=151
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=151
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=152
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=152
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=153
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=153
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=154
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=154
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page12/fulltext.txt
+    :file_opts: {}
+  - :id: page13
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page13
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=155
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=155
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page13/fulltext.txt
+    :file_opts: {}
+  - :id: page14
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page14
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=156
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=156
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page14/fulltext.txt
+    :file_opts: {}
+  - :id: page15
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page15
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=157
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=157
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page15/fulltext.txt
+    :file_opts: {}
+  - :id: page16
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page16
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=158
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=158
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 1/page16/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1979, vol. 2, no. 11
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1979'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=160
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=160
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=161
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=161
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=162
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=162
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=163
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=163
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=164
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=164
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=165
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=165
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=166
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=166
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=167
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=167
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=168
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=168
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=169
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=169
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=170
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=170
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=171
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=171
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 11/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1980, vol. 2, no. 12
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1980'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=173
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=173
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=174
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=174
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=175
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=175
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=176
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=176
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=177
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=177
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=178
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=178
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=179
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=179
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=180
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=180
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=181
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=181
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=182
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=182
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=183
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=183
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=184
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=184
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1980, vol. 2, no. 12/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1978, vol. 1, no. 6
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1978'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6-7
+      :proxy: page6-7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=186
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=186
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=187
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=187
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=188
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=188
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=189
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=189
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=190
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=190
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6-7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6-7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=191
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=191
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page6-7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=192
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=192
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=193
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=193
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=194
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=194
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=195
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=195
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=196
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=196
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 6/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1983, vol. 4, no. 24
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1983'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=198
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=198
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=199
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=199
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=200
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=200
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=201
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=201
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=202
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=202
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=203
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=203
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=204
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=204
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=205
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=205
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=206
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=206
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=207
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=207
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=208
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=208
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=209
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=209
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1983, vol. 4, no. 24/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1977, vol. 1, no. 3
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1977'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=211
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=211
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=212
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=212
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=213
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=213
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=214
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=214
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=215
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=215
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=216
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=216
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=217
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=217
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=218
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=218
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=219
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=219
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=220
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=220
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=221
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=221
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=222
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=222
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1977, vol. 1, no. 3/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1981, vol. 2, no. 17
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1981'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=224
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=224
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=225
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=225
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=226
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=226
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=227
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=227
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=228
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=228
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=229
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=229
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=230
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=230
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=231
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=231
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=232
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=232
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=233
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=233
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=234
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=234
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=235
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=235
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 2, no. 17/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1981, vol. 4, no. 19
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1981'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=237
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=237
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=238
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=238
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=239
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=239
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=240
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=240
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=241
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=241
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=242
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=242
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=243
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=243
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=244
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=244
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=245
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=245
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=246
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=246
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=247
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=247
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=248
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=248
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 19/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1978, vol. 1, no. 4
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1978'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=250
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=250
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=251
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=251
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=252
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=252
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=253
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=253
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=254
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=254
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=255
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=255
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=256
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=256
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=257
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=257
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=258
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=258
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=259
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=259
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=260
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=260
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=261
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=261
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1978, vol. 1, no. 4/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1979, vol. 2, no. 8
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1979'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=263
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=263
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=264
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=264
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=265
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=265
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=266
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=266
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=267
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=267
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=268
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=268
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=269
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=269
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=270
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=270
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=271
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=271
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=272
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=272
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=273
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=273
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=274
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=274
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 8/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1981, vol. 4, no. 20
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1981'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=276
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=276
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=277
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=277
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=278
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=278
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=279
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=279
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=280
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=280
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=281
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=281
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=282
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=282
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=283
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=283
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=284
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=284
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=285
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=285
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=286
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=286
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=287
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=287
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1981, vol. 4, no. 20/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1982, vol. 4, no. 22
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1982'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=289
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=289
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=290
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=290
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=291
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=291
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=292
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=292
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=293
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=293
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=294
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=294
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=295
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=295
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=296
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=296
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=297
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=297
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=298
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=298
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=299
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=299
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=300
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=300
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1982, vol. 4, no. 22/page12/fulltext.txt
+    :file_opts: {}
+- :title:
+  - Womankind, 1979, vol. 2, no. 9
+  :attributes:
+    :alternative_title:
+    - Womankind (Indianapolis, Ind.)
+    :date_created:
+    - '1979'
+    :resource_type:
+    - Text
+    :publisher:
+    - Womankind
+    :source:
+    - LaFourest, Judith
+    :digital_specifications:
+    - 'Scanner: Bookeye 4V1, Archive view: 400 dpi tiff, Full view: 400 dpi jpg 2000'
+    :digital_publisher:
+    - IUPUI University Library
+    :subject:
+    - Feminism -- Periodicals
+    - Women -- Indiana -- Periodicals
+  :structure:
+    :nodes:
+    - :label: page1
+      :proxy: page1
+    - :label: page2
+      :proxy: page2
+    - :label: page3
+      :proxy: page3
+    - :label: page4
+      :proxy: page4
+    - :label: page5
+      :proxy: page5
+    - :label: page6
+      :proxy: page6
+    - :label: page7
+      :proxy: page7
+    - :label: page8
+      :proxy: page8
+    - :label: page9
+      :proxy: page9
+    - :label: page10
+      :proxy: page10
+    - :label: page11
+      :proxy: page11
+    - :label: page12
+      :proxy: page12
+  :files:
+  - :id: page1
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page1
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=302
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=302
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page1/fulltext.txt
+    :file_opts: {}
+  - :id: page2
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page2
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=303
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=303
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page2/fulltext.txt
+    :file_opts: {}
+  - :id: page3
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page3
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=304
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=304
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page3/fulltext.txt
+    :file_opts: {}
+  - :id: page4
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page4
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=305
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=305
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page4/fulltext.txt
+    :file_opts: {}
+  - :id: page5
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page5
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=306
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=306
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page5/fulltext.txt
+    :file_opts: {}
+  - :id: page6
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page6
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=307
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=307
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page6/fulltext.txt
+    :file_opts: {}
+  - :id: page7
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page7
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=308
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=308
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page7/fulltext.txt
+    :file_opts: {}
+  - :id: page8
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page8
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=309
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=309
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page8/fulltext.txt
+    :file_opts: {}
+  - :id: page9
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page9
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=310
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=310
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page9/fulltext.txt
+    :file_opts: {}
+  - :id: page10
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page10
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=311
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=311
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page10/fulltext.txt
+    :file_opts: {}
+  - :id: page11
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page11
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=312
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=312
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page11/fulltext.txt
+    :file_opts: {}
+  - :id: page12
+    :mime_type: image/jp2
+    :attributes:
+      :title:
+      - page12
+    :thumbnail: https://server17312.contentdm.oclc.org/cgi-bin/thumbnail.exe?CISOROOT=/Womankind&CISOPTR=313
+    :path: https://server17312.contentdm.oclc.org/cgi-bin/showfile.exe?CISOROOT=/Womankind&CISOPTR=313
+    :ocr_path: spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL/Womankind,
+      1979, vol. 2, no. 9/page12/fulltext.txt
+    :file_opts: {}
+:sources:
+- :title:
+  - Contentdm XML
+  :file: "/home/rwing/projects/pumpkin/spec/fixtures/contentdm_xml/Womankind-OCLC-CDM-XML-CDMstdXML-IncludeALL.xml"

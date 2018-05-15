@@ -183,7 +183,7 @@ module IuMetadata
         # IUPUI CDM no longer provides API on port 445
         # The API is now available on port 2012
         # Also needs to replace &amp; with just &
-        CGI.unescapeHTML(path.sub('http','https'))
+        CGI.unescapeHTML(path.sub('http', 'https'))
       end
   end
 end

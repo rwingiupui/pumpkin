@@ -122,4 +122,4 @@
 :sources:
 - :title:
   - Contentdm XML
-  :file: "/home/rwing/projects/pumpkin/spec/fixtures/contentdm_xml/womankind_short.xml"
+  :file: spec/fixtures/contentdm_xml/womankind_short.xml

@@ -25,6 +25,7 @@ RSpec.describe BrowseEverythingIngester do
   describe "#save" do
     let(:download_path) { Rails.root.join("tmp", "spec", "downloaded.tif") }
 
+    # rubocop:disable RSpec/ExpectInHook
     before do
       FileUtils.mkdir_p(download_path.dirname)
       FileUtils.cp(file.path, download_path)
@@ -33,6 +34,7 @@ RSpec.describe BrowseEverythingIngester do
       allow_any_instance_of(BrowseEverything::Retriever) \
         .to receive(:download).and_return(download_path)
     end
+    # rubocop:enable RSpec/ExpectInHook
     it "cleans up the downloaded file" do
       ingester.save
 

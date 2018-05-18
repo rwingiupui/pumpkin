@@ -169,7 +169,8 @@ RSpec/MessageSpies:
   Enabled: false
 
 RSpec/MultipleExpectations:
-  Enabled: false
+  Enabled: true
+  Max: 8
 
 RSpec/NestedGroups:
   Enabled: true

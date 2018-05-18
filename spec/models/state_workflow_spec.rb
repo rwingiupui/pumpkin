@@ -3,6 +3,7 @@ require 'rails_helper'
 describe StateWorkflow do
   let(:workflow) { described_class.new :pending }
 
+  # rubocop:disable RSpec/MultipleExpectations
   describe 'ingest workflow' do
     # rubocop:disable RSpec/ExampleLength
     it 'proceeds through ingest workflow' do
@@ -101,6 +102,7 @@ describe StateWorkflow do
       expect(workflow.suppressed?).to be false
     end
   end
+  # rubocop:enable RSpec/MultipleExpectations
 
   describe 'persistence' do
     states = %i[pending metadata_review final_review complete flagged takedown]

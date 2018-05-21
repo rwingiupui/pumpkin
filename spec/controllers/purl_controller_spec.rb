@@ -16,12 +16,6 @@ describe PurlController do
                        state: 'complete',
                        source_metadata_identifier: 'ABE9721')
   }
-  let(:file_set) {
-    FactoryGirl.create(:file_set,
-                       user: user,
-                       label: 'BHR9405-1-0001.tif',
-                       source_metadata_identifier: 'BHR9405-1-0001')
-  }
 
   describe "default" do
     let(:user) { FactoryGirl.create(:admin) }
@@ -30,7 +24,6 @@ describe PurlController do
       sign_in user
       scanned_resource
       multi_volume_work
-      file_set
     end
     context "with a matching id" do
       shared_examples "responses for matches" do
@@ -48,7 +41,7 @@ describe PurlController do
           let(:format) { 'json' }
 
           it 'renders a json response' do
-            expect(JSON.parse(response.body)['url']).to match target_path
+            expect(JSON.parse(response.body)['url']).to match Regexp.escape(target_path)
           end
         end
       end
@@ -68,9 +61,9 @@ describe PurlController do
 
         include_examples "responses for matches"
       end
-      context "when for a FileSet" do
-        let(:id) { file_set.source_metadata_identifier }
-        let(:target_path) { curation_concerns_file_set_path(file_set) }
+      context "when for a specific page" do
+        let(:id) { multi_volume_work.source_metadata_identifier + '-9-0042' }
+        let(:target_path) { curation_concerns_multi_volume_work_path(multi_volume_work) + '#?m=8&cv=41' }
 
         include_examples "responses for matches"
       end

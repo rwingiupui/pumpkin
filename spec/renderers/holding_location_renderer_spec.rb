@@ -13,10 +13,11 @@ RSpec.describe HoldingLocationRenderer do
     }
   }
   let(:rendered) { described_class.new(uri).render }
+  let(:myAuthority) { instance_double(HoldingLocationAuthority) }
 
   before do
-    allow_any_instance_of(HoldingLocationAuthority).to receive(:find) \
-      .and_return(obj.stringify_keys)
+    allow(HoldingLocationAuthority).to receive(:new).and_return(myAuthority)
+    allow(myAuthority).to receive(:find).and_return(obj.stringify_keys)
   end
 
   context "with a rendered holding location" do

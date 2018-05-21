@@ -68,8 +68,10 @@ RSpec.describe "ScannedResourcesController", type: :feature do
     it "User can follow link to bulk edit scanned resource" \
     " and add a new file" do
       allow(CharacterizeJob).to receive(:perform_later).once
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(FileSet) \
         .to receive(:warn) # suppress virus warning messages
+      # rubocop:enable RSpec/AnyInstance
 
       visit polymorphic_path [scanned_resource]
       click_link I18n.t('file_manager.link_text')

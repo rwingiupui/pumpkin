@@ -31,7 +31,10 @@ do |resource_symbol, presenter_factory|
     end
     it "sets @logical_order" do
       obj = instance_double("logical order object")
-      allow_any_instance_of(presenter_factory) \
+      my_presenter_factory = instance_double(presenter_factory)
+      allow(presenter_factory).to receive(:new).and_return(my_presenter_factory)
+      allow(my_presenter_factory).to receive(:member_presenters)
+      allow(my_presenter_factory) \
         .to receive(:logical_order_object).and_return(obj)
       get :structure, id: "1"
 

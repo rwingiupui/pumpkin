@@ -70,14 +70,16 @@ describe Ability do
   let(:role) { Role.where(name: 'admin').first_or_create }
   let(:solr) { ActiveFedora.solr.conn }
   let(:config) { Plum.config.clone }
+  let(:ldap) { instance_double(Net::LDAP) }
 
   before do
     config[:authorized_ldap_groups] =
       ['Test-Group'] # Enables LDAP lookup system
     allow(Plum).to receive(:config).and_return(config)
     # Do not make any real LDAP requests
+    allow(Net::LDAP).to receive(:new).and_return(ldap)
     # rubocop:disable RSpec/ExpectInHook
-    expect_any_instance_of(Net::LDAP).not_to receive(:search)
+    expect(ldap).not_to receive(:search)
     [
       admin_user,
       image_editor,

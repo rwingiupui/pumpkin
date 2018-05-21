@@ -5,23 +5,23 @@ RSpec.describe CurationConcerns::FileSetsController do
   let(:parent) { FactoryGirl.create(:scanned_resource) }
   let(:user) { FactoryGirl.create(:admin) }
   let(:file) { fixture_file_upload("files/color.tif", "image/tiff") }
+  let(:my_described_class) { instance_double(described_class) }
 
   describe "#update" do
     before do
+      allow(described_class).to receive(:new).and_return(my_described_class)
       sign_in user
       file_set.save
     end
     it "can update viewing_hint" do
-      allow_any_instance_of(described_class).to receive(:parent_id) \
-        .and_return(nil)
+      allow(my_described_class).to receive(:parent_id).and_return(nil)
       patch :update, id: file_set.id, file_set: { viewing_hint: 'non-paged' }
       expect(file_set.reload.viewing_hint).to eq 'non-paged'
     end
     context "when updating via json" do
       render_views
       it "can update title" do
-        allow_any_instance_of(described_class).to receive(:parent_id) \
-          .and_return(nil)
+        allow(my_described_class).to receive(:parent_id).and_return(nil)
         patch(:update,
               id: file_set.id,
               file_set: { viewing_hint: '', title: ["test"] },
@@ -33,8 +33,10 @@ RSpec.describe CurationConcerns::FileSetsController do
       end
     end
     it "redirects to the containing scanned resource after editing" do
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(described_class).to receive(:parent) \
         .and_return(parent)
+      # rubocop:enable RSpec/AnyInstance
       patch :update, id: file_set.id, file_set: { viewing_hint: 'non-paged' }
       expect(response) \
         .to redirect_to(Rails.application.class.routes.url_helpers \
@@ -69,7 +71,8 @@ RSpec.describe CurationConcerns::FileSetsController do
       file_set.save
       parent.ordered_members << file_set
       parent.save
-      allow_any_instance_of(FileSet).to receive(:ocr_document) \
+      allow(FileSet).to receive(:find).and_return(file_set)
+      allow(file_set).to receive(:ocr_document) \
         .and_return(ocr_document)
     end
 
@@ -115,8 +118,8 @@ RSpec.describe CurationConcerns::FileSetsController do
       sign_in user
       FileSetActor.new(file_set, user).attach_content(file)
       allow(CreateDerivativesJob).to receive(:perform_later)
-      allow_any_instance_of(described_class).to receive(:parent_id) \
-        .and_return(nil)
+      allow(described_class).to receive(:new).and_return(my_described_class)
+      allow(my_described_class).to receive(:parent_id).and_return(nil)
     end
     it "triggers regenerating derivatives" do
       post :derivatives, id: file_set.id

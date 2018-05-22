@@ -16,7 +16,11 @@ RSpec.describe HoldingLocationRenderer do
   let(:myAuthority) { instance_double(HoldingLocationAuthority) }
 
   before do
-    allow(HoldingLocationAuthority).to receive(:new).and_return(myAuthority)
+    # HoldingLocationService holds a reference to an authority as a
+    # module-level attribute.  Must stub it in case the module is already
+    # initialized by a previous test.
+    allow(HoldingLocationService).to receive(:authority) \
+      .and_return(myAuthority)
     allow(myAuthority).to receive(:find).and_return(obj.stringify_keys)
   end
 

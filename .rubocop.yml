@@ -155,9 +155,6 @@ Naming/FileName:
 Naming/VariableNumber:
   Enabled: true
 
-RSpec/AnyInstance:
-  Enabled: false
-
 RSpec/ExampleLength:
   Enabled: true
   Max: 20

@@ -24,6 +24,6 @@ Blacklight::UrlHelperBehavior.module_eval do
   # @param [Object] SOLR document
   # @return [String] url string
   def add_highlight_url(doc)
-    params.key?(:q) ? url_for_document(doc).to_s + "/highlight/" + CGI.escape(params['q']) : url_for_document(doc)
+    params['q'].present? ? url_for_document(doc).to_s + "/highlight/" + CGI.escape(params['q']) : url_for_document(doc)
   end
 end

@@ -76,6 +76,7 @@ describe Ability do
       ['Test-Group'] # Enables LDAP lookup system
     allow(Plum).to receive(:config).and_return(config)
     # Do not make any real LDAP requests
+    # rubocop:disable RSpec/ExpectInHook
     expect_any_instance_of(Net::LDAP).not_to receive(:search)
     [
       admin_user,
@@ -88,6 +89,7 @@ describe Ability do
       allow(obj).to receive(:member_of_ldap_group?) \
         .with(config[:authorized_ldap_groups]).and_return(true)
     end
+    # rubocop:enable RSpec/ExpectInHook
     allow(campus_user).to receive(:member_of_ldap_group?) \
       .with(config[:authorized_ldap_groups]).and_return(false)
     allow(open_scanned_resource).to receive(:id).and_return("open")

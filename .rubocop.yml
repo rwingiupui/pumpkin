@@ -162,9 +162,6 @@ RSpec/ExampleLength:
   Enabled: true
   Max: 20
 
-RSpec/ExpectInHook:
-  Enabled: false
-
 RSpec/MessageSpies:
   Enabled: false
 

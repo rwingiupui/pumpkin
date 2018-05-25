@@ -15,11 +15,13 @@ RSpec.describe ExhibitIdValidator do
       }.stringify_keys
     }
 
+    # rubocop:disable RSpec/ExpectInHook
     before do
       expect(ActiveFedora::SolrService).to receive(:get) \
         .and_return(solr_response)
       allow(errors).to receive(:add)
     end
+    # rubocop:enable RSpec/ExpectInHook
 
     context "when the exhibit id unique" do
       it "does not add errors" do

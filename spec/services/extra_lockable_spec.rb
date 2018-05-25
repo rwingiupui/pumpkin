@@ -5,12 +5,14 @@ RSpec.describe ExtraLockable do
   let(:work_id) { work.source_metadata_identifier }
   let(:lock_info) { nil }
 
+  # rubocop:disable RSpec/ExpectInHook
   around { |example|
     # Ensure there are no existing locks before and after.
     expect(work.lock?(work_id)).to eq false
     example.run
     work.unlock(lock_info) if work.lock?(work_id)
   }
+  # rubocop:enable RSpec/ExpectInHook
 
   describe 'lock_id_attribute' do
     it 'is id by default' do

@@ -20,7 +20,9 @@ RSpec.describe WordBoundariesRunner do
     context "when HOCR file is available" do
       # FIXME: either add unavailable context OR don't
       it "writes an equivalent jason representation" do
+        # rubocop:disable RSpec/MessageSpies
         expect(File).to receive(:write).with(runner.json_filepath, json)
+        # rubocop:enable RSpec/MessageSpies
         runner.create
       end
     end
@@ -31,15 +33,19 @@ RSpec.describe WordBoundariesRunner do
 
   describe "#hocr_filepath" do
     it "delegates to PairtreeDerivativePath" do
+      # rubocop:disable RSpec/MessageSpies
       expect(PairtreeDerivativePath) \
         .to receive(:derivative_path_for_reference).with(file_set, "ocr")
+      # rubocop:enable RSpec/MessageSpies
       runner.hocr_filepath
     end
   end
   describe "#json_filepath" do
     it "delegates to PairtreeDerivativePath" do
+      # rubocop:disable RSpec/MessageSpies
       expect(PairtreeDerivativePath) \
         .to receive(:derivative_path_for_reference).with(file_set, "json")
+      # rubocop:enable RSpec/MessageSpies
       runner.json_filepath
     end
   end

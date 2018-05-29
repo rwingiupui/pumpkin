@@ -11,9 +11,11 @@ RSpec.describe RunWordBoundariesJob do
         allow(WordBoundariesRunner).to receive(:new).and_return(mock_runner)
       end
       it "logs a message" do
+        # rubocop:disable RSpec/MessageSpies
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")
         expect(Rails.logger).to receive(:info) \
           .with("WordBoundaries already exists for 123")
+        # rubocop:enable RSpec/MessageSpies
         job.perform('123')
       end
     end
@@ -26,8 +28,10 @@ RSpec.describe RunWordBoundariesJob do
         allow(WordBoundariesRunner).to receive(:new).and_return(@mock_runner)
       end
       it "creates a WordBoundariesRunner" do
+        # rubocop:disable RSpec/MessageSpies
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")
         expect(@mock_runner).to receive(:create)
+        # rubocop:enable RSpec/MessageSpies
         job.perform('123')
       end
     end
@@ -42,10 +46,12 @@ RSpec.describe RunWordBoundariesJob do
         allow(described_class).to receive(:set).and_return(mock_job)
       end
       it "logs a message and set up to run later" do
+        # rubocop:disable RSpec/MessageSpies
         expect(Rails.logger).to receive(:info).with("WordBoundariesJob: 123")
         expect(Rails.logger).to receive(:info) \
           .with("WordBoundariesJob: Preconditions not met 123")
         expect(described_class).to receive(:set)
+        # rubocop:enable RSpec/MessageSpies
         job.perform('123')
       end
     end

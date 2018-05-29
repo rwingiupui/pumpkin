@@ -11,7 +11,9 @@ RSpec.describe IngestCounter do
 
     it 'pauses http when limit is reached and resets count' do
       allow(Net::HTTP::Persistent).to receive(:new).and_return(http)
+      # rubocop:disable RSpec/MessageSpies
       expect(http).to receive(:shutdown)
+      # rubocop:enable RSpec/MessageSpies
       expect(counter.increment).to eq(1)
       expect(counter.increment).to eq(0)
     end

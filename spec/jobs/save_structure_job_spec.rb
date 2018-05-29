@@ -40,8 +40,10 @@ RSpec.describe SaveStructureJob do
   end
 
   it 'locks and unlocks the work' do
+    # rubocop:disable RSpec/MessageSpies
     expect(work).to receive(:lock).ordered
     expect(work).to receive(:unlock).ordered
+    # rubocop:enable RSpec/MessageSpies
     described_class.perform_now(work, structure)
   end
 end

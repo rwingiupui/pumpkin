@@ -187,7 +187,9 @@ describe CurationConcerns::ScannedResourcesController do
         solr.add resource.to_solr
         solr.add resource2.to_solr
         solr.commit
+        # rubocop:disable RSpec/MessageSpies
         expect(ScannedResource).not_to receive(:find)
+        # rubocop:enable RSpec/MessageSpies
 
         get :manifest, id: "test2", format: :json
 

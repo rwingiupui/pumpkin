@@ -8,8 +8,10 @@ describe IngestFileJob do
 
   context 'when :store_original_files is false' do
     it 'sets the mime_type to an external body redirect' do
+      # rubocop:disable RSpec/MessageSpies
       expect(CreateDerivativesJob).to receive(:perform_now) \
         .with(file_set, String, String)
+      # rubocop:enable RSpec/MessageSpies
       allow(Plum.config).to receive(:[]) \
         .with(:store_original_files) \
         .and_return(false)
@@ -32,8 +34,10 @@ describe IngestFileJob do
 
   context 'when :store_original_files is true' do
     it 'sets the mime_type to an external body redirect' do
+      # rubocop:disable RSpec/MessageSpies
       expect(CharacterizeJob).to receive(:perform_later) \
         .with(file_set, String)
+      # rubocop:enable RSpec/MessageSpies
       allow(Plum.config).to receive(:[]) \
         .with(:store_original_files) \
         .and_return(true)

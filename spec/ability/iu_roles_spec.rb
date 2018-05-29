@@ -79,6 +79,7 @@ describe Ability do
     # Do not make any real LDAP requests
     allow(Net::LDAP).to receive(:new).and_return(ldap)
     # rubocop:disable RSpec/ExpectInHook
+    # rubocop:disable RSpec/MessageSpies
     expect(ldap).not_to receive(:search)
     [
       admin_user,
@@ -92,6 +93,7 @@ describe Ability do
         .with(config[:authorized_ldap_groups]).and_return(true)
     end
     # rubocop:enable RSpec/ExpectInHook
+    # rubocop:enable RSpec/MessageSpies
     allow(campus_user).to receive(:member_of_ldap_group?) \
       .with(config[:authorized_ldap_groups]).and_return(false)
     allow(open_scanned_resource).to receive(:id).and_return("open")

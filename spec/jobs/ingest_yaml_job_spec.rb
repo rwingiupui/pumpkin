@@ -118,6 +118,7 @@ RSpec.describe IngestYAMLJob do
       # rubocop:disable RSpec/ExampleLength
       # rubocop:disable RSpec/MultipleExpectations
       it "ingests a single-volume yaml file" do
+        # rubocop:disable RSpec/MessageSpies
         expect(actor1).to receive(:attach_related_object).with(resource1)
         expect(actor1).to receive(:attach_content).with(instance_of(File))
         if file_association_method.in? ['batch', 'none']
@@ -128,6 +129,7 @@ RSpec.describe IngestYAMLJob do
         expect(actor2).to receive(:create_content).with(file)
         expect(actor2).to receive(:assign_visibility).with(resource1)
         expect(ingest_counter).to receive(:increment)
+        # rubocop:enable RSpec/MessageSpies
         described_class.perform_now(yaml_file_single, user,
                                     file_association_method:
                                     file_association_method)
@@ -167,6 +169,7 @@ RSpec.describe IngestYAMLJob do
         allow(actor2).to receive(:create_metadata)
         allow(actor2).to receive(:create_content)
         allow(actor2).to receive(:assign_visibility)
+        # rubocop:disable RSpec/MessageSpies
         expect(resource1).to receive(:logical_order) \
           .at_least(:once) \
           .and_return(logical_order)
@@ -174,6 +177,7 @@ RSpec.describe IngestYAMLJob do
           .at_least(:once) \
           .and_return(logical_order)
         expect(logical_order).to receive(:order=).at_least(:once)
+        # rubocop:enable RSpec/MessageSpies
         allow(logical_order).to receive(:order).and_return(nil)
         allow(logical_order).to receive(:object).and_return(order_object)
         allow(order_object).to receive(:each_section).and_return([])

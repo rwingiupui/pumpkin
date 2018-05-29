@@ -8,7 +8,9 @@ RSpec.describe PreingestJob do
       yaml_content = File.open(yaml_file) { |f| Psych.load(f) }
       yaml_content[:sources][0][:file] =
         Rails.root.join(yaml_content[:sources][0][:file]).to_s
+      # rubocop:disable RSpec/MessageSpies
       expect(File).to receive(:write).with(yaml_file, yaml_content.to_yaml)
+      # rubocop:enable RSpec/MessageSpies
       described_class.perform_now(document_class, preingest_file, user)
     end
   end

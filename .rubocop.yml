@@ -160,7 +160,11 @@ RSpec/ExampleLength:
   Max: 20
 
 RSpec/MessageSpies:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: have_received
+  SupportedStyles:
+  - have_received
+  - receive
 
 RSpec/MultipleExpectations:
   Enabled: true

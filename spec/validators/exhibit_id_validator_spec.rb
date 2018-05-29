@@ -17,8 +17,10 @@ RSpec.describe ExhibitIdValidator do
 
     # rubocop:disable RSpec/ExpectInHook
     before do
+      # rubocop:disable RSpec/MessageSpies
       expect(ActiveFedora::SolrService).to receive(:get) \
         .and_return(solr_response)
+      # rubocop:enable RSpec/MessageSpies
       allow(errors).to receive(:add)
     end
     # rubocop:enable RSpec/ExpectInHook

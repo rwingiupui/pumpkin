@@ -92,7 +92,9 @@ describe ScannedResource do
       before { scanned_resource.source_metadata_identifier = nil }
       it 'does nothing' do
         original_attributes = scanned_resource.attributes
+        # rubocop:disable RSpec/MessageSpies
         expect(scanned_resource.send(:remote_metadata_factory)).not_to receive(:new)
+        # rubocop:enable RSpec/MessageSpies
         scanned_resource.apply_remote_metadata
         expect(scanned_resource.attributes).to eq(original_attributes)
       end
@@ -205,13 +207,17 @@ describe ScannedResource do
     it "does not complete record when state doesn't change" do
       allow(scanned_resource).to receive("state_changed?").and_return false
       scanned_resource.state = 'complete'
+      # rubocop:disable RSpec/MessageSpies
       expect(scanned_resource).not_to receive(:complete_record)
+      # rubocop:enable RSpec/MessageSpies
       expect { scanned_resource.check_state } \
         .not_to(change { ActionMailer::Base.deliveries.count })
     end
     it "does not complete record when state isn't 'complete'" do
       scanned_resource.state = 'final_review'
+      # rubocop:disable RSpec/MessageSpies
       expect(scanned_resource).not_to receive(:complete_record)
+      # rubocop:enable RSpec/MessageSpies
       expect { scanned_resource.check_state } \
         .not_to(change { ActionMailer::Base.deliveries.count })
     end
@@ -219,7 +225,9 @@ describe ScannedResource do
       allow(scanned_resource).to receive("state_changed?").and_return true
       scanned_resource.state = 'complete'
       scanned_resource.identifier = '1234'
+      # rubocop:disable RSpec/MessageSpies
       expect(scanned_resource).not_to receive("identifier=")
+      # rubocop:enable RSpec/MessageSpies
       expect { scanned_resource.check_state } \
         .to change { ActionMailer::Base.deliveries.count }.by(1)
       expect(scanned_resource.identifier).to eq('1234')
@@ -227,7 +235,9 @@ describe ScannedResource do
     it "does not complete the record when the state transition is invalid" do
       allow(scanned_resource).to receive("state_changed?").and_return true
       scanned_resource.state = 'pending'
+      # rubocop:disable RSpec/MessageSpies
       expect(scanned_resource).not_to receive(:complete_record)
+      # rubocop:enable RSpec/MessageSpies
       expect { scanned_resource.check_state } \
         .not_to(change { ActionMailer::Base.deliveries.count })
       expect(scanned_resource.identifier).to eq(nil)

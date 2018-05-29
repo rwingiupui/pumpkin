@@ -12,7 +12,9 @@ RSpec.describe "curation_concerns/base/_related_files.html.erb" do
   before do
     stub_blacklight_views
     allow_message_expectations_on_nil
+    # rubocop:disable RSpec/AnyInstance
     allow_any_instance_of(NilClass).to receive(:can?).and_return(true)
+    # rubocop:enable RSpec/AnyInstance
 
     assign(:file_set, page_presenter)
     render partial: "curation_concerns/file_sets/file_set",

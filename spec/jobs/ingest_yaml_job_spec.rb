@@ -53,11 +53,15 @@ RSpec.describe IngestYAMLJob do
       allow(fileset).to receive(:id).and_return('file1')
       allow(fileset).to receive(:title=)
       allow(fileset).to receive(:replaces=)
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(described_class).to receive(:decorated_file) \
         .and_return(file)
       allow_any_instance_of(described_class).to receive(:thumbnail_path) \
         .and_return(file_path)
+      # rubocop:enable RSpec/AnyInstance
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(ScannedResource).to receive(:save!)
+      # rubocop:enable RSpec/AnyInstance
       allow(IngestCounter).to receive(:new).and_return(ingest_counter)
       allow(ingest_counter).to receive(:increment)
     end
@@ -71,6 +75,7 @@ RSpec.describe IngestYAMLJob do
         allow(actor2).to receive(:assign_visibility)
 
         call_count = 0
+        # rubocop:disable RSpec/AnyInstance
         allow_any_instance_of(Net::HTTP).to(receive(:transport_request) \
           .and_wrap_original { |m, *args, &block|
             call_count += 1
@@ -81,8 +86,11 @@ RSpec.describe IngestYAMLJob do
             end
             m.call(*args, &block)
           })
+        # rubocop:enable RSpec/AnyInstance
+        # rubocop:disable RSpec/AnyInstance
         expect_any_instance_of(Faraday::Request::Retry) \
           .to receive(:retry_request?).at_least(:once).and_call_original
+        # rubocop:enable RSpec/AnyInstance
 
         described_class.perform_now(yaml_file_single, user,
                                     file_association_method:
@@ -226,8 +234,10 @@ RSpec.describe IngestYAMLJob do
     }}
 
     before do
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(described_class).to receive(:decorated_file) \
         .and_return(file)
+      # rubocop:enable RSpec/AnyInstance
       allow(ScannedResource).to receive(:new).and_return(resource)
       allow(FileSet).to receive(:new).and_return(fileset1, fileset2)
 

@@ -4,6 +4,7 @@ RSpec.describe FileSet do
   let(:file_set) {
     described_class.new.tap { |x| x.apply_depositor_metadata("bob") }
   }
+  let(:myHOCRDocument) { instance_double(HOCRDocument) }
 
   describe "metadata" do
     context "when singular" do
@@ -63,7 +64,7 @@ RSpec.describe FileSet do
     }
 
     it "doesn't create a thumbnail" do
-      allow_any_instance_of(described_class) \
+      allow(file_set) \
         .to receive(:warn) # suppress virus check warnings
       file = File.open(Rails.root.join("spec", "fixtures", "files",
                                        "color.tif"))
@@ -74,7 +75,7 @@ RSpec.describe FileSet do
     end
 
     it "creates a JP2" do
-      allow_any_instance_of(described_class)\
+      allow(file_set)\
         .to receive(:warn) # suppress virus check warnings
       file = File.open(Rails.root.join("spec", "fixtures", "files",
                                        "color.tif"))
@@ -86,7 +87,7 @@ RSpec.describe FileSet do
     end
 
     it "copies a JP2" do
-      allow_any_instance_of(described_class) \
+      allow(file_set) \
         .to receive(:warn) # suppress virus check warnings
       file = File.open(Rails.root.join("spec", "fixtures", "files",
                                        "image.jp2"))
@@ -99,14 +100,15 @@ RSpec.describe FileSet do
 
     # rubocop:disable RSpec/ExampleLength
     it "creates full text, attaches it to the object, and indexes it" do
-      allow_any_instance_of(described_class) \
+      allow(file_set) \
         .to receive(:warn) # suppress virus check warnings
       allow(Hydra::Derivatives::Jpeg2kImageDerivatives) \
         .to receive(:create).and_return(true)
       file = File.open(Rails.root.join("spec", "fixtures", "files",
                                        "page18.tif"))
       Hydra::Works::UploadFileToFileSet.call(file_set, file)
-      allow_any_instance_of(HOCRDocument).to receive(:text).and_return("yo")
+      allow(HOCRDocument).to receive(:new).and_return(myHOCRDocument)
+      allow(myHOCRDocument).to receive(:text).and_return("yo")
       allow(Plum.config).to receive(:[]).with(:store_original_files) \
                                         .and_return(true)
       allow(Plum.config).to receive(:[]).with(:create_hocr_files) \
@@ -132,14 +134,15 @@ RSpec.describe FileSet do
     # rubocop:enable RSpec/ExampleLength
 
     it "does not create full text if OCR is disabled in configuration." do
-      allow_any_instance_of(described_class) \
+      allow(file_set) \
         .to receive(:warn) # suppress virus check warnings
       allow(Hydra::Derivatives::Jpeg2kImageDerivatives) \
         .to receive(:create).and_return(true)
       file = File.open(Rails.root.join("spec", "fixtures", "files",
                                        "page18.tif"))
       Hydra::Works::UploadFileToFileSet.call(file_set, file)
-      allow_any_instance_of(HOCRDocument).to receive(:text).and_return("yo")
+      allow(HOCRDocument).to receive(:new).and_return(myHOCRDocument)
+      allow(myHOCRDocument).to receive(:text).and_return("yo")
       allow(Plum.config).to receive(:[]).with(:store_original_files) \
                                         .and_return(true)
       allow(Plum.config).to receive(:[]).with(:create_hocr_files) \
@@ -153,7 +156,7 @@ RSpec.describe FileSet do
     end
 
     it "creates full text from text file when provided." do
-      allow_any_instance_of(described_class) \
+      allow(file_set) \
         .to receive(:warn) # suppress virus check warnings
       text_file = File.open(Rails.root.join("spec", "fixtures", "files",
                                             "fulltext.txt"))
@@ -175,7 +178,7 @@ RSpec.describe FileSet do
 
     context "when store_original_files is false" do
       it "still creates, stores, and indexes OCR derivatives" do
-        allow_any_instance_of(described_class) \
+        allow(file_set) \
           .to receive(:warn) # suppress virus check warnings
         allow(Hydra::Derivatives::Jpeg2kImageDerivatives) \
           .to receive(:create).and_return(true)

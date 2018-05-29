@@ -59,8 +59,10 @@ RSpec.describe ReviewerMailer, type: :mailer do
 
     context "when multiple addresses" do
       before do
+        # rubocop:disable RSpec/AnyInstance
         allow_any_instance_of(Role).to receive(:users) \
           .and_return([complete_reviewer, takedown_reviewer])
+        # rubocop:enable RSpec/AnyInstance
         described_class.notify(curation_concern.id, 'takedown').deliver_now
       end
 

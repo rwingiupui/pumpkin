@@ -4,6 +4,7 @@ RSpec.describe BrowseEverythingIngester do
   let(:ingester) {
     described_class.new(curation_concern, upload_set_id, actor, file_info)
   }
+  let(:retriever) { instance_double(BrowseEverything::Retriever) }
 
   let(:curation_concern) { FactoryGirl.create(:scanned_resource) }
   let(:upload_set_id) { "2" }
@@ -31,8 +32,8 @@ RSpec.describe BrowseEverythingIngester do
       FileUtils.cp(file.path, download_path)
       allow(CharacterizeJob).to receive(:perform_later).once
       expect(File.exist?(download_path)).to eq true
-      allow_any_instance_of(BrowseEverything::Retriever) \
-        .to receive(:download).and_return(download_path)
+      allow(BrowseEverything::Retriever).to receive(:new).and_return(retriever)
+      allow(retriever).to receive(:download).and_return(download_path)
     end
     # rubocop:enable RSpec/ExpectInHook
     it "cleans up the downloaded file" do

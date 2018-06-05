@@ -5,12 +5,14 @@ module IuDevOps
   class SidekiqProcessCheck < Check
     # Public: Return the status of the Sidekiq processes
     def check
-      if running?
+      if running? # rubocop:disable Style/GuardClause
         mark_message "Sidekiq is up"
       else
-        mark_failure
-        mark_message "No Sidekiq processes found"
+        raise ConnectionFailed, "No Sidekiq processes found"
       end
+    rescue => e # rubocop:disable Lint/RescueWithoutErrorClass
+      mark_failure
+      mark_message e
     end
 
     def running?

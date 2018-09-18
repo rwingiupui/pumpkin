@@ -1,7 +1,7 @@
 # Populates selection list for Holding Location
 ---
 - label: William & Gayle Cook Music Library
-  address: 200 South Jordan Ave
+  address: 200 South Jordan Ave, Bloomington IN, 47405
   phone_number: (812) 855-2970
   contact_email: libmus@indiana.edu
   gfa_pickup: PW
@@ -13,3 +13,16 @@
     label: William & Gayle Gook Music Library
     code: libmus
   id: https://libraries.indiana.edu/music
+- label: IU Southeast Library
+  address: 4201 Grant Line Road, New Albany, IN 47150
+  phone_number: (812) 941-2489
+  contact_email: libmus@ius.edu
+  gfa_pickup: PW
+  staff_only: false
+  pickup_location: true
+  digital_location: true
+  url: https://www.ius.edu/library/
+  library:
+    label: IU Southeast Library
+    code: libius
+  id: https://www.ius.edu/library/

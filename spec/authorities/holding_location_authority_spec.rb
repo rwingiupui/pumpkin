@@ -6,7 +6,7 @@ RSpec.describe HoldingLocationAuthority do
   let(:obj) {
     {
       "label" => "William & Gayle Cook Music Library",
-      "address" => "200 South Jordan Ave",
+      "address" => "200 South Jordan Ave, Bloomington IN, 47405",
       "phone_number" => "(812) 855-2970",
       "contact_email" => "libmus@indiana.edu",
       "gfa_pickup" => "PW",
@@ -28,7 +28,7 @@ RSpec.describe HoldingLocationAuthority do
     end
 
     it "lists all of the holding locations" do
-      expect(hl_authority.all.length).to eq(1)
+      expect(hl_authority.all.length).to eq(2)
       expect(hl_authority.all).to include(obj.stringify_keys)
     end
   end

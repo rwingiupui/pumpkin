@@ -24,6 +24,8 @@ export class StructureParser {
     let structure_element = $("#structure_label")
     if(structure_element.length > 0) {
       return structure_element.val()
+    } else {
+      return ""
     }
   }
 }
@@ -66,6 +68,8 @@ export class StructureNode {
     let input_element = $("> div input", this.element)
     if(input_element.length > 0) {
       return input_element.val()
+    } else {
+      return ""
     }
   }
 }
